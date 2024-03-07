@@ -1,0 +1,10 @@
+.home-page{
+    width: 100%;
+    z-index: -1000;
+    box-sizing: border-box;
+    padding: 10px;
+    height: 82vh;
+    display: flex;
+  
+}
+

@@ -1,0 +1,8 @@
+.contact-page{
+    width: 100%;
+    z-index: -1000;
+    box-sizing: border-box;
+    padding: 100px;
+    height: 89vh;
+    background-image: url("../image/movie-bg.jpg");
+}

@@ -1,0 +1,18 @@
+.login-page{
+    width: 100%;
+    z-index: -1000;
+    box-sizing: border-box;
+    height: 89vh;
+}
+
+.login-form{
+    /* height: 400px; */
+    width: 370px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: gainsboro;
+    margin: 100px auto;
+    box-shadow: 0 0 11px 2px;
+    border-radius: 4px;
+
+}
