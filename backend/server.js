@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connectDB = require("./connection/db");
 const authRoutes = require("./router/authRoute");
+const bookingRoutes = require("./router/bookingRoute");
 
 
 const cors = require("cors");
@@ -24,6 +25,7 @@ app.use(morgan("dev"));
 
 //ROUTES
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/booking", bookingRoutes);
 
 //REST API
 app.get("/", (req, res) => {
