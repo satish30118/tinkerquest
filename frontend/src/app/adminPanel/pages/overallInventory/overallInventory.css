@@ -1,0 +1,15 @@
+/* STYLE FOR TOTAL BOOKING*/
+.tb-user-details{
+    width: 100%;
+}
+.tb-user-details table{
+ width: 90%;
+ margin: 20px auto;
+ text-align: center;
+}
+.tb-user-details table th{
+    padding: 20px 6px;
+}
+.tb-user-details table th, td{
+    border: 2px solid gray;
+}

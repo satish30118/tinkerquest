@@ -18,10 +18,9 @@ const AdminMenu = () => {
     <>
     <div className="admin-menu-page">
         <h1>Admin Panel</h1>
-        <NavLink exact to={"/dashboard/admin/total-test"}>Total Test</NavLink>
-        <NavLink to={"/dashboard/admin/create-product"}>Create Product</NavLink>
-        <NavLink to={"/dashboard/admin/all-product"}>Get All Product</NavLink>
-        <NavLink to={"/dashboard/admin/users"}>Users</NavLink>
+        <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>Overall Inventory</NavLink>
+        <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>Location Wise Inventory</NavLink>
+        <NavLink to={"/dashboard/admin/users"}>All Users Details</NavLink>
         <NavLink to={"/login"} onClick={handleLogout} style={{color:"red",}} ><i class="fa fa-sign-in" style={{ marginRight: "7px", color:"red" }}></i>Logout</NavLink>
     </div>
       

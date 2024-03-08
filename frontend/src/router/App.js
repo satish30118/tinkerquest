@@ -10,13 +10,13 @@ import UserDashboard from "../app/Components/dashboard/UserDashboard";
 import UserRoute from "../app/auth/privateRoutes/UserRoute";
 import AdminDashboard from "../app/adminPanel/AdminDashboard";
 import AdminRoute from "../app/adminPanel/privateRoute/AdminRoute";
-import ManageCategory from "../app/adminPanel/pages/ManageCategory";
 import Users from "../app/adminPanel/pages/Users";
-import CreateProduct from "../app/adminPanel/pages/CreateProduct";
-import AllProduct from "../app/adminPanel/pages/AllProduct";
-import UpdateProduct from "../app/adminPanel/pages/UpdateProduct";
-import TotalTest from "../app/adminPanel/pages/TotalTest";
 import TestBoooking from "../app/Components/booking/TestBooking";
+import OverallInventory from "../app/adminPanel/pages/OverallInventory";
+import LocationwiseInventory from "../app/adminPanel/pages/LocationwiseInventory";
+import TotalBooking from "../app/adminPanel/pages/overallInventory/TotalBooking";
+import TotalCompleted from "../app/adminPanel/pages/overallInventory/TotalCompleted";
+import TotalPending from "../app/adminPanel/pages/overallInventory/TotalPending";
 
 function App() {
   return (
@@ -39,20 +39,24 @@ function App() {
         <Route exact path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />}></Route>
           <Route
-            path="admin/total-test"
-            element={<TotalTest/>}
+            path="admin/overall-inventory-details"
+            element={<OverallInventory />}
           ></Route>
           <Route
-            path="admin/create-product"
-            element={<CreateProduct/>}
+            path="admin/overall-inventory-details/total-booking"
+            element={<TotalBooking />}
           ></Route>
           <Route
-            path="admin/all-product"
-            element={<AllProduct/>}
+            path="admin/overall-inventory-details/total-booking-completed"
+            element={<TotalCompleted />}
           ></Route>
           <Route
-            path="admin/update-product/:slug"
-            element={<UpdateProduct/>}
+            path="admin/overall-inventory-details/total-booking-pending"
+            element={<TotalPending />}
+          ></Route>
+          <Route
+            path="admin/location-wise-inventory-details"
+            element={<LocationwiseInventory />}
           ></Route>
           <Route path="admin/users" element={<Users />}></Route>
         </Route>
