@@ -15,6 +15,8 @@ import Users from "../app/adminPanel/pages/Users";
 import CreateProduct from "../app/adminPanel/pages/CreateProduct";
 import AllProduct from "../app/adminPanel/pages/AllProduct";
 import UpdateProduct from "../app/adminPanel/pages/UpdateProduct";
+import TotalTest from "../app/adminPanel/pages/TotalTest";
+import TestBoooking from "../app/Components/booking/TestBooking";
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/home" element={<Home />}></Route>
+        <Route exact path="/test-booking" element={<TestBoooking />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
         <Route
@@ -36,8 +39,8 @@ function App() {
         <Route exact path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />}></Route>
           <Route
-            path="admin/manage-category"
-            element={<ManageCategory />}
+            path="admin/total-test"
+            element={<TotalTest/>}
           ></Route>
           <Route
             path="admin/create-product"

@@ -1,0 +1,15 @@
+.booking-page
+{
+    text-align: center;
+    width: 30%;
+    margin-left: 35%;
+}
+
+.booking-gender label
+{
+    margin: 0px 10px ;
+    font-size: 20px;
+    margin-right: 30px;
+}
+
+
