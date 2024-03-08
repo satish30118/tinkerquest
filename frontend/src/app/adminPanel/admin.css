@@ -1,18 +1,15 @@
 /*ADMIN DASHBOARD*/
 .admin-dashboard{
     width: 100%;
-    height:82.2vh;
+    height:auto;
     display: flex;
 }
 .admin-dashboard .menu{
     width: 20%;
 }
 .admin-dashboard .content{
-    width: 80%;
-    height: 78vh;
-    text-align: center;
-    position: relative;
-    overflow: auto;
+    width: 100%;
+   height: auto;
 }
 
 
@@ -76,69 +73,80 @@
     background-color: brown;
 }
 
-/* MANAGE CATEGORY PAGE */
-
-.category-page{
-    width: 60%;
-    margin: 20px auto;
-}
-#new-category{
-    width: 50%;
-    font-size: 19px;
-    padding: 6px 10px;
-    border: 2.2px solid darkblue;
-    outline: none;
-    border-radius: 6px;
-}
-.categories-details table{
-    width: 80%;
-    margin: 10px auto;
-    margin-bottom: 30px;
-    font-size: 22px;
-    border: 2.5px solid black;
-}
-
-.category-popup{
-    position: fixed;
-    top: 30%;
-    left: 40%;
-    z-index: 4000;
-}
-
-
-/* PRODUCT PAGE*/
-.product-page{
-    width: 60%;
-    margin: 20px auto;
-    padding: 20px;
-    text-align: center;
-    border: 2px solid blue;
-}
-
-/*ALL PRODUCTS PAGE*/
-.all-product-page{
-    padding: 20px;
+/* /Total Test Appointment */
+.overall-page{
     display: flex;
     flex-wrap: wrap;
-   justify-content: space-evenly;
-   
+    justify-content: space-evenly;
 }
-.product-link{
-    text-decoration: none;
-    font-size: 18px;
+.overall{
+    border: 2px solid grey;
+    width: 30%;
+    margin: 20px 0px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 7px;
 }
-.product-card{
-    width:270px;
-    /* padding: 20px 10px; */
-    padding-bottom: 20px;
-    margin: 10px;
-    border: 2px solid black;
+.overall h2{
+    padding: 10px 0px;
 }
-.product-img img{
-    width:100%;
-    height: 200px;
-    margin-bottom: 20px;
+
+/* Location wise  */
+
+.location
+{
+    text-align: center;
+    margin-top: 20px;
+
 }
+
+.location select {
+    
+    padding: 10px;
+    font-size: 19px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 250px;
+    appearance: none; /* Removes default arrow in Chrome/Safari */
+    -moz-appearance: none; /* Removes default arrow in Firefox */
+    -webkit-appearance: none; /* Removes default arrow in older versions of Chrome/Safari */
+    /* background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"></path></svg>'); Custom arrow icon */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+  
+  /* Style the dropdown options */
+  .location select option{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px; 
+    line-height: 200px;
+  }
+
+
+  /* Style the dropdown when open */
+  .location select:focus {
+    outline: none;
+    /* border-color: #007bff; Example highlight color */
+    border: 2.4px solid #007bff;
+  }
+  .overall-location-page h2
+  {
+    margin-top: 30px;
+    text-align: center;
+
+    
+  }
+  .detail
+  {
+    text-align: center;
+    background-color: #007bff;
+    border: 3px solid #007bff ;
+    border-radius: 10px;
+    width: 30%;
+    margin: auto;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
 
 
 /*OVERLAY*/

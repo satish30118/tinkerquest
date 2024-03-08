@@ -18,7 +18,7 @@ const AdminMenu = () => {
     <>
     <div className="admin-menu-page">
         <h1>Admin Panel</h1>
-        <NavLink exact to={"/dashboard/admin/manage-category"}>Manage Category</NavLink>
+        <NavLink exact to={"/dashboard/admin/total-test"}>Total Test</NavLink>
         <NavLink to={"/dashboard/admin/create-product"}>Create Product</NavLink>
         <NavLink to={"/dashboard/admin/all-product"}>Get All Product</NavLink>
         <NavLink to={"/dashboard/admin/users"}>Users</NavLink>
