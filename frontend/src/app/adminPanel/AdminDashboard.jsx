@@ -16,7 +16,14 @@ const AdminDashboard = () => {
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">Welcome to Admin Page</h1>
           </div>
-          <div>
+          <div
+            style={{
+              textAlign: "center",
+              fontWeight: "600",
+              marginTop: "130px",
+              fontSize:"22px"
+            }}
+          >
             <p>Name:- {auth?.user?.name}</p>
             <p>Email:- {auth?.user.email}</p>
             <p>Phone:- {auth?.user.phone}</p>

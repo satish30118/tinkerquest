@@ -1,47 +1,52 @@
 /*ADMIN DASHBOARD*/
-.admin-dashboard{
+.admin-dashboard {
     width: 100%;
-    height:auto;
+    min-height: 84vh;
     display: flex;
 }
-.admin-dashboard .menu{
-    width: 20%;
+
+.admin-dashboard .menu {
+    width: 24%;
 }
-.admin-dashboard .content{
-    width: 100%;
-   height: auto;
+
+.admin-dashboard .content {
+    width: 76%;
+    height: auto;
+    overflow: auto;
+    height: 81vh;
+    position: relative;
 }
 
 
-.dashboard-heading{
+.dashboard-heading {
     border: 2.5px solid goldenrod;
     margin: 20px auto;
     width: 65%;
     padding: 0;
     height: 60px;
     box-sizing: border-box;
- }
- .dashboard-heading h1{
+}
+
+.dashboard-heading h1 {
     border: 2.5px solid goldenrod;
     width: 100.64%;
-    padding: 7px;
+    padding: 1px;
     height: 60px;
-    color:darkblue;
+    color: darkblue;
     box-sizing: border-box;
     margin: 0;
     position: relative;
     top: 3.0px;
     left: 3.5px;
- }
- .dashboard-heading h1:hover{
-    left:-2.3px;
-    top: -2.3px;
- }
+    text-align: center;
+}
+
+
 
 
 
 /*MENU PAGE CSS*/
-.admin-menu-page{
+.admin-menu-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,34 +57,37 @@
     height: 100%;
 }
 
-.admin-menu-page h1{
+.admin-menu-page h1 {
     padding: 20px 0px;
 }
 
-.admin-menu-page a{
- text-decoration: none;
- color: white;
- font-weight: 550;
- font-size: 19px;
- padding: 7px 20px;
- width: 100%;
- margin: 1.6px 0;
- 
+.admin-menu-page a {
+    text-decoration: none;
+    color: white;
+    font-weight: 550;
+    font-size: 19px;
+    padding: 7px 20px;
+    width: 100%;
+    margin: 1.6px 0;
+
 }
- a.active{
-    background-color:brown;
+
+a.active {
+    background-color: brown;
 }
-.admin-menu-page a:hover{
+
+.admin-menu-page a:hover {
     background-color: brown;
 }
 
 /* /Total Test Appointment */
-.overall-page{
+.overall-page {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-.overall{
+
+.overall {
     border: 2px solid grey;
     width: 30%;
     margin: 20px 0px;
@@ -87,73 +95,76 @@
     text-align: center;
     border-radius: 7px;
 }
-.overall h2{
+
+.overall h2 {
     padding: 10px 0px;
 }
 
 /* Location wise  */
 
-.location
-{
+.location {
     text-align: center;
     margin-top: 20px;
 
 }
 
 .location select {
-    
+
     padding: 10px;
     font-size: 19px;
     border: 1px solid grey;
     border-radius: 5px;
     width: 250px;
-    appearance: none; /* Removes default arrow in Chrome/Safari */
-    -moz-appearance: none; /* Removes default arrow in Firefox */
-    -webkit-appearance: none; /* Removes default arrow in older versions of Chrome/Safari */
+    appearance: none;
+    /* Removes default arrow in Chrome/Safari */
+    -moz-appearance: none;
+    /* Removes default arrow in Firefox */
+    -webkit-appearance: none;
+    /* Removes default arrow in older versions of Chrome/Safari */
     /* background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"></path></svg>'); Custom arrow icon */
     background-repeat: no-repeat;
     background-position: right 10px center;
-  }
-  
-  /* Style the dropdown options */
-  .location select option{
+}
+
+/* Style the dropdown options */
+.location select option {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px; 
+    font-size: 16px;
     line-height: 200px;
-  }
+}
 
 
-  /* Style the dropdown when open */
-  .location select:focus {
+/* Style the dropdown when open */
+.location select:focus {
     outline: none;
     /* border-color: #007bff; Example highlight color */
     border: 2.4px solid #007bff;
-  }
-  .overall-location-page h2
-  {
+}
+
+.overall-location-page h2 {
     margin-top: 30px;
     text-align: center;
 
-    
-  }
-  .detail
-  {
+
+}
+
+.detail {
     text-align: center;
     background-color: #007bff;
-    border: 3px solid #007bff ;
+    border: 3px solid #007bff;
     border-radius: 10px;
     width: 30%;
     margin: auto;
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
+}
 
 
 /*OVERLAY*/
-.overlay{
-    background-color:rgba(0, 0, 0, 0.86);
-    height: 100%;
+.overlay {
+    background-color: rgba(0, 0, 0, 0.82);
+    height: 110%;
     width: 100%;
     position: fixed;
-    z-index: 200;
+    z-index: 1;
 }

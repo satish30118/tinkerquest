@@ -2,16 +2,24 @@ const Booking = require("../models/testBookingModel");
 
 const createBooking = async (req, res) => {
   try {
-    const { name, gender, age, mobile, testName, testMtd, testDate } = req.body;
+    const {
+      name,
+      gender,
+      age,
+      mobile,
+      testCategory,
+      testName,
+      collectionDate,
+    } = req.body;
 
     const newbooking = await Booking({
       name,
       gender,
       age,
       mobile,
+      testCategory,
       testName,
-      testMtd,
-      testDate,
+      collectionDate,
     }).save();
 
     if (!newbooking) {
@@ -28,7 +36,7 @@ const createBooking = async (req, res) => {
       bookingDetails: newbooking,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(422).send({
       success: false,
       message: "Server problem please try again",
@@ -81,11 +89,47 @@ const getAllBooking = async (req, res) => {
   }
 };
 
+/*Get Pendding Booking*/
+
+const getPenddingBooking = async (req, res) => {
+  try {
+    const bookingPendding = await Booking.find({ status: "pending" });
+    res.status(200).send({
+      message: "All Pendding booking details",
+      bookingPendding,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL Pendding booking ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+/* All Completed Booking*/
+
+const getCompletedBooking = async (req, res) => {
+  try {
+    const bookingCompleted = await Booking.find({ status: "completed" });
+    res.status(200).send({
+      message: "All completed booking details",
+      bookingCompleted,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL completed booking ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 /*Single booking details*/
 
 const getSingleBooking = async (req, res) => {
   try {
-    const {id }= req.params;
+    const { id } = req.params;
     const singleBooking = await Booking.findById(id);
     res.status(200).send({
       message: "sigle booking details",
@@ -100,9 +144,36 @@ const getSingleBooking = async (req, res) => {
   }
 };
 
+/*Delete Booking*/
+
+const deleteBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const bookingDelete = await Booking.findByIdAndDelete(id);
+    if (bookingDelete) {
+      res.status(200).send({
+        message: "deleted successfully",
+      });
+      return;
+    }
+    res.status(400).send({
+      message: "can't deleted",
+    });
+  } catch (error) {
+    console.log(`ERROR IN deleting booking ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 module.exports = {
   createBooking,
   updateBooking,
   getAllBooking,
+  getPenddingBooking,
+  getCompletedBooking,
   getSingleBooking,
+  deleteBooking,
 };

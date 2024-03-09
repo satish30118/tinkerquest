@@ -1,0 +1,31 @@
+/* STYLE FOR TOTAL BOOKING*/
+.tb-user-details {
+    width: 100%;
+}
+
+.tb-user-details table {
+    width: 96%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.tb-user-details table th {
+    padding: 15px 3px;
+}
+
+.tb-user-details table th,
+td {
+    border: 2px solid gray;
+}
+
+.tb-user-details table td {
+    padding: 3px;
+}
+
+.deletePop {
+    position: absolute;
+    top: 10%;
+    left: 26%;
+    z-index: 2000;
+    text-align: center;
+}
