@@ -66,12 +66,14 @@ const TotalCompleted = () => {
                         setEditPop(true);
                         setSelectedId(patient._id);
                       }}>Update</button>
-                    <button className="btn"
+                    {/* <button className="btn"
                      onClick={(e) => {
                       e.preventDefault()
                       setDeletePop(true);
                       setSelectedId(patient._id);
-                    }}>Delete</button></td>
+                    }}>Delete</button>
+                  */}
+                   </td>
                 </tr>
               ))}
             </table>
