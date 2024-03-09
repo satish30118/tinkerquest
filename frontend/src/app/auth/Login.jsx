@@ -6,6 +6,7 @@ import "../assets/css/common.css";
 import {toast } from "react-toastify";
 import { useAuth } from "../../contextAPI/authContext";
 import Layout from "../layout/Layout";
+import authimg from "../assets/image/auth-img.jpg"
 
 export default function Login() {
   const navigate = useNavigate();
@@ -60,8 +61,11 @@ export default function Login() {
     <>
       <Layout>
         <div className="login-page">
+          <div className="auth-img">
+            <img src={authimg}alt="" />
+          </div>
           <form className="login-form">
-            <h2 className="auth-heading">Login Yourself</h2>
+            <h2 className="auth-heading">Log In</h2>
 
             <div className="auth-row">
               <div className="auth-icon">
@@ -102,11 +106,11 @@ export default function Login() {
                 style={{
                   textDecoration: "none",
                   fontSize: "17px",
-                  fontFamily: "georgia",
+                  fontFamily: "Poppins",
                   
                 }}
               >
-                Forgot your password? -{" "}
+                Forgot password? -{" "}
                 <span style={{ color: "red" }}>Reset here</span>
               </NavLink>
             </div>
@@ -125,10 +129,10 @@ export default function Login() {
                 style={{
                   textDecoration: "none",
                   fontSize: "17px",
-                  fontFamily: "georgia",
+                  fontFamily: "Poppins",
                 }}
               >
-                Not have account -{" "}
+                Not have account? -{" "}
                 <span style={{ color: "red" }}>Register</span>
               </NavLink>
             </div>
