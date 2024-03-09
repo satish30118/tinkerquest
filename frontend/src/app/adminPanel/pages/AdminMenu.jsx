@@ -12,7 +12,10 @@ const AdminMenu = () => {
         <h1>Admin Panel</h1>
         <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>Overall Inventory</NavLink>
         <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>Location Wise Inventory</NavLink>
-        <NavLink to={"/dashboard/admin/new-test-booking"}>Book New Test</NavLink>
+        <NavLink to={"/dashboard/admin/new-test-booking"}>Book Test</NavLink>
+        <NavLink to={"/dashboard/admin/add-new-test-method"}>Add New Test Method & Price</NavLink>
+
+
     </div>
       
     </>
