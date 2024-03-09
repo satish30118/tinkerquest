@@ -80,7 +80,7 @@ export default function Register() {
       <Layout>
         <div className="register-page">
           <form className="register-form">
-            <h2 className="auth-heading">Register Yourself</h2>
+            <h2 className="auth-heading">Register</h2>
 
             <div className="auth-row">
               <div className="auth-icon">
@@ -171,7 +171,7 @@ export default function Register() {
                 type="text"
                 id="register-address"
                 autoComplete="off"
-                placeholder="Your First College Name?"
+                placeholder="Your First School Name?"
                 name="answer"
                 onChange={handleData}
                 value={data.answer}

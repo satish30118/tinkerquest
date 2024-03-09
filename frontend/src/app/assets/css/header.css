@@ -2,18 +2,25 @@
     margin: 0;
     padding: 0px 20px ;
     height: 70px;
-    background-color: lightgray;
+    background-color: rgb(212, 215, 239);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 6000;
-    box-shadow: 0 0 12px 2px;
-    border-bottom: 2.9px solid rgb(152, 148, 148);
+    border-radius: 7px;
+
+    /* box-shadow: 0 0 12px 2px; */
+    /* border-bottom: 2.9px solid rgb(152, 148, 148); */
 }
 .navbar .navbar-left{
     font-size: 25px;
     font-weight: 600;
     color:darkblue;
+}
+.navbar-left img{
+    height: 60px;
+    padding-top: 10px;
+
 }
 
 .navbar .navbar-right a{
@@ -21,17 +28,23 @@
     text-decoration: none;
    padding: 8px 16px;
     font-weight: 550;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
     margin-left: 3px;
     border-radius: 6px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
 }
 
 .navbar .navbar-right a:hover{
-    background-color:brown;
-    color: white;
+    /* background-color:rgb(189, 230, 228); */
+    border: 2px solid grey;
+    border-radius: 10px;
+    color: black;
 }
 .navbar .navbar-right a.active{
-    background-color:darkblue;
+   
     color: white;
+    background: rgb(15, 66, 118);
+    
    
 }
