@@ -154,7 +154,7 @@ const NewTestBoooking = () => {
               style={{ width: "70%" }}
               onChange={handleChange}
             >
-              <option value="">--Select Test--</option>
+              <option value="">-- Select Test Category --</option>
               <option value="blood">Blood</option>
               <option value="diabetes">Diabetes</option>
               <option value="thyroid">Thyroid</option>
@@ -171,7 +171,7 @@ const NewTestBoooking = () => {
               onChange={handleChange}
               style={{ width: "70%" }}
             >
-              <option value="">--- Choose Test ---</option>
+              <option value="">--- Choose Test Type ---</option>
               <option value="AIDS">AIDS</option>
             </select>
           </div>
@@ -209,7 +209,7 @@ const NewTestBoooking = () => {
           <div>
             <button
               className="btn"
-              style={{ background: "blue" }}
+              style={{ background: "blue", width: "70%" }}
               onClick={handleData}
             >
               Book Now

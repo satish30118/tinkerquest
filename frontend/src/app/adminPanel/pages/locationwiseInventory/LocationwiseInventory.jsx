@@ -12,8 +12,6 @@ const LocationwiseInventory = () => {
   const navigate = useNavigate();
   const [showDetails, setShowDetails] = useState(false);
 
- 
-
   /*BOOKING TOTAL*/
   const getAllBooking = async (e) => {
     try {
@@ -86,14 +84,17 @@ const LocationwiseInventory = () => {
           </div>
 
           <div
-            className="overall-location-page"
+            className="overall-page"
             style={{ display: `${showDetails ? "block" : "none"}` }}
           >
             <h2 className="detail">Details Analysis in {city}</h2>
+
             <div className="overall-page">
               <div className="overall">
-                <h2>Total Test Appointment</h2>
-                <p>{totalBooking?.length}</p>
+                <h2 style={{ background: "rgb(12, 76, 186)" }}>
+                  Total Test Appointment
+                </h2>
+                <p className="i-num">{totalBooking?.length}</p>
                 <button
                   className="btn i-btn"
                   onClick={() => {
@@ -107,8 +108,10 @@ const LocationwiseInventory = () => {
               </div>
 
               <div className="overall">
-                <h2>Appointment Completed</h2>
-                <p>{testCompleted?.length}</p>
+                <h2 style={{ background: "rgb(35, 207, 29)" }}>
+                  Appointment Completed
+                </h2>
+                <p className="i-num">{testCompleted?.length}</p>
                 <button
                   className="btn i-btn"
                   onClick={() => {
@@ -122,8 +125,12 @@ const LocationwiseInventory = () => {
               </div>
 
               <div className="overall">
-                <h2>Pending Appointment</h2>
-                <p>{totalBooking?.length - testCompleted?.length}</p>
+                <h2 style={{ background: "rgb(233, 105, 26)" }}>
+                  Pending Appointment
+                </h2>
+                <p className="i-num">
+                  {totalBooking?.length - testCompleted?.length}
+                </p>
                 <button
                   className="btn i-btn"
                   onClick={() => {
@@ -137,15 +144,17 @@ const LocationwiseInventory = () => {
               </div>
 
               <div className="overall">
-                <h2>Revenue Generated</h2>
-                <p>$100</p>
+                <h2 style={{ background: "rgb(154, 26, 233)" }}>
+                  Revenue Generated
+                </h2>
+                <p className="i-num">$100</p>
               </div>
               <div className="overall">
                 <h2>Total Inventory Stock</h2>
-                <p>434</p>
+                <p className="i-num">434</p>
               </div>
               <div className="overall">
-                <h2>Suggestion</h2>
+                <h2 style={{ background: "rgb(233, 26, 150)" }}>Suggestion</h2>
                 <p>You need to increase nursues in the lab</p>
               </div>
             </div>
