@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Layout from '../../layout/Layout';
 import "./home.css"
@@ -35,5 +36,6 @@ const Home = () => {
     </Layout>
   )
 }
+};
 
-export default Home
+export default Home;

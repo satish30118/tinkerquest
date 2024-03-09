@@ -1,17 +1,11 @@
-.booking-page
-{
+.booking-page {
+    min-height: 84vh;
+    width: 100%;
     text-align: center;
-    width: 30%;
-    margin-left: 35%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
-
-.booking-gender label
-{
-    margin: 0px 10px ;
-    font-size: 20px;
-    margin-right: 30px;
-}
-
-
-
 
