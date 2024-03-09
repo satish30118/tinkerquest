@@ -9,6 +9,7 @@ const createBooking = async (req, res) => {
       mobile,
       testCategory,
       testName,
+      city,
       collectionDate,
     } = req.body;
 
@@ -19,6 +20,7 @@ const createBooking = async (req, res) => {
       mobile,
       testCategory,
       testName,
+      city,
       collectionDate,
     }).save();
 
@@ -72,7 +74,6 @@ const updateBooking = async (req, res) => {
 };
 
 /*Get all <booking*/
-
 const getAllBooking = async (req, res) => {
   try {
     const allBooking = await Booking.find({});
@@ -90,7 +91,6 @@ const getAllBooking = async (req, res) => {
 };
 
 /*Get Pendding Booking*/
-
 const getPenddingBooking = async (req, res) => {
   try {
     const bookingPendding = await Booking.find({ status: "pending" });
@@ -108,7 +108,6 @@ const getPenddingBooking = async (req, res) => {
 };
 
 /* All Completed Booking*/
-
 const getCompletedBooking = async (req, res) => {
   try {
     const bookingCompleted = await Booking.find({ status: "completed" });
@@ -125,8 +124,69 @@ const getCompletedBooking = async (req, res) => {
   }
 };
 
-/*Single booking details*/
+/*Get all booking location wise*/
+const getAllBookingLocationWise = async (req, res) => {
+  try {
+    const {city } = req.params;
+    const allBooking = await Booking.find({city});
+    res.status(200).send({
+      message: `All booking details in ${city}`,
+      allBooking,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL booking in location wise ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
 
+/*Get Pendding Booking Location wise*/
+const getPenddingBookingLocationWise = async (req, res) => {
+  try {
+    const {city} = req.params;
+    const bookingPendding = await Booking.find({
+     city,
+     status:"pending"
+    });
+    res.status(200).send({
+      message: `All Pendding booking details in ${city}`,
+      bookingPendding,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL Pendding booking location wise ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+/* All Completed Booking location wise */
+const getCompletedBookingLocationWise = async (req, res) => {
+  try {
+    const {city }= req.params;
+    const bookingCompleted = await Booking.find({
+      city,
+      status: "completed",
+    });
+    res.status(200).send({
+      message: `All completed booking details in ${city}`,
+      bookingCompleted,
+    });
+  } catch (error) {
+    console.log(
+      `ERROR IN GETTING ALL completed booking location wise ${error}`
+    );
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+/*Single booking details*/
 const getSingleBooking = async (req, res) => {
   try {
     const { id } = req.params;
@@ -176,4 +236,7 @@ module.exports = {
   getCompletedBooking,
   getSingleBooking,
   deleteBooking,
+  getAllBookingLocationWise,
+  getCompletedBookingLocationWise,
+  getPenddingBookingLocationWise,
 };

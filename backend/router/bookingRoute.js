@@ -11,13 +11,19 @@ const {
   getCompletedBooking,
   getPenddingBooking,
   deleteBooking,
+  getAllBookingLocationWise,
+  getPenddingBookingLocationWise,
+  getCompletedBookingLocationWise,
 } = require("../controllers/bookingController");
 
 const router = express.Router();
 
+
 //ROUTING
 router.route("/new-booking").post(userVerification, createBooking);
 
+
+//COMPLETE ALL LOCATION*/
 router.get(
   "/get-all-booking",
   userVerification,
@@ -38,6 +44,29 @@ router.get(
   adminVerification,
   getCompletedBooking
 );
+
+/* ROUTING LOCATION WISE */ 
+router.get(
+  "/get-all-booking/location-wise/:city",
+  userVerification,
+  adminVerification,
+  getAllBookingLocationWise
+);
+
+router.get(
+  "/get-pendding-booking/location-wise/:city",
+  userVerification,
+  adminVerification,
+  getPenddingBookingLocationWise
+);
+
+router.get(
+  "/get-completed-booking/location-wise/:city",
+  userVerification,
+  adminVerification,
+  getCompletedBookingLocationWise
+);
+
 
 router.get(
   "/get-single-booking/:id",

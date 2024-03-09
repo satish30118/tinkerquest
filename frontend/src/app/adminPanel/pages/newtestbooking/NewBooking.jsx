@@ -22,6 +22,7 @@ const NewBoooking = () => {
       mobile,
       testCategory,
       testName,
+      city,
       collectionDate,
     } = data;
     if (
@@ -31,6 +32,7 @@ const NewBoooking = () => {
       !mobile ||
       !testCategory ||
       !testName ||
+      !city ||
       !collectionDate
     ) {
       toast.warn("Enter all details");
@@ -44,6 +46,7 @@ const NewBoooking = () => {
         mobile,
         testCategory,
         testName,
+        city,
         collectionDate,
       });
 
@@ -56,6 +59,7 @@ const NewBoooking = () => {
           gender: "",
           testCategory: "",
           testName: "",
+          city: "",
           collectionDate: "",
         });
         return;
@@ -158,7 +162,7 @@ const NewBoooking = () => {
                   style={{ width: "70%" }}
                   onChange={handleChange}
                 >
-                  <option value="">--Select Test--</option>
+                  <option value="">--- Select Test Type ---</option>
                   <option value="blood">Blood</option>
                   <option value="diabetes">Diabetes</option>
                   <option value="thyroid">Thyroid</option>
@@ -180,14 +184,47 @@ const NewBoooking = () => {
                 </select>
               </div>
               <div>
+                <select
+                  name="city"
+                  value={data.city}
+                  style={{ width: "70%" }}
+                  onChange={handleChange}
+                >
+                  <option value="">--- Choose City ---</option>
+                  <option value="Noida">Noida</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Dehradun">Dehradun</option>
+                  <option value="Roorkee">Roorkee</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Kanpur">Kanpur</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Nagpur">Nagpur</option>
+                  <option value="Lucknow">Lucknow</option>
+                  <option value="Patna">Patna</option>
+                </select>
+              </div>
+              <div>
                 <input
                   type="date"
                   name="collectionDate"
                   value={data.collectionDate}
                   style={{ width: "70%" }}
                   onChange={handleChange}
+                  placeholder="Choose Date for Test"
                 />
               </div>
+              <div>
+          <select
+            name="status"
+            value={data.status}
+            style={{ width: "70%" }}
+            onChange={handleChange}
+          >
+            <option value=""> --- Status ---</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
 
               <div>
                 <button
