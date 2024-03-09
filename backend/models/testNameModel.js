@@ -1,14 +1,17 @@
 const mongoose = require("mongoose");
 
 const testNameSchema = new mongoose.Schema({
-    name:{
+    testName:{
         type:String,
         required:true,
         unique:true,
     },
-    category:{
+    testCategory:{
         type:String,
         required:true,
+    },
+    testPrice:{
+       type:Number, 
     }
 })
 

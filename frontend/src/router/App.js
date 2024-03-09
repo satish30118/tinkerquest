@@ -23,6 +23,7 @@ import TestReport from "../app/Components/testReport/TestReport";
 import LocationWiseTotalBooking from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalBooking";
 import LocationWiseTotalPending from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalPending";
 import LocationWiseTotalCompleted from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalCompleted.jsx";
+import NewTestMethod from "../app/adminPanel/pages/newtestdetails/NewTestMethod.jsx";
 
 function App() {
   return (
@@ -81,6 +82,10 @@ function App() {
           <Route
             path="admin/new-test-booking"
             element={<NewBoooking/>}
+          ></Route>
+           <Route
+            path="admin/add-new-test-method"
+            element={<NewTestMethod/>}
           ></Route>
          
           <Route path="admin/users" element={<Users />}></Route>

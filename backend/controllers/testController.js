@@ -3,10 +3,10 @@ const TestName = require("../models/testNameModel");
 //CREATING NEW TEST NAME;
 const CreateTestController = async (req, res) => {
   try {
-    const { name, category } = req.body;
+    const {testName, testCategory, testPrice } = req.body;
 
     //CHECKING EXISTING CATEGORY
-    const TestExist = await TestName.findOne({ name });
+    const TestExist = await TestName.findOne({ testName });
     if (TestExist) {
       res.status(200).send({
         message: "Test Already Exists",
@@ -15,7 +15,7 @@ const CreateTestController = async (req, res) => {
     }
 
     //CREATING NEW TEST
-    const test = await new TestName({ name, category }).save();
+    const test = await new TestName({ testName, testCategory, testPrice }).save();
     if (test) {
       res.status(201).send({
         message: "Test Created Successfully",

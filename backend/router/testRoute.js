@@ -11,7 +11,10 @@ router.route("/update-test/:id").put(userVerification, adminVerification, update
 
 router.route("/all-test").get(userVerification, adminVerification,allTestController)
 
-router.route("/delete-category/:id").delete(userVerification, adminVerification, deleteTestController)
+router.route("/all-test/category-wise/:").get(userVerification, adminVerification,allTestController)
+
+
+router.route("/delete-test/:id").delete(userVerification, adminVerification, deleteTestController)
 
 
 module.exports = router;
