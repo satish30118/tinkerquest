@@ -8,9 +8,8 @@ import { useNavigate } from "react-router-dom";
 const OverallInventory = () => {
   const [totalBooking, setTotalBooking] = useState([]);
   const [testCompleted, setTestCompleted] = useState([]);
-  const [testPendding, setTestPendding] = useState([])
-  const navigate = useNavigate()
-
+  const [testPendding, setTestPendding] = useState([]);
+  const navigate = useNavigate();
 
   /* ALL BOOKINGs */
   const getTotalBooking = async () => {
@@ -26,7 +25,6 @@ const OverallInventory = () => {
       toast.error("Something went wrong");
     }
   };
-  
 
   /*BOOKING COMPLETED*/
   const bookingCompleted = async () => {
@@ -41,7 +39,7 @@ const OverallInventory = () => {
       console.log(error);
     }
   };
-  
+
   /*PENDDIN BOOKINGS*/
   const bookingPendding = async () => {
     try {
@@ -57,13 +55,11 @@ const OverallInventory = () => {
     }
   };
 
-
-
   /*CALLING ALL*/
   useEffect(() => {
     getTotalBooking();
     bookingCompleted();
-    bookingPendding()
+    bookingPendding();
   }, []);
   return (
     <Layout>
@@ -77,33 +73,61 @@ const OverallInventory = () => {
           </div>
           <div className="overall-page">
             <div className="overall">
-              <h2>Total Test Appointment</h2>
-              <p>{totalBooking?.length}</p>
-              <button onClick={()=>{navigate("/dashboard/admin/overall-inventory-details/total-booking")}} className="btn">See Details</button>
+              <h2 style={{background:"rgb(12, 76, 186)"}}>Total Test Appointment</h2>
+              <p className="i-num">{totalBooking?.length}</p>
+              
+              <button
+                onClick={() => {
+                  navigate(
+                    "/dashboard/admin/overall-inventory-details/total-booking"
+                  );
+                }}
+                className="btn i-btn"
+              >
+                See Details
+              </button>
             </div>
 
             <div className="overall">
-              <h2>Appointment Completed</h2>
-              <p>{testCompleted?.length}</p>
-              <button className="btn" onClick={()=>{navigate("/dashboard/admin/overall-inventory-details/total-booking-completed")}} >See Details</button>
+              <h2 style={{background:"rgb(35, 207, 29)"}}>Appointment Completed</h2>
+              <p className="i-num">{testCompleted?.length}</p>
+              <button
+                className="btn i-btn"
+                onClick={() => {
+                  navigate(
+                    "/dashboard/admin/overall-inventory-details/total-booking-completed"
+                  );
+                }}
+              >
+                See Details
+              </button>
             </div>
 
             <div className="overall">
-              <h2>Pending Appointment</h2>
-              <p>{testPendding?.length}</p>
-              <button className="btn" onClick={()=>{navigate("/dashboard/admin/overall-inventory-details/total-booking-pending")}} >See Details</button>
+              <h2 style={{background:"rgb(233, 105, 26)"}}>Pending Appointment</h2>
+              <p className="i-num">{testPendding?.length}</p>
+              <button
+                className="btn i-btn"
+                onClick={() => {
+                  navigate(
+                    "/dashboard/admin/overall-inventory-details/total-booking-pending"
+                  );
+                }}
+              >
+                See Details
+              </button>
             </div>
 
             <div className="overall">
-              <h2>Revenue Generated</h2>
-              <p>$100</p>
+              <h2  style={{background:"rgb(154, 26, 233)"}}>Revenue Generated</h2>
+              <p className="i-num">$100</p>
             </div>
             <div className="overall">
               <h2>Total Inventory Stock</h2>
-              <p>434</p>
+              <p className="i-num">434</p>
             </div>
             <div className="overall">
-              <h2>Suggestion</h2>
+              <h2  style={{background:"rgb(233, 26, 150)"}}>Suggestion</h2>
               <p>You need to increase nursues in the lab</p>
             </div>
           </div>

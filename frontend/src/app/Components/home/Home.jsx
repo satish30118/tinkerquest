@@ -24,7 +24,7 @@ const Home = () => {
           </h2>
           <div className="contact-details">
           <h2 id='book-now' >
-            Book Now  <i class="fa-solid fa-arrow-right"></i>
+            Go to Dashboard  <i class="fa-solid fa-arrow-right"></i>
           </h2>
         </div>
         </div>
@@ -36,7 +36,7 @@ const Home = () => {
       </div>
       <div className='footer-page1'>
         <div className="both-book1">
-          <h2>Frequently Booked</h2>
+          <h2 style={{textAlign:"center"}}>Frequently Booked</h2>
           <div className="frequently-booked1">
             <div><i class="fa-solid fa-tablets"></i>Thyroid</div>
             <div><i class="fa-solid fa-sitemap"></i>Liver</div>
@@ -49,7 +49,7 @@ const Home = () => {
       </div>
       <div className='footer-page2'>
         <div className="both-book2">
-          <h2>Why Choose US</h2>
+          <h2 style={{textAlign:"center"}}>Why Choose US</h2>
           <div className="frequently-booked2">
             <div><i class="fa-solid fa-truck-ramp-box"></i>Inverntory Demand Forecasting</div>
             <div><i class="fa-solid fa-bars-progress"></i>Effective Inventory Management System</div>

@@ -86,13 +86,12 @@ const NewBoooking = () => {
               style={{
                 // boxShadow: "0 0 12px 3px",
                 padding: "20px",
-                background: "white",
-                borderRadius:"9px"
-                
+                background: "lightgray",
+                borderRadius: "9px",
               }}
               className="bookig-update-form"
             >
-              <h1 style={{color:"red"}}>Book A Test</h1>
+              <h1 style={{ color: "red" }}>Book A Test</h1>
               <div>
                 <input
                   type="text"
@@ -110,7 +109,7 @@ const NewBoooking = () => {
                   name="gender"
                   id="male"
                   value="male"
-                  style={{ width: "10%", height:"20px"}}
+                  style={{ width: "10%", height: "20px" }}
                   onChange={handleChange}
                 />
                 <label htmlFor="male">Male</label>
@@ -119,7 +118,7 @@ const NewBoooking = () => {
                   name="gender"
                   id="female"
                   value="female"
-                  style={{ width: "10%", height:"20px", marginTop:"10px" }}
+                  style={{ width: "10%", height: "20px", marginTop: "10px" }}
                   onChange={handleChange}
                 />
                 <label htmlFor="female">Female</label>
@@ -128,7 +127,7 @@ const NewBoooking = () => {
                   name="gender"
                   id="other"
                   value="other"
-                  style={{ width: "10%", height:"20px" }}
+                  style={{ width: "10%", height: "20px" }}
                   onChange={handleChange}
                 />
                 <label htmlFor="other">Other</label>
@@ -216,22 +215,22 @@ const NewBoooking = () => {
                 />
               </div>
               <div>
-          <select
-            name="status"
-            value={data.status}
-            style={{ width: "70%" }}
-            onChange={handleChange}
-          >
-            <option value=""> --- Status ---</option>
-            <option value="pending">Pending</option>
-            <option value="completed">Completed</option>
-          </select>
-        </div>
+                <select
+                  name="status"
+                  value={data.status}
+                  style={{ width: "70%" }}
+                  onChange={handleChange}
+                >
+                  <option value=""> --- Status ---</option>
+                  <option value="pending">Pending</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </div>
 
               <div>
                 <button
                   className="btn"
-                  style={{ background: "blue" }}
+                  style={{ background: "blue", width: "70%" }}
                   onClick={handleData}
                 >
                   Book Now
