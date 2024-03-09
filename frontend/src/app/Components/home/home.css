@@ -89,3 +89,82 @@
     margin-left: 20px;
 
 }
+
+
+/*Part -2*/
+.footer-page1 h2
+{
+    font-family: "Poppins";
+    text-align: left;
+    color: 
+    /* rgb(42, 37, 136) */
+    rgb(191, 33, 35);
+    margin-left: 20px;
+
+}
+.frequently-booked1
+{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    /* background-color: rgba(198, 199, 209,0.7); */
+}
+.frequently-booked1 div{
+    /* padding-left: 50px; */
+    font-size: 25px;
+    border: 2.5px solid rgb(225, 210, 210);
+    border-radius: 6px;
+    text-align: center;
+    padding: 3px 20px;
+    width: 180px;
+    color:
+     /* rgb(191, 33, 35)  */
+     rgb(42, 37, 136);
+    box-shadow: 5px 5px 10px;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.both-book1
+{
+    /* background-color:rgba(69, 82, 226, 0.4) ; */
+    height: 250px;
+
+}
+
+.footer-page2 h2
+{
+    font-family: "Poppins";
+    text-align: left;
+    color: rgb(42, 37, 136);
+    margin-left: 20px;
+
+}
+.frequently-booked2
+{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    /* background-color: rgba(198, 199, 209,0.7); */
+}
+.frequently-booked2 div{
+    /* padding-left: 50px; */
+    font-size: 25px;
+    border: 2.5px solid rgb(225, 210, 210);
+    border-radius: 6px;
+    text-align: center;
+    color: rgb(191, 33, 35);
+    margin: 0 15px;
+    box-shadow: 5px 5px 10px;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.both-book2
+{
+    /* background-color:rgba(69, 82, 226, 0.4) ; */
+    height: 250px;
+
+}

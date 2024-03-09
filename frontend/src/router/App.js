@@ -18,6 +18,8 @@ import TotalCompleted from "../app/adminPanel/pages/overallInventory/TotalComple
 import TotalPending from "../app/adminPanel/pages/overallInventory/TotalPending";
 import NewTestBoooking from "../app/Components/booking/NewTestBooking";
 import NewBoooking from "../app/adminPanel/pages/newtestbooking/NewBooking";
+import AboutUs from "../app/Components/aboutUs/AboutUs";
+import TestReport from "../app/Components/testReport/TestReport";
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/home" element={<Home />}></Route>
-        <Route exact path="/test-booking" element={<NewTestBoooking />}></Route>
+        <Route exact path="/about-us" element={<AboutUs />}></Route>
+        <Route exact path="/test-report" element={<TestReport/>}></Route>
+        <Route exact path="/new-test-booking" element={<NewTestBoooking />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
         <Route
