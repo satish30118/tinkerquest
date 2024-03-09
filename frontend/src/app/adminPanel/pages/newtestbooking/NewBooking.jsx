@@ -80,13 +80,15 @@ const NewBoooking = () => {
           <div className="booking-page">
             <form
               style={{
-                boxShadow: "0 0 12px 3px",
+                // boxShadow: "0 0 12px 3px",
                 padding: "20px",
-                background: "lightgray",
+                background: "white",
+                borderRadius:"9px"
+                
               }}
               className="bookig-update-form"
             >
-              <h1>Book A Test</h1>
+              <h1 style={{color:"red"}}>Book A Test</h1>
               <div>
                 <input
                   type="text"
@@ -104,7 +106,7 @@ const NewBoooking = () => {
                   name="gender"
                   id="male"
                   value="male"
-                  style={{ width: "10%" }}
+                  style={{ width: "10%", height:"20px"}}
                   onChange={handleChange}
                 />
                 <label htmlFor="male">Male</label>
@@ -113,7 +115,7 @@ const NewBoooking = () => {
                   name="gender"
                   id="female"
                   value="female"
-                  style={{ width: "10%" }}
+                  style={{ width: "10%", height:"20px", marginTop:"10px" }}
                   onChange={handleChange}
                 />
                 <label htmlFor="female">Female</label>
@@ -122,7 +124,7 @@ const NewBoooking = () => {
                   name="gender"
                   id="other"
                   value="other"
-                  style={{ width: "10%" }}
+                  style={{ width: "10%", height:"20px" }}
                   onChange={handleChange}
                 />
                 <label htmlFor="other">Other</label>
