@@ -18,8 +18,8 @@ export default function Header() {
         <div className="navbar-right">
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"/about-us"}>About Us</NavLink>
-          <NavLink to={"/test-report"}>Report</NavLink>
-          <NavLink to={"/new-test-booking"}>Booking</NavLink>
+          <NavLink to={"/test-report"}>Test Report</NavLink>
+          <NavLink to={"/new-test-booking"}>Book Test</NavLink>
           {!auth.user ? (
             <NavLink to={"/login"}>Login/Register</NavLink>
           ) : (
