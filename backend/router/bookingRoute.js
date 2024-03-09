@@ -10,6 +10,7 @@ const {
   updateBooking,
   getCompletedBooking,
   getPenddingBooking,
+  deleteBooking,
 } = require("../controllers/bookingController");
 
 const router = express.Router();
@@ -48,5 +49,9 @@ router.get(
 router
   .route("/update-booking/:id")
   .put(userVerification, adminVerification, updateBooking);
+
+  router
+  .route("/delete-booking/:id")
+  .delete(userVerification, adminVerification, deleteBooking);
 
 module.exports = router;

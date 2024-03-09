@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../../layout/Layout";
 import AdminMenu from "../AdminMenu";
 import axios from "axios";
-import "./overallInventory.css"
+import "./overallInventory.css";
+import DeleteAlert from "../popup-form/DeleteAlert";
+import BookingUpdate from "../popup-form/BookingUpdate";
 const TotalBooking = () => {
   const [totalBooking, setTotalBooking] = useState([]);
+  const [deletePop, setDeletePop] = useState(false);
+  const [editPop, setEditPop] = useState(false);
+  const [selectedId, setSelectedId] = useState("");
 
   /* ALL BOOKINGs */
   const getTotalBooking = async () => {
@@ -20,8 +25,8 @@ const TotalBooking = () => {
     }
   };
 
-   /*CALLING ALL*/
-   useEffect(() => {
+  /*CALLING ALL*/
+  useEffect(() => {
     getTotalBooking();
   }, []);
   return (
@@ -31,11 +36,18 @@ const TotalBooking = () => {
           <AdminMenu />
         </div>
         <div className="content">
+          <div
+            className="overlay"
+            style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
+          ></div>
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">User Details - Test Booked</h1>
           </div>
           <div className="tb-user-details">
-            <table border={"4px solid gray"} style={{borderCollapse:"collapse"}}>
+            <table
+              border={"4px solid gray"}
+              style={{ borderCollapse: "collapse" }}
+            >
               <tr>
                 <th>Booking Id</th>
                 <th>Booking Date</th>
@@ -45,19 +57,61 @@ const TotalBooking = () => {
                 <th>Status</th>
                 <th>Manage</th>
               </tr>
-              {totalBooking?.map((patient)=>(
+              {totalBooking?.map((patient) => (
                 <tr>
-                    <td>{patient?._id}</td>
-                    <td>{patient?.timeStamps}</td>
-                    <td>{patient?.testCategory}</td>
-                    <td>{patient?.testName}</td>
-                    <td>{patient?.date}</td>
-                    <td>{patient?.status}</td>
-                    <td><button className="btn" style={{background:"green"}}>Update</button>
-                    <button className="btn">Delete</button></td>
+                  <td>{patient?._id}</td>
+                  <td>{patient?.createdAt}</td>
+                  <td>{patient?.name}</td>
+                  <td>{patient?.testName}</td>
+                  <td>{patient?.collectionDate}</td>
+                  <td>{patient?.status}</td>
+                  <td>
+                    <button
+                      className="btn"
+                      style={{ background: "green" }}
+                      onClick={(e) => {
+                        setEditPop(true);
+                        setSelectedId(patient._id);
+                      }}
+                    >
+                      Update
+                    </button>
+                    <button
+                      className="btn"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setDeletePop(true);
+                        setSelectedId(patient._id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </table>
+          </div>
+          <div
+            style={{ display: `${deletePop ? "block" : "none"}` }}
+            className="deletePop"
+          >
+            <DeleteAlert
+              id={selectedId}
+              setDeletePopUp={setDeletePop}
+              getTotalBooking={getTotalBooking}
+              setId={setSelectedId}
+            />
+          </div>
+          <div
+            style={{ display: `${editPop ? "block" : "none"}` }}
+            className="deletePop"
+          >
+            <BookingUpdate
+              id={selectedId}
+              setEditPopUp={setEditPop}
+              getAllBooking={getTotalBooking}
+              setId={setSelectedId}
+            />
           </div>
         </div>
       </div>

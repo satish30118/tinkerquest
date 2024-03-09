@@ -20,6 +20,7 @@ const AdminMenu = () => {
         <h1>Admin Panel</h1>
         <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>Overall Inventory</NavLink>
         <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>Location Wise Inventory</NavLink>
+        <NavLink to={"/dashboard/admin/new-test-booking"}>Book New Test</NavLink>
         <NavLink to={"/dashboard/admin/users"}>All Users Details</NavLink>
         <NavLink to={"/login"} onClick={handleLogout} style={{color:"red",}} ><i class="fa fa-sign-in" style={{ marginRight: "7px", color:"red" }}></i>Logout</NavLink>
     </div>

@@ -3,11 +3,13 @@ import AdminMenu from "./AdminMenu";
 import Layout from "../../layout/Layout";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const OverallInventory = () => {
   const [totalBooking, setTotalBooking] = useState([]);
   const [testCompleted, setTestCompleted] = useState([]);
   const [testPendding, setTestPendding] = useState([])
+  const navigate = useNavigate()
 
 
   /* ALL BOOKINGs */
@@ -77,19 +79,19 @@ const OverallInventory = () => {
             <div className="overall">
               <h2>Total Test Appointment</h2>
               <p>{totalBooking?.length}</p>
-              <button className="btn">See Details</button>
+              <button onClick={()=>{navigate("/dashboard/admin/overall-inventory-details/total-booking")}} className="btn">See Details</button>
             </div>
 
             <div className="overall">
               <h2>Appointment Completed</h2>
               <p>{testCompleted?.length}</p>
-              <button className="btn">See Details</button>
+              <button className="btn" onClick={()=>{navigate("/dashboard/admin/overall-inventory-details/total-booking-completed")}} >See Details</button>
             </div>
 
             <div className="overall">
               <h2>Pending Appointment</h2>
               <p>{testPendding?.length}</p>
-              <button className="btn">See Details</button>
+              <button className="btn" onClick={()=>{navigate("/dashboard/admin/overall-inventory-details/total-booking-pending")}} >See Details</button>
             </div>
 
             <div className="overall">

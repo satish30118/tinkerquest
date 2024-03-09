@@ -11,12 +11,13 @@ import UserRoute from "../app/auth/privateRoutes/UserRoute";
 import AdminDashboard from "../app/adminPanel/AdminDashboard";
 import AdminRoute from "../app/adminPanel/privateRoute/AdminRoute";
 import Users from "../app/adminPanel/pages/Users";
-import TestBoooking from "../app/Components/booking/TestBooking";
 import OverallInventory from "../app/adminPanel/pages/OverallInventory";
 import LocationwiseInventory from "../app/adminPanel/pages/LocationwiseInventory";
 import TotalBooking from "../app/adminPanel/pages/overallInventory/TotalBooking";
 import TotalCompleted from "../app/adminPanel/pages/overallInventory/TotalCompleted";
 import TotalPending from "../app/adminPanel/pages/overallInventory/TotalPending";
+import NewTestBoooking from "../app/Components/booking/NewTestBooking";
+import NewBoooking from "../app/adminPanel/pages/newtestbooking/NewBooking";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/home" element={<Home />}></Route>
-        <Route exact path="/test-booking" element={<TestBoooking />}></Route>
+        <Route exact path="/test-booking" element={<NewTestBoooking />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
         <Route
@@ -58,6 +59,11 @@ function App() {
             path="admin/location-wise-inventory-details"
             element={<LocationwiseInventory />}
           ></Route>
+          <Route
+            path="admin/new-test-booking"
+            element={<NewBoooking/>}
+          ></Route>
+         
           <Route path="admin/users" element={<Users />}></Route>
         </Route>
         <Route path="*" element={<ErrorPage />}></Route>

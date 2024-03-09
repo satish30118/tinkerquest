@@ -2,8 +2,15 @@ const Booking = require("../models/testBookingModel");
 
 const createBooking = async (req, res) => {
   try {
-    const { name, gender, age, mobile, testCategory, testName, testDate } =
-      req.body;
+    const {
+      name,
+      gender,
+      age,
+      mobile,
+      testCategory,
+      testName,
+      collectionDate,
+    } = req.body;
 
     const newbooking = await Booking({
       name,
@@ -12,7 +19,7 @@ const createBooking = async (req, res) => {
       mobile,
       testCategory,
       testName,
-      testDate,
+      collectionDate,
     }).save();
 
     if (!newbooking) {
@@ -86,7 +93,7 @@ const getAllBooking = async (req, res) => {
 
 const getPenddingBooking = async (req, res) => {
   try {
-    const bookingPendding = await Booking.find({ status:"pending" });
+    const bookingPendding = await Booking.find({ status: "pending" });
     res.status(200).send({
       message: "All Pendding booking details",
       bookingPendding,
@@ -137,6 +144,30 @@ const getSingleBooking = async (req, res) => {
   }
 };
 
+/*Delete Booking*/
+
+const deleteBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const bookingDelete = await Booking.findByIdAndDelete(id);
+    if (bookingDelete) {
+      res.status(200).send({
+        message: "deleted successfully",
+      });
+      return;
+    }
+    res.status(400).send({
+      message: "can't deleted",
+    });
+  } catch (error) {
+    console.log(`ERROR IN deleting booking ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 module.exports = {
   createBooking,
   updateBooking,
@@ -144,4 +175,5 @@ module.exports = {
   getPenddingBooking,
   getCompletedBooking,
   getSingleBooking,
+  deleteBooking,
 };

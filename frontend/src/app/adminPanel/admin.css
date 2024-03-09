@@ -1,7 +1,7 @@
 /*ADMIN DASHBOARD*/
 .admin-dashboard {
     width: 100%;
-    min-height: 90vh;
+    min-height: 84vh;
     display: flex;
 }
 
@@ -12,6 +12,9 @@
 .admin-dashboard .content {
     width: 76%;
     height: auto;
+    overflow: auto;
+    height: 81vh;
+    position: relative;
 }
 
 
@@ -38,10 +41,7 @@
     text-align: center;
 }
 
-.dashboard-heading h1:hover {
-    left: -2.3px;
-    top: -2.3px;
-}
+
 
 
 
@@ -162,9 +162,9 @@ a.active {
 
 /*OVERLAY*/
 .overlay {
-    background-color: rgba(0, 0, 0, 0.86);
-    height: 100%;
+    background-color: rgba(0, 0, 0, 0.82);
+    height: 110%;
     width: 100%;
     position: fixed;
-    z-index: 200;
+    z-index: 1;
 }
