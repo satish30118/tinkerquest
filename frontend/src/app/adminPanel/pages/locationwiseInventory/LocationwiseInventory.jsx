@@ -51,7 +51,6 @@ const LocationwiseInventory = () => {
     }
     getAllBooking();
     bookingCompleted();
-    toast.success("Data Get Successfully");
     setShowDetails(true);
   };
   return (

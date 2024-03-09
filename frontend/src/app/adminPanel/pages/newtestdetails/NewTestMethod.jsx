@@ -15,6 +15,8 @@ const NewTestMethod = () => {
     setData({ ...data, [name]: value });
   };
 
+
+  
   const handleData = async (e) => {
     e.preventDefault();
     const { testCategory, testName, testPrice } = data;

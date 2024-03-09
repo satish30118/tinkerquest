@@ -59,12 +59,30 @@ const updateTestController = async (req, res) => {
 };
 
 //GET ALL test
-
 const allTestController = async (req, res) => {
   try {
     const test = await TestName.find({});
     res.status(200).send({
       message: "ALL Test list",
+      test,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL Tests ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+//GET ALL test category wise
+
+const allTestCategoryController = async (req, res) => {
+  try {
+    const {category} = req.params;
+    const test = await TestName.find({testCategory:category});
+    res.status(200).send({
+      message: "ALL Category Test list",
       test,
     });
   } catch (error) {
@@ -98,5 +116,6 @@ module.exports = {
   CreateTestController,
   updateTestController,
   allTestController,
+  allTestCategoryController,
   deleteTestController,
 };
