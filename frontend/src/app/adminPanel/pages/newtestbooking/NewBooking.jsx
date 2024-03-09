@@ -6,6 +6,8 @@ import Layout from "../../../layout/Layout";
 
 const NewBoooking = () => {
   const [data, setData] = useState({});
+  const [allTest, setAllTest] = useState([]);
+  const [cat, setCat] = useState("");
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -13,6 +15,23 @@ const NewBoooking = () => {
 
     setData({ ...data, [name]: value });
   };
+
+  // GETTING ALL TEST RELETED TO CHOOSEN CATEGORY */
+  const getTest = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.get(`/api/v1/test/all-test/category-wise/${cat}`);
+
+      if (res?.data) {
+        setAllTest(res?.data?.test);
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
+
   const handleData = async (e) => {
     e.preventDefault();
     const {
@@ -161,7 +180,11 @@ const NewBoooking = () => {
                   name="testCategory"
                   value={data.testCategory}
                   style={{ width: "70%" }}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    setCat(e.target.value);
+                    getTest(e);
+                  }}
                 >
                   <option value="">--- Select Test Type ---</option>
                   <option value="blood">Blood</option>
@@ -180,8 +203,12 @@ const NewBoooking = () => {
                   onChange={handleChange}
                   style={{ width: "70%" }}
                 >
-                  <option value="">--- Choose Test ---</option>
-                  <option value="AIDS">AIDS</option>
+                  <option value={data.testName} onChange={handleChange}>
+                    --- Choose Test ---
+                  </option>
+                  {allTest?.map((item) => (
+                    <option value={item.testName}>{item.testName}</option>
+                  ))}
                 </select>
               </div>
               <div>
