@@ -28,10 +28,13 @@ const BookingModel = new mongoose.Schema(
       type: String,
       required: true,
     },
+    city: {
+      type: String,
+    },
     collectionDate: {
-        type: String,
-      },
-   
+      type: String,
+    },
+
     status: {
       type: String,
       default: "pending",

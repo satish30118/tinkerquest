@@ -11,8 +11,8 @@ import UserRoute from "../app/auth/privateRoutes/UserRoute";
 import AdminDashboard from "../app/adminPanel/AdminDashboard";
 import AdminRoute from "../app/adminPanel/privateRoute/AdminRoute";
 import Users from "../app/adminPanel/pages/Users";
-import OverallInventory from "../app/adminPanel/pages/OverallInventory";
-import LocationwiseInventory from "../app/adminPanel/pages/LocationwiseInventory";
+import OverallInventory from "../app/adminPanel/pages/overallInventory/OverallInventory";
+import LocationwiseInventory from "../app/adminPanel/pages/locationwiseInventory/LocationwiseInventory";
 import TotalBooking from "../app/adminPanel/pages/overallInventory/TotalBooking";
 import TotalCompleted from "../app/adminPanel/pages/overallInventory/TotalCompleted";
 import TotalPending from "../app/adminPanel/pages/overallInventory/TotalPending";
@@ -20,6 +20,9 @@ import NewTestBoooking from "../app/Components/booking/NewTestBooking";
 import NewBoooking from "../app/adminPanel/pages/newtestbooking/NewBooking";
 import AboutUs from "../app/Components/aboutUs/AboutUs";
 import TestReport from "../app/Components/testReport/TestReport";
+import LocationWiseTotalBooking from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalBooking";
+import LocationWiseTotalPending from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalPending";
+import LocationWiseTotalCompleted from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalCompleted.jsx";
 
 function App() {
   return (
@@ -62,6 +65,18 @@ function App() {
           <Route
             path="admin/location-wise-inventory-details"
             element={<LocationwiseInventory />}
+          ></Route>
+            <Route
+            path="admin/location-wise-inventory-details/total-booking/:city"
+            element={<LocationWiseTotalBooking />}
+          ></Route>
+          <Route
+            path="admin/location-wise-inventory-details/total-booking-completed/:city"
+            element={<LocationWiseTotalCompleted />}
+          ></Route>
+          <Route
+            path="admin/location-wise-inventory-details/total-booking-pending/:city"
+            element={<LocationWiseTotalPending />}
           ></Route>
           <Route
             path="admin/new-test-booking"

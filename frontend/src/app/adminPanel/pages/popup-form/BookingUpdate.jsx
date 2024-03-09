@@ -187,12 +187,33 @@ const BookingUpdate = ({ setEditPopUp, id, setId, getAllBooking }) => {
           </select>
         </div>
         <div>
+            <select
+              name="city"
+              value={updatedData.city}
+              style={{ width: "70%" }}
+              onChange={handleChange}
+            >
+              <option value="">--- Choose City ---</option>
+              <option value="Noida">Noida</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Dehradun">Dehradun</option>
+              <option value="Roorkee">Roorkee</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Kanpur">Kanpur</option>
+              <option value="Pune">Pune</option>
+              <option value="Nagpur">Nagpur</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Patna">Patna</option>
+            </select>
+          </div>
+        <div>
           <input
             type="date"
             name="collectionDate"
             value={updatedData.collectionDate}
             style={{ width: "70%" }}
             onChange={handleChange}
+            placeholder="Choose Date for Test"
           />
         </div>
         <div>
@@ -202,6 +223,7 @@ const BookingUpdate = ({ setEditPopUp, id, setId, getAllBooking }) => {
             style={{ width: "70%" }}
             onChange={handleChange}
           >
+            <option value="">--- Status ---</option>
             <option value="pending">Pending</option>
             <option value="completed">Completed</option>
           </select>

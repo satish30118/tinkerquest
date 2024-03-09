@@ -7,7 +7,17 @@ import logo from "../assets/image/logo.webp";
 
 export default function Header() {
   const [auth, setAuth] = useAuth();
+  
   const navigate = useNavigate();
+  const handleLogout = () => {
+    setAuth({ ...auth, user: null, token: "" });
+    localStorage.removeItem("userInfo");
+    const timer = setTimeout(()=>{
+      toast.success("Logout Successfully!!");
+    },100)
+    
+    return;
+  };
 
   return (
     <>
@@ -29,6 +39,7 @@ export default function Header() {
               >
                 Dashboard
               </NavLink>
+              <NavLink to={"/login"} onClick={handleLogout} style={{color:"red",}} ><i class="fa fa-sign-in" style={{ marginRight: "7px", color:"red" }}></i>Logout</NavLink>
             </>
           )}
         </div>
