@@ -1,21 +1,29 @@
 /* STYLE FOR TOTAL BOOKING*/
 .tb-user-details {
     width: 100%;
+    
 }
 
 .tb-user-details table {
     width: 96%;
     margin: 20px auto;
     text-align: center;
+    border: 3px solid rgb(255, 255, 255);
+   
 }
+
 
 .tb-user-details table th {
     padding: 15px 3px;
+    background-color: rgb(17, 30, 132);
+    color: aliceblue;
+    
 }
 
 .tb-user-details table th,
 td {
-    border: 2px solid gray;
+    /* border: 2px solid gray; */
+    /* color: rgb(167, 26, 26); */
 }
 
 .tb-user-details table td {

@@ -53,6 +53,7 @@
 
 .em {
     color: rgb(238, 49, 49);
+    margin-left: 8px;
 }
 
 .contact-details {
@@ -103,7 +104,7 @@
     text-align: left;
     color:
         /* rgb(42, 37, 136) */
-        rgb(191, 33, 35);
+        rgb(33, 41, 197);
     margin-left: 20px;
 
 }
@@ -129,13 +130,16 @@
     box-shadow: 5px 5px 10px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 12px;
 
 
 }
 
 .both-book1 {
     /* background-color:rgba(69, 82, 226, 0.4) ; */
-    height: 250px;
+    height: auto;
+    font-size: 30px;
+    padding-bottom: 20px;
 
 }
 
@@ -160,17 +164,35 @@
     border: 2.5px solid rgb(225, 210, 210);
     border-radius: 6px;
     text-align: center;
-    color: rgb(191, 33, 35);
+    color: rgb(20, 47, 201);
     margin: 0 15px;
     box-shadow: 5px 5px 10px;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    padding-bottom: 12px;
 
 
+}
+.frequently-booked2 div img{
+ height: 200px;
+ width: 200px;
+ margin: 0 auto;
 }
 
 .both-book2 {
     /* background-color:rgba(69, 82, 226, 0.4) ; */
-    height: 250px;
-
+    height: auto;
+    padding-bottom: 30px;
+}
+.both-book2 h2
+{
+    padding-top: 20px;
+    font-size: 45px;
+    color:rgb(31, 45, 198) ;
+}
+.em1
+{
+    font-size: 45px;
+    color: rgb(26, 26, 195);
 }

@@ -37,7 +37,7 @@ const TotalBooking = () => {
         </div>
         <div className="content">
           <div
-            className="overlay"
+            // className="overlay"
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
@@ -45,8 +45,8 @@ const TotalBooking = () => {
           </div>
           <div className="tb-user-details">
             <table
-              border={"4px solid gray"}
-              style={{ borderCollapse: "collapse" }}
+              // border={"4px solid gray"}
+              style={{ borderCollapse: "collapse"}}
             >
               <tr>
                 <th>Booking Id</th>
@@ -68,7 +68,7 @@ const TotalBooking = () => {
                   <td>
                     <button
                       className="btn"
-                      style={{ background: "green" }}
+                      style={{ background: "rgb(167, 26, 26)" }}
                       onClick={(e) => {
                         setEditPop(true);
                         setSelectedId(patient._id);
@@ -76,7 +76,7 @@ const TotalBooking = () => {
                     >
                       Update
                     </button>
-                    <button
+                    {/* <button
                       className="btn"
                       onClick={(e) => {
                         e.preventDefault();
@@ -85,7 +85,7 @@ const TotalBooking = () => {
                       }}
                     >
                       Delete
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
               ))}
