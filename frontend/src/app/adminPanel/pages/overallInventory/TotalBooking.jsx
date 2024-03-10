@@ -90,13 +90,16 @@ const TotalBooking = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td>{patient?.status}</td>
+                  <td style={{color:`${patient?.status =="completed" ? "green" : "red"}`}}>{patient?.status}</td>
                   <td>
                     <button
                       className="btn"
-                      style={{ background: "rgb(167, 26, 26)" }}
+
+                      style={{ background: "blue" }}
+          
                       onClick={updateData}
                       onMouseMove={()=>setSelectedId(patient._id)}
+
                     >
                       Update
                     </button>

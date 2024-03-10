@@ -66,13 +66,13 @@ const TotalPending = () => {
                   <td>{patient?.collectionDate}</td>
                   <td>{patient?.status}</td>
                   <td>
-                    <button className="btn" style={{ background: "green" }} onClick={(e) => {
+                    <button className="btn" style={{ background: "blue" }} onClick={(e) => {
                         setEditPop(true);
                         setSelectedId(patient._id);
                       }}>
                       Update
                     </button>
-                    <button
+                    {/* <button
                       className="btn"
                       onClick={(e) => {
                         e.preventDefault();
@@ -81,7 +81,7 @@ const TotalPending = () => {
                       }}
                     >
                       Delete
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
               ))}

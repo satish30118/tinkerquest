@@ -11,6 +11,12 @@
     width: 4%;
 } */
 
+.admin-img img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
 .admin-dashboard .content {
     width: 100%;
     height: auto;

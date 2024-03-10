@@ -16,7 +16,7 @@ const NewTestMethod = () => {
   };
 
 
-  
+
   const handleData = async (e) => {
     e.preventDefault();
     const { testCategory, testName, testPrice } = data;
@@ -37,7 +37,7 @@ const NewTestMethod = () => {
         setData({
           testCategory: "",
           testName: "",
-          testPrice:""
+          testPrice: ""
         });
         return;
       }
@@ -56,45 +56,47 @@ const NewTestMethod = () => {
         </div>
         <div className="content">
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">Add New Test Method</h1>
+            {/* <h1 className="dashboard-heading">Add New Test Method</h1> */}
           </div>
           <div className="new-test-mtd">
-            <form action="">
-              <div>
-                <select
-                  name="testCategory"
-                  value={data.testCategory}
-                  style={{ width: "70%" }}
-                  onChange={handleChange}
-                >
-                  <option value="">--- Select Test Type ---</option>
-                  <option value="blood">Blood</option>
-                  <option value="diabetes">Diabetes</option>
-                  <option value="thyroid">Thyroid</option>
-                  <option value="vitamin">Vitamin</option>
-                  <option value="liver">Liver</option>
-                  <option value="kedney">Kidney</option>
-                </select>
+            <form className="crt-test-mtd">
+              <div className='footer-page1'>
+                <div className="both-book1">
+                  <h2 style={{ textAlign: "center" }}>Click To Add New Test
+                    <span className="em">Booked</span></h2>
+                  <div className="frequently-booked1">
+                    <div><img src="https://previews.123rf.com/images/alekseyvanin/alekseyvanin2002/alekseyvanin200200985/140976965-thyroid-gland-vector-icon-filled-flat-sign-for-mobile-concept-and-web-design-normal-thyroid-glyph.jpg" alt="" />Thyroid</div>
+                    <div><img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160248711/53356021-human-liver.jpg" alt="" />Liver</div>
+                    <div><img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160219351/52929157-blood-drop.jpg" alt="" />Blood</div>
+                    <div><img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160272837/53282279-syringe.jpg" alt="" />Diabetes</div>
+                    <div><img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160249174/53361232-human-kidneys.jpg" alt="" />Kindey</div>
+                    <div><img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160259044/52931861-medicine-bottle.jpg" alt="" />Vitamin</div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <input
-                  type="text"
-                  name="testName"
-                  placeholder="Enter Test Name"
-                  value={data.testName}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <input
+
+              <div className="mtd-details">
+                <div>
+                  <input
+                    type="text"
+                    name="testName"
+                    placeholder="Enter Test Name"
+                    value={data.testName}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                 <input
                   type="number"
                   name="testPrice"
                   placeholder="Enter Test Price in Rs"
                   value={data.testPrice}
                   onChange={handleChange}
                 />
+                </div>
+                <button className="btn" onClick={handleData}>Add New Test</button>
+
               </div>
-              <button className="btn"onClick={handleData}>Add New Test</button>
             </form>
           </div>
         </div>

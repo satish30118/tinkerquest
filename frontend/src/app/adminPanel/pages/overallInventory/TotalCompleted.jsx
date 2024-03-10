@@ -37,7 +37,7 @@ const TotalCompleted = () => {
         </div>
         <div className="content">
         <div
-            className="overlay"
+            // className="overlay"
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
@@ -61,8 +61,8 @@ const TotalCompleted = () => {
                     <td>{patient?.name}</td>
                     <td>{patient?.testName}</td>
                     <td>{patient?.collectionDate}</td>
-                    <td>{patient?.status}</td>
-                    <td><button className="btn" style={{background:"green"}} onClick={(e) => {
+                    <td style={{color:"green"}}>{patient?.status}</td>
+                    <td><button className="btn" style={{background:"blue"}} onClick={(e) => {
                         setEditPop(true);
                         setSelectedId(patient._id);
                       }}>Update</button>
