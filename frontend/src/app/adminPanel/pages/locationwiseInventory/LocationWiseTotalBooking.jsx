@@ -13,6 +13,7 @@ const LocationWiseTotalBooking = () => {
   const [deletePop, setDeletePop] = useState(false);
   const [editPop, setEditPop] = useState(false);
   const [selectedId, setSelectedId] = useState("");
+  const [search, setSearch] =useState("")
 
   /* ALL BOOKINGs */
   const params = useParams();
@@ -32,6 +33,20 @@ const LocationWiseTotalBooking = () => {
     }
   };
 
+  /* SEARCH PATIENT BY NAME */
+  const searchPatient = async () => {
+    try {
+      const { data } = await axios.get(`/api/v1/booking/search-by-name/${search}`);
+
+      if (data) {
+        setTotalBooking(data?.searchedPatient);
+        // console.log(data.allBooking);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   /* UPDATE STATUS*/
   const updateData = async (e) => {
     // e.preventDefault();
@@ -74,6 +89,10 @@ const LocationWiseTotalBooking = () => {
             <h1 className="dashboard-heading">
               User Details - Total Test Booked  in {params.city}
             </h1>
+          </div>
+          <div className="search">
+            <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Enter Patient Name" />
+            <button onClick={searchPatient}>Search</button>
           </div>
           <div className="tb-user-details">
             <table

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { ToastContainer } from "react-toastify";
+import { Bounce, Flip, Slide, ToastContainer, Zoom } from "react-toastify";
 
 const Layout = ({ children }) => {
   return (
@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
         <main>{children}</main>
         <Footer />
       </div>
-      <ToastContainer position="top-center" theme="colored"/>
+      <ToastContainer transition={Flip}  position="top-center" theme="colored" closeOnClick autoClose={700}/>
     </>
   );
 };

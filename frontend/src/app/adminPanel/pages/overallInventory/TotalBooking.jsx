@@ -11,6 +11,7 @@ const TotalBooking = () => {
   const [deletePop, setDeletePop] = useState(false);
   const [editPop, setEditPop] = useState(false);
   const [selectedId, setSelectedId] = useState("");
+  const [search, setSearch] =useState("")
 
   /* ALL BOOKINGs */
   const getTotalBooking = async () => {
@@ -31,6 +32,21 @@ const TotalBooking = () => {
     getTotalBooking();
   }, []);
 
+
+  /* SEARCH PATIENT BY NAME */
+  const searchPatient = async () => {
+    try {
+      const { data } = await axios.get(`/api/v1/booking/search-by-name/${search}`);
+
+      if (data) {
+        setTotalBooking(data?.searchedPatient);
+        // console.log(data.allBooking);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   /* UPDATE STATUS*/
   const updateData = async (e) => {
     // e.preventDefault();
@@ -69,6 +85,11 @@ const TotalBooking = () => {
             <h1 className="dashboard-heading">
               User Details - Overall Test Booked
             </h1>
+          </div>
+
+          <div className="search">
+            <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Enter Patient Name" />
+            <button onClick={searchPatient}>Search</button>
           </div>
           <div className="tb-user-details">
             <table

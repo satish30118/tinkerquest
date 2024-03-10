@@ -154,10 +154,10 @@ const OverallInventory = () => {
               <p className="i-num">{totalTest}</p>
               <p>Available Machines</p>
             </div>
-            <div className="overall">
+            {/* <div className="overall">
               <h2 style={{ background: "rgb(233, 26, 150)" }}>Suggestion</h2>
               <p>You need to increase nursues in the lab</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
