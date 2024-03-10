@@ -45,6 +45,10 @@ const AdminMenu = () => {
 
           <h1>Admin Panel</h1>
 
+          <div className="admin-img">
+            <img src="https://previews.123rf.com/images/captainvector/captainvector1509/captainvector150900359/45343495-dentist.jpg" alt="" />
+          </div>
+
           <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>
             Overall Inventory
           </NavLink>
