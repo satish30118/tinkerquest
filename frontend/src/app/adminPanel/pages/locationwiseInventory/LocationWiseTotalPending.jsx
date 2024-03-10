@@ -51,7 +51,7 @@ const LocationWiseTotalPending = () => {
           </div>
           <div className="tb-user-details">
             <table
-              border={"4px solid gray"}
+              // border={"4px solid gray"}
               style={{ borderCollapse: "collapse" }}
             >
               <tr>
@@ -70,7 +70,7 @@ const LocationWiseTotalPending = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td style={{ color: "red" }}>{patient?.status}</td>
+                  <td style={{ color: "red",textTransform:"capitalize" }}>{patient?.status}</td>
                   <td>
                     <button
                       className="btn"

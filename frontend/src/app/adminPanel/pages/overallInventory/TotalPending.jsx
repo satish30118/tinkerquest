@@ -66,7 +66,7 @@ const TotalPending = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td style={{ color: "red" }}>{patient?.status}</td>
+                  <td style={{ color: "red",textTransform:'capitalize' }}>{patient?.status}</td>
                   <td>
                     <button
                       className="btn"

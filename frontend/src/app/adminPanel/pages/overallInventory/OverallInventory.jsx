@@ -12,7 +12,7 @@ const OverallInventory = () => {
   const [totalTest, setTotalTest] = useState();
   const navigate = useNavigate();
 
- let tCal  = 0
+ let tCal  = 30200
 
   /* ALL BOOKINGs */
   const getTotalBooking = async () => {
@@ -146,18 +146,18 @@ const OverallInventory = () => {
               <h2 style={{ background: "rgb(154, 26, 233)" }}>
                 Revenue Generated
               </h2>
-              <p className="i-num">{tCal}</p>
-              <p>In Rupees</p>
+              <p className="i-num" id="i-revenue"><i class="fa-solid fa-indian-rupee-sign"></i>{tCal}</p>
+              {/* <p>In Rupees</p> */}
             </div>
             <div className="overall">
               <h2>Total Inventory Stock</h2>
               <p className="i-num">{totalTest}</p>
               <p>Available Machines</p>
             </div>
-            <div className="overall">
+            {/* <div className="overall">
               <h2 style={{ background: "rgb(233, 26, 150)" }}>Suggestion</h2>
               <p>You need to increase nursues in the lab</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

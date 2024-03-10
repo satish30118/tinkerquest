@@ -1,5 +1,5 @@
 .auth-row{
-    border:2.5px solid darkblue;
+    border:2.5px solid rgb(18, 73, 201);
     border-radius: 7px;
     margin: 10px 0px;
     box-sizing: border-box;
@@ -14,9 +14,13 @@
     text-align: center;
     /* background-color: gray; */
     box-sizing: border-box;
-    color: grey;
+    color: lightgray;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+}
+
+::placeholder{
+    color: whitesmoke;
 }
 .auth-row input{
     width: 87%;
@@ -31,6 +35,8 @@
     /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    color: lightgray;
+    
 }
 
 .auth-heading{

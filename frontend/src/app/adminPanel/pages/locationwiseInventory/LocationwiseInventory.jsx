@@ -13,7 +13,7 @@ const LocationwiseInventory = () => {
   const [showDetails, setShowDetails] = useState(false);
 
   const navigate = useNavigate();
-  let tCal = 0;
+  let tCal = 15045;
   /*BOOKING TOTAL*/
   const getAllBooking = async (e) => {
     try {
@@ -169,8 +169,8 @@ const LocationwiseInventory = () => {
                 <h2 style={{ background: "rgb(154, 26, 233)" }}>
                   Revenue Generated
                 </h2>
-                <p className="i-num">{tCal}</p>
-                <p>In Rupees</p>
+                <p className="i-num" id="i-revenue"><i class="fa-solid fa-indian-rupee-sign"></i>{tCal}</p>
+                {/* <p>In Rupees</p> */}
               </div>
               {/* <div className="overall">
                 <h2>Total Inventory Stock</h2>
