@@ -7,9 +7,9 @@
     /* font-size: 10px; */
 }
 
-.admin-dashboard .menu {
-    width: 24%;
-}
+/* .admin-dashboard .menu {
+    width: 4%;
+} */
 
 .admin-img img{
     height: 150px;
@@ -20,8 +20,8 @@
 .admin-dashboard .content {
     width: 100%;
     height: auto;
-    overflow: auto;
-    height: 81vh;
+    /* overflow: auto; */
+    /* height: 81vh; */
     position: relative;
 }
 
@@ -116,17 +116,18 @@ a.active {
 
 .overall h2 {
     padding: 10px 0px;
-    color:rgb(25, 6, 135) ;
+    color: rgb(25, 6, 135);
     background-color: rgb(18, 106, 237);
     height: 50px;
     font-size: 17.4px;
     border-radius: 4px;
     color: white;
-    
+
 }
-.i-num{
+
+.i-num {
     border: 3px solid rgb(238, 228, 228);
-    border-radius:50% ;
+    border-radius: 50%;
     width: 75px;
     height: 75px;
     font-size: 30px;
@@ -135,7 +136,8 @@ a.active {
     justify-content: center;
     margin: 20px auto;
 }
-.i-btn{
+
+.i-btn {
     color: rgb(12, 76, 186);
     background: transparent;
     border: 2px solid black;

@@ -74,6 +74,7 @@ const NewTestMethod = () => {
                   </div>
                 </div>
               </div>
+
               <div className="mtd-details">
                 <div>
                   <input
@@ -85,15 +86,16 @@ const NewTestMethod = () => {
                   />
                 </div>
                 <div>
-                  <input
-                    type="text"
-                    name="testPrice"
-                    placeholder="Enter Test Price"
-                    value={data.testPrice}
-                    onChange={handleChange}
-                  />
+                 <input
+                  type="number"
+                  name="testPrice"
+                  placeholder="Enter Test Price in Rs"
+                  value={data.testPrice}
+                  onChange={handleChange}
+                />
                 </div>
                 <button className="btn" onClick={handleData}>Add New Test</button>
+
               </div>
             </form>
           </div>
