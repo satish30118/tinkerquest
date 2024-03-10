@@ -49,8 +49,39 @@
     left: 3.5px;
     text-align: center;
 }
-
-
+.forecast p
+{
+   
+}
+.forecast img
+{
+    width: 300px;
+    /* margin-top: 40px;
+    margin-left: 200px; */
+    border-radius: 9px;
+    cursor: pointer;
+}
+.management img
+{
+    width: 280px;
+    cursor: pointer;
+    /* margin-top: 40px;
+    margin-left: 200px; */
+    border-radius: 9px;
+}
+.admin-manage
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+.admin-manage p
+{
+   font-size: 25px;
+    color: #07478b;
+    font-weight: 550;
+}
 
 
 

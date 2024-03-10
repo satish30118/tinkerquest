@@ -24,6 +24,7 @@ import LocationWiseTotalBooking from "../app/adminPanel/pages/locationwiseInvent
 import LocationWiseTotalPending from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalPending";
 import LocationWiseTotalCompleted from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalCompleted.jsx";
 import NewTestMethod from "../app/adminPanel/pages/newtestdetails/NewTestMethod.jsx";
+import Forecasting from "../app/adminPanel/pages/forecasting/Forecasting.jsx";
 
 function App() {
   return (
@@ -86,6 +87,10 @@ function App() {
            <Route
             path="admin/add-new-test-method"
             element={<NewTestMethod/>}
+          ></Route>
+          <Route
+            path="admin/forecasting"
+            element={<Forecasting/>}
           ></Route>
          
           <Route path="admin/users" element={<Users />}></Route>
