@@ -10,6 +10,7 @@ const AdminMenu = () => {
     <>
     <div className="admin-menu-page">
         <h1>Admin Panel</h1>
+        <p className='admin-img'><img src="https://previews.123rf.com/images/captainvector/captainvector1509/captainvector150900359/45343495-dentist.jpg" alt="" /></p>
         <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>Overall Inventory</NavLink>
         <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>Location Wise Inventory</NavLink>
         <NavLink to={"/dashboard/admin/new-test-booking"}>Book Test</NavLink>

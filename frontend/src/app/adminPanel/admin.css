@@ -11,8 +11,14 @@
     width: 24%;
 }
 
+.admin-img img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
 .admin-dashboard .content {
-    width: 76%;
+    width: 100%;
     height: auto;
     overflow: auto;
     height: 81vh;

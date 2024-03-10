@@ -113,7 +113,9 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 40px;
+    flex-wrap: wrap;
     /* background-color: rgba(198, 199, 209,0.7); */
+    cursor: pointer;
 }
 
 .frequently-booked1 div {
