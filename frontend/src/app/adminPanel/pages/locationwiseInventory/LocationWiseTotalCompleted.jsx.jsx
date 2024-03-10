@@ -90,11 +90,11 @@ const LocationWiseTotalCompleted = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td>{patient?.status}</td>
+                  <td style={{color:"lightgreen",textTransform:"capitalize"}}>{patient?.status}</td>
                   <td>
                     <button
                       className="btn"
-                      style={{ background: "green" }}
+                      style={{ background: "blue" }}
                       onClick={(e) => {
                         setEditPop(true);
                         setSelectedId(patient._id);

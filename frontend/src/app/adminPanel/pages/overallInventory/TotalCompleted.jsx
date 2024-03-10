@@ -84,7 +84,7 @@ const TotalCompleted = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td style={{ color: "green" }}>{patient?.status}</td>
+                  <td style={{ color: "lightgreen",textTransform:"capitalize" }}>{patient?.status}</td>
                   <td>
                     <button
                       className="btn"

@@ -107,6 +107,7 @@ export default function Login() {
                   textDecoration: "none",
                   fontSize: "17px",
                   fontFamily: "Poppins",
+                  color:"yellow",
                   
                 }}
               >
@@ -130,6 +131,7 @@ export default function Login() {
                   textDecoration: "none",
                   fontSize: "17px",
                   fontFamily: "Poppins",
+                  color:"yellow",
                 }}
               >
                 Not have account? -{" "}

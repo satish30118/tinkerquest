@@ -115,8 +115,8 @@ const TotalBooking = () => {
                   <td
                     style={{
                       color: `${
-                        patient?.status == "completed" ? "green" : "red"
-                      }`,
+                        patient?.status == "completed" ? "lightgreen" : "red"
+                      }`,textTransform:"capitalize"
                     }}
                   >
                     {patient?.status}

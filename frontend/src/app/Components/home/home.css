@@ -2,7 +2,7 @@
     width: 100%;
     box-sizing: border-box;
     /* padding: 10px; */
-    min-height: 82vh;
+    height: 82vh;
     display: flex;
     position: relative;
 
@@ -18,7 +18,7 @@
 
 .h-bg img {
     width: 100%;
-    height: 80vh;
+    height:100%;
     object-fit: cover;
     margin: 0px;
     padding: 0px;
@@ -99,12 +99,16 @@
 
 
 /*Part -2*/
+.footer-page1
+{
+    background-color: rgb(18, 51, 143);
+}
 .footer-page1 h2 {
     font-family: "Poppins";
     text-align: left;
     color:
         /* rgb(42, 37, 136) */
-        rgb(33, 41, 197);
+        rgb(58, 67, 238);
     margin-left: 20px;
 
 }
@@ -133,6 +137,8 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 12px;
+    background-color: white;
+    margin: 10px 0;
 
 
 }
@@ -142,9 +148,13 @@
     height: auto;
     font-size: 30px;
     padding-bottom: 20px;
+    
 
 }
-
+.footer-page2
+{
+    background-color:rgb(18, 51, 143) ;
+}
 .footer-page2 h2 {
     font-family: "Poppins";
     text-align: left;
@@ -172,7 +182,8 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-bottom: 12px;
+    padding: 12px;
+    background-color: white;
 
 
 }
