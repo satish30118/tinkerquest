@@ -45,7 +45,7 @@ const LocationWiseTotalBooking = () => {
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details - Test Booked</h1>
+            <h1 className="dashboard-heading">User Details - Total Test Booked {params.city}</h1>
           </div>
           <div className="tb-user-details">
             <table

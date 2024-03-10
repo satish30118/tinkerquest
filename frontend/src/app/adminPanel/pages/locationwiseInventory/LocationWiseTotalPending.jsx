@@ -45,7 +45,7 @@ const LocationWiseTotalPending = () => {
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details - Test Booked</h1>
+            <h1 className="dashboard-heading">User Details of Pending Test in {params.city}</h1>
           </div>
           <div className="tb-user-details">
             <table

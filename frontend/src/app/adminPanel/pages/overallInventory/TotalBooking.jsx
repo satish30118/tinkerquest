@@ -5,6 +5,7 @@ import axios from "axios";
 import "./overallInventory.css";
 import DeleteAlert from "../popup-form/DeleteAlert";
 import BookingUpdate from "../popup-form/BookingUpdate";
+import { toast } from "react-toastify";
 const TotalBooking = () => {
   const [totalBooking, setTotalBooking] = useState([]);
   const [deletePop, setDeletePop] = useState(false);
@@ -18,7 +19,7 @@ const TotalBooking = () => {
 
       if (data) {
         setTotalBooking(data?.allBooking);
-        console.log(data.allBooking);
+        // console.log(data.allBooking);
       }
     } catch (error) {
       console.log(error);
@@ -29,6 +30,31 @@ const TotalBooking = () => {
   useEffect(() => {
     getTotalBooking();
   }, []);
+
+  /* UPDATE DETAILS */
+
+  const updateData = async (e) => {
+    // e.preventDefault();
+
+    try {
+      let res = await axios.put(
+        `/api/v1/booking/update-booking/${selectedId}`,
+        { status : "completed" }
+      );
+
+      if (res?.status == 200) {
+        toast.success(res?.data?.message);
+        setSelectedId("")
+        getTotalBooking();
+      } else {
+        toast.error(res?.data?.message);
+      }
+    } catch (error) {
+      // console.log(error);
+      toast.error("Something went wrong!!");
+    }
+  };
+
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -46,7 +72,7 @@ const TotalBooking = () => {
           <div className="tb-user-details">
             <table
               // border={"4px solid gray"}
-              style={{ borderCollapse: "collapse"}}
+              style={{ borderCollapse: "collapse" }}
             >
               <tr>
                 <th>Booking Id</th>
@@ -69,10 +95,8 @@ const TotalBooking = () => {
                     <button
                       className="btn"
                       style={{ background: "rgb(167, 26, 26)" }}
-                      onClick={(e) => {
-                        setEditPop(true);
-                        setSelectedId(patient._id);
-                      }}
+                      onClick={updateData}
+                      onMouseMove={()=>setSelectedId(patient._id)}
                     >
                       Update
                     </button>
@@ -99,17 +123,6 @@ const TotalBooking = () => {
               id={selectedId}
               setDeletePopUp={setDeletePop}
               getTotalBooking={getTotalBooking}
-              setId={setSelectedId}
-            />
-          </div>
-          <div
-            style={{ display: `${editPop ? "block" : "none"}` }}
-            className="deletePop"
-          >
-            <BookingUpdate
-              id={selectedId}
-              setEditPopUp={setEditPop}
-              getAllBooking={getTotalBooking}
               setId={setSelectedId}
             />
           </div>

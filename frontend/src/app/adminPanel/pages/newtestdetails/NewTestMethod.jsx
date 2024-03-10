@@ -87,9 +87,9 @@ const NewTestMethod = () => {
               </div>
               <div>
                 <input
-                  type="text"
+                  type="number"
                   name="testPrice"
-                  placeholder="Enter Test Price"
+                  placeholder="Enter Test Price in Rs"
                   value={data.testPrice}
                   onChange={handleChange}
                 />
