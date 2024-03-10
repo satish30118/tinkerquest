@@ -14,7 +14,7 @@ const createBooking = async (req, res) => {
       collectionDate,
     } = req.body;
 
-    const data = await TestName.findOne({testName})
+    const data = await TestName.findOne({ testName });
     const newbooking = await Booking({
       name,
       gender,
@@ -24,7 +24,7 @@ const createBooking = async (req, res) => {
       testName,
       city,
       collectionDate,
-      testPrice : data.testPrice
+      testPrice: data.testPrice,
     }).save();
 
     if (!newbooking) {
@@ -76,7 +76,7 @@ const updateBooking = async (req, res) => {
   }
 };
 
-/*Get all <booking*/
+/*Get all booking*/
 const getAllBooking = async (req, res) => {
   try {
     const allBooking = await Booking.find({});
@@ -127,67 +127,7 @@ const getCompletedBooking = async (req, res) => {
   }
 };
 
-/*Get all booking location wise*/
-const getAllBookingLocationWise = async (req, res) => {
-  try {
-    const {city } = req.params;
-    const allBooking = await Booking.find({city});
-    res.status(200).send({
-      message: `All booking details in ${city}`,
-      allBooking,
-    });
-  } catch (error) {
-    console.log(`ERROR IN GETTING ALL booking in location wise ${error}`);
-    res.status(500).send({
-      success: false,
-      message: "Server Problem, Please try again!",
-    });
-  }
-};
 
-/*Get Pendding Booking Location wise*/
-const getPenddingBookingLocationWise = async (req, res) => {
-  try {
-    const {city} = req.params;
-    const bookingPendding = await Booking.find({
-     city,
-     status:"pending"
-    });
-    res.status(200).send({
-      message: `All Pendding booking details in ${city}`,
-      bookingPendding,
-    });
-  } catch (error) {
-    console.log(`ERROR IN GETTING ALL Pendding booking location wise ${error}`);
-    res.status(500).send({
-      success: false,
-      message: "Server Problem, Please try again!",
-    });
-  }
-};
-
-/* All Completed Booking location wise */
-const getCompletedBookingLocationWise = async (req, res) => {
-  try {
-    const {city }= req.params;
-    const bookingCompleted = await Booking.find({
-      city,
-      status: "completed",
-    });
-    res.status(200).send({
-      message: `All completed booking details in ${city}`,
-      bookingCompleted,
-    });
-  } catch (error) {
-    console.log(
-      `ERROR IN GETTING ALL completed booking location wise ${error}`
-    );
-    res.status(500).send({
-      success: false,
-      message: "Server Problem, Please try again!",
-    });
-  }
-};
 
 /*Single booking details*/
 const getSingleBooking = async (req, res) => {
@@ -207,8 +147,8 @@ const getSingleBooking = async (req, res) => {
   }
 };
 
-/*Delete Booking*/
 
+/*Delete single Booking*/
 const deleteBooking = async (req, res) => {
   try {
     const { id } = req.params;
@@ -231,15 +171,119 @@ const deleteBooking = async (req, res) => {
   }
 };
 
+
+
+/* LOACTION WISE */
+/*Get all booking location wise*/
+const getAllBookingLocationWise = async (req, res) => {
+  try {
+    const { city } = req.params;
+    const allBooking = await Booking.find({ city });
+    res.status(200).send({
+      message: `All booking details in ${city}`,
+      allBooking,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL booking in location wise ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+/*Get Pendding Booking Location wise*/
+const getPenddingBookingLocationWise = async (req, res) => {
+  try {
+    const { city } = req.params;
+    const bookingPendding = await Booking.find({
+      city,
+      status: "pending",
+    });
+    res.status(200).send({
+      message: `All Pendding booking details in ${city}`,
+      bookingPendding,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL Pendding booking location wise ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+/* All Completed Booking location wise */
+const getCompletedBookingLocationWise = async (req, res) => {
+  try {
+    const { city } = req.params;
+    const bookingCompleted = await Booking.find({
+      city,
+      status: "completed",
+    });
+    res.status(200).send({
+      message: `All completed booking details in ${city}`,
+      bookingCompleted,
+    });
+  } catch (error) {
+    console.log(
+      `ERROR IN GETTING ALL completed booking location wise ${error}`
+    );
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+
+/* CATEGORY WISE COUNTING */
+const getCategoryWiseCount = async (req, res) => {
+  try {
+    const { cat, city } = req.params;
+    const categoryCount = await Booking.find({ testCategory: cat, city }).count();
+    res.status(200).send({
+      message: `All booking details in ${cat}`,
+      categoryCount,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING categoryy wise counting ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+
+/* GET BOOKING BY SEARCH */
+const getBookingBySearch = async (req, res) => {
+  try {
+    const { name } = req.params;
+    const searchedPatient = await Booking.find({name});
+    res.status(200).send({
+      message: `All booking details of ${name}`,
+      searchedPatient,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING Single search ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 module.exports = {
   createBooking,
   updateBooking,
   getAllBooking,
-  getPenddingBooking,
-  getCompletedBooking,
   getSingleBooking,
   deleteBooking,
+  getPenddingBooking,
+  getCompletedBooking,
   getAllBookingLocationWise,
   getCompletedBookingLocationWise,
   getPenddingBookingLocationWise,
+  getCategoryWiseCount,
+  getBookingBySearch
 };

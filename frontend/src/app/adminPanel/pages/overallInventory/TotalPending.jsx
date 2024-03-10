@@ -10,6 +10,7 @@ const TotalPending = () => {
   const [deletePop, setDeletePop] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [editPop, setEditPop] = useState(false);
+  const [search, setSearch] =useState("")
 
   /*PENDDIN BOOKINGS*/
   const bookingPendding = async () => {
@@ -25,6 +26,20 @@ const TotalPending = () => {
     }
   };
 
+  /* SEARCH PATIENT BY NAME */
+  const searchPatient = async () => {
+    try {
+      const { data } = await axios.get(`/api/v1/booking/search-by-name/${search}`);
+
+      if (data) {
+        setTestPendding(data?.searchedPatient);
+        // console.log(data.allBooking);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   /*CALLING ALL*/
   useEffect(() => {
     bookingPendding();
@@ -44,6 +59,10 @@ const TotalPending = () => {
             <h1 className="dashboard-heading">
               User Details - Overall Test Pending
             </h1>
+          </div>
+          <div className="search">
+            <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Enter Patient Name" />
+            <button onClick={searchPatient}>Search</button>
           </div>
           <div className="tb-user-details">
             <table

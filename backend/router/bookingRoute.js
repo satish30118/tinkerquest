@@ -14,6 +14,8 @@ const {
   getAllBookingLocationWise,
   getPenddingBookingLocationWise,
   getCompletedBookingLocationWise,
+  getCategoryWiseCount,
+  getBookingBySearch,
 } = require("../controllers/bookingController");
 
 const router = express.Router();
@@ -45,7 +47,22 @@ router.get(
   getCompletedBooking
 );
 
-/* ROUTING LOCATION WISE */ 
+router.get(
+  "/get-single-booking/:id",
+  userVerification,
+  adminVerification,
+  getSingleBooking
+);
+
+router
+  .route("/update-booking/:id")
+  .put(userVerification, adminVerification, updateBooking);
+
+  router
+  .route("/delete-booking/:id")
+  .delete(userVerification, adminVerification, deleteBooking);
+
+  /* ROUTING LOCATION WISE */ 
 router.get(
   "/get-all-booking/location-wise/:city",
   userVerification,
@@ -67,20 +84,19 @@ router.get(
   getCompletedBookingLocationWise
 );
 
-
+  /* CATEGORY WISE DEATAILS */ 
 router.get(
-  "/get-single-booking/:id",
+  "/get-completed-booking/category-wise/:cat/:city",
   userVerification,
   adminVerification,
-  getSingleBooking
+  getCategoryWiseCount,
 );
 
-router
-  .route("/update-booking/:id")
-  .put(userVerification, adminVerification, updateBooking);
-
-  router
-  .route("/delete-booking/:id")
-  .delete(userVerification, adminVerification, deleteBooking);
-
+/* SEACHING BOOKING */
+router.get(
+  "/search-by-name/:name",
+  userVerification,
+  adminVerification,
+  getBookingBySearch,
+);
 module.exports = router;
