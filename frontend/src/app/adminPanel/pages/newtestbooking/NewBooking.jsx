@@ -76,12 +76,14 @@ const NewBoooking = () => {
           name: "",
           age: "",
           mobile: "",
-          gender: "",
           testCategory: "",
+          gender:"",
           testName: "",
           city: "",
           collectionDate: "",
         });
+        let ele = document.getElementsByName("gender");
+        for (var i = 0; i < ele.length; i++) ele[i].checked = false;
         return;
       }
 
@@ -238,18 +240,6 @@ const NewBoooking = () => {
                   onChange={handleChange}
                   placeholder="Choose Date for Test"
                 />
-              </div>
-              <div>
-                <select
-                  name="status"
-                  value={data.status}
-                  style={{ width: "70%" }}
-                  onChange={handleChange}
-                >
-                  <option value=""> --- Status ---</option>
-                  <option value="pending">Pending</option>
-                  <option value="completed">Completed</option>
-                </select>
               </div>
 
               <div>

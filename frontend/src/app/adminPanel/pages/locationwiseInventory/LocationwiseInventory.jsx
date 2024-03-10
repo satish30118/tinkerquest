@@ -64,7 +64,7 @@ const LocationwiseInventory = () => {
             <h1 className="dashboard-heading">Location Wise Inventory</h1>
           </div>
           <div className="location">
-            <select onChange={(e) => setCity(e.target.value)}>
+            <select onChange={(e) => {setCity(e.target.value); setShowDetails(false)}}>
               <option value="">--Choose City--</option>
               <option value="Noida">1699021932207-Noida</option>
               <option value="Mumbai">1699108688232-Mumbai</option>

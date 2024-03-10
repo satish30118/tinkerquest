@@ -15,12 +15,13 @@ const NewTestBoooking = () => {
     setData({ ...data, [name]: value });
   };
 
-  
   // GETTING ALL TEST RELETED TO CHOOSEN CATEGORY */
   const getTest = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`/api/v1/test/all-test/category-wise/${data.testCategory}`);
+      const res = await axios.get(
+        `/api/v1/test/all-test/category-wise/${data.testCategory}`
+      );
 
       if (res?.data) {
         setAllTest(res?.data?.test);
@@ -81,6 +82,8 @@ const NewTestBoooking = () => {
           city: "",
           collectionDate: "",
         });
+        let ele = document.getElementsByName("gender");
+        for (var i = 0; i < ele.length; i++) ele[i].checked = false;
         return;
       }
 
@@ -193,8 +196,8 @@ const NewTestBoooking = () => {
             >
               <option value="">--- Choose Test Type ---</option>
               {allTest?.map((item) => (
-                    <option value={item.testName}>{item.testName}</option>
-                  ))}
+                <option value={item.testName}>{item.testName}</option>
+              ))}
             </select>
           </div>
           <div>
