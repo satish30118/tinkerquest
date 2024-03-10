@@ -1,4 +1,5 @@
 const Booking = require("../models/testBookingModel");
+const TestName = require("../models/testNameModel");
 
 const createBooking = async (req, res) => {
   try {
@@ -13,6 +14,7 @@ const createBooking = async (req, res) => {
       collectionDate,
     } = req.body;
 
+    const data = await TestName.findOne({testName})
     const newbooking = await Booking({
       name,
       gender,
@@ -22,6 +24,7 @@ const createBooking = async (req, res) => {
       testName,
       city,
       collectionDate,
+      testPrice : data.testPrice
     }).save();
 
     if (!newbooking) {

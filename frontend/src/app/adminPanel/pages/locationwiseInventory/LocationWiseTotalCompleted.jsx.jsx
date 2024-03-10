@@ -42,16 +42,16 @@ const LocationWiseTotalCompleted = () => {
           <AdminMenu />
         </div>
         <div className="content">
-          <div
+          {/* <div
             className="overlay"
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
-          ></div>
+          ></div> */}
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details of Completed Test  in {params.city}</h1>
+            <h1 className="dashboard-heading">User Details - Test Completed in {params.city}</h1>
           </div>
           <div className="tb-user-details">
             <table
-              border={"4px solid gray"}
+              // border={"4px solid gray"}
               style={{ borderCollapse: "collapse" }}
             >
               <tr>
@@ -82,7 +82,7 @@ const LocationWiseTotalCompleted = () => {
                     >
                       Update
                     </button>
-                    <button
+                    {/* <button
                       className="btn"
                       onClick={(e) => {
                         e.preventDefault();
@@ -91,7 +91,7 @@ const LocationWiseTotalCompleted = () => {
                       }}
                     >
                       Delete
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
               ))}

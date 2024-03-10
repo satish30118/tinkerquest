@@ -45,7 +45,9 @@ const LocationWiseTotalPending = () => {
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details of Pending Test in {params.city}</h1>
+            <h1 className="dashboard-heading">
+              User Details - Test Pending in {params.city}
+            </h1>
           </div>
           <div className="tb-user-details">
             <table
@@ -68,11 +70,11 @@ const LocationWiseTotalPending = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td>{patient?.status}</td>
+                  <td style={{ color: "red" }}>{patient?.status}</td>
                   <td>
                     <button
                       className="btn"
-                      style={{ background: "green" }}
+                      style={{ background: "blue", fontSize: "15px" }}
                       onClick={(e) => {
                         setEditPop(true);
                         setSelectedId(patient._id);
@@ -80,7 +82,7 @@ const LocationWiseTotalPending = () => {
                     >
                       Update
                     </button>
-                    <button
+                    {/* <button
                       className="btn"
                       onClick={(e) => {
                         e.preventDefault();
@@ -89,7 +91,7 @@ const LocationWiseTotalPending = () => {
                       }}
                     >
                       Delete
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
               ))}

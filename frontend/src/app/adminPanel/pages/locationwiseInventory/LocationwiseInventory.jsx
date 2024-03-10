@@ -9,9 +9,11 @@ const LocationwiseInventory = () => {
   const [city, setCity] = useState("");
   const [totalBooking, setTotalBooking] = useState([]);
   const [testCompleted, setTestCompleted] = useState([]);
-  const navigate = useNavigate();
+  const [totalTest, setTotalTest] = useState();
   const [showDetails, setShowDetails] = useState(false);
 
+  const navigate = useNavigate();
+  let tCal = 0;
   /*BOOKING TOTAL*/
   const getAllBooking = async (e) => {
     try {
@@ -44,6 +46,21 @@ const LocationwiseInventory = () => {
     }
   };
 
+  /* ALL Test Available  */
+  const getTotalTest = async () => {
+    try {
+      const { data } = await axios.get("/api/v1/test/all-test-count");
+
+      if (data) {
+        setTotalTest(data?.testCount);
+        // console.log(data.allBooking);
+      }
+    } catch (error) {
+      console.log(error);
+      // toast.error("Something went wrong");
+    }
+  };
+
   const handelData = () => {
     if (!city) {
       toast.warn("Please choose city");
@@ -52,6 +69,7 @@ const LocationwiseInventory = () => {
     getAllBooking();
     bookingCompleted();
     setShowDetails(true);
+    getTotalTest();
   };
   return (
     <Layout>
@@ -64,8 +82,13 @@ const LocationwiseInventory = () => {
             <h1 className="dashboard-heading">Location Wise Inventory</h1>
           </div>
           <div className="location">
-            <select onChange={(e) => {setCity(e.target.value); setShowDetails(false)}}>
-              <option value="">--Choose City--</option>
+            <select
+              onChange={(e) => {
+                setCity(e.target.value);
+                setShowDetails(false);
+              }}
+            >
+              <option value="">--- Choose City ---</option>
               <option value="Noida">1699021932207-Noida</option>
               <option value="Mumbai">1699108688232-Mumbai</option>
               <option value="Dehradun">1698935599382-Dehradun</option>
@@ -146,16 +169,18 @@ const LocationwiseInventory = () => {
                 <h2 style={{ background: "rgb(154, 26, 233)" }}>
                   Revenue Generated
                 </h2>
-                <p className="i-num">$100</p>
+                <p className="i-num">{tCal}</p>
+                <p>In Rupees</p>
               </div>
-              <div className="overall">
+              {/* <div className="overall">
                 <h2>Total Inventory Stock</h2>
-                <p className="i-num">434</p>
+                <p className="i-num">{totalTest}</p>
+                <p>Machine Available</p>
               </div>
               <div className="overall">
                 <h2 style={{ background: "rgb(233, 26, 150)" }}>Suggestion</h2>
                 <p>You need to increase nursues in the lab</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

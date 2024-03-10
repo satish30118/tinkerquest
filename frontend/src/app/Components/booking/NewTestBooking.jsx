@@ -101,6 +101,7 @@ const NewTestBoooking = () => {
             boxShadow: "0 0 12px 3px",
             padding: "20px",
             background: "lightgray",
+            margin:"50px 0"
           }}
           className="bookig-update-form"
         >
@@ -148,7 +149,7 @@ const NewTestBoooking = () => {
 
           <div>
             <input
-              type="text"
+              type="number"
               name="age"
               id="new-category"
               value={data.age}
@@ -194,9 +195,9 @@ const NewTestBoooking = () => {
               onFocus={getTest}
               style={{ width: "70%" }}
             >
-              <option value="">--- Choose Test Type ---</option>
+              <option value="" >--- Choose Test Type ---</option>
               {allTest?.map((item) => (
-                <option value={item.testName}>{item.testName}</option>
+                <option key={item?._id} value={item.testName}>{item.testName}</option>
               ))}
             </select>
           </div>

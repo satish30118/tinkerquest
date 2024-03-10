@@ -1,7 +1,7 @@
 /* STYLE FOR TOTAL BOOKING*/
 .tb-user-details {
     width: 100%;
-    
+
 }
 
 .tb-user-details table {
@@ -9,7 +9,7 @@
     margin: 20px auto;
     text-align: center;
     border: 3px solid rgb(255, 255, 255);
-   
+
 }
 
 
@@ -17,7 +17,7 @@
     padding: 15px 3px;
     background-color: rgb(17, 30, 132);
     color: aliceblue;
-    
+
 }
 
 .tb-user-details table th,
@@ -31,9 +31,10 @@ td {
 }
 
 .deletePop {
-    position: absolute;
-    top: 10%;
+    position: fixed;
+    top: 20%;
     left: 26%;
     z-index: 2000;
     text-align: center;
 }
+

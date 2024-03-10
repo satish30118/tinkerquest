@@ -31,20 +31,19 @@ const TotalBooking = () => {
     getTotalBooking();
   }, []);
 
-  /* UPDATE DETAILS */
-
+  /* UPDATE STATUS*/
   const updateData = async (e) => {
     // e.preventDefault();
 
     try {
       let res = await axios.put(
         `/api/v1/booking/update-booking/${selectedId}`,
-        { status : "completed" }
+        { status: "completed" }
       );
 
       if (res?.status == 200) {
         toast.success(res?.data?.message);
-        setSelectedId("")
+        setSelectedId("");
         getTotalBooking();
       } else {
         toast.error(res?.data?.message);
@@ -67,7 +66,9 @@ const TotalBooking = () => {
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details - Test Booked</h1>
+            <h1 className="dashboard-heading">
+              User Details - Overall Test Booked
+            </h1>
           </div>
           <div className="tb-user-details">
             <table
@@ -90,18 +91,23 @@ const TotalBooking = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td style={{color:`${patient?.status =="completed" ? "green" : "red"}`}}>{patient?.status}</td>
+                  <td
+                    style={{
+                      color: `${
+                        patient?.status == "completed" ? "green" : "red"
+                      }`,
+                    }}
+                  >
+                    {patient?.status}
+                  </td>
                   <td>
                     <button
                       className="btn"
-
-                      style={{ background: "blue" }}
-          
+                      style={{ background: "blue", fontSize: "12px" }}
                       onClick={updateData}
-                      onMouseMove={()=>setSelectedId(patient._id)}
-
+                      onMouseMove={() => setSelectedId(patient._id)}
                     >
-                      Update
+                      Update Status
                     </button>
                     {/* <button
                       className="btn"

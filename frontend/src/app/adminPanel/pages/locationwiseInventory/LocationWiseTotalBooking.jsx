@@ -6,6 +6,7 @@ import "../overallInventory/overallInventory.css";
 import DeleteAlert from "../popup-form/DeleteAlert";
 import BookingUpdate from "../popup-form/BookingUpdate";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LocationWiseTotalBooking = () => {
   const [totalBooking, setTotalBooking] = useState([]);
@@ -18,14 +19,39 @@ const LocationWiseTotalBooking = () => {
 
   const getTotalBooking = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/booking/get-all-booking/location-wise/${params.city}`);
+      const { data } = await axios.get(
+        `/api/v1/booking/get-all-booking/location-wise/${params.city}`
+      );
 
       if (data) {
         setTotalBooking(data?.allBooking);
-        console.log(data.allBooking);
+        // console.log(data.allBooking);
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  /* UPDATE STATUS*/
+  const updateData = async (e) => {
+    // e.preventDefault();
+
+    try {
+      let res = await axios.put(
+        `/api/v1/booking/update-booking/${selectedId}`,
+        { status: "completed" }
+      );
+
+      if (res?.status == 200) {
+        toast.success(res?.data?.message);
+        setSelectedId("");
+        getTotalBooking();
+      } else {
+        toast.error(res?.data?.message);
+      }
+    } catch (error) {
+      // console.log(error);
+      toast.error("Something went wrong!!");
     }
   };
 
@@ -45,11 +71,13 @@ const LocationWiseTotalBooking = () => {
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details - Total Test Booked {params.city}</h1>
+            <h1 className="dashboard-heading">
+              User Details - Total Test Booked  in {params.city}
+            </h1>
           </div>
           <div className="tb-user-details">
             <table
-              border={"4px solid gray"}
+              // border={"4px solid gray"}
               style={{ borderCollapse: "collapse" }}
             >
               <tr>
@@ -68,19 +96,26 @@ const LocationWiseTotalBooking = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td>{patient?.status}</td>
+                  <td
+                    style={{
+                      color: `${
+                        patient?.status == "completed" ? "green" : "red"
+                      }`,
+                    }}
+                  >
+                    {patient?.status}
+                  </td>
                   <td>
                     <button
                       className="btn"
-                      style={{ background: "green" }}
-                      onClick={(e) => {
-                        setEditPop(true);
-                        setSelectedId(patient._id);
-                      }}
+                      style={{ background: "blue", fontSize: "14px" }}
+                      onClick={updateData}
+                      onMouseMove={() => setSelectedId(patient._id)}
                     >
-                      Update
+                      Update Status
                     </button>
-                    <button
+                    
+                    {/* <button
                       className="btn"
                       onClick={(e) => {
                         e.preventDefault();
@@ -89,7 +124,7 @@ const LocationWiseTotalBooking = () => {
                       }}
                     >
                       Delete
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
               ))}
@@ -106,7 +141,7 @@ const LocationWiseTotalBooking = () => {
               setId={setSelectedId}
             />
           </div>
-          <div
+          {/* <div
             style={{ display: `${editPop ? "block" : "none"}` }}
             className="deletePop"
           >
@@ -116,7 +151,7 @@ const LocationWiseTotalBooking = () => {
               getAllBooking={getTotalBooking}
               setId={setSelectedId}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </Layout>
