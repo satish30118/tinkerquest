@@ -36,16 +36,18 @@ const TotalPending = () => {
           <AdminMenu />
         </div>
         <div className="content">
-        <div
+          <div
             className="overlay"
-            style={{ display: `${deletePop ||editPop ? "block" : "none"}` }}
+            style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details - Test Booked</h1>
+            <h1 className="dashboard-heading">
+              User Details - Overall Test Pending
+            </h1>
           </div>
           <div className="tb-user-details">
             <table
-              border={"4px solid gray"}
+              // border={"4px solid gray"}
               style={{ borderCollapse: "collapse" }}
             >
               <tr>
@@ -64,12 +66,16 @@ const TotalPending = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td>{patient?.status}</td>
+                  <td style={{ color: "red" }}>{patient?.status}</td>
                   <td>
-                    <button className="btn" style={{ background: "blue" }} onClick={(e) => {
+                    <button
+                      className="btn"
+                      style={{ background: "blue", fontSize: "15px" }}
+                      onClick={(e) => {
                         setEditPop(true);
                         setSelectedId(patient._id);
-                      }}>
+                      }}
+                    >
                       Update
                     </button>
                     {/* <button
@@ -99,16 +105,16 @@ const TotalPending = () => {
             />
           </div>
           <div
-          style={{ display: `${editPop ? "block" : "none"}` }}
-          className="deletePop"
-        >
-          <BookingUpdate
-            id={selectedId}
-            setEditPopUp={setEditPop}
-            getAllBooking={bookingPendding}
-            setId={setSelectedId}
-          />
-        </div>
+            style={{ display: `${editPop ? "block" : "none"}` }}
+            className="deletePop"
+          >
+            <BookingUpdate
+              id={selectedId}
+              setEditPopUp={setEditPop}
+              getAllBooking={bookingPendding}
+              setId={setSelectedId}
+            />
+          </div>
         </div>
       </div>
     </Layout>

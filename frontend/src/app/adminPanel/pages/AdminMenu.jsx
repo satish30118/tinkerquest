@@ -34,7 +34,13 @@ const AdminMenu = () => {
         onClose={toggleDrawer}
         direction="left"
         className="bla bla bla "
-        style={{ marginTop: "70px", zIndex: "200", width: "20%" }}
+        style={{
+          marginTop: "70px",
+          zIndex: "200",
+          width: "100%",
+          maxWidth: "320px",
+          minWidth: "280px",
+        }}
       >
         <div className="admin-menu-page">
           {/* <div>
@@ -55,7 +61,7 @@ const AdminMenu = () => {
 
           <NavLink to={"/dashboard/admin/new-test-booking"}>Book Test</NavLink>
           <NavLink to={"/dashboard/admin/add-new-test-method"}>
-            Add New Test Method & Price
+            Add New Test Method
           </NavLink>
         </div>
       </Drawer>

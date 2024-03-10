@@ -39,6 +39,9 @@ const BookingModel = new mongoose.Schema(
       type: String,
       default: "pending",
     },
+    testPrice:{
+      type:Number,
+    }
   },
   {
     timestamps: true,

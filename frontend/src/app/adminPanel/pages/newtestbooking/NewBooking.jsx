@@ -157,7 +157,7 @@ const NewBoooking = () => {
 
               <div>
                 <input
-                  type="text"
+                  type="number"
                   name="age"
                   id="new-category"
                   value={data.age}
@@ -203,11 +203,11 @@ const NewBoooking = () => {
                   style={{ width: "70%" }}
                   onFocus={getTest}
                 >
-                  <option value={data.testName} onChange={handleChange}>
+                  <option value="" onChange={handleChange}>
                     --- Choose Test ---
                   </option>
                   {allTest?.map((item) => (
-                    <option value={item.testName}>{item.testName}</option>
+                    <option key={item._id} value={item.testName}>{item.testName}</option>
                   ))}
                 </select>
               </div>

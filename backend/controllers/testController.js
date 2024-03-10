@@ -75,6 +75,23 @@ const allTestController = async (req, res) => {
   }
 };
 
+//GET ALL test Count
+const allTestCountController = async (req, res) => {
+  try {
+    const testCount = await TestName.find().count();
+    res.status(200).send({
+      message: "ALL Test list",
+      testCount,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL Tests ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 //GET ALL test category wise
 
 const allTestCategoryController = async (req, res) => {
@@ -93,6 +110,7 @@ const allTestCategoryController = async (req, res) => {
     });
   }
 };
+
 
 //DELETING CATEGORY
 const deleteTestController = async (req, res) => {
@@ -116,6 +134,7 @@ module.exports = {
   CreateTestController,
   updateTestController,
   allTestController,
+  allTestCountController,
   allTestCategoryController,
   deleteTestController,
 };

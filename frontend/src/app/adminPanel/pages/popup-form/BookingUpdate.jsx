@@ -6,6 +6,7 @@ import "./bookingupdate.css";
 
 const BookingUpdate = ({ setEditPopUp, id, setId, getAllBooking }) => {
   const [auth] = useAuth();
+  const [allTest, setAllTest] = useState([]);
   const [updatedData, setUpdatedData] = useState({
     name: "",
     gender: "",
@@ -36,6 +37,23 @@ const BookingUpdate = ({ setEditPopUp, id, setId, getAllBooking }) => {
     getSingleBooking();
   }, [id]);
 
+
+  // GETTING ALL TEST RELETED TO CHOOSEN CATEGORY */
+  const getTest = async (e) => {
+    e.preventDefault();
+    // console.log(updatedData.testCategory)
+    try {
+      const res = await axios.get(`/api/v1/test/all-test/category-wise/${updatedData.testCategory}`);
+
+      if (res?.data) {
+        setAllTest(res?.data?.test);
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
   const handleData = async (e) => {
     e.preventDefault();
     const {
@@ -95,17 +113,18 @@ const BookingUpdate = ({ setEditPopUp, id, setId, getAllBooking }) => {
           style={{
             background: "red",
             color: "white",
-            padding: "5px 10px",
+            padding: "5px 20px",
             position: "absolute",
             right: "0",
             top: "0",
             cursor: "pointer",
+            fontWeight: "600",
           }}
           onClick={() => setEditPopUp(false)}
         >
           X
         </span>
-        <h3>Update Details of {id}</h3>
+        <h3 style={{ color: "blue" }}>Update Details of {id}</h3>
         <div>
           <input
             type="text"
@@ -181,31 +200,39 @@ const BookingUpdate = ({ setEditPopUp, id, setId, getAllBooking }) => {
             value={updatedData.testName}
             onChange={handleChange}
             style={{ width: "70%" }}
+            onFocus={getTest}
           >
-            <option value="">--- Choose Test ---</option>
-            <option value="AIDS">AIDS</option>
+            <option value="" onChange={handleChange}>
+              --- Choose Test ---
+            </option>
+            {allTest?.map((item) => (
+              <option key={item._id} value={item.testName}>
+                {item.testName}
+              </option>
+            ))}
           </select>
         </div>
+
         <div>
-            <select
-              name="city"
-              value={updatedData.city}
-              style={{ width: "70%" }}
-              onChange={handleChange}
-            >
-              <option value="">--- Choose City ---</option>
-              <option value="Noida">Noida</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Dehradun">Dehradun</option>
-              <option value="Roorkee">Roorkee</option>
-              <option value="Kolkata">Kolkata</option>
-              <option value="Kanpur">Kanpur</option>
-              <option value="Pune">Pune</option>
-              <option value="Nagpur">Nagpur</option>
-              <option value="Lucknow">Lucknow</option>
-              <option value="Patna">Patna</option>
-            </select>
-          </div>
+          <select
+            name="city"
+            value={updatedData.city}
+            style={{ width: "70%" }}
+            onChange={handleChange}
+          >
+            <option value="">--- Choose City ---</option>
+            <option value="Noida">Noida</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Dehradun">Dehradun</option>
+            <option value="Roorkee">Roorkee</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Kanpur">Kanpur</option>
+            <option value="Pune">Pune</option>
+            <option value="Nagpur">Nagpur</option>
+            <option value="Lucknow">Lucknow</option>
+            <option value="Patna">Patna</option>
+          </select>
+        </div>
         <div>
           <input
             type="date"
@@ -235,7 +262,7 @@ const BookingUpdate = ({ setEditPopUp, id, setId, getAllBooking }) => {
             style={{ background: "blue", width: "70%" }}
             onClick={handleData}
           >
-            Edit
+            Update Details
           </button>
         </div>
       </form>

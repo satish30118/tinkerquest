@@ -19,6 +19,15 @@ export default function Header() {
     return;
   };
 
+  const handleRedirect = ()=>{
+    if(auth?.token){
+      navigate("/new-test-booking")
+    }else{
+      navigate("/login")
+    }
+  }
+
+
   return (
     <>
       <nav className="navbar">
@@ -27,7 +36,7 @@ export default function Header() {
         </div>
         <div className="navbar-right">
           <NavLink to={"/"}>Home</NavLink>
-          <NavLink to={"/new-test-booking"}>Book Test</NavLink>
+          <NavLink  to="/new-test-booking">Book Test</NavLink>
           {!auth.user ? (
             <NavLink to={"/login"}>Login/Register</NavLink>
           ) : (
