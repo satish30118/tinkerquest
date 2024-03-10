@@ -7,7 +7,6 @@ import axios from "axios";
 const NewTestBoooking = () => {
   const [data, setData] = useState({});
   const [allTest, setAllTest] = useState([]);
-  const [cat, setCat] = useState("");
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -21,7 +20,7 @@ const NewTestBoooking = () => {
   const getTest = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`/api/v1/test/all-test/category-wise/${cat}`);
+      const res = await axios.get(`/api/v1/test/all-test/category-wise/${data.testCategory}`);
 
       if (res?.data) {
         setAllTest(res?.data?.test);
@@ -172,11 +171,7 @@ const NewTestBoooking = () => {
               name="testCategory"
               value={data.testCategory}
               style={{ width: "70%" }}
-              onChange={(e) => {
-                    handleChange(e);
-                    setCat(e.target.value);
-                    getTest(e);
-                  }}
+              onChange={handleChange}
             >
               <option value="">-- Select Test Category --</option>
               <option value="blood">Blood</option>
@@ -193,6 +188,7 @@ const NewTestBoooking = () => {
               name="testName"
               value={data.testName}
               onChange={handleChange}
+              onFocus={getTest}
               style={{ width: "70%" }}
             >
               <option value="">--- Choose Test Type ---</option>

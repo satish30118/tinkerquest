@@ -7,15 +7,15 @@ import logo from "../assets/image/logo.webp";
 
 export default function Header() {
   const [auth, setAuth] = useAuth();
-  
+
   const navigate = useNavigate();
   const handleLogout = () => {
     setAuth({ ...auth, user: null, token: "" });
     localStorage.removeItem("userInfo");
-    const timer = setTimeout(()=>{
+    const timer = setTimeout(() => {
       toast.success("Logout Successfully!!");
-    },100)
-    
+    }, 100);
+
     return;
   };
 
@@ -27,8 +27,6 @@ export default function Header() {
         </div>
         <div className="navbar-right">
           <NavLink to={"/"}>Home</NavLink>
-          <NavLink to={"/about-us"}>About Us</NavLink>
-          <NavLink to={"/test-report"}>Test Report</NavLink>
           <NavLink to={"/new-test-booking"}>Book Test</NavLink>
           {!auth.user ? (
             <NavLink to={"/login"}>Login/Register</NavLink>
@@ -39,7 +37,17 @@ export default function Header() {
               >
                 Dashboard
               </NavLink>
-              <NavLink to={"/login"} onClick={handleLogout} style={{color:"red",}} ><i class="fa fa-sign-in" style={{ marginRight: "7px", color:"red" }}></i>Logout</NavLink>
+              <NavLink
+                to={"/login"}
+                onClick={handleLogout}
+                style={{ color: "red" }}
+              >
+                <i
+                  class="fa fa-sign-in"
+                  style={{ marginRight: "7px", color: "red" }}
+                ></i>
+                Logout
+              </NavLink>
             </>
           )}
         </div>

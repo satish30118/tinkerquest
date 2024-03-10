@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
         <main>{children}</main>
         <Footer />
       </div>
-      <ToastContainer position="top-center" theme="colored" />
+      <ToastContainer position="top-center" theme="colored"/>
     </>
   );
 };
