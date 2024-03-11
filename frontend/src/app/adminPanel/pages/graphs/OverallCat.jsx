@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Chart from "react-apexcharts";
 
 const OverallCat = () => {
+
+  const months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  const currentMonth = new Date().getMonth() + 1;
+
+
+  const dates = [ "1", "2", "3", "4", "5", "6" ];
+
   var state = {
     series: [
       {
@@ -41,14 +48,7 @@ const OverallCat = () => {
       },
       xaxis: {
         type: "datetime",
-        categories: [
-          "01/01/2011 GMT",
-          "01/02/2011 GMT",
-          "01/03/2011 GMT",
-          "01/04/2011 GMT",
-          "01/05/2011 GMT",
-          "01/06/2011 GMT",
-        ],
+        categories: dates,
       },
       responsive: [
         {

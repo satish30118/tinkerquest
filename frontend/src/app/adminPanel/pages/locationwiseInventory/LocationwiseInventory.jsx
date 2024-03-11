@@ -13,15 +13,24 @@ const LocationwiseInventory = () => {
   const [testCompleted, setTestCompleted] = useState([]);
   const [totalTest, setTotalTest] = useState();
   const [showDetails, setShowDetails] = useState(false);
- const [blood, setBlood] = useState("");
- const [liver, setLiver] = useState("")
- const [thyorid, setThyorid] = useState("")
- const [kidney, setKidney] = useState("")
- const [vitamin, setVitamin] = useState("")
- const [diabetes, setDiabetes] = useState("")
+  const [blood, setBlood] = useState("");
+  const [liver, setLiver] = useState("");
+  const [thyorid, setThyorid] = useState("");
+  const [kidney, setKidney] = useState("");
+  const [vitamin, setVitamin] = useState("");
+  const [diabetes, setDiabetes] = useState("");
 
   const navigate = useNavigate();
-  let tCal = 15045;
+  let tCal = 1504;
+
+  const getDate = () => {
+    // const currentMonth = new Date().getMonth() + 1;
+    // const currentYear = new Date().getFullYear();
+    // console.log(currentMonth);
+    // console.log(currentYear);
+    console.log(testCompleted[0]?.createdAt);
+  };
+
   /*BOOKING TOTAL*/
   const getAllBooking = async (e) => {
     try {
@@ -31,7 +40,7 @@ const LocationwiseInventory = () => {
 
       if (data) {
         setTotalBooking(data?.allBooking);
-        console.log(data.allBooking);
+        // console.log(data.allBooking);
       }
     } catch (error) {
       console.log(error);
@@ -47,7 +56,7 @@ const LocationwiseInventory = () => {
 
       if (data) {
         setTestCompleted(data?.bookingCompleted);
-        console.log(data.bookingCompleted);
+        // console.log(data.bookingCompleted);
       }
     } catch (error) {
       console.log(error);
@@ -81,7 +90,7 @@ const LocationwiseInventory = () => {
       const resLiver = await axios.get(
         `/api/v1/booking/get-completed-booking/category-wise/liver/${city}`
       );
-      setLiver(resLiver?.data?.categoryCount );
+      setLiver(resLiver?.data?.categoryCount);
 
       const resVitamin = await axios.get(
         `/api/v1/booking/get-completed-booking/category-wise/vitamin/${city}`
@@ -91,7 +100,7 @@ const LocationwiseInventory = () => {
       const resKidney = await axios.get(
         `/api/v1/booking/get-completed-booking/category-wise/kedney/${city}`
       );
-      setKidney(resKidney?.data?.categoryCount );
+      setKidney(resKidney?.data?.categoryCount);
 
       const resDiabetes = await axios.get(
         `/api/v1/booking/get-completed-booking/category-wise/diabetes/${city}`
@@ -109,7 +118,7 @@ const LocationwiseInventory = () => {
   };
 
   const handelData = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (!city) {
       toast.warn("Please choose city");
       return;
@@ -118,6 +127,8 @@ const LocationwiseInventory = () => {
     bookingCompleted();
     getTotalTest();
     getCategoryWise(e);
+    getDate();
+
     setShowDetails(true);
   };
   return (
@@ -128,7 +139,9 @@ const LocationwiseInventory = () => {
         </div>
         <div className="content">
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading"><u>Location Wise Report</u></h1>
+            <h1 className="dashboard-heading">
+              <u>Location Wise Report</u>
+            </h1>
           </div>
           <div className="location">
             <select
@@ -158,7 +171,9 @@ const LocationwiseInventory = () => {
             className="overall-page"
             style={{ display: `${showDetails ? "block" : "none"}` }}
           >
-            <h2 className="detail"><u>Report of {city}</u></h2>
+            <h2 className="detail">
+              <u>Report of {city}</u>
+            </h2>
 
             <div className="overall-page">
               <div className="overall">
@@ -218,7 +233,10 @@ const LocationwiseInventory = () => {
                 <h2 style={{ background: "rgb(154, 26, 233)" }}>
                   Revenue Generated
                 </h2>
-                <p className="i-num" id="i-revenue"><i class="fa-solid fa-indian-rupee-sign"></i>{tCal}</p>
+                <p className="i-num" id="i-revenue">
+                  <i class="fa-solid fa-indian-rupee-sign"></i>
+                  {tCal}
+                </p>
                 {/* <p>In Rupees</p> */}
               </div>
 
@@ -238,17 +256,17 @@ const LocationwiseInventory = () => {
                 <p>Liver : {liver}</p>
                 <p>Kidney : {kidney}</p>
               </div>
-              
             </div>
             <div className="graphs">
-            <div>
-                <BarChart testData = {[blood, kidney, liver, thyorid, vitamin, diabetes]}/>
+              <div>
+                <BarChart
+                  testData={[blood, kidney, liver, thyorid, vitamin, diabetes]}
+                />
               </div>
               <div>
                 <OverallCat />
               </div>
             </div>
-            
           </div>
         </div>
       </div>
