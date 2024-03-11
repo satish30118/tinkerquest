@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BarChart from "../graphs/BarChart";
+import OverallCat from "../graphs/OverallCat";
 
 const LocationwiseInventory = () => {
   const [city, setCity] = useState("");
@@ -237,10 +238,17 @@ const LocationwiseInventory = () => {
                 <p>Liver : {liver}</p>
                 <p>Kidney : {kidney}</p>
               </div>
-              <div>
+              
+            </div>
+            <div className="graphs">
+            <div>
                 <BarChart testData = {[blood, kidney, liver, thyorid, vitamin, diabetes]}/>
               </div>
+              <div>
+                <OverallCat />
+              </div>
             </div>
+            
           </div>
         </div>
       </div>
