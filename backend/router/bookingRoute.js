@@ -16,6 +16,7 @@ const {
   getCompletedBookingLocationWise,
   getCategoryWiseCount,
   getBookingBySearch,
+  getSearchAutoComplete,
 } = require("../controllers/bookingController");
 
 const router = express.Router();
@@ -98,5 +99,13 @@ router.get(
   userVerification,
   adminVerification,
   getBookingBySearch,
+);
+
+/* SEACHING AUTOCOMPLETE */
+router.get(
+  "/search-autocomplete/:name",
+  userVerification,
+  adminVerification,
+  getSearchAutoComplete
 );
 module.exports = router;
