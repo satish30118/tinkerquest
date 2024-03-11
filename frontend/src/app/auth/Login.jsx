@@ -44,7 +44,7 @@ export default function Login() {
       });
       localStorage.setItem("userInfo", JSON.stringify(res.data));
 
-          navigate( `/` || location.state)
+          navigate( `/login` || location.state)
         return;
 
       } else {
