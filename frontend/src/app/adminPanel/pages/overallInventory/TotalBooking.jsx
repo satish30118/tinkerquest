@@ -109,7 +109,7 @@ const TotalBooking = () => {
           ></div>
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">
-              User Details - Overall Test Booked
+             <u >User Details - Overall Test Booked</u>
             </h1>
           </div>
 
@@ -117,7 +117,7 @@ const TotalBooking = () => {
             <input
               type="search"
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Enter Patient Name"
+              placeholder="Search Patient"
               value={search}
             />
             {/* <button onClick={searchPatient}>Search</button> */}

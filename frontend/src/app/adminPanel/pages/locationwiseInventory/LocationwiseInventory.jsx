@@ -127,7 +127,7 @@ const LocationwiseInventory = () => {
         </div>
         <div className="content">
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">Location Wise Inventory</h1>
+            <h1 className="dashboard-heading"><u>Location Wise Report</u></h1>
           </div>
           <div className="location">
             <select
@@ -143,7 +143,7 @@ const LocationwiseInventory = () => {
               <option value="Roorkee">1698921148662-Roorkee</option>
               <option value="Kolkata">1699281160794-Kolkata </option>
               <option value="Pune">1699194762631-Pune</option>
-              <option value="Nagpur">1699007458706-Nagpur</option>\
+              <option value="Nagpur">1699007458706-Nagpur</option>
               <option value="Lucknow">1699540301350-Lucknow</option>
               <option value="Patna">1699166014219-Patna</option>
             </select>
@@ -157,12 +157,12 @@ const LocationwiseInventory = () => {
             className="overall-page"
             style={{ display: `${showDetails ? "block" : "none"}` }}
           >
-            <h2 className="detail">Details Analysis in {city}</h2>
+            <h2 className="detail"><u>Report of {city}</u></h2>
 
             <div className="overall-page">
               <div className="overall">
                 <h2 style={{ background: "rgb(12, 76, 186)" }}>
-                  Total Test Appointment
+                  <u>Total Test Appointment</u>
                 </h2>
                 <p className="i-num">{totalBooking?.length}</p>
                 <button

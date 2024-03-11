@@ -65,7 +65,7 @@ const TotalPending = () => {
           ></div>
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">
-              User Details - Overall Test Pending
+             <u> User Details - Overall Test Pending</u>
             </h1>
           </div>
           <div className="search">

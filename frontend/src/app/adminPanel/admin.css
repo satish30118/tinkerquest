@@ -52,7 +52,7 @@
 }
 .forecast p
 {
-   
+ 
 }
 .forecast img
 {
@@ -76,11 +76,12 @@
     justify-content: space-evenly;
     align-items: center;
     
+    
 }
 .admin-manage p
 {
    font-size: 25px;
-    color: #07478b;
+    color: #f5f5f5;
     font-weight: 550;
 }
 

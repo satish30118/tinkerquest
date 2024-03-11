@@ -66,7 +66,7 @@ const TotalCompleted = () => {
           ></div>
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">
-              User Details - Overall Test Completed
+              <u>User Details - Overall Test Completed</u>
             </h1>
           </div>
           <div className="search">
