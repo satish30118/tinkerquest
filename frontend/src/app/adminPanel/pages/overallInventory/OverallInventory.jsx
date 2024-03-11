@@ -4,6 +4,7 @@ import Layout from "../../../layout/Layout";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import BarChart from "../graphs/BarChart";
 
 const OverallInventory = () => {
   const [totalBooking, setTotalBooking] = useState([]);
@@ -12,7 +13,7 @@ const OverallInventory = () => {
   const [totalTest, setTotalTest] = useState();
   const navigate = useNavigate();
 
- let tCal  = 30200
+  let tCal = 30200;
 
   /* ALL BOOKINGs */
   const getTotalBooking = async () => {
@@ -146,7 +147,10 @@ const OverallInventory = () => {
               <h2 style={{ background: "rgb(154, 26, 233)" }}>
                 Revenue Generated
               </h2>
-              <p className="i-num" id="i-revenue"><i class="fa-solid fa-indian-rupee-sign"></i>{tCal}</p>
+              <p className="i-num" id="i-revenue">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                {tCal}
+              </p>
               {/* <p>In Rupees</p> */}
             </div>
             <div className="overall">
@@ -158,6 +162,10 @@ const OverallInventory = () => {
               <h2 style={{ background: "rgb(233, 26, 150)" }}>Suggestion</h2>
               <p>You need to increase nursues in the lab</p>
             </div> */}
+
+            <div>
+              <BarChart/>
+            </div>
           </div>
         </div>
       </div>
