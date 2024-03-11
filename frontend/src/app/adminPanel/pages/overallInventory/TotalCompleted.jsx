@@ -10,7 +10,7 @@ const TotalCompleted = () => {
   const [deletePop, setDeletePop] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [editPop, setEditPop] = useState(false);
-  const [search, setSearch] =useState("")
+  const [search, setSearch] = useState("");
 
   /*BOOKING COMPLETED*/
   const bookingCompleted = async () => {
@@ -29,7 +29,9 @@ const TotalCompleted = () => {
   /* SEARCH PATIENT BY NAME */
   const searchPatient = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/booking/search-by-name/${search}`);
+      const { data } = await axios.get(
+        `/api/v1/booking/search-by-name/${search}`
+      );
 
       if (data) {
         setTestCompleted(data?.searchedPatient);
@@ -39,12 +41,18 @@ const TotalCompleted = () => {
       console.log(error);
     }
   };
-  
 
   /*CALLING ALL*/
   useEffect(() => {
-    bookingCompleted();
-  }, []);
+    if (!search) bookingCompleted();
+  }, [search]);
+
+  useEffect(() => {
+    if (search) {
+      searchPatient();
+    }
+  }, [search]);
+
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -57,11 +65,17 @@ const TotalCompleted = () => {
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div>
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details - Overall Test Completed</h1>
+            <h1 className="dashboard-heading">
+              User Details - Overall Test Completed
+            </h1>
           </div>
           <div className="search">
-            <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Enter Patient Name" />
-            <button onClick={searchPatient}>Search</button>
+            <input
+              type="search"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Enter Patient Name"
+            />
+            {/* <button onClick={searchPatient}>Search</button> */}
           </div>
           <div className="tb-user-details">
             <table
@@ -84,7 +98,11 @@ const TotalCompleted = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td style={{ color: "lightgreen",textTransform:"capitalize" }}>{patient?.status}</td>
+                  <td
+                    style={{ color: "lightgreen", textTransform: "capitalize" }}
+                  >
+                    {patient?.status}
+                  </td>
                   <td>
                     <button
                       className="btn"

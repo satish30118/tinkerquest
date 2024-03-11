@@ -5,16 +5,16 @@ import axios from "axios";
 import "../overallInventory/overallInventory.css";
 import DeleteAlert from "../popup-form/DeleteAlert";
 import BookingUpdate from "../popup-form/BookingUpdate";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const LocationWiseTotalCompleted = () => {
   const [testCompleted, setTestCompleted] = useState([]);
   const [deletePop, setDeletePop] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [editPop, setEditPop] = useState(false);
-  const [search, setSearch] =useState("")
+  const [search, setSearch] = useState("");
 
-   const params = useParams();
+  const params = useParams();
 
   /*BOOKING COMPLETED*/
   const bookingCompleted = async () => {
@@ -35,7 +35,9 @@ const LocationWiseTotalCompleted = () => {
   /* SEARCH PATIENT BY NAME */
   const searchPatient = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/booking/search-by-name/${search}`);
+      const { data } = await axios.get(
+        `/api/v1/booking/search-by-name/${search}`
+      );
 
       if (data) {
         setTestCompleted(data?.searchedPatient);
@@ -45,12 +47,17 @@ const LocationWiseTotalCompleted = () => {
       console.log(error);
     }
   };
-  
 
   /*CALLING ALL*/
   useEffect(() => {
-    bookingCompleted();
-  }, []);
+    if (!search) bookingCompleted();
+  }, [search]);
+
+  useEffect(() => {
+    if (search) {
+      searchPatient();
+    }
+  }, [search]);
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -63,11 +70,17 @@ const LocationWiseTotalCompleted = () => {
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
           ></div> */}
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">User Details - Test Completed in {params.city}</h1>
+            <h1 className="dashboard-heading">
+              User Details - Test Completed in {params.city}
+            </h1>
           </div>
           <div className="search">
-            <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Enter Patient Name" />
-            <button onClick={searchPatient}>Search</button>
+            <input
+              type="search"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Enter Patient Name"
+            />
+            {/* <button onClick={searchPatient}>Search</button> */}
           </div>
           <div className="tb-user-details">
             <table
@@ -90,7 +103,11 @@ const LocationWiseTotalCompleted = () => {
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
                   <td>{patient?.collectionDate}</td>
-                  <td style={{color:"lightgreen",textTransform:"capitalize"}}>{patient?.status}</td>
+                  <td
+                    style={{ color: "lightgreen", textTransform: "capitalize" }}
+                  >
+                    {patient?.status}
+                  </td>
                   <td>
                     <button
                       className="btn"

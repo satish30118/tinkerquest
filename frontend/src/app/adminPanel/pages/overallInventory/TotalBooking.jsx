@@ -11,7 +11,8 @@ const TotalBooking = () => {
   const [deletePop, setDeletePop] = useState(false);
   const [editPop, setEditPop] = useState(false);
   const [selectedId, setSelectedId] = useState("");
-  const [search, setSearch] =useState("")
+  const [search, setSearch] = useState("");
+  const [autoComplete, setAutoComplete] = useState([]);
 
   /* ALL BOOKINGs */
   const getTotalBooking = async () => {
@@ -29,14 +30,16 @@ const TotalBooking = () => {
 
   /*CALLING ALL*/
   useEffect(() => {
+    if(search === "")
     getTotalBooking();
-  }, []);
-
+  }, [search]);
 
   /* SEARCH PATIENT BY NAME */
   const searchPatient = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/booking/search-by-name/${search}`);
+      const { data } = await axios.get(
+        `/api/v1/booking/search-by-name/${search}`
+      );
 
       if (data) {
         setTotalBooking(data?.searchedPatient);
@@ -46,7 +49,30 @@ const TotalBooking = () => {
       console.log(error);
     }
   };
-  
+   /* SEARCH AUTO Complete  */
+   const searchComplete = async () => {
+    try {
+      const { data } = await axios.get(
+        `/api/v1/booking/search-autocomplete/${search}`
+      );
+
+      if (data) {
+        setAutoComplete(data?.searchedPatient);
+        // console.log(data.allBooking);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect (()=>{
+    if(search){
+    searchPatient ()
+    searchComplete()
+    }
+    
+  }, [search])
+
   /* UPDATE STATUS*/
   const updateData = async (e) => {
     // e.preventDefault();
@@ -88,49 +114,65 @@ const TotalBooking = () => {
           </div>
 
           <div className="search">
-            <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Enter Patient Name" />
-            <button onClick={searchPatient}>Search</button>
+            <input
+              type="search"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Enter Patient Name"
+              value={search}
+            />
+            {/* <button onClick={searchPatient}>Search</button> */}
+          </div>
+          <div>
+            <ul>
+              {autoComplete.map((ac)=>(
+                <li>{ac.name}</li>
+              ))}
+            </ul>
           </div>
           <div className="tb-user-details">
             <table
               // border={"4px solid gray"}
               style={{ borderCollapse: "collapse" }}
             >
-              <tr>
-                <th>Booking Id</th>
-                <th>Booking Date</th>
-                <th>Patient Name</th>
-                <th>Test Name</th>
-                <th>Collection Date</th>
-                <th>Status</th>
-                <th>Manage</th>
-              </tr>
-              {totalBooking?.map((patient) => (
+              <thead>
                 <tr>
-                  <td>{patient?._id}</td>
-                  <td>{patient?.createdAt}</td>
-                  <td>{patient?.name}</td>
-                  <td>{patient?.testName}</td>
-                  <td>{patient?.collectionDate}</td>
-                  <td
-                    style={{
-                      color: `${
-                        patient?.status == "completed" ? "lightgreen" : "red"
-                      }`,textTransform:"capitalize"
-                    }}
-                  >
-                    {patient?.status}
-                  </td>
-                  <td>
-                    <button
-                      className="btn"
-                      style={{ background: "blue", fontSize: "12px" }}
-                      onClick={updateData}
-                      onMouseMove={() => setSelectedId(patient._id)}
+                  <th>Booking Id</th>
+                  <th>Booking Date</th>
+                  <th>Patient Name</th>
+                  <th>Test Name</th>
+                  <th>Collection Date</th>
+                  <th>Status</th>
+                  <th>Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {totalBooking?.map((patient) => (
+                  <tr key={patient?._id}>
+                    <td>{patient?._id}</td>
+                    <td>{patient?.createdAt}</td>
+                    <td>{patient?.name}</td>
+                    <td>{patient?.testName}</td>
+                    <td>{patient?.collectionDate}</td>
+                    <td
+                      style={{
+                        color: `${
+                          patient?.status == "completed" ? "lightgreen" : "red"
+                        }`,
+                        textTransform: "capitalize",
+                      }}
                     >
-                      Update Status
-                    </button>
-                    {/* <button
+                      {patient?.status}
+                    </td>
+                    <td>
+                      <button
+                        className="btn"
+                        style={{ background: "blue", fontSize: "12px" }}
+                        onClick={updateData}
+                        onMouseMove={() => setSelectedId(patient._id)}
+                      >
+                        Update Status
+                      </button>
+                      {/* <button
                       className="btn"
                       onClick={(e) => {
                         e.preventDefault();
@@ -140,9 +182,10 @@ const TotalBooking = () => {
                     >
                       Delete
                     </button> */}
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
           <div

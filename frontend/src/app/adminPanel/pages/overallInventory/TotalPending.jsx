@@ -42,8 +42,16 @@ const TotalPending = () => {
   
   /*CALLING ALL*/
   useEffect(() => {
+    if(!search)
     bookingPendding();
-  }, []);
+  }, [search]);
+
+  useEffect (()=>{
+    if(search){
+    searchPatient ()
+    }
+    
+  }, [search])
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -62,7 +70,7 @@ const TotalPending = () => {
           </div>
           <div className="search">
             <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Enter Patient Name" />
-            <button onClick={searchPatient}>Search</button>
+            {/* <button onClick={searchPatient}>Search</button> */}
           </div>
           <div className="tb-user-details">
             <table

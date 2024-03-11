@@ -127,8 +127,6 @@ const getCompletedBooking = async (req, res) => {
   }
 };
 
-
-
 /*Single booking details*/
 const getSingleBooking = async (req, res) => {
   try {
@@ -146,7 +144,6 @@ const getSingleBooking = async (req, res) => {
     });
   }
 };
-
 
 /*Delete single Booking*/
 const deleteBooking = async (req, res) => {
@@ -170,8 +167,6 @@ const deleteBooking = async (req, res) => {
     });
   }
 };
-
-
 
 /* LOACTION WISE */
 /*Get all booking location wise*/
@@ -235,12 +230,14 @@ const getCompletedBookingLocationWise = async (req, res) => {
   }
 };
 
-
 /* CATEGORY WISE COUNTING */
 const getCategoryWiseCount = async (req, res) => {
   try {
     const { cat, city } = req.params;
-    const categoryCount = await Booking.find({ testCategory: cat, city }).count();
+    const categoryCount = await Booking.find({
+      testCategory: cat,
+      city,
+    }).count();
     res.status(200).send({
       message: `All booking details in ${cat}`,
       categoryCount,
@@ -254,12 +251,63 @@ const getCategoryWiseCount = async (req, res) => {
   }
 };
 
-
 /* GET BOOKING BY SEARCH */
 const getBookingBySearch = async (req, res) => {
   try {
     const { name } = req.params;
-    const searchedPatient = await Booking.find({name});
+    const searchedPatient = await Booking.aggregate([
+      {
+        $search: {
+          index: "default",
+          text: {
+            query: name,
+            path: {
+              wildcard: "*",
+            },
+            fuzzy:{},
+          },
+        },
+      },
+    ]);
+    res.status(200).send({
+      message: `All booking details of ${name}`,
+      searchedPatient,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING Single search ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+/* SEARCH AUTO COMPLETE */
+const getSearchAutoComplete = async (req, res) => {
+  try {
+    const { name } = req.params;
+    const searchedPatient = await Booking.aggregate([
+      {
+        $search: {
+          "index": "autoCompleteSearch",
+          "autocomplete": {
+            "query": name,
+            "path": "name",
+            "tokenOrder": "sequential",
+            // "fuzzy": ,
+            // "score": 
+          }
+        }
+      },
+      {
+        $limit: 10,
+      },
+      {
+        $project: {
+        "name": 1,
+        },
+      },
+    ]);
     res.status(200).send({
       message: `All booking details of ${name}`,
       searchedPatient,
@@ -285,5 +333,6 @@ module.exports = {
   getCompletedBookingLocationWise,
   getPenddingBookingLocationWise,
   getCategoryWiseCount,
-  getBookingBySearch
+  getBookingBySearch,
+  getSearchAutoComplete,
 };
