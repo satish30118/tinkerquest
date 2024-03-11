@@ -18,7 +18,7 @@ const AdminMenu = () => {
         onClick={toggleDrawer}
         style={{
           position: "fixed",
-          color: "blue",
+          color: "white",
           fontSize: "25px",
           padding: "5px 10px",
           margin: "10px",
@@ -55,12 +55,17 @@ const AdminMenu = () => {
             <img src="https://previews.123rf.com/images/captainvector/captainvector1509/captainvector150900359/45343495-dentist.jpg" alt="" />
           </div>
 
+          <div className="admin-details" style={{fontWeight:"700", margin:"10px 0", textAlign:"center"}}>
+            <p><i class="fa-solid fa-circle-user" style={{marginRight:"3px"}}></i> {auth?.user?.name}</p>
+            <p><i class="fa-solid fa-envelope" style={{marginRight:"3px"}}></i> {auth?.user?.email}</p>
+          </div>
+
           <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>
-            Overall Inventory
+            Overall Report
           </NavLink>
 
           <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>
-            Location Wise Inventory
+            Location Wise Report
           </NavLink>
 
           <NavLink to={"/dashboard/admin/new-test-booking"}>Book Test</NavLink>

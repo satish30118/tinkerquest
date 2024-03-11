@@ -40,4 +40,25 @@ td {
     z-index: 2000;
     text-align: center;
 }
-
+.search
+{
+    text-align: center;
+    /* background-color: rebeccapurple; */
+    color: blue;
+}
+.search input
+{
+    font-size: 23px;
+    color: blue;
+    /* background-color: rgb(31, 31, 193); */
+    border-radius: 9px;
+    text-align: center;
+    width: 400px;
+    outline: none;
+    
+}
+.search ::placeholder
+{
+    font-family: "Poppins";
+    color: rgba(15, 15, 91,0.5);
+}

@@ -70,7 +70,7 @@ const LocationWiseTotalPending = () => {
           ></div>
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">
-              User Details - Test Pending in {params.city}
+              <u>User Details - Test Pending in {params.city}</u>
             </h1>
           </div>
           <div className="search">
@@ -114,7 +114,7 @@ const LocationWiseTotalPending = () => {
                         setSelectedId(patient._id);
                       }}
                     >
-                      Update
+                     <i class="fa-solid fa-pen-to-square"></i> Update
                     </button>
                     {/* <button
                       className="btn"

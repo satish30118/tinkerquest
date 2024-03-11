@@ -14,7 +14,7 @@ const AdminDashboard = () => {
         </div>
         <div className="content">
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">Welcome to Admin Page</h1>
+            <h1 className="dashboard-heading"><u>Welcome to Admin Page</u></h1>
           </div>
           {/* <div
             style={{
@@ -32,7 +32,7 @@ const AdminDashboard = () => {
           <div className="admin-manage">
             <div className="forecast">
               <img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160283465/53589630-graph.jpg" alt="" />
-              <p>Inventory Forecasting</p>
+              <p>Inventory Forecasting </p>
             </div>
             <div className="management">
               <img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160227455/53072917-soccer-first-aid-kit.jpg" alt="" />

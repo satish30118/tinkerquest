@@ -88,7 +88,7 @@ const OverallInventory = () => {
         </div>
         <div className="content">
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">Overall Inventory Details</h1>
+            <h1 className="dashboard-heading"> <u>Overall Report Details</u></h1>
           </div>
           <div className="overall-page">
             <div className="overall">

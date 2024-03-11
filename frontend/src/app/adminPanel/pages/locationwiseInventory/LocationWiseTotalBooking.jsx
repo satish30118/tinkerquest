@@ -144,6 +144,7 @@ const LocationWiseTotalBooking = () => {
                       onClick={updateData}
                       onMouseMove={() => setSelectedId(patient._id)}
                     >
+                      
                       Update Status
                     </button>
 
