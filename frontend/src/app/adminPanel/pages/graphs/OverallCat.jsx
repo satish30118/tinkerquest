@@ -94,8 +94,8 @@ const OverallCat = () => {
         options={state.options}
         series={state.series}
         type="bar"
-        width={"50%"}
-        height={400}
+        width={"90%"}
+        height={"90%"}
         // style={{ color: "white"}}
       />
     </>

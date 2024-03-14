@@ -1,0 +1,53 @@
+.forecast-form-page{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.forecast-result{
+    width: 50%;
+}
+.forecast-form
+{
+   width: 50%;
+    font-size: 17px;
+    color: aliceblue;
+    padding: 20px 0;
+    border-right: 3px solid white;
+    text-align: center;
+    font-weight: 700;
+    margin: 20px 0;
+    margin-bottom: 40px;
+    /* background-color: rgba(255, 255, 255,0.7); */
+}
+.forecast-form input
+{
+    width: 50%;
+    font-size: 17px;
+    padding: 7px 0;
+    text-align: center;
+    border-radius: 9px;
+    font-weight: 600;
+}
+.forecast-form select
+{
+    font-size: 17px;
+    margin-top: 20px ;
+    width: 70%;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 9px;
+    font-weight: 700;
+}
+.forecast-form div label
+{
+    display: block;
+    margin-top: 20px;
+}
+.forecast-form button
+{
+    width: 30%;
+    font-size: 25px;
+    margin-top: 40px;
+    
+}
