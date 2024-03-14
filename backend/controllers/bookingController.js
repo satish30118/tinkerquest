@@ -79,7 +79,7 @@ const updateBooking = async (req, res) => {
 /*Get all booking*/
 const getAllBooking = async (req, res) => {
   try {
-    const allBooking = await Booking.find({});
+    const allBooking = await Booking.find({}).sort({ createdAt: -1 });
     res.status(200).send({
       message: "All booking details",
       allBooking,
@@ -96,7 +96,9 @@ const getAllBooking = async (req, res) => {
 /*Get Pendding Booking*/
 const getPenddingBooking = async (req, res) => {
   try {
-    const bookingPendding = await Booking.find({ status: "pending" });
+    const bookingPendding = await Booking.find({ status: "pending" }).sort({
+      createdAt: -1,
+    });
     res.status(200).send({
       message: "All Pendding booking details",
       bookingPendding,
@@ -113,7 +115,9 @@ const getPenddingBooking = async (req, res) => {
 /* All Completed Booking*/
 const getCompletedBooking = async (req, res) => {
   try {
-    const bookingCompleted = await Booking.find({ status: "completed" });
+    const bookingCompleted = await Booking.find({ status: "completed" }).sort({
+      createdAt: -1,
+    });
     res.status(200).send({
       message: "All completed booking details",
       bookingCompleted,
@@ -173,7 +177,7 @@ const deleteBooking = async (req, res) => {
 const getAllBookingLocationWise = async (req, res) => {
   try {
     const { city } = req.params;
-    const allBooking = await Booking.find({ city });
+    const allBooking = await Booking.find({ city }).sort({ createdAt: -1 });
     res.status(200).send({
       message: `All booking details in ${city}`,
       allBooking,
@@ -193,7 +197,7 @@ const getPenddingBookingLocationWise = async (req, res) => {
     const bookingPendding = await Booking.find({
       city,
       status: "pending",
-    });
+    }).sort({ createdAt: -1 });
     res.status(200).send({
       message: `All Pendding booking details in ${city}`,
       bookingPendding,
@@ -214,7 +218,7 @@ const getCompletedBookingLocationWise = async (req, res) => {
     const bookingCompleted = await Booking.find({
       city,
       status: "completed",
-    });
+    }).sort({ createdAt: -1 });
     res.status(200).send({
       message: `All completed booking details in ${city}`,
       bookingCompleted,
@@ -251,6 +255,29 @@ const getCategoryWiseCount = async (req, res) => {
   }
 };
 
+/* Month Wise */
+const getMonthsData = async (req, res) => {
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+  try {
+    const MonthsCount = await Booking.find({
+      $group:{
+        
+      },
+    }).count();
+    res.status(200).send({
+      message: `All booking details in monthwise`,
+      MonthsCount,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING categoryy wise counting ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 /* GET BOOKING BY SEARCH */
 const getBookingBySearch = async (req, res) => {
   try {
@@ -264,7 +291,7 @@ const getBookingBySearch = async (req, res) => {
             path: {
               wildcard: "*",
             },
-            fuzzy:{},
+            fuzzy: {},
           },
         },
       },
@@ -289,22 +316,22 @@ const getSearchAutoComplete = async (req, res) => {
     const searchedPatient = await Booking.aggregate([
       {
         $search: {
-          "index": "autoCompleteSearch",
-          "autocomplete": {
-            "query": name,
-            "path": "name",
-            "tokenOrder": "sequential",
+          index: "autoCompleteSearch",
+          autocomplete: {
+            query: name,
+            path: "name",
+            tokenOrder: "sequential",
             // "fuzzy": ,
-            // "score": 
-          }
-        }
+            // "score":
+          },
+        },
       },
       {
         $limit: 10,
       },
       {
         $project: {
-        "name": 1,
+          name: 1,
         },
       },
     ]);
@@ -335,4 +362,5 @@ module.exports = {
   getCategoryWiseCount,
   getBookingBySearch,
   getSearchAutoComplete,
+  getMonthsData,
 };

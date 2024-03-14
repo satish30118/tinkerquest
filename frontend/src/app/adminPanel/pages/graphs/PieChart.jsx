@@ -1,33 +1,30 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-const PieChart = () => {
+const PieChart = ({ category, value }) => {
   const state = {
     options: {
       chart: {
         id: "apexchart-example",
       },
-      xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+      dataLabels: {
+        style: {
+          // colors: ["#F44336", "#E91E63"],
+        },
+      },
+      fill: {
+        colors: ["rgb(0,255,0)", "#FF0000"],
       },
     },
-    series: [
-      {
-        name: "series-1",
-        data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
-      },
-      {
-        name: "series-2",
-        data: [20, 24, 45, 23, 49, 64, 72, 45, 115],
-      },
-    ],
+    series: value,
+    labels: category,
   };
   return (
     <>
       <Chart
         options={state.options}
         series={state.series}
-        type="histogram"
+        type="donut"
         width={500}
         height={320}
       />
