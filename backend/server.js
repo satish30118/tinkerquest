@@ -6,7 +6,11 @@ const connectDB = require("./connection/db");
 const authRoutes = require("./router/authRoute");
 const bookingRoutes = require("./router/bookingRoute");
 const testRoutes = require("./router/testRoute");
+const machineRoutes = require("./router/machineRoute");
+const reagentRoutes = require("./router/reagentRoute");
+const chatRoutes = require("./router/chatRoute");
 
+const bodyParser = require("body-parser");
 
 const cors = require("cors");
 
@@ -23,15 +27,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(bodyParser.json());
 
 //ROUTES
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/booking", bookingRoutes);
-app.use("/api/v1/test", testRoutes)
+app.use("/api/v1/test", testRoutes);
+app.use("/api/v1/machine", machineRoutes);
+app.use("/api/v1/reagent", reagentRoutes);
+app.use("/api/v1/chat", chatRoutes);
 
 //REST API
 app.get("/", (req, res) => {
   res.send("Hello Ji main aa gya");
+});
+
+app.post("/predict", (req, res) => {
+  res.send("");
 });
 
 //PORT and LISTEN SECTION

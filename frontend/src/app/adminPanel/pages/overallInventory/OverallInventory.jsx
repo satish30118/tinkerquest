@@ -5,16 +5,19 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import BarChart from "../graphs/BarChart";
+import PieChart from "../graphs/PieChart";
 
 const OverallInventory = () => {
   const [totalBooking, setTotalBooking] = useState([]);
   const [testCompleted, setTestCompleted] = useState([]);
   const [testPendding, setTestPendding] = useState([]);
   const [totalTest, setTotalTest] = useState();
+  const [monthData, setMonthData] = useState(0);
   const navigate = useNavigate();
 
   let tCal = 30200;
 
+  const sortingByDate = () => {};
   /* ALL BOOKINGs */
   const getTotalBooking = async () => {
     try {
@@ -30,6 +33,20 @@ const OverallInventory = () => {
     }
   };
 
+  /* ALL BOOKINGs  */
+  const getMonthData = async () => {
+    try {
+      const { data } = await axios.get("/api/v1/booking/get-all-booking/month");
+
+      if (data) {
+        setMonthData(data?.MonthsCount);
+        // console.log(data.allBooking);
+      }
+    } catch (error) {
+      console.log(error);
+      // toast.error("Something went wrong");
+    }
+  };
   /*BOOKING COMPLETED*/
   const bookingCompleted = async () => {
     try {
@@ -79,6 +96,8 @@ const OverallInventory = () => {
     getTotalTest();
     bookingCompleted();
     bookingPendding();
+    sortingByDate();
+    getMonthData();
   }, []);
   return (
     <Layout>
@@ -88,7 +107,10 @@ const OverallInventory = () => {
         </div>
         <div className="content">
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading"> <u>Overall Report Details</u></h1>
+            <h1 className="dashboard-heading">
+              {" "}
+              <u>Overall Report Details</u>
+            </h1>
           </div>
           <div className="overall-page">
             <div className="overall">
@@ -162,10 +184,15 @@ const OverallInventory = () => {
               <h2 style={{ background: "rgb(233, 26, 150)" }}>Suggestion</h2>
               <p>You need to increase nursues in the lab</p>
             </div> */}
-
+          </div>
+          <div className="graphs">
             <div>
-              <BarChart/>
+              <PieChart
+                value={[testCompleted.length, testPendding.length]}
+                category={["Test Completed", "Test Pending"]}
+              />
             </div>
+            <div>{monthData}</div>
           </div>
         </div>
       </div>

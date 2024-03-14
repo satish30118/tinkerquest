@@ -17,6 +17,7 @@ const {
   getCategoryWiseCount,
   getBookingBySearch,
   getSearchAutoComplete,
+  getMonthsData,
 } = require("../controllers/bookingController");
 
 const router = express.Router();
@@ -92,6 +93,13 @@ router.get(
   adminVerification,
   getCategoryWiseCount,
 );
+  /* MONTH WISE DEATAILS */ 
+  router.get(
+    "/get-all-booking/month",
+    userVerification,
+    adminVerification,
+    getMonthsData,
+  );
 
 /* SEACHING BOOKING */
 router.get(
