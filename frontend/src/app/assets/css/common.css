@@ -19,7 +19,7 @@
     border-bottom-left-radius: 5px;
 }
 
-::placeholder{
+.auth-row ::placeholder{
     color: whitesmoke;
 }
 .auth-row input{

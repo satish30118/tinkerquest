@@ -1,0 +1,59 @@
+.new-machine-details {
+    /* border: 3px solid red; */
+    color: white;
+    text-align: center;
+    
+   
+}
+/* .new-machine-details form
+{
+    display: flex;
+} */
+.new-machine-details div input
+{
+    font-size: 20px;
+    border-radius: 9px;
+    /* background-color: rebeccapurple; */
+    /* height: 40px */
+    width: 350px;
+    text-align: center;
+    padding: 8px ;
+    margin-top: 30px;
+    
+    
+}
+
+.new-machine-details select{
+    font-size: 20px;
+    width: 350px;
+    border-radius: 9px;
+    margin-top: 40px;
+    padding: 8px;
+    text-align: center;
+
+}
+.machine-test-cat option
+{
+    font-size: 20px;
+}
+.reagent-detail
+{
+    margin-top: 15px;
+}
+.reagent-detail h3{
+    padding-bottom: 5px;
+}
+
+.reagent-detail-radio{
+
+}
+.reagent-detail-radio h3{
+   
+    padding: 8px 0;
+    padding-top: 20px;
+    
+}
+
+.reagent-detail-radio label{
+    padding-right: 20px;
+}

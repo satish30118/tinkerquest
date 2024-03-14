@@ -25,6 +25,8 @@ import LocationWiseTotalPending from "../app/adminPanel/pages/locationwiseInvent
 import LocationWiseTotalCompleted from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalCompleted.jsx";
 import NewTestMethod from "../app/adminPanel/pages/newtestdetails/NewTestMethod.jsx";
 import Forecasting from "../app/adminPanel/pages/forecasting/Forecasting.jsx";
+import MachineReport from "../app/adminPanel/pages/machine/MachineReport.jsx";
+import Reagent from "../app/adminPanel/pages/reagent/Reagent.jsx";
 
 function App() {
   return (
@@ -91,6 +93,14 @@ function App() {
           <Route
             path="admin/forecasting"
             element={<Forecasting/>}
+          ></Route>
+          <Route
+            path="admin/machine-report"
+            element={<MachineReport/>}
+          ></Route>
+          <Route
+            path="admin/reagent-report"
+            element={<Reagent/>}
           ></Route>
          
           <Route path="admin/users" element={<Users />}></Route>
