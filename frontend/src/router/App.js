@@ -27,6 +27,7 @@ import NewTestMethod from "../app/adminPanel/pages/newtestdetails/NewTestMethod.
 import Forecasting from "../app/adminPanel/pages/forecasting/Forecasting.jsx";
 import MachineReport from "../app/adminPanel/pages/machine/MachineReport.jsx";
 import Reagent from "../app/adminPanel/pages/reagent/Reagent.jsx";
+import Chat from "../app/adminPanel/pages/chat/Chat.jsx";
 
 function App() {
   return (
@@ -101,6 +102,10 @@ function App() {
           <Route
             path="admin/reagent-report"
             element={<Reagent/>}
+          ></Route>
+          <Route
+            path="admin/chat"
+            element={<Chat/>}
           ></Route>
          
           <Route path="admin/users" element={<Users />}></Route>

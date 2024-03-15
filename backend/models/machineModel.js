@@ -8,7 +8,11 @@ const machineSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    category:{
+    machineUnit:{
+        type: Number,
+        trim: true,
+    },
+    testCategory:{
         type:String,
         trim:true,
     },
@@ -18,10 +22,13 @@ const machineSchema = new mongoose.Schema({
     },
     reagent:[{
         reagentName : String,
+        reagentUnit : String,
         reqPerTest : Number,
     }
     ]
      
+},{
+    timestamps :true
 })
 
 const Machine = new mongoose.model("Machine", machineSchema)

@@ -4,10 +4,10 @@ const jwt = require("jsonwebtoken");
 
 const registerController = async(req, res) => {
     try {
-        const {name, email, password, phone, answer} = req.body;
+        const {name, email, password, phone,city, answer} = req.body;
 
         //VALIDATION
-        if(!name || !email || !password || !phone || !answer){
+        if(!name || !email || !password || !phone || !city || !answer){
             return res.status(422).send({
                 success:false,
                 message:"ALL field are not filled"
@@ -27,7 +27,7 @@ const registerController = async(req, res) => {
         //HASHING PASSWORD
         const hashedPassword = await hashPassword(password)
         //CREATING NEW USER
-        const newUser = await new userModel({name,email,password:hashedPassword,phone, answer}).save()
+        const newUser = await new userModel({name,email,password:hashedPassword,phone, city, answer}).save()
         //or newUser.save()
 
         //GENRATING TOKEN

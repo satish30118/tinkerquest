@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    city:{
+        type:String,
+    },
     answer:{
         type:String,
         required:true,
