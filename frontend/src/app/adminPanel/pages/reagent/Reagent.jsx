@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import "../../admin.css";
 import Layout from "../../../layout/Layout";
 import AdminMenu from "../AdminMenu";
-// import AddNewReagent from "./AddNewReagent";
-// import AllReagent from "./AllReagent";
+import AddNewReagent from "./AddNewReagent";
+import AllReagent from "./AllReagent";
 
 const Reagent = () => {
   const [addNew, setAddNew] = useState(false);
@@ -22,19 +22,19 @@ const Reagent = () => {
           </div>
 
           <div>
-            <button className="btn" onClick={setAddNew(true)}>
+            <button className="btn" onClick={() =>setAddNew(true)}>
               Add New Reagent
             </button>
           </div>
 
           <div 
-          // style={{ display: `${addNew ? "block" : "none"}` }}
+          style={{ display: `${addNew ? "block" : "none"}` }}
           >
-            {/* <AddNewReagent /> */}
+            <AddNewReagent />
           </div>
 
           <div>
-            {/* <AllReagent /> */}
+            <AllReagent />
           </div>
         </div>
       </div>

@@ -52,8 +52,9 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    getAllChat();
+    getAllChat()
   }, []);
+
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -69,7 +70,7 @@ const Chat = () => {
           <div
             className="chat"
             style={{
-              width: "70%",
+              width: "85%",
               border: "2px solid gray",
               borderRadius: "6px",
               margin: "10px auto",
@@ -91,6 +92,7 @@ const Chat = () => {
                 <div
                   key={chat._id}
                   style={{
+                    fontSize: "13px",
                     background: "gray",
                     borderRadius: "8px",
                     margin: "5px 0",
@@ -98,16 +100,22 @@ const Chat = () => {
                     padding: "10px 20px",
                     // textAlign:`${chat?.sender?._id == auth?.user?._id ? "right" : "left"}`,
                     marginLeft: `${
-                      chat?.sender?.senderName == auth?.user?.name
-                        ? "60%"
-                        : "0%"
+                      chat?.sender?.senderId == auth?.user?._id ? "60%" : "0%"
                     }`,
                   }}
                 >
-                  <p>{chat?.message}</p>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "500",
+                      padding: "7px 0",
+                    }}
+                  >
+                    {chat?.message}
+                  </p>
                   <p>{chat?.sender?.senderName}</p>
                   <p>{chat?.sender?.city}</p>
-                  <p>{chat?.createdAt}</p>
+                  <p>{Date(chat?.createdAt)}</p>
                 </div>
               ))}
             </div>
@@ -128,7 +136,7 @@ const Chat = () => {
                   border: "none",
                   outline: "none",
                   fontFamily: "poppins",
-                  fontSize: "20px",
+                  fontSize: "18px",
                   fontWeight: "460",
                   width: "90%",
                 }}

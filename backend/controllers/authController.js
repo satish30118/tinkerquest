@@ -39,9 +39,11 @@ const registerController = async(req, res) => {
                 success:true,
                 message:"User registered successfully",
                 userDetails:{
+                    _id,
                     name:newUser.name,
                     email:newUser.email,
                     phone:newUser.phone,
+                    city,
                     isAdmin:newUser.isAdmin,
                 },
                 token:token
@@ -100,9 +102,11 @@ const loginController = async(req, res)=>{
         res.status(201).send({
             success:true,
             userDetails:{
+                _id : user._id,
                 name:user.name,
                 email:user.email,
                 phone:user.phone,
+                city: user.city,
                 isAdmin:user.isAdmin,
             },
             token:token
