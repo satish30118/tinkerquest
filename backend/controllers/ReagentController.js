@@ -1,10 +1,9 @@
 const Reagent = require("../models/ReagentModel");
 
-
 //CREATING NEW  REAGENT;
 const CreateReagentController = async (req, res) => {
   try {
-    const {city, reagentName, reagentAmount } = req.body;
+    const { city, reagentName, reagentUnit, reagentAmount } = req.body;
 
     //CHECKING EXISTING REAGENT
     const reagentExist = await Reagent.findOne({ reagentName, city });
@@ -16,7 +15,12 @@ const CreateReagentController = async (req, res) => {
     }
 
     //CREATING NEW REAGENT
-    const reagent = await new Reagent({ city, reagentName, reagentAmount }).save();
+    const reagent = await new Reagent({
+      city,
+      reagentName,
+      reagentUnit,
+      reagentAmount,
+    }).save();
     if (reagent) {
       res.status(201).send({
         message: "Reagent Created Successfully",
@@ -33,14 +37,14 @@ const CreateReagentController = async (req, res) => {
   }
 };
 
-//UPDATING REAGENT AMOUNT 
+//UPDATING REAGENT AMOUNT
 const updateReagentController = async (req, res) => {
   try {
-    const {reagentAmount} = req.body;
+    const { reagentAmount } = req.body;
     const { id } = req.params;
-    const updatedReagent= await Reagent.findByIdAndUpdate(
+    const updatedReagent = await Reagent.findByIdAndUpdate(
       id,
-      { reagentAmount},
+      { reagentAmount },
       { new: true }
     );
 
@@ -59,14 +63,13 @@ const updateReagentController = async (req, res) => {
   }
 };
 
-
 //GET ALL REAGENTS
 const allReagentController = async (req, res) => {
   try {
     const reagents = await Reagent.find({});
     res.status(200).send({
       message: "ALL REAGENT LIST",
-       reagents,
+      reagents,
     });
   } catch (error) {
     console.log(`ERROR IN GETTING ALLREAGENTS ${error}`);
@@ -76,8 +79,6 @@ const allReagentController = async (req, res) => {
     });
   }
 };
-
-
 
 //DELETING REAGENTS
 const deleteReagentController = async (req, res) => {
@@ -97,9 +98,29 @@ const deleteReagentController = async (req, res) => {
   }
 };
 
+// SINGLE REAGENTS
+const singleReagentController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const reagent = await Reagent.findById({_id : id });
+    res.status(200).send({
+      success: true,
+      message: "Reagent get successfully",
+      reagent,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GET SINGLE REAGENT ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 module.exports = {
   CreateReagentController,
   updateReagentController,
   allReagentController,
   deleteReagentController,
+  singleReagentController,
 };

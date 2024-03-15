@@ -1,6 +1,6 @@
 const express = require("express");
 const { userVerification, adminVerification } = require("../middleware/authMiddleware");
-const { deleteReagentController, CreateReagentController, updateReagentController, allReagentController } = require("../controllers/ReagentController");
+const { deleteReagentController, CreateReagentController, updateReagentController, allReagentController, singleReagentController } = require("../controllers/ReagentController");
 
 
 const router = express.Router();
@@ -15,5 +15,6 @@ router.route("/get-all-reagent").get(userVerification, adminVerification,allReag
 
 router.route("/delete-reagent/:id").delete(userVerification, adminVerification, deleteReagentController)
 
+router.route("/get-single-reagent/:id").get(userVerification, adminVerification, singleReagentController)
 
 module.exports = router;

@@ -87,9 +87,9 @@ const Forecasting = () => {
               <div>
                 <select name="testName" id="" onChange={handleChange} >
                   <option value="">--Choose Test--</option>
-                  {test[index].map((item)=>(
+                  {/* {test[index].map((item)=>(
                       <option value={item}>{item}</option>
-                  ))}
+                  ))} */}
                   
                 </select>
               </div>

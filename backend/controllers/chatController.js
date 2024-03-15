@@ -9,7 +9,7 @@ const CreateChatController = async (req, res) => {
 
     //CREATING NEW CHAT
     const chat = await new Chat({message, sender }).save();
-    if (reagent) {
+    if (chat) {
       res.status(201).send({
         message: "message send Successfully",
         chat,

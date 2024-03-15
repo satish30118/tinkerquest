@@ -5,11 +5,12 @@ const chatSchema = new mongoose.Schema({
         type:String,
     },
     sender:{
+        senderId : String,
         senderName : String,
         city : String,
     }
 
-})
+},{timestamps:true})
 
 const Chat = new mongoose.model("Chat", chatSchema)
 

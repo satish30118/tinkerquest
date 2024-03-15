@@ -9,11 +9,15 @@ const reagentSchema = new mongoose.Schema({
         trim: true,
         required :true,
     },
+    reagentUnit:{
+        type:String,
+        trim : true
+    },
     reagentAmount :{
         type:Number,
     }
 
-})
+},{timestamps:true})
 
 const Reagent = new mongoose.model("Reagent", reagentSchema)
 
