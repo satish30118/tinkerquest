@@ -257,18 +257,45 @@ const getCategoryWiseCount = async (req, res) => {
 
 /* Month Wise */
 const getMonthsData = async (req, res) => {
+  const { city, monthNo, status } = req.params;
   const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
+  const currentMonth = new Date().getMonth() + parseFloat(monthNo);
+
+  console.log(typeof(monthNo));
   try {
-    const MonthsCount = await Booking.find({
-      $group:{
-        
-      },
-    }).count();
-    res.status(200).send({
-      message: `All booking details in monthwise`,
-      MonthsCount,
-    });
+    if (status == "overall") {
+      const MonthsCount = await Booking.find({
+        $expr: {
+          $and: [
+            { $eq: [{ $year: "$createdAt" }, currentYear] },
+            { $eq: [{ $month: "$createdAt" }, currentMonth] },
+          ],
+        },
+        city
+      }).count();
+
+      res.status(200).send({
+        message: `All booking details in monthwise`,
+        MonthsCount,
+      });
+      return;
+    } else {
+      const MonthsCount = await Booking.find({
+        $expr: {
+          $and: [
+            { $eq: [{ $year: "$createdAt" }, currentYear] },
+            { $eq: [{ $month: "$createdAt" }, currentMonth] },
+          ],
+        },
+        city, status
+      }).count();
+
+      res.status(200).send({
+        message: `All booking details in monthwise`,
+        MonthsCount,
+      });
+      return;
+    }
   } catch (error) {
     console.log(`ERROR IN GETTING categoryy wise counting ${error}`);
     res.status(500).send({
