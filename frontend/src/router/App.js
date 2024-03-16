@@ -28,6 +28,7 @@ import Forecasting from "../app/adminPanel/pages/forecasting/Forecasting.jsx";
 import MachineReport from "../app/adminPanel/pages/machine/MachineReport.jsx";
 import Reagent from "../app/adminPanel/pages/reagent/Reagent.jsx";
 import Chat from "../app/adminPanel/pages/chat/Chat.jsx";
+import OrderReport from "../app/adminPanel/pages/order/OrderReport.jsx";
 
 function App() {
   return (
@@ -102,6 +103,10 @@ function App() {
           <Route
             path="admin/reagent-report"
             element={<Reagent/>}
+          ></Route>
+           <Route
+            path="admin/inventory-order-details"
+            element={<OrderReport/>}
           ></Route>
           <Route
             path="admin/chat"

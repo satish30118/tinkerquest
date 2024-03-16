@@ -94,8 +94,9 @@ const AdminMenu = () => {
           <NavLink to={"/dashboard/admin/machine-report"}>
             Machine Details
           </NavLink>
+          <NavLink to={"/dashboard/admin/inventory-order-details"}>Inventory Order Tracking</NavLink>
           <NavLink to={"/dashboard/admin/chat"}>Chat</NavLink>
-          <NavLink to={"/dashboard/admin/user"}>User</NavLink>
+          <NavLink to={"/dashboard/admin/users"}>Manage User</NavLink>
         </div>
       </Drawer>
     </>

@@ -5,10 +5,12 @@ import { useAuth } from "../../../../contextAPI/authContext";
 import axios from "axios";
 import "./chat.css";
 
+
 const Chat = () => {
   const [auth] = useAuth();
   const [message, setMessage] = useState("");
   const [allChat, setAllChat] = useState([]);
+  const [users, setUsers] = useState();
 
   const sender = {
     senderId: auth?.user?._id,
@@ -16,6 +18,12 @@ const Chat = () => {
     city: auth?.user?.city,
   };
 
+ const checkEnter = (e) =>{
+  // console.log(e.key)
+  if (e.key=== "Enter") {  
+    sendMessage(e);
+}
+ }
   // SENDING NEW MESSAGE //
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -52,7 +60,6 @@ const Chat = () => {
     }
   };
 
-  const [users, setUsers] = useState();
 
   /* TOTAL USER */
   const getTotalUsers = async () => {
@@ -89,61 +96,15 @@ const Chat = () => {
               className="chat-member"
               style={{ width: "30%", height: "70vh", overflow: "auto" }}
             >
-              <div className="member-card">
-                <h3>Dr. Aditya Kumar</h3>
+              {users?.map((u)=>(
+                <div className="member-card">
+                <h3>{u?.name}</h3>
                 <p>
-                  <i class="fa-solid fa-user"></i> Lab Incharge
+                  <i class="fa-solid fa-user"></i> {u?.isAdmin ? "Admin" : "Lab Associate"}
                 </p>
               </div>
-
-              <div className="member-card">
-                <h3>Dr. Chand</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> Lab Incharge
-                </p>
-              </div>
-
-              <div className="member-card">
-                <h3>Dr. Pragyan Prial</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> Lab Incharge
-                </p>
-              </div>
-
-              <div className="member-card">
-                <h3>Dr. Koushik Kumar</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> Lab Incharge
-                </p>
-              </div>
-
-              <div className="member-card">
-                <h3>Dr. Priyankshu Singh</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> Lab Incharge
-                </p>
-              </div>
-
-              <div className="member-card">
-                <h3>Dr. Aditya Kumar</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> Lab Incharge
-                </p>
-              </div>
-
-              <div className="member-card">
-                <h3>Dr. Aditya Kumar</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> Lab Incharge
-                </p>
-              </div>
-
-              <div className="member-card">
-                <h3>Dr. Satish Kumar</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> Associate
-                </p>
-              </div>
+              ))}
+                            
             </div>
 
             <div
@@ -241,7 +202,8 @@ const Chat = () => {
                   }}
                   placeholder="Message Here"
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={(e) => {setMessage(e.target.value)}}
+                  onKeyDown={checkEnter}
                 />
                 <i
                   class="fa-solid fa-paper-plane"
@@ -252,7 +214,8 @@ const Chat = () => {
                     color: "blue",
                     width: "10%",
                   }}
-                  onClick={sendMessage}
+                  id="m-btn"
+                  onClick={sendMessage} 
                 ></i>
               </div>
             </div>

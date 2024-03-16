@@ -17,3 +17,9 @@
     /* margin-top: 10px; */
     /* padding-left: 20px; */
 }
+
+/* Hiding scroll bar */
+
+::-webkit-scrollbar {
+    display: none;
+  }
