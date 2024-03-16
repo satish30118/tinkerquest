@@ -95,7 +95,7 @@ router.get(
 );
   /* MONTH WISE DEATAILS */ 
   router.get(
-    "/get-all-booking/month",
+    "/month/:city/:monthNo/:status",
     userVerification,
     adminVerification,
     getMonthsData,

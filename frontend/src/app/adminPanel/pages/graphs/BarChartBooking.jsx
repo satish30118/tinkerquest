@@ -1,11 +1,11 @@
-import * as React from "react";
-import { BarChart } from "@mui/x-charts/BarChart";
 import axios from "axios";
+import React, { useState } from "react";
+import Chart from "react-apexcharts";
 
-const BarChartMonthly = ({ city }) => {
-  const [currMonthData, setCurrMonthData] = React.useState({});
-  const [preMonthData, setPreMonthData] = React.useState({});
-  const [preToMonthData, setPreToMonthData] = React.useState({});
+const BarChartBooking = ({ city }) => {
+  const [currMonthData, setCurrMonthData] = useState([]);
+  const [preMonthData, setPreMonthData] = useState([]);
+  const [PreToMonthData, setPreToMonthData] = useState([]);
 
   /*BOOKING  Month Overall Details*/
   const bookingCurrMonth = async () => {
@@ -70,39 +70,7 @@ const BarChartMonthly = ({ city }) => {
     }
   };
 
-  const currMonth = new Date().getMonth();
-  const months = ["Jan", "Feb", "March", "April", "May"];
-
-  const tData = [currMonthData.overall, currMonthData.completed];
-  const cData = [preMonthData];
-  const pData = [preToMonthData];
-
-  const xLabels = [
-    months[currMonth - 2],
-    months[currMonth - 1],
-    months[currMonth],
-  ];
-
-  React.useEffect(() => {
-    bookingCurrMonth();
-    bookingPreMonth();
-    bookingPreToMonth();
-  }, []);
-  return (
-    <>
-      <BarChart
-        width={600}
-        height={300}
-        series={[
-          { data: tData, label: "Test Booked", id: "tId" },
-          { data: cData, label: "Test Completed", id: "cId" },
-          { data: pData, label: "Test Pending", id: "pId" },
-        ]}
-        xAxis={[{ data: xLabels, scaleType: "band" }]}
-      />
-      <div></div>
-    </>
-  );
+  return <></>;
 };
 
-export default BarChartMonthly;
+export default BarChartBooking;
