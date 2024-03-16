@@ -10,7 +10,7 @@ import UserDashboard from "../app/Components/dashboard/UserDashboard";
 import UserRoute from "../app/auth/privateRoutes/UserRoute";
 import AdminDashboard from "../app/adminPanel/AdminDashboard";
 import AdminRoute from "../app/adminPanel/privateRoute/AdminRoute";
-import Users from "../app/adminPanel/pages/Users";
+import Users from "../app/adminPanel/pages/user/Users";
 import OverallInventory from "../app/adminPanel/pages/overallInventory/OverallInventory";
 import LocationwiseInventory from "../app/adminPanel/pages/locationwiseInventory/LocationwiseInventory";
 import TotalBooking from "../app/adminPanel/pages/overallInventory/TotalBooking";
@@ -107,7 +107,6 @@ function App() {
             path="admin/chat"
             element={<Chat/>}
           ></Route>
-         
           <Route path="admin/users" element={<Users />}></Route>
         </Route>
         <Route path="*" element={<ErrorPage />}></Route>

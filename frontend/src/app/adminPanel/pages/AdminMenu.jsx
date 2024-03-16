@@ -61,16 +61,28 @@ const AdminMenu = () => {
           </div>
 
           <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>
-            Overall Report
+            Overall Booking Report
           </NavLink>
 
           <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>
-            Location Wise Report
+            Location Wise Booking Report
           </NavLink>
 
           <NavLink to={"/dashboard/admin/new-test-booking"}>Book Test</NavLink>
           <NavLink to={"/dashboard/admin/add-new-test-method"}>
             Add New Test Method
+          </NavLink>
+          <NavLink to={"/dashboard/admin/reagent-report"}>
+            Reagents Deatails
+          </NavLink>
+          <NavLink to={"/dashboard/admin/machine-report"}>
+            Machine Details
+          </NavLink>
+          <NavLink to={"/dashboard/admin/chat"}>
+            Chat
+          </NavLink>
+          <NavLink to={"/dashboard/admin/user"}>
+            User
           </NavLink>
         </div>
       </Drawer>

@@ -4,6 +4,8 @@ const {
   loginController,
   testController,
   forgotPasswordController,
+  getAllUser,
+  updateUser,
 } = require("../controllers/authController");
 const {
   userVerification,
@@ -17,6 +19,8 @@ const router = express.Router();
 router.post("/register", registerController);
 router.post("/login", loginController);
 router.get("/test", userVerification, adminVerification, testController);
+router.get("/get-all-user", userVerification,  getAllUser);
+router.put("/update-user", userVerification,adminVerification, updateUser );
 router.route("/forgot-password").post(forgotPasswordController)
 
 //PROTECTED ROUTE FOR USER
