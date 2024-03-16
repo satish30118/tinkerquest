@@ -172,7 +172,7 @@ const testController = (req,res)=>{
 /* GET ALL USER DETAILS */
 const getAllUser = async (req, res) => {
     try {
-      const allUser = await User.find({}).sort({ name: 1 });
+      const allUser = await userModel.find({}, {projection: { password:0, answer : 0}}).sort({ name: 1 });
       res.status(200).send({
         message: "All User details",
         allUser,
@@ -192,7 +192,7 @@ const updateUser = async (req, res) => {
       const { name, gender, age, mobile, testName, testMtd, testDate, status } =
         req.body;
       const { id } = req.params;
-      const updatedUser = await User.findByIdAndUpdate(
+      const updatedUser = await userModel.findByIdAndUpdate(
         id,
         { name, gender, age, mobile, testName, testMtd, testDate, status },
         { new: true }
