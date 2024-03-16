@@ -3,8 +3,7 @@ import Layout from "../../../layout/Layout";
 import AdminMenu from "../AdminMenu";
 import { useAuth } from "../../../../contextAPI/authContext";
 import axios from "axios";
-import './chat.css';
-
+import "./chat.css";
 
 const Chat = () => {
   const [auth] = useAuth();
@@ -53,8 +52,24 @@ const Chat = () => {
     }
   };
 
+  const [users, setUsers] = useState();
+
+  /* TOTAL USER */
+  const getTotalUsers = async () => {
+    try {
+      const { data } = await axios.get("/api/v1/auth/get-all-user");
+
+      if (data) {
+        setUsers(data?.allUser);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    getAllChat()
+    getTotalUsers();
+    getAllChat();
   }, []);
 
   return (
@@ -70,53 +85,72 @@ const Chat = () => {
             </h1>
           </div>
           <div style={{ display: "flex", paddingBottom: "30px" }}>
-            <div className="chat-member" style={{ width: "30%",height:"70vh" ,overflow:"auto"}}>
-
+            <div
+              className="chat-member"
+              style={{ width: "30%", height: "70vh", overflow: "auto" }}
+            >
               <div className="member-card">
                 <h3>Dr. Aditya Kumar</h3>
-                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+                <p>
+                  <i class="fa-solid fa-user"></i> Lab Incharge
+                </p>
               </div>
 
               <div className="member-card">
                 <h3>Dr. Chand</h3>
-                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+                <p>
+                  <i class="fa-solid fa-user"></i> Lab Incharge
+                </p>
               </div>
 
               <div className="member-card">
                 <h3>Dr. Pragyan Prial</h3>
-                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+                <p>
+                  <i class="fa-solid fa-user"></i> Lab Incharge
+                </p>
               </div>
 
-              <div className="member-card" >
+              <div className="member-card">
                 <h3>Dr. Koushik Kumar</h3>
-                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+                <p>
+                  <i class="fa-solid fa-user"></i> Lab Incharge
+                </p>
               </div>
 
               <div className="member-card">
                 <h3>Dr. Priyankshu Singh</h3>
-                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+                <p>
+                  <i class="fa-solid fa-user"></i> Lab Incharge
+                </p>
               </div>
 
               <div className="member-card">
                 <h3>Dr. Aditya Kumar</h3>
-                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+                <p>
+                  <i class="fa-solid fa-user"></i> Lab Incharge
+                </p>
               </div>
 
-              <div className="member-card" >
+              <div className="member-card">
                 <h3>Dr. Aditya Kumar</h3>
-                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+                <p>
+                  <i class="fa-solid fa-user"></i> Lab Incharge
+                </p>
               </div>
 
               <div className="member-card">
                 <h3>Dr. Satish Kumar</h3>
-                <p><i class="fa-solid fa-user"></i> Associate</p>
+                <p>
+                  <i class="fa-solid fa-user"></i> Associate
+                </p>
               </div>
             </div>
 
             <div
               className="chat"
               style={{
-                backgroundImage: "url(https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=826&t=st=1710503052~exp=1710503652~hmac=b18f19bc27a389b93f7bb81e03bc9d5ddc4ce7330ab5412b5349c1c10a6137b9)",
+                backgroundImage:
+                  "url(https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=826&t=st=1710503052~exp=1710503652~hmac=b18f19bc27a389b93f7bb81e03bc9d5ddc4ce7330ab5412b5349c1c10a6137b9)",
                 width: "70%",
                 // border: "2px solid Blue",
 
@@ -142,7 +176,11 @@ const Chat = () => {
                     key={chat._id}
                     style={{
                       fontSize: "12px",
-                      background: `${chat?.sender?.senderId == auth?.user?._id ? "rgba(0, 0, 255,0.4)" : "rgba(12, 236, 15,0.6)"}`,
+                      background: `${
+                        chat?.sender?.senderId == auth?.user?._id
+                          ? "rgba(0, 0, 255,0.4)"
+                          : "rgba(12, 236, 15,0.6)"
+                      }`,
                       // backgroundColor:"rgba(255, 255, 255,0.2)",
                       borderRadius: "8px",
                       margin: "5px 0",
@@ -150,9 +188,14 @@ const Chat = () => {
                       color: "white",
                       // fontWeight:"600",
                       padding: "10px 20px",
-                      textAlign: `${chat?.sender?.senderId == auth?.user?._id ? "right" : "left"}`,
-                      marginLeft: `${chat?.sender?.senderId == auth?.user?._id ? "60%" : "0%"
-                        }`,
+                      textAlign: `${
+                        chat?.sender?.senderId == auth?.user?._id
+                          ? "right"
+                          : "left"
+                      }`,
+                      marginLeft: `${
+                        chat?.sender?.senderId == auth?.user?._id ? "60%" : "0%"
+                      }`,
                     }}
                   >
                     <p
@@ -160,13 +203,15 @@ const Chat = () => {
                         fontSize: "20px",
                         fontWeight: "500",
                         // padding: "7px 0",
-
                       }}
                     >
                       {chat?.message}
                     </p>
-                    <p><i class="fa-solid fa-user"></i> {chat?.sender?.senderName}</p>
-                    <p >{chat?.sender?.city}</p>
+                    <p>
+                      <i class="fa-solid fa-user"></i>{" "}
+                      {chat?.sender?.senderName}
+                    </p>
+                    <p>{chat?.sender?.city}</p>
                     {/* <p>{chat?.createdAt}</p> */}
                   </div>
                 ))}
@@ -193,7 +238,8 @@ const Chat = () => {
                     fontWeight: "460",
                     width: "50%",
                     // background:"red"
-                  }} placeholder="Message Here"
+                  }}
+                  placeholder="Message Here"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                 />

@@ -52,12 +52,30 @@ const AdminMenu = () => {
           <h1>Admin Panel</h1>
 
           <div className="admin-img">
-            <img src="https://previews.123rf.com/images/captainvector/captainvector1509/captainvector150900359/45343495-dentist.jpg" alt="" />
+            <img
+              src="https://previews.123rf.com/images/captainvector/captainvector1509/captainvector150900359/45343495-dentist.jpg"
+              alt=""
+            />
           </div>
 
-          <div className="admin-details" style={{fontWeight:"700", margin:"10px 0", textAlign:"center"}}>
-            <p><i class="fa-solid fa-circle-user" style={{marginRight:"3px"}}></i> {auth?.user?.name}</p>
-            <p><i class="fa-solid fa-envelope" style={{marginRight:"3px"}}></i> {auth?.user?.email}</p>
+          <div
+            className="admin-details"
+            style={{ fontWeight: "700", margin: "10px 0", textAlign: "center" }}
+          >
+            <p>
+              <i
+                class="fa-solid fa-circle-user"
+                style={{ marginRight: "3px" }}
+              ></i>{" "}
+              {auth?.user?.name}
+            </p>
+            <p>
+              <i
+                class="fa-solid fa-envelope"
+                style={{ marginRight: "3px" }}
+              ></i>{" "}
+              {auth?.user?.email}
+            </p>
           </div>
 
           <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>
@@ -67,8 +85,6 @@ const AdminMenu = () => {
           <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>
             Location Wise Booking Report
           </NavLink>
-
-          <NavLink to={"/dashboard/admin/new-test-booking"}>Book Test</NavLink>
           <NavLink to={"/dashboard/admin/add-new-test-method"}>
             Add New Test Method
           </NavLink>
@@ -78,12 +94,8 @@ const AdminMenu = () => {
           <NavLink to={"/dashboard/admin/machine-report"}>
             Machine Details
           </NavLink>
-          <NavLink to={"/dashboard/admin/chat"}>
-            Chat
-          </NavLink>
-          <NavLink to={"/dashboard/admin/user"}>
-            User
-          </NavLink>
+          <NavLink to={"/dashboard/admin/chat"}>Chat</NavLink>
+          <NavLink to={"/dashboard/admin/user"}>User</NavLink>
         </div>
       </Drawer>
     </>
