@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import "./machine.css"
 
 const AllMachine = () => {
   const [allMachine, setAllMachine] = useState([]);
@@ -27,9 +28,9 @@ const AllMachine = () => {
 
   return (
     <>
-      <div className="all-reagent">
+      <div className="all-machine">
         {allMachine?.map((item) => (
-          <div className="reagent-card" key={item?._id}>
+          <div className="machine-card" key={item?._id}>
             <p>{item?.machineName}</p>
             <p>{item?.testName}</p>
             <p>{item?.reagent?.map((reag)=>(
