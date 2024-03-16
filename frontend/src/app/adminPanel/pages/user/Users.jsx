@@ -3,10 +3,17 @@ import AdminMenu from "../AdminMenu";
 import Layout from "../../../layout/Layout";
 import "./user.css";
 import axios from "axios";
+import SliderButton from "../../../Animations/SliderButton";
+import { useAuth } from "../../../../contextAPI/authContext";
+import { toast } from "react-toastify";
 
 const Users = () => {
+
+  const [auth, setAuth] = useAuth();
   const [users, setUsers] = useState([]);
-  const [seletedId, setSelectedId] = useState("")
+  const [selectedId, setSelectedId] = useState("");
+  const [admin, setAdmin] = useState(false);
+
   /* TOTAL TEST OVERALL */
   const getTotalUsers = async () => {
     try {
@@ -24,9 +31,29 @@ const Users = () => {
     getTotalUsers();
   }, []);
 
-  const updateData = () => {
+  const handleAdmin = async (e) => {
+    e.preventDefault();
+    try {
+      
+      if(selectedId == auth?.user?._id){
+        toast.warn("You can't remove yourself")
+        return;
+      }
+      if (admin) {
+        const { data } = await axios.put(`/api/v1/auth/update-user/${selectedId}`, {
+          status: false,
+        });
+      } else {
+        const { data } = await axios.put(`/api/v1/auth/update-user/${selectedId}`, {
+          status: true,
+        });
+      }
+      getTotalUsers();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  }
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -52,22 +79,33 @@ const Users = () => {
                 </tr>
               </thead>
               <tbody>
-
-                <tr >
-                  <td>12565</td>
-                  <td>Dr. Burnol Kumar</td>
-                  <td>Lab Assistant</td>
-                  <td>Kolkata</td>
-                  <td><button className="btn">Make Admin</button></td>
-                  
-              </tr>
-
-            </tbody>
-          </table>
+                {users?.map((u) => (
+                  <tr key={u?._id} style={{ padding: "80px 0" }}>
+                    <td>{u?._id}</td>
+                    <td>{u?.name}</td>
+                    <td>{u?.isAdmin ? "Admin" : "Lab Associate"}</td>
+                    <td>{u?.city}</td>
+                    <td>
+                      <button
+                        className="btn"
+                        style={{ fontSize: "15px", background:`${u?.isAdmin ? "red" :"blue" }` }}
+                        onClick={handleAdmin}
+                        onMouseMove={() => {
+                          setSelectedId(u?._id);
+                          setAdmin(u?.isAdmin);
+                        }}
+                      >
+                        {u?.isAdmin ? "Remove Admin" : "Make Admin"}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-    </Layout >
+    </Layout>
   );
 };
 

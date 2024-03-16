@@ -20,7 +20,7 @@ router.post("/register", registerController);
 router.post("/login", loginController);
 router.get("/test", userVerification, adminVerification, testController);
 router.get("/get-all-user", userVerification,  getAllUser);
-router.put("/update-user", userVerification,adminVerification, updateUser );
+router.put("/update-user/:id", userVerification,adminVerification, updateUser );
 router.route("/forgot-password").post(forgotPasswordController)
 
 //PROTECTED ROUTE FOR USER
