@@ -3,6 +3,8 @@ import Layout from "../../../layout/Layout";
 import AdminMenu from "../AdminMenu";
 import { useAuth } from "../../../../contextAPI/authContext";
 import axios from "axios";
+import './chat.css';
+
 
 const Chat = () => {
   const [auth] = useAuth();
@@ -64,96 +66,149 @@ const Chat = () => {
         <div className="content">
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">
-              <u>Communicate with lab associates and admins</u>
+              <u>Message</u>
             </h1>
           </div>
-          <div
-            className="chat"
-            style={{
-              width: "85%",
-              border: "2px solid gray",
-              borderRadius: "6px",
-              margin: "10px auto",
-              height: "70vh",
-              position: "relative",
-              background: "lightgray",
-              padding: "20px",
-            }}
-          >
+          <div style={{ display: "flex", paddingBottom: "30px" }}>
+            <div className="chat-member" style={{ width: "30%",height:"70vh" ,overflow:"auto"}}>
+
+              <div className="member-card">
+                <h3>Dr. Aditya Kumar</h3>
+                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+              </div>
+
+              <div className="member-card">
+                <h3>Dr. Chand</h3>
+                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+              </div>
+
+              <div className="member-card">
+                <h3>Dr. Pragyan Prial</h3>
+                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+              </div>
+
+              <div className="member-card" >
+                <h3>Dr. Koushik Kumar</h3>
+                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+              </div>
+
+              <div className="member-card">
+                <h3>Dr. Priyankshu Singh</h3>
+                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+              </div>
+
+              <div className="member-card">
+                <h3>Dr. Aditya Kumar</h3>
+                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+              </div>
+
+              <div className="member-card" >
+                <h3>Dr. Aditya Kumar</h3>
+                <p><i class="fa-solid fa-user"></i> Lab Incharge</p>
+              </div>
+
+              <div className="member-card">
+                <h3>Dr. Satish Kumar</h3>
+                <p><i class="fa-solid fa-user"></i> Associate</p>
+              </div>
+            </div>
+
             <div
-              className="show-messages"
+              className="chat"
               style={{
-                height: "60vh",
-                overflow: "auto",
-                scrollBehavior: "smooth",
+                backgroundImage: "url(https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=826&t=st=1710503052~exp=1710503652~hmac=b18f19bc27a389b93f7bb81e03bc9d5ddc4ce7330ab5412b5349c1c10a6137b9)",
+                width: "70%",
+                // border: "2px solid Blue",
+
+                borderRadius: "9px",
+                margin: "3px auto",
+                height: "70vh",
+                position: "relative",
+                // background: "darkblue",
+                padding: "20px",
               }}
             >
-              {allChat?.map((chat) => (
-                <div
-                  key={chat._id}
-                  style={{
-                    fontSize: "13px",
-                    background: "gray",
-                    borderRadius: "8px",
-                    margin: "5px 0",
-                    width: "40%",
-                    padding: "10px 20px",
-                    // textAlign:`${chat?.sender?._id == auth?.user?._id ? "right" : "left"}`,
-                    marginLeft: `${
-                      chat?.sender?.senderId == auth?.user?._id ? "60%" : "0%"
-                    }`,
-                  }}
-                >
-                  <p
+              <div
+                className="show-messages"
+                style={{
+                  height: "60vh",
+                  overflow: "auto",
+                  scrollBehavior: "smooth",
+                  // background:"red"
+                }}
+              >
+                {allChat?.map((chat) => (
+                  <div
+                    key={chat._id}
                     style={{
-                      fontSize: "20px",
-                      fontWeight: "500",
-                      padding: "7px 0",
+                      fontSize: "12px",
+                      background: `${chat?.sender?.senderId == auth?.user?._id ? "rgba(0, 0, 255,0.4)" : "rgba(12, 236, 15,0.6)"}`,
+                      // backgroundColor:"rgba(255, 255, 255,0.2)",
+                      borderRadius: "8px",
+                      margin: "5px 0",
+                      width: "40%",
+                      color: "white",
+                      // fontWeight:"600",
+                      padding: "10px 20px",
+                      textAlign: `${chat?.sender?.senderId == auth?.user?._id ? "right" : "left"}`,
+                      marginLeft: `${chat?.sender?.senderId == auth?.user?._id ? "60%" : "0%"
+                        }`,
                     }}
                   >
-                    {chat?.message}
-                  </p>
-                  <p>{chat?.sender?.senderName}</p>
-                  <p>{chat?.sender?.city}</p>
-                  <p>{Date(chat?.createdAt)}</p>
-                </div>
-              ))}
-            </div>
-            <div
-              className="chat-message"
-              style={{
-                position: "absolute",
-                bottom: "0",
-                left: "0",
-                width: "100%",
-                background: "white",
-              }}
-            >
-              <input
-                type="text"
+                    <p
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "500",
+                        // padding: "7px 0",
+
+                      }}
+                    >
+                      {chat?.message}
+                    </p>
+                    <p><i class="fa-solid fa-user"></i> {chat?.sender?.senderName}</p>
+                    <p >{chat?.sender?.city}</p>
+                    {/* <p>{chat?.createdAt}</p> */}
+                  </div>
+                ))}
+              </div>
+              <div
+                className="chat-message"
                 style={{
-                  padding: "8px 10px",
-                  border: "none",
-                  outline: "none",
-                  fontFamily: "poppins",
-                  fontSize: "18px",
-                  fontWeight: "460",
-                  width: "90%",
+                  position: "absolute",
+                  bottom: "0",
+                  left: "0",
+                  width: "100%",
+                  background: "white",
                 }}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              />
-              <i
-                class="fa-solid fa-paper-plane"
-                style={{
-                  fontSize: "22px",
-                  cursor: "pointer",
-                  textAlign: "center",
-                  color: "blue",
-                  width: "10%",
-                }}
-                onClick={sendMessage}
-              ></i>
+              >
+                <input
+                  type="text"
+                  style={{
+                    padding: "8px 10px",
+                    // border: "3px solid black",
+                    borderRadius: "9px",
+                    outline: "none",
+                    fontFamily: "poppins",
+                    fontSize: "18px",
+                    fontWeight: "460",
+                    width: "50%",
+                    // background:"red"
+                  }} placeholder="Message Here"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <i
+                  class="fa-solid fa-paper-plane"
+                  style={{
+                    fontSize: "22px",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    color: "blue",
+                    width: "10%",
+                  }}
+                  onClick={sendMessage}
+                ></i>
+              </div>
             </div>
           </div>
         </div>

@@ -56,3 +56,21 @@
     background-color: rgb(30, 30, 100);
     margin: 0 auto;
 }
+
+
+/* STYLE FOR ALL MACHINE CARD */
+
+.all-machine{
+    border:6px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.machine-card{
+    /* border: 3px solid red; */
+    margin: 20px 5px;
+    color: aliceblue;
+    font-size: 20px;
+    /* text-align: center; */
+}
