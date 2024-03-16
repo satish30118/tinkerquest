@@ -9,6 +9,7 @@ const testRoutes = require("./router/testRoute");
 const machineRoutes = require("./router/machineRoute");
 const reagentRoutes = require("./router/reagentRoute");
 const chatRoutes = require("./router/chatRoute");
+const orderRoutes = require("./router/orderRoute");
 
 const bodyParser = require("body-parser");
 
@@ -36,6 +37,7 @@ app.use("/api/v1/test", testRoutes);
 app.use("/api/v1/machine", machineRoutes);
 app.use("/api/v1/reagent", reagentRoutes);
 app.use("/api/v1/chat", chatRoutes);
+app.use("/api/v1/order", orderRoutes);
 
 //REST API
 app.get("/", (req, res) => {

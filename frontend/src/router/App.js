@@ -101,11 +101,11 @@ function App() {
             element={<MachineReport/>}
           ></Route>
           <Route
-            path="admin/reagent-report"
+            path="admin/inventory-report-and-analysis"
             element={<Reagent/>}
           ></Route>
            <Route
-            path="admin/inventory-order-details"
+            path="admin/inventory-order-tracking"
             element={<OrderReport/>}
           ></Route>
           <Route

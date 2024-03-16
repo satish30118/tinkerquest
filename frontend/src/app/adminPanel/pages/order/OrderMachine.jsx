@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../../contextAPI/authContext";
 
-const OrderMachine = ({popUp}) => {
+const OrderMachine = ({ popUp }) => {
   const [auth] = useAuth();
   const [city, setCity] = useState(auth?.user?.city);
   const [test, setTest] = useState([]);
@@ -48,16 +48,12 @@ const OrderMachine = ({popUp}) => {
   const handleData = async (e) => {
     e.preventDefault();
 
-    const {
-      machineName,
-      machineOrder,
-      testLimit,
-      testCategory,
-      testName,
-    } = data;
+    const { machineName, machineUnitOrder,machineCost, testLimit, testCategory, testName } =
+      data;
     if (
       !machineName ||
-      !machineOrder ||
+      !machineUnitOrder ||
+      !machineCost ||
       !testLimit ||
       !testCategory ||
       !testName ||
@@ -67,10 +63,11 @@ const OrderMachine = ({popUp}) => {
       return;
     }
     try {
-      const { data } = await axios.post(`/api/v1/machine/create-machine`, {
+      const { data } = await axios.post(`/api/v1/order/order-machine`, {
         city,
         machineName,
-        machineOrder,
+        machineUnitOrder,
+        machineCost,
         testLimit,
         testCategory,
         testName,
@@ -81,13 +78,14 @@ const OrderMachine = ({popUp}) => {
         toast.success(data?.message);
         setData({
           machineName: "",
-          machineOrder: "",
+          machineUnitOrder: "",
+          machineCost:"",
           testLimit: "",
           testCategory: "",
           testName: "",
         });
         setReagent([]);
-        popUp(false)
+        popUp(false);
         return;
       }
 
@@ -112,7 +110,6 @@ const OrderMachine = ({popUp}) => {
   return (
     <>
       <div className="new-order-details">
-        
         <h1 className="i-heading">Ordered Machine Details</h1>
         <form action="">
           <div className="location">
@@ -122,7 +119,7 @@ const OrderMachine = ({popUp}) => {
               }}
               value={city}
             >
-              <option value="">--- Choose City ---</option>
+              <option value="">--- Choose Lab Location ---</option>
               <option value="Noida">Noida</option>
               <option value="Mumbai">Mumbai</option>
               <option value="Dehradun">Dehradun</option>
@@ -140,7 +137,7 @@ const OrderMachine = ({popUp}) => {
               type="text"
               placeholder="Enter Machine Name"
               name="machineName"
-              value={data.machineNane}
+              value={data.machineName}
               onChange={handleChange}
             />
           </div>
@@ -149,15 +146,24 @@ const OrderMachine = ({popUp}) => {
             <input
               type="number"
               placeholder="No of Units Ordered"
-              name="machineOrder"
-              value={data.machineOrder}
+              name="machineUnitOrder"
+              value={data.machineUnitOrder}
               onChange={handleChange}
             />
           </div>
           <div>
             <input
               type="number"
-              placeholder="No of Test can perform per day"
+              placeholder="Cost per Machine"
+              name="machineCost"
+              value={data.machineCost}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <input
+              type="number"
+              placeholder="Test Limit per"
               name="testLimit"
               value={data.testLimit}
               onChange={handleChange}
@@ -195,7 +201,7 @@ const OrderMachine = ({popUp}) => {
           </div>
 
           <div className="reagent-detail">
-            <div style={{margin:"0", padding:"0"}}>
+            <div style={{ margin: "0", padding: "0" }}>
               <div>
                 <span>If Reagent Required to Work? </span>
                 <button
@@ -211,8 +217,7 @@ const OrderMachine = ({popUp}) => {
                   {showReagentDetails ? "Add More" : "Add Details"}
                 </button>
               </div>
-              <div className="added-reagent">
-              </div>
+              <div className="added-reagent"></div>
             </div>
 
             <div
@@ -267,11 +272,13 @@ const OrderMachine = ({popUp}) => {
           <button
             className="btn"
             onClick={handleData}
-            style={{ width: "350px", marginRight: "30px", background:"blue" }}
+            style={{ width: "350px", marginRight: "30px", background: "blue" }}
           >
             Order Machine
           </button>
-          <button className="btn" onClick={()=> popUp(false)}>Cancel</button>
+          <button className="btn" onClick={() => popUp(false)}>
+            Cancel
+          </button>
         </div>
       </div>
     </>

@@ -113,13 +113,12 @@ const Chat = () => {
                 backgroundImage:
                   "url(https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=826&t=st=1710503052~exp=1710503652~hmac=b18f19bc27a389b93f7bb81e03bc9d5ddc4ce7330ab5412b5349c1c10a6137b9)",
                 width: "70%",
-                // border: "2px solid Blue",
-
                 borderRadius: "9px",
+                // backgroundRepeat:"no-repeat",
+                // backgroundSize:"cover",
                 margin: "3px auto",
                 height: "70vh",
                 position: "relative",
-                // background: "darkblue",
                 padding: "20px",
               }}
             >
@@ -213,6 +212,8 @@ const Chat = () => {
                     textAlign: "center",
                     color: "blue",
                     width: "10%",
+                    position:"relative",
+                    left:"-8%"
                   }}
                   id="m-btn"
                   onClick={sendMessage} 
