@@ -167,4 +167,51 @@ const forgotPasswordController = async(req,res) =>{
 const testController = (req,res)=>{
     res.send("middleware")
 }
-module.exports = {registerController, loginController,testController,forgotPasswordController}
+
+
+/* GET ALL USER DETAILS */
+const getAllUser = async (req, res) => {
+    try {
+      const allUser = await User.find({}).sort({ name: 1 });
+      res.status(200).send({
+        message: "All User details",
+        allUser,
+      });
+    } catch (error) {
+      console.log(`ERROR IN GETTING ALL USER ${error}`);
+      res.status(500).send({
+        success: false,
+        message: "Server Problem, Please try again!",
+      });
+    }
+  };
+
+/* Booking Update*/
+const updateUser = async (req, res) => {
+    try {
+      const { name, gender, age, mobile, testName, testMtd, testDate, status } =
+        req.body;
+      const { id } = req.params;
+      const updatedUser = await User.findByIdAndUpdate(
+        id,
+        { name, gender, age, mobile, testName, testMtd, testDate, status },
+        { new: true }
+      );
+  
+      if (updatedUser) {
+        res.status(200).send({
+          message: " updated Successfully",
+          updatedUser,
+        });
+      }
+    } catch (error) {
+      console.log(`ERROR IN update booking ${error}`);
+      res.status(500).send({
+        success: false,
+        message: "Server Problem, Please try again!",
+      });
+    }
+  };
+  
+
+module.exports = {registerController, loginController,testController,forgotPasswordController, getAllUser, updateUser}
