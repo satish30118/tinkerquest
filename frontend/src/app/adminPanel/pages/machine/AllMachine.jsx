@@ -29,38 +29,40 @@ const AllMachine = () => {
   return (
     <>
       <div className="all-machine">
-        {allMachine?.map((item) => (
-          <div className="machine-card" key={item?._id}>
-            <p>{item?.machineName}</p>
-            <p>{item?.testName}</p>
-            <p>{item?.reagent?.map((reag)=>(
-                <div key={reag?._id}>
-                    <p>{reag?.reagentName}</p>
-                    <p>{reag?.reqPerTest} {reag?.reagentUnit}</p>
-                </div>
-            ))}</p>
-            <div>
-              <button
-                className="btn"
-                onClick={(e) => {
-                  setSelectedId(item?._id);
-                  setUpdatePopUp(true);
-                }}
-              >
-                Update Amount
-              </button>
-              <button
-                className="btn"
-                onClick={(e) => {
-                  setSelectedId(item?._id);
-                  setdeletePopUp(true);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
+        <div className="tb-user-details">
+          <table
+            // border={"4px solid gray"}
+            style={{ borderCollapse: "collapse" }}
+          >
+            <tr>
+              <th>Machine Name</th>
+
+              <th>Include test</th>
+              <th>Stock Req.</th>
+              <th>Ordered Quantity</th>
+              <th>Ordered Status</th>
+              <th>Manage</th>
+            </tr>
+            {allMachine?.map((item) => (
+              <>
+                <tr className="machine-card" key={item?._id}>
+                  <td>{item?.machineName}</td>
+                  <td>{item?.testName}</td>
+                  <td>{item?.machineUnit}</td>
+                  <td>6</td>
+                  <td>Shipped</td>
+                  <td><button>Manage</button></td>
+                </tr>
+                <tr>
+              <p>dfghj</p>
+              <p>fcgvhbjkjl</p>
+            </tr>
+              </>
+            ))}
+           
+          </table>
+        </div>
+
       </div>
     </>
   );
