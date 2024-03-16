@@ -84,7 +84,12 @@ const AdminMenu = () => {
           <NavLink to={"/dashboard/admin/inventory-report-and-analysis"}>
             Inventory Report and Analysis
           </NavLink>
-          <NavLink to={"/dashboard/admin/inventory-order-tracking"}>Inventory Order Tracking</NavLink>
+          <NavLink to={"/dashboard/admin/forecasting"}>
+            Forecasting
+          </NavLink>
+          <NavLink to={"/dashboard/admin/inventory-order-tracking"}>
+            Inventory Order Tracking
+          </NavLink>
           <NavLink to={"/dashboard/admin/add-new-test-method"}>
             Add New Test Method
           </NavLink>

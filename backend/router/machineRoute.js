@@ -10,7 +10,7 @@ router.route("/create-machine").post(userVerification, adminVerification,CreateM
 
 router.route("/update-machine/:id").put(userVerification, adminVerification, updateMachineController)
 
-router.route("/get-all-machine").get(userVerification, adminVerification,allMachineController)
+router.route("/get-all-machine").get(userVerification,allMachineController)
 
 router.route("/delete-machine/:id").delete(userVerification, adminVerification, deleteMachineController)
 
