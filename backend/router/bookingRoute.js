@@ -17,7 +17,8 @@ const {
   getCategoryWiseCount,
   getBookingBySearch,
   getSearchAutoComplete,
-  getMonthsData,
+  getMonthCityData,
+  getMonthOverallData,
 } = require("../controllers/bookingController");
 
 const router = express.Router();
@@ -85,11 +86,17 @@ router.get(
   userVerification,
   getCategoryWiseCount,
 );
-  /* MONTH WISE DEATAILS */ 
+  /* MONTH WISE DEATAILS With Location */ 
   router.get(
-    "/month/:city/:monthNo/:status",
+    "/month/:city/:monthNo",
     userVerification,
-    getMonthsData,
+    getMonthCityData,
+  );
+  /* MONTH WISE DEATAILS OVERALL*/ 
+  router.get(
+    "/month-overall/:monthNo",
+    userVerification,
+    getMonthOverallData,
   );
 
 /* SEACHING BOOKING */

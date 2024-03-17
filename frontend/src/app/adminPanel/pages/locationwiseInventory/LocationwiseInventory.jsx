@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import AdminMenu from "../AdminMenu";
-import Layout from "../../../layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import BarChartBooking from "../graphs/BarChartBooking";
-import BarChart from "../graphs/BarChart";
 
 const LocationwiseInventory = () => {
   const [city, setCity] = useState("");
@@ -58,115 +54,100 @@ const LocationwiseInventory = () => {
     setShowDetails(true);
   };
   return (
-    <Layout>
-      <div className="admin-dashboard">
-        <div className="menu">
-          <AdminMenu />
-        </div>
-        <div className="content">
-          <div className="dashboard-heading">
-            <h1 className="dashboard-heading">
-              <u>Location Wise Report</u>
-            </h1>
-          </div>
-          <div className="location">
-            <select
-              onChange={(e) => {
-                setCity(e.target.value);
-                setShowDetails(false);
-              }}
-            >
-              <option value="">--- Choose City ---</option>
-              <option value="Noida">1699021932207-Noida</option>
-              <option value="Mumbai">1699108688232-Mumbai</option>
-              <option value="Dehradun">1698935599382-Dehradun</option>
-              <option value="Roorkee">1698921148662-Roorkee</option>
-              <option value="Kolkata">1699281160794-Kolkata </option>
-              <option value="Pune">1699194762631-Pune</option>
-              <option value="Nagpur">1699007458706-Nagpur</option>
-              <option value="Lucknow">1699540301350-Lucknow</option>
-              <option value="Patna">1699166014219-Patna</option>
-            </select>
-
-            <button className="btn" onClick={handelData}>
-              Get Details
-            </button>
-          </div>
-
-          <div
-            className="overall-page"
-            style={{ display: `${showDetails ? "block" : "none"}` }}
+    <>
+      <div className="content">
+        <div className="location">
+          <select
+            onChange={(e) => {
+              setCity(e.target.value);
+              setShowDetails(false);
+            }}
           >
-            <h2 className="detail">
-              <u>Report of {city}</u>
-            </h2>
+            <option value="">--- Choose City ---</option>
+            <option value="Noida">1699021932207-Noida</option>
+            <option value="Mumbai">1699108688232-Mumbai</option>
+            <option value="Dehradun">1698935599382-Dehradun</option>
+            <option value="Roorkee">1698921148662-Roorkee</option>
+            <option value="Kolkata">1699281160794-Kolkata </option>
+            <option value="Pune">1699194762631-Pune</option>
+            <option value="Nagpur">1699007458706-Nagpur</option>
+            <option value="Lucknow">1699540301350-Lucknow</option>
+            <option value="Patna">1699166014219-Patna</option>
+          </select>
 
-            <div className="overall-page">
-              <div className="overall">
-                <h2 style={{ background: "rgb(12, 76, 186)" }}>
-                  <u>Total Test Appointment</u>
-                </h2>
-                <p className="i-num">{totalBooking?.length}</p>
-                <button
-                  className="btn i-btn"
-                  onClick={() => {
-                    navigate(
-                      `/dashboard/admin/location-wise-inventory-details/total-booking/${city}`
-                    );
-                  }}
-                >
-                  See details
-                </button>
-              </div>
+          <button className="btn" onClick={handelData}>
+            Get Details
+          </button>
+        </div>
 
-              <div className="overall">
-                <h2 style={{ background: "rgb(35, 207, 29)" }}>
-                  Appointment Completed
-                </h2>
-                <p className="i-num">{testCompleted?.length}</p>
-                <button
-                  className="btn i-btn"
-                  onClick={() => {
-                    navigate(
-                      `/dashboard/admin/location-wise-inventory-details/total-booking-completed/${city}`
-                    );
-                  }}
-                >
-                  See details
-                </button>
-              </div>
+        <div
+          className="overall-page"
+          style={{ display: `${showDetails ? "block" : "none"}` }}
+        >
+          <h2 className="detail">
+            <u>Report of {city}</u>
+          </h2>
 
-              <div className="overall">
-                <h2 style={{ background: "rgb(233, 105, 26)" }}>
-                  Pending Appointment
-                </h2>
-                <p className="i-num">
-                  {totalBooking?.length - testCompleted?.length}
-                </p>
-                <button
-                  className="btn i-btn"
-                  onClick={() => {
-                    navigate(
-                      `/dashboard/admin/location-wise-inventory-details/total-booking-pending/${city}`
-                    );
-                  }}
-                >
-                  See details
-                </button>
-              </div>
+          <div className="overall-page">
+            <div className="overall">
+              <h2 style={{ background: "rgb(12, 76, 186)" }}>
+                <u>Total Test Appointment</u>
+              </h2>
+              <p className="i-num">{totalBooking?.length}</p>
+              <button
+                className="btn i-btn"
+                onClick={() => {
+                  navigate(
+                    `/dashboard/admin/location-wise-inventory-details/total-booking/${city}`
+                  );
+                }}
+              >
+                See details
+              </button>
             </div>
-            <div className="graphs">
-              <div>
-                <BarChart />
-              </div>
-              <div>
-                <BarChartBooking city={city} />
-              </div>
+
+            <div className="overall">
+              <h2 style={{ background: "rgb(35, 207, 29)" }}>
+                Appointment Completed
+              </h2>
+              <p className="i-num">{testCompleted?.length}</p>
+              <button
+                className="btn i-btn"
+                onClick={() => {
+                  navigate(
+                    `/dashboard/admin/location-wise-inventory-details/total-booking-completed/${city}`
+                  );
+                }}
+              >
+                See details
+              </button>
             </div>
+
+            <div className="overall">
+              <h2 style={{ background: "rgb(233, 105, 26)" }}>
+                Pending Appointment
+              </h2>
+              <p className="i-num">
+                {totalBooking?.length - testCompleted?.length}
+              </p>
+              <button
+                className="btn i-btn"
+                onClick={() => {
+                  navigate(
+                    `/dashboard/admin/location-wise-inventory-details/total-booking-pending/${city}`
+                  );
+                }}
+              >
+                See details
+              </button>
+            </div>
+          </div>
+          <div className="graphs">
+            
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

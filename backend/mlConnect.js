@@ -10,7 +10,7 @@ const mlConnect = async (req, res) => {
       "./ml_file/main.py",
      test,
       `${y}-${m}-${d}`,
-     10
+     number
     ]);
 
     var sendData;
