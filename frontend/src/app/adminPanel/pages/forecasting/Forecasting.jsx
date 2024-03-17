@@ -5,7 +5,6 @@ import AdminMenu from "../AdminMenu";
 import "./forecasting.css"
 import axios from "axios";
 import { toast } from "react-toastify";
-import UIBar from "../graphs/UIBar";
 
 const Forecasting = () => {
   const [index, setIndex] = useState();
@@ -66,7 +65,7 @@ const Forecasting = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        `/api/v1/predict`, {test:"BC", Number: 4}
+        `/api/v1/predict`, {test:"CP", number: 10}
       );
       if (data) {
         setPredictedData(data?.prediction);
@@ -124,15 +123,8 @@ const Forecasting = () => {
                 </button>
 
               </div>
-
-
-            </form>
-            <div className="forecast-result">
-              <UIBar/>
-            </div>
+            </form>   
           </div>
-
-
         </div>
       </div>
     </Layout>

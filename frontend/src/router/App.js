@@ -94,26 +94,18 @@ function App() {
 
         {/* // ADMIN DASHBOARD // */}
         <Route exact path="/dashboard" element={<AdminRoute />}>
-          <Route path="admin" element={<AdminDashboard />}></Route>
+          <Route exact path="admin" element={<AdminDashboard />}></Route>
           <Route
-            path="admin/overall-inventory-details"
-            element={<OverallInventory />}
-          ></Route>
-          <Route
-            path="admin/overall-inventory-details/total-booking"
+           exact path="admin/overall-inventory-details/total-booking"
             element={<TotalBooking />}
           ></Route>
           <Route
-            path="admin/overall-inventory-details/total-booking-completed"
+           exact path="admin/overall-inventory-details/total-booking-completed"
             element={<TotalCompleted />}
           ></Route>
           <Route
-            path="admin/overall-inventory-details/total-booking-pending"
+           exact path="admin/overall-inventory-details/total-booking-pending"
             element={<TotalPending />}
-          ></Route>
-          <Route
-            path="admin/location-wise-inventory-details"
-            element={<LocationwiseInventory />}
           ></Route>
           <Route
             path="admin/location-wise-inventory-details/total-booking/:city"
@@ -128,20 +120,20 @@ function App() {
             element={<LocationWiseTotalPending />}
           ></Route>
           <Route
-            path="admin/add-new-test-method"
+           exact path="admin/add-new-test-method"
             element={<NewTestMethod />}
           ></Route>
-          <Route path="admin/forecasting" element={<Forecasting />}></Route>
+          <Route exact path="admin/forecasting" element={<Forecasting />}></Route>
           <Route
-            path="admin/inventory-report-and-analysis"
+           exact path="admin/inventory-report-and-analysis"
             element={<InventoryReport />}
           ></Route>
           <Route
-            path="admin/inventory-order-tracking"
+           exact path="admin/inventory-order-tracking"
             element={<OrderReport />}
           ></Route>
-          <Route path="admin/chat" element={<Chat />}></Route>
-          <Route path="admin/users" element={<Users />}></Route>
+          <Route exact path="admin/chat" element={<Chat />}></Route>
+          <Route exact path="admin/users" element={<Users />}></Route>
         </Route>
         <Route path="*" element={<ErrorPage />}></Route>
       </Routes>
