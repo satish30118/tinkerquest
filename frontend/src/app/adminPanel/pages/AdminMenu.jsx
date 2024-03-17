@@ -79,7 +79,7 @@ const AdminMenu = () => {
           </div>
 
           <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>
-            Overall Booking Report
+          Inventory dashboard
           </NavLink>
 
           <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>

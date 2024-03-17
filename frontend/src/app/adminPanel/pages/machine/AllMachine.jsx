@@ -54,8 +54,8 @@ const AllMachine = () => {
                   <td><button>Manage</button></td>
                 </tr>
                 <tr>
-              <p>dfghj</p>
-              <p>fcgvhbjkjl</p>
+                  <td>Reagent 1</td>
+              
             </tr>
               </>
             ))}
