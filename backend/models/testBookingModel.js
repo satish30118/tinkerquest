@@ -31,9 +31,6 @@ const BookingModel = new mongoose.Schema(
     city: {
       type: String,
     },
-    collectionDate: {
-      type: String,
-    },
 
     status: {
       type: String,

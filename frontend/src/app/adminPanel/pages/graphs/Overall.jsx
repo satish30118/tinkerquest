@@ -1,24 +1,28 @@
 import * as React from "react";
 import Chart from "react-apexcharts";
 
-export default function Overall({ m1, m2, m3 }) {
+export default function Overall({ d1, d2,d3 }) {
     let state = {
         options: {
           chart: {
             id: "basic-bar"
           },
           xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+            categories: ["Last to Last Month", "Last Month", "This Month"]
           }
         },
         series: [
           {
-            name: "series-1",
-            data: [30, 40, 45, 50, 49, 60, 70, 91]
+            name: "Test Booked",
+            data: [d3[0], d2[0], d1[0]]
           },
           {
-            name: "series-2",
-            data: [3, 4, 5, 5, 4, 6, 70, 91]
+            name: "Test Completed",
+            data:[d3[1], d2[1], d1[1]]
+          },
+          {
+            name: "Test Pending",
+            data: [d3[2], d2[2], d1[2]]
           }
         ]
       };
