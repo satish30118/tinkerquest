@@ -3,11 +3,13 @@ import "../../admin.css";
 import Layout from "../../../layout/Layout";
 import AdminMenu from "../AdminMenu";
 import "./forecasting.css"
-import OverallCat from "../graphs/OverallCat";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Forecasting = () => {
   const [index, setIndex] = useState();
-  const [data, setData] = useState({})
+  const [data, setData] = useState({});
+  const [predictedData, setPredictedData] = useState()
   const test = [
     [
       "Lipid Profile",
@@ -58,9 +60,23 @@ const Forecasting = () => {
     }
   }
 
-  const handleData = () =>{
+   /* PREDICTING BOOKING */
+   const predict= async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `/api/v1/predict`, {test:"CP", number: 10}
+      );
+      if (data) {
+        setPredictedData(data?.prediction);
 
-  }
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong")
+    }
+  };
+
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -102,20 +118,13 @@ const Forecasting = () => {
                 <input type="date" name="finalDate" onChange={handleChange} />
               </div>
               <div>
-                <button className="btn" onClick={handleData}>
+                <button className="btn" onClick={predict}>
                   Forecast
                 </button>
 
               </div>
-
-
-            </form>
-            <div className="forecast-result">
-              <OverallCat/>
-            </div>
+            </form>   
           </div>
-
-
         </div>
       </div>
     </Layout>

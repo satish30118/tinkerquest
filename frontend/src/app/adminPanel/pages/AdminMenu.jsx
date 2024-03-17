@@ -77,25 +77,22 @@ const AdminMenu = () => {
               {auth?.user?.email}
             </p>
           </div>
-
-          <NavLink exact to={"/dashboard/admin/overall-inventory-details"}>
-          Inventory dashboard
+          <NavLink  to={"/dashboard/admin"}>
+            Inventory Dashboard
           </NavLink>
-
-          <NavLink to={"/dashboard/admin/location-wise-inventory-details"}>
-            Location Wise Booking Report
+          <NavLink  to={"/dashboard/admin/inventory-report-and-analysis"}>
+            Inventory Report and Analysis
           </NavLink>
-          <NavLink to={"/dashboard/admin/add-new-test-method"}>
+          <NavLink exact to={"/dashboard/admin/forecasting"}>
+            Forecasting
+          </NavLink>
+          <NavLink exact to={"/dashboard/admin/inventory-order-tracking"}>
+            Inventory Order Tracking
+          </NavLink>
+          <NavLink exact to={"/dashboard/admin/add-new-test-method"}>
             Add New Test Method
           </NavLink>
-          <NavLink to={"/dashboard/admin/reagent-report"}>
-            Reagents Deatails
-          </NavLink>
-          <NavLink to={"/dashboard/admin/machine-report"}>
-            Machine Details
-          </NavLink>
-          <NavLink to={"/dashboard/admin/inventory-order-details"}>Inventory Order Tracking</NavLink>
-          <NavLink to={"/dashboard/admin/chat"}>Chat</NavLink>
+          <NavLink exact to={"/dashboard/admin/chat"}>Chat</NavLink>
           <NavLink to={"/dashboard/admin/users"}>Manage User</NavLink>
         </div>
       </Drawer>

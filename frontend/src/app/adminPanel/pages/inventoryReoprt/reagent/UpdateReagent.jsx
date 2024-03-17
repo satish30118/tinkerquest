@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useAuth } from "../../../../contextAPI/authContext";
+import { useAuth } from "../../../../../contextAPI/authContext";
+
 
 const UpdateReagent = ({ id, setPopUp, callBack }) => {
   const [auth] = useAuth();
@@ -75,10 +76,10 @@ const UpdateReagent = ({ id, setPopUp, callBack }) => {
   return (
     <>
       <div
-        className="new-machine-details"
+        className="update-inven"
         style={{ width: "400px", background: "lightGray" }}
       >
-        <form action="">
+        <form >
           {/* <div className="add-reagent-details"> */}
           <div style={{ paddingBottom: "10px" }}>
             <span
@@ -97,7 +98,7 @@ const UpdateReagent = ({ id, setPopUp, callBack }) => {
               X
             </span>
           </div>
-          <div>
+          <div >
             <input
               type="text"
               placeholder="Enter Reagent Name"
@@ -120,8 +121,7 @@ const UpdateReagent = ({ id, setPopUp, callBack }) => {
             </select>
           </div>
 
-          <div className="reagent-detail">
-            <h3>Total Amount in the Lab</h3>
+          <div>
             <input
               type="number"
               placeholder="Enter Amount"

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../layout/Layout";
 import AdminMenu from "./pages/AdminMenu";
 import "./admin.css";
 import { useAuth } from "../../contextAPI/authContext";
+import LocationwiseInventory from "./pages/locationwiseInventory/LocationwiseInventory";
+import OverallInventory from "./pages/overallInventory/OverallInventory";
 
 const AdminDashboard = () => {
-  const [auth] = useAuth();
+  const [overall, setOverall] =useState(true)
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -14,30 +16,34 @@ const AdminDashboard = () => {
         </div>
         <div className="content">
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading"><u>Welcome to Admin Page</u></h1>
+            <h1 className="dashboard-heading">
+              <u>Welcome to Admin Page</u>
+            </h1>
           </div>
-          {/* <div
-            style={{
-              textAlign: "center",
-              fontWeight: "600",
-              marginTop: "130px",
-              fontSize:"22px"
-            }}
-          >
-            <p>Name:- {auth?.user?.name}</p>
-            <p>Email:- {auth?.user.email}</p>
-            <p>Phone:- {auth?.user.phone}</p>
 
-          </div> */}
-          <div className="admin-manage">
-            <div className="forecast">
-              <img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160283465/53589630-graph.jpg" alt="" />
-              <p>Inventory Forecasting </p>
-            </div>
-            <div className="management">
-              <img src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160227455/53072917-soccer-first-aid-kit.jpg" alt="" />
-              <p>Inventory Management</p>
-            </div>
+          <div className="order-btn">
+            <button
+              className="btn"
+              onClick={() => setOverall(true)}
+              style={{ background: `${overall ? "red" : "blue"}` }}
+            >
+              Overall Inventory Dashboard
+            </button>
+            <button
+              className="btn"
+              onClick={() => setOverall(false)}
+              style={{ background: `${overall ? "blue" : "red"}` }}
+            >
+              Locationwise Inventory Dashboard
+            </button>
+          </div>
+
+          <div style={{display:`${overall ? "block" : "none"}`}}>
+            <OverallInventory/>
+          </div>
+
+          <div style={{display:`${overall ? "none" : "block"}`}}>
+            <LocationwiseInventory/>
           </div>
         </div>
       </div>
