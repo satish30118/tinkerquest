@@ -5,7 +5,7 @@ const Machine = require("../models/machineModel");
 //CREATING NEW  MACHINE;
 const CreateMachineController = async (req, res) => {
   try {
-    const {city, machineName, machineUnit, testCategory, testName, reagent } = req.body;
+    const {city, machineName, machineStock,machineCost, testLimit, testCategory, testName, reagent } = req.body;
 
     //CHECKING EXISTING MACHINE
     const machineExist = await Machine.findOne({ machineName, city });
@@ -17,7 +17,7 @@ const CreateMachineController = async (req, res) => {
     }
 
     //CREATING NEW MACHINE
-    const machine = await new Machine({city, machineName, machineUnit, testCategory, testName, reagent }).save();
+    const machine = await new Machine({city, machineName, machineStock,machineCost, testLimit, testCategory, testName, reagent }).save();
     if (machine) {
       res.status(201).send({
         message: "Machine Created Successfully",
@@ -37,11 +37,11 @@ const CreateMachineController = async (req, res) => {
 //UPDATING MACHINE DETAILS
 const updateMachineController = async (req, res) => {
   try {
-    const {city, machineName, category, testName, reagent } = req.body;
+    const {city, machineName, machineStock,machineCost, testLimit, testCategory, testName, reagent} = req.body;
     const { id } = req.params;
     const updatedMachine= await Machine.findByIdAndUpdate(
       id,
-      { city, machineName, category, testName, reagent},
+      { city, machineName, machineStock,machineCost, testLimit, testCategory, testName, reagent},
       { new: true }
     );
 
@@ -64,7 +64,7 @@ const updateMachineController = async (req, res) => {
 //GET ALL MACHINES
 const allMachineController = async (req, res) => {
   try {
-    const machines = await Machine.find({});
+    const machines = await Machine.find({}).sort({city:1});
     res.status(200).send({
       message: "ALL MACHINE LIST",
        machines,

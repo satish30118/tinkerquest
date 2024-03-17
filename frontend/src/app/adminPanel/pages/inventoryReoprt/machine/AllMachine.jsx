@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "./machine.css"
 
 const AllMachine = () => {
   const [allMachine, setAllMachine] = useState([]);
@@ -28,41 +27,36 @@ const AllMachine = () => {
 
   return (
     <>
-      <div className="all-machine">
-        <div className="tb-user-details">
-          <table
-            // border={"4px solid gray"}
-            style={{ borderCollapse: "collapse" }}
-          >
-            <tr>
-              <th>Machine Name</th>
+      <div className="tb-user-details">
+        <table
+          // border={"4px solid gray"}
+          style={{ borderCollapse: "collapse" }}
+        >
+          <tr>
+            <th>City</th>
+            <th>Machine Name</th>
+            <th>Include test</th>
+            <th>No of Stock </th>
+            <th>Machine Cost</th>
+            <th>Test Limit</th>
+            <th>Stock Status</th>
 
-              <th>Include test</th>
-              <th>Stock Req.</th>
-              <th>Ordered Quantity</th>
-              <th>Ordered Status</th>
-              <th>Manage</th>
-            </tr>
-            {allMachine?.map((item) => (
-              <>
-                <tr className="machine-card" key={item?._id}>
-                  <td>{item?.machineName}</td>
-                  <td>{item?.testName}</td>
-                  <td>{item?.machineUnit}</td>
-                  <td>6</td>
-                  <td>Shipped</td>
-                  <td><button>Manage</button></td>
-                </tr>
-                <tr>
-              <p>dfghj</p>
-              <p>fcgvhbjkjl</p>
-            </tr>
-              </>
-            ))}
-           
-          </table>
-        </div>
-
+            <th></th>
+          </tr>
+          {allMachine?.map((item) => (
+            <>
+              <tr key={item?._id}>
+                <td>{item?.city}</td>
+                <td>{item?.machineName}</td>
+                <td>{item?.testName}</td>
+                <td>{item?.machineStock}</td>
+                <td>{item?.machineCost}</td>
+                <td>{item?.testLimit}</td>
+                <td>{}</td>
+              </tr>
+            </>
+          ))}
+        </table>
       </div>
     </>
   );
