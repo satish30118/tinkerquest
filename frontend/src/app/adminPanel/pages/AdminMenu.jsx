@@ -77,7 +77,6 @@ const AdminMenu = () => {
               {auth?.user?.email}
             </p>
           </div>
-
           <NavLink  to={"/dashboard/admin"}>
             Inventory Dashboard
           </NavLink>

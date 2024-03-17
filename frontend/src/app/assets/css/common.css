@@ -1,5 +1,5 @@
 .auth-row{
-    border:2.5px solid rgb(18, 73, 201);
+    border:2.5px solid rgb(255, 255, 255);
     border-radius: 7px;
     margin: 10px 0px;
     box-sizing: border-box;
@@ -14,9 +14,10 @@
     text-align: center;
     /* background-color: gray; */
     box-sizing: border-box;
-    color: lightgray;
+    color: rgb(255, 255, 255);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    
 }
 
 .auth-row ::placeholder{
@@ -24,7 +25,7 @@
 }
 .auth-row input{
     width: 87%;
-    height: 40px;
+    height: 60px;
     padding: 8px;
     box-sizing: border-box;
     font-size: 20px;
@@ -35,7 +36,7 @@
     /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: lightgray;
+    color: white;
     
 }
 .auth-row select{
@@ -52,14 +53,14 @@
 
 .auth-heading{
     text-align: center;
-    color: rgb(212, 12, 52);
+    color: rgb(255, 255, 255);
     font-size: 30px;
     font-family: "Poppins";
     padding-bottom: 10px;
     margin: 0;
 }
 .show-pass{
-    color: blue;
+    color: rgb(255, 255, 255);
     cursor: pointer;
     font-size: 17px;
     font-weight: 550;
@@ -69,7 +70,7 @@
 .btn{
     font-size: 18px;
     color: white;
-    background: rgb(212, 25, 25);
+    background: rgb(163, 7, 38);
     padding: 8px 12px;
     border: none;
     border-radius: 7px;
@@ -77,4 +78,8 @@
     font-family: "Poppins";
     text-align: center;
     margin: 6px;
+}
+.auth-row option
+{
+    color: black;
 }

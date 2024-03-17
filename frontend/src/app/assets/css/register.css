@@ -2,17 +2,25 @@
     width: 100%;
     z-index: -1000;
     box-sizing: border-box;
-    padding: 30px;
+    background-color: darkblue;
+    /* padding: 30px; */
+    
+    display: flex;
     /* background: linear-gradient(to right, blue,yellow, red, blue); */
 }
 .register-page .register-form{
     /* height: 400px; */
-    width: 370px;
+    width: 500px;
     box-sizing: border-box;
     padding: 20px;
-    background-color: gainsboro;
+    /* background-color: gainsboro; */
     margin: 0 auto;
     /* box-shadow: 0 0 6px 0.6px; */
     border-radius: 3px;
 
+}
+.auth-img
+{
+    height: 750px;
+    width: 900px;
 }

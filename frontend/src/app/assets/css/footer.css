@@ -1,7 +1,27 @@
 .footer-page{
     text-align: center;
-    height: 200px;
-    background-color: rgb(21, 69, 182);
+    height: 250px;
+    background-color: rgb(13, 42, 109);
     color: white;
     padding: 20px 0px;
+    display: flex;
+}
+.fp2
+{
+   margin-left: 40%;
+   font-size: 30px;
+   display: flex;
+}
+.fp2 div
+{
+    padding-left: 30px;
+}
+.fp1
+{
+    margin-left: 20%;
+    font-size: 17px;
+    padding-top: 10px;
+}
+.fp1 div{
+    padding-top: 12px;
 }
