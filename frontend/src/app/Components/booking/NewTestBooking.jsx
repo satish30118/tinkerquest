@@ -43,7 +43,6 @@ const NewTestBoooking = () => {
       testCategory,
       testName,
       city,
-      collectionDate,
     } = data;
     if (
       !name ||
@@ -52,8 +51,7 @@ const NewTestBoooking = () => {
       !mobile ||
       !testCategory ||
       !testName ||
-      !city ||
-      !collectionDate
+      !city 
     ) {
       toast.warn("Enter all details");
       return;
@@ -67,7 +65,6 @@ const NewTestBoooking = () => {
         testCategory,
         testName,
         city,
-        collectionDate,
       });
 
       if (data) {
@@ -80,7 +77,6 @@ const NewTestBoooking = () => {
           testCategory: "",
           testName: "",
           city: "",
-          collectionDate: "",
         });
         let ele = document.getElementsByName("gender");
         for (var i = 0; i < ele.length; i++) ele[i].checked = false;
@@ -220,16 +216,6 @@ const NewTestBoooking = () => {
               <option value="Lucknow">Lucknow</option>
               <option value="Patna">Patna</option>
             </select>
-          </div>
-          <div>
-            <input
-              type="date"
-              name="collectionDate"
-              value={data.collectionDate}
-              style={{ width: "70%" }}
-              onChange={handleChange}
-              placeholder="Choose Date for Test"
-            />
           </div>
 
           <div>
