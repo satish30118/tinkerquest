@@ -10,10 +10,11 @@ const machineRoutes = require("./router/machineRoute");
 const reagentRoutes = require("./router/reagentRoute");
 const chatRoutes = require("./router/chatRoute");
 const orderRoutes = require("./router/orderRoute");
+const mlConnect = require("./mlConnect");
 
 const bodyParser = require("body-parser");
-
 const cors = require("cors");
+
 
 //CONFIGURE ENV
 dotenv.config(); // dotenv.config({path:""}) if file is not in root folder
@@ -38,15 +39,14 @@ app.use("/api/v1/machine", machineRoutes);
 app.use("/api/v1/reagent", reagentRoutes);
 app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/order", orderRoutes);
+app.post("/api/v1/predict", mlConnect);
 
 //REST API
 app.get("/", (req, res) => {
   res.send("Hello Ji main aa gya");
 });
 
-app.post("/predict", (req, res) => {
-  res.send("");
-});
+
 
 //PORT and LISTEN SECTION
 const PORT = process.env.PORT || 8080;
