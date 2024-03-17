@@ -12,6 +12,7 @@ const CreateMachineController = async (req, res) => {
     if (machineExist) {
       res.status(200).send({
         message:"Machine Already Exists",
+        machineExist,
       });
       return;
     }

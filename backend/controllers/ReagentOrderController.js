@@ -51,7 +51,7 @@ const updateReagentOrderController = async (req, res) => {
     const updatedOrder = await reagentOrder.findByIdAndUpdate(
       id,
       {
-        machineName,
+        city,
         reagentName,
         reagentUnit,
         reagentAmount,
@@ -68,7 +68,7 @@ const updateReagentOrderController = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(`ERROR IN UPDATING MACHINE DETAILS ${error}`);
+    console.log(`ERROR IN UPDATING REAGENT DETAILS ${error}`);
     res.status(500).send({
       success: false,
       message: "Server Problem, Please try again!",
@@ -86,6 +86,24 @@ const allReagentOrderController = async (req, res) => {
     });
   } catch (error) {
     console.log(`ERROR IN GETTING ALL MACHINE ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
+//GET SINGLE REAGENT
+const singleReagentOrderController = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const singleOrder = await reagentOrder.findOne({_id:id});
+    res.status(200).send({
+      message: "Single Reagent ORDERED LIST",
+      singleOrder,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING SINGLE REGENT ${error}`);
     res.status(500).send({
       success: false,
       message: "Server Problem, Please try again!",
@@ -115,5 +133,6 @@ module.exports = {
   createReagentOrderController,
   updateReagentOrderController,
   allReagentOrderController,
+  singleReagentOrderController,
   deleteReagentOrderController,
 };

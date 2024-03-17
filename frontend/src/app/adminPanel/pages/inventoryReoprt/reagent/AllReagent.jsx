@@ -27,22 +27,33 @@ const AllReagent = () => {
     getAllReagent();
   }, []);
 
+  function printData() {
+    var divToPrint = document.getElementById("printReagent");
+    let newWin = window.open("");
+    newWin.document.write(divToPrint.outerHTML);
+    newWin.print();
+    newWin.close();
+  }
+
   return (
     <>
       <div className="tb-user-details">
-        <table style={{ borderCollapse: "collapse" }}>
+        <button className="btn" onClick={printData}>
+          Print Report
+        </button>
+        <table style={{ borderCollapse: "collapse" }} id="printReagent">
           <tr>
-            <th>City</th>
+            <th>Lab Location</th>
             <th>Reagent Name</th>
             <th>In Stock</th>
             <th>Reagent Cost</th>
             <th>Stock Status</th>
-            <th>Manage</th>
+            {/* <th>Manage</th> */}
           </tr>
           {allReagent?.map((item) => (
             <>
               <tr key={item?._id}>
-                <td>{item?.city}</td>
+                <td style={{ padding: "9px 0" }}>{item?.city}</td>
                 <td>{item?.reagentName}</td>
                 <td>
                   {item?.reagentAmount}
@@ -50,7 +61,7 @@ const AllReagent = () => {
                 </td>
                 <td>{item?.reagentCost}</td>
                 <td>Stock Status</td>
-                <td>
+                {/* <td>
                   <div>
                     <button
                       className="btn"
@@ -71,7 +82,7 @@ const AllReagent = () => {
                       Delete
                     </button>
                   </div>
-                </td>
+                </td> */}
               </tr>
             </>
           ))}

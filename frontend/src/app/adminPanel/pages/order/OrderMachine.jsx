@@ -154,7 +154,7 @@ const OrderMachine = ({ popUp }) => {
           <div>
             <input
               type="number"
-              placeholder="Cost per Machine"
+              placeholder="Total Cost"
               name="machineCost"
               value={data.machineCost}
               onChange={handleChange}

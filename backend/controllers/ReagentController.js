@@ -10,6 +10,7 @@ const CreateReagentController = async (req, res) => {
     if (reagentExist) {
       res.status(200).send({
         message: "Reagent Already Exists",
+         reagentExist,
       });
       return;
     }

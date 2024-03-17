@@ -88,6 +88,24 @@ const allMachineOrderController = async (req, res) => {
   }
 };
 
+//GET SINGLE MACHINES
+const singleMachineOrderController = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const singleOrder = await machineOrder.findOne({_id:id});
+    res.status(200).send({
+      message: "Single MACHINE ORDERED LIST",
+      singleOrder,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL MACHINE ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 //DELETING MACHINES ORDER
 const deleteMachineOrderController = async (req, res) => {
   try {
@@ -110,5 +128,6 @@ module.exports = {
   createMachineOrderController,
   updateMachineOrderController,
   allMachineOrderController,
+  singleMachineOrderController,
   deleteMachineOrderController,
 };

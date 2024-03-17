@@ -26,22 +26,30 @@ const OrderReport = () => {
             </div>
 
             <div className="order-btn">
-              <button className="btn" onClick={() => setOrderMachine(true)}>
+              <button
+                className="btn"
+                onClick={() => setOrderMachine(true)}
+                style={{ background: `${orderMachine ? "red" : "blue"}` }}
+              >
                 New Ordered Machine
               </button>
-              <button className="btn" onClick={() => setOrderReagent(true)}>
+              <button
+                className="btn"
+                onClick={() => setOrderReagent(true)}
+                style={{ background: `${orderReagent ? "red" : "blue"}` }}
+              >
                 New Ordered Reagent
               </button>
               <button
                 className="btn"
-                style={{ background: "blue" }}
+                style={{ background: `${showMachine ? "blue" : "red"}` }}
                 onClick={() => setShowMachine(false)}
               >
                 Track Ordered Reagent
               </button>
               <button
                 className="btn"
-                style={{ background: "blue" }}
+                style={{ background: `${showMachine ? "red" : "blue"}` }}
                 onClick={() => setShowMachine(true)}
               >
                 Track Ordered Machine
@@ -57,7 +65,7 @@ const OrderReport = () => {
               className="reagent-details"
               style={{ display: `${showMachine ? "none" : "block"}` }}
             >
-              <TrackReagent/>
+              <TrackReagent />
             </div>
           </div>
         </div>

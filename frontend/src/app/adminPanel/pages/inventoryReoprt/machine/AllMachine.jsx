@@ -25,15 +25,23 @@ const AllMachine = () => {
     getAllMachine();
   }, []);
 
+  function printData() {
+    var divToPrint = document.getElementById("printTable");
+    let newWin = window.open("");
+    newWin.document.write(divToPrint.outerHTML);
+    newWin.print();
+    newWin.close();
+  }
+
   return (
     <>
       <div className="tb-user-details">
-        <table
-          // border={"4px solid gray"}
-          style={{ borderCollapse: "collapse" }}
-        >
+        <button className="btn" onClick={printData}>
+          Print Report
+        </button>
+        <table id="printTable" style={{ borderCollapse: "collapse" }}>
           <tr>
-            <th>City</th>
+            <th>Lab Location</th>
             <th>Machine Name</th>
             <th>Include test</th>
             <th>No of Stock </th>
@@ -46,7 +54,7 @@ const AllMachine = () => {
           {allMachine?.map((item) => (
             <>
               <tr key={item?._id}>
-                <td>{item?.city}</td>
+                <td style={{ padding: "9px 0" }}>{item?.city}</td>
                 <td>{item?.machineName}</td>
                 <td>{item?.testName}</td>
                 <td>{item?.machineStock}</td>
