@@ -67,7 +67,7 @@ export default function Login() {
 
             <div className="auth-row">
               <div className="auth-icon">
-                <i class="fa-envelope fa-solid"></i>
+                <i class="fa-envelope fa-solid" style={{color:"lightblue"}}></i>
               </div>
               <input
                 type="email"
@@ -81,7 +81,7 @@ export default function Login() {
 
             <div className="auth-row">
               <div className="auth-icon">
-                <i class="fa-lock fa-solid"></i>
+                <i class="fa-lock fa-solid" style={{color:"lightblue"}}></i>
               </div>
               <input
                 type={showPassword ? "text" : "password"}
@@ -105,11 +105,11 @@ export default function Login() {
                   textDecoration: "none",
                   fontSize: "17px",
                   fontFamily: "Poppins",
-                  color: "yellow",
+                  color: "white",
                 }}
               >
                 Forgot password? -{" "}
-                <span style={{ color: "red" }}>Reset here</span>
+                <span style={{ color: "white" }}>Reset here</span>
               </NavLink>
             </div>
 
@@ -132,11 +132,11 @@ export default function Login() {
                   textDecoration: "none",
                   fontSize: "17px",
                   fontFamily: "Poppins",
-                  color: "yellow",
+                  color: "white",
                 }}
               >
                 Not have account? -{" "}
-                <span style={{ color: "red" }}>Register</span>
+                <span style={{ color: "white" }}>Register</span>
               </NavLink>
             </div>
           </form>

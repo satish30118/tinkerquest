@@ -26,7 +26,7 @@ const Home = () => {
       <div className="home-page">
         <div className="h-bg">
           <img
-            src="https://images.pexels.com/photos/4031321/pexels-photo-4031321.jpeg"
+            src="https://st5.depositphotos.com/69155792/65428/i/450/depositphotos_654288820-stock-photo-health-care-concept-icons-health.jpg"
             alt=""
           />
         </div>
@@ -45,9 +45,9 @@ const Home = () => {
       </div>
       <div className="footer-page1">
         <div className="both-book1">
-          <h2 style={{ textAlign: "center" }}>
-            Frequently
-            <span className="em">Booked</span>
+          <h2 >
+            <u>Frequently</u>
+            <span className="em"><u>Booked</u></span>
           </h2>
           <div className="frequently-booked1">
             <div>
@@ -97,9 +97,9 @@ const Home = () => {
       </div>
       <div className="footer-page2">
         <div className="both-book2">
-          <h2 style={{ textAlign: "center" }}>
-            Our
-            <span className="em">Features</span>
+          <h2 >
+            <u>Our</u>
+            <span className="em"><u>Features</u></span>
           </h2>
           <div className="frequently-booked2">
             <div>

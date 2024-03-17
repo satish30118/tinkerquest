@@ -85,6 +85,9 @@ export default function Register() {
     <>
       <Layout>
         <div className="register-page">
+          <div className="auth-img">
+            <img src="https://static.vecteezy.com/system/resources/previews/002/127/145/original/pharmacy-concept-illustration-research-lab-service-independent-medical-lab-service-medical-laboratory-health-test-character-cartoon-illustration-flat-style-free-vector.jpg" alt="" />
+          </div>
           <form className="register-form">
             <h2 className="auth-heading">Register</h2>
 
@@ -122,8 +125,9 @@ export default function Register() {
             name="city"
               onChange={handleData}
               value={data.city}
+              style={{color:"white"}}
             >
-              <option value="">--- Choose lab Location ---</option>
+              <option value="" >--- Choose lab Location ---</option>
               <option value="Noida">Noida</option>
               <option value="Mumbai">Mumbai</option>
               <option value="Dehradun">Dehradun</option>
@@ -216,7 +220,8 @@ export default function Register() {
                 style={{
                   textDecoration: "none",
                   fontSize: "17px",
-                  fontFamily: "georgia",
+                  fontFamily: "Poppins",
+                  color:"white"
                 }}
               >
                 Already have account -{" "}

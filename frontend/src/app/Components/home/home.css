@@ -101,15 +101,18 @@
 /*Part -2*/
 .footer-page1
 {
-    background-color: rgb(18, 51, 143);
+    background-color: #0e3f6c;
+    height: 400px;
 }
 .footer-page1 h2 {
     font-family: "Poppins";
-    text-align: left;
+    /* text-align: left; */
     color:
         /* rgb(42, 37, 136) */
-        rgb(58, 67, 238);
+        rgb(11, 20, 182);
     margin-left: 20px;
+    font-size: 30px;
+    padding-top: 30px;
 
 }
 
@@ -132,13 +135,14 @@
     width: 180px;
     color:
         /* rgb(191, 33, 35)  */
-        rgb(42, 37, 136);
-    box-shadow: 5px 5px 10px;
+        rgb(30, 21, 202);
+    /* box-shadow: 10px 5px 10px; */
     display: flex;
     flex-direction: column;
     padding-bottom: 12px;
     background-color: white;
     margin: 10px 0;
+    font-weight: 600;
 
 
 }
@@ -153,7 +157,7 @@
 }
 .footer-page2
 {
-    background-color:rgb(18, 51, 143) ;
+    background-color:#0e3f6c ;
 }
 .footer-page2 h2 {
     font-family: "Poppins";
@@ -176,14 +180,15 @@
     border: 2.5px solid rgb(225, 210, 210);
     border-radius: 6px;
     text-align: center;
-    color: rgb(20, 47, 201);
+    color: rgb(19, 50, 226);
     margin: 0 15px;
-    box-shadow: 5px 5px 10px;
+    /* box-shadow: 5px 5px 10px; */
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 12px;
     background-color: white;
+    font-weight: 600;
 
 
 }
@@ -200,9 +205,9 @@
 }
 .both-book2 h2
 {
-    padding-top: 20px;
-    font-size: 45px;
-    color:rgb(31, 45, 198) ;
+    /* padding-top: 20px; */
+    font-size: 30px;
+    color:rgb(26, 26, 195) ;
 }
 .em1
 {
