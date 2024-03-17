@@ -31,58 +31,51 @@ router.route("/new-booking").post(userVerification, createBooking);
 router.get(
   "/get-all-booking",
   userVerification,
-  adminVerification,
   getAllBooking
 );
 
 router.get(
   "/get-pendding-booking",
   userVerification,
-  adminVerification,
   getPenddingBooking
 );
 
 router.get(
   "/get-completed-booking",
   userVerification,
-  adminVerification,
   getCompletedBooking
 );
 
 router.get(
   "/get-single-booking/:id",
   userVerification,
-  adminVerification,
   getSingleBooking
 );
 
 router
   .route("/update-booking/:id")
-  .put(userVerification, adminVerification, updateBooking);
+  .put(userVerification, updateBooking);
 
   router
   .route("/delete-booking/:id")
-  .delete(userVerification, adminVerification, deleteBooking);
+  .delete(userVerification, deleteBooking);
 
   /* ROUTING LOCATION WISE */ 
 router.get(
   "/get-all-booking/location-wise/:city",
   userVerification,
-  adminVerification,
   getAllBookingLocationWise
 );
 
 router.get(
   "/get-pendding-booking/location-wise/:city",
   userVerification,
-  adminVerification,
   getPenddingBookingLocationWise
 );
 
 router.get(
   "/get-completed-booking/location-wise/:city",
   userVerification,
-  adminVerification,
   getCompletedBookingLocationWise
 );
 
@@ -90,14 +83,12 @@ router.get(
 router.get(
   "/get-completed-booking/category-wise/:cat/:city",
   userVerification,
-  adminVerification,
   getCategoryWiseCount,
 );
   /* MONTH WISE DEATAILS */ 
   router.get(
     "/month/:city/:monthNo/:status",
     userVerification,
-    adminVerification,
     getMonthsData,
   );
 
@@ -105,7 +96,6 @@ router.get(
 router.get(
   "/search-by-name/:name",
   userVerification,
-  adminVerification,
   getBookingBySearch,
 );
 
@@ -113,7 +103,6 @@ router.get(
 router.get(
   "/search-autocomplete/:name",
   userVerification,
-  adminVerification,
   getSearchAutoComplete
 );
 module.exports = router;

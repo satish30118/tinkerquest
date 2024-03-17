@@ -3,13 +3,14 @@ const Reagent = require("../models/ReagentModel");
 //CREATING NEW  REAGENT;
 const CreateReagentController = async (req, res) => {
   try {
-    const { city, reagentName, reagentUnit, reagentAmount } = req.body;
+    const { city, reagentName, reagentUnit, reagentAmount,reagentCost } = req.body;
 
     //CHECKING EXISTING REAGENT
     const reagentExist = await Reagent.findOne({ reagentName, city });
     if (reagentExist) {
       res.status(200).send({
         message: "Reagent Already Exists",
+         reagentExist,
       });
       return;
     }
@@ -20,6 +21,7 @@ const CreateReagentController = async (req, res) => {
       reagentName,
       reagentUnit,
       reagentAmount,
+      reagentCost,
     }).save();
     if (reagent) {
       res.status(201).send({
@@ -40,11 +42,11 @@ const CreateReagentController = async (req, res) => {
 //UPDATING REAGENT AMOUNT
 const updateReagentController = async (req, res) => {
   try {
-    const { reagentAmount } = req.body;
+    const { reagentAmount, reagentCost } = req.body;
     const { id } = req.params;
     const updatedReagent = await Reagent.findByIdAndUpdate(
       id,
-      { reagentAmount },
+      { reagentAmount, reagentCost },
       { new: true }
     );
 

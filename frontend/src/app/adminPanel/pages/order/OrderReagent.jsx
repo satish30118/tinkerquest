@@ -20,17 +20,18 @@ const OrderReagent = ({ popUp }) => {
   const handleData = async (e) => {
     e.preventDefault();
 
-    const { reagentName, reagentUnit, reagentAmount } = data;
-    if (!reagentName || !reagentUnit || !reagentAmount) {
+    const { reagentName, reagentUnit, reagentAmount, reagentCost } = data;
+    if (!reagentName || !reagentUnit || !reagentAmount || !reagentCost) {
       toast.warn("Enter all details");
       return;
     }
     try {
-      const { data } = await axios.post(`/api/v1/reagent/create-reagent`, {
+      const { data } = await axios.post(`/api/v1/order/order-reagent`, {
         city,
         reagentName,
         reagentUnit,
         reagentAmount,
+        reagentCost,
       });
 
       if (data) {
@@ -39,7 +40,9 @@ const OrderReagent = ({ popUp }) => {
           reagentName: "",
           reagentUnit: "",
           reagentAmount: "",
+          reagentCost: "",
         });
+        popUp(false);
         return;
       }
 
@@ -52,7 +55,7 @@ const OrderReagent = ({ popUp }) => {
   return (
     <>
       <div className="new-order-details">
-      <h1 className="i-heading">Ordered Reagent Details</h1>
+        <h1 className="i-heading">Ordered Reagent Details</h1>
         <form action="">
           <div className="location">
             <select
@@ -102,12 +105,20 @@ const OrderReagent = ({ popUp }) => {
               type="number"
               placeholder="Enter Amount Ordered"
               style={{ marginTop: "0" }}
-              name="reagentOrder"
-              value={data.reagentOrder}
+              name="reagentAmount"
+              value={data.reagentAmount}
               onChange={handleChange}
             />
           </div>
-        
+          <div>
+            <input
+              type="number"
+              placeholder="Total Cost"
+              name="reagentCost"
+              value={data.reagentCost}
+              onChange={handleChange}
+            />
+          </div>
         </form>
         <div>
           <button

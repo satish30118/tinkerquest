@@ -48,11 +48,11 @@ const registerController = async (req, res) => {
         success: true,
         message: "User registered successfully",
         userDetails: {
-          _id,
+          _id:newUser._id,
           name: newUser.name,
           email: newUser.email,
           phone: newUser.phone,
-          city,
+          city:newUser.city,
           isAdmin: newUser.isAdmin,
         },
         token: token,

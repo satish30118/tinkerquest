@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../assets/css/register.css";
 import "../assets/css/common.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {toast } from "react-toastify";
 import axios from "axios";
 import { useAuth } from "../../contextAPI/authContext";
@@ -14,11 +14,14 @@ export default function Register() {
   const [data, setData] = useState({
     name: "",
     email: "",
+    city:"",
     password: "",
     cpassword: "",
     phone: "",
     answer: "",
   });
+
+  const navigate = useNavigate();
 
   const handleData = (e) => {
     let name = e.target.name;
@@ -30,9 +33,9 @@ export default function Register() {
   const sendData = async (e) => {
     e.preventDefault();
 
-    const { name, email, password, cpassword, phone, answer } = data;
+    const { name, email, city, password, cpassword, phone, answer } = data;
 
-    if (!name || !email || !password || !cpassword || !phone || !answer) {
+    if (!name || !email || !city || !password || !cpassword || !phone || !answer) {
       toast.warn("Fill all data!!");
       return;
     }
@@ -47,7 +50,7 @@ export default function Register() {
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/auth/register`,
-        { name, email, password, phone, answer }
+        { name, email,city, password, phone, answer }
       );
 
       //SET USER DATA IN GLOBAL OBJECT(AUTH CONTEXT)
@@ -62,9 +65,12 @@ export default function Register() {
       if (res.status === 201) {
         setSubmitBtn({ text: "Submitted", bg: "green" });
         toast.success(res.data.message);
+      
+        //Forward to dashboard
+        navigate(`/dashboard/${auth?.user?.isAdmin ? "admin" : "user"}`)
+
         return;
 
-        //Forward to dashboard
       } else {
         toast.error(res.data.message);
         return;
@@ -111,6 +117,24 @@ export default function Register() {
                 value={data.email}
               />
             </div>
+            <div className="auth-row">
+            <select
+            name="city"
+              onChange={handleData}
+              value={data.city}
+            >
+              <option value="">--- Choose lab Location ---</option>
+              <option value="Noida">Noida</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Dehradun">Dehradun</option>
+              <option value="Roorkee">Roorkee</option>
+              <option value="Kolkata">Kolkata </option>
+              <option value="Pune">Pune</option>
+              <option value="Nagpur">Nagpur</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Patna">Patna</option>
+            </select>
+          </div>
 
             <div className="auth-row">
               <div className="auth-icon">
@@ -179,7 +203,7 @@ export default function Register() {
             </div>
 
             <div>
-              <button className="btn" onClick={sendData}>
+              <button className="btn" style={{width:"100%"}} onClick={sendData}>
                 {" "}
                 <i class="fa fa-sign-in" style={{ marginRight: "7px" }}></i>
                 Register

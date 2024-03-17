@@ -1,24 +1,28 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const reagentSchema = new mongoose.Schema({
-    city:{
-        type:String,
+const reagentSchema = new mongoose.Schema(
+  {
+    city: {
+      type: String,
     },
-    reagentName:{
-        type: String,
-        trim: true,
-        required :true,
+    reagentName: {
+      type: String,
+      trim: true,
     },
-    reagentUnit:{
-        type:String,
-        trim : true
+    reagentUnit: {
+      type: String,
+      trim: true,
     },
-    reagentAmount :{
-        type:Number,
-    }
+    reagentAmount: {
+      type: Number,
+    },
+    reagentCost: {
+      type: Number,
+    },
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true})
-
-const Reagent = new mongoose.model("Reagent", reagentSchema)
+const Reagent = new mongoose.model("Reagent", reagentSchema);
 
 module.exports = Reagent;

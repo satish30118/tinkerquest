@@ -17,7 +17,6 @@ import TotalBooking from "../app/adminPanel/pages/overallInventory/TotalBooking"
 import TotalCompleted from "../app/adminPanel/pages/overallInventory/TotalCompleted";
 import TotalPending from "../app/adminPanel/pages/overallInventory/TotalPending";
 import NewTestBoooking from "../app/Components/booking/NewTestBooking";
-import NewBoooking from "../app/adminPanel/pages/newtestbooking/NewBooking";
 import AboutUs from "../app/Components/aboutUs/AboutUs";
 import TestReport from "../app/Components/testReport/TestReport";
 import LocationWiseTotalBooking from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalBooking";
@@ -25,10 +24,9 @@ import LocationWiseTotalPending from "../app/adminPanel/pages/locationwiseInvent
 import LocationWiseTotalCompleted from "../app/adminPanel/pages/locationwiseInventory/LocationWiseTotalCompleted.jsx";
 import NewTestMethod from "../app/adminPanel/pages/newtestdetails/NewTestMethod.jsx";
 import Forecasting from "../app/adminPanel/pages/forecasting/Forecasting.jsx";
-import MachineReport from "../app/adminPanel/pages/machine/MachineReport.jsx";
-import Reagent from "../app/adminPanel/pages/reagent/Reagent.jsx";
 import Chat from "../app/adminPanel/pages/chat/Chat.jsx";
 import OrderReport from "../app/adminPanel/pages/order/OrderReport.jsx";
+import InventoryReport from "../app/adminPanel/pages/inventoryReoprt/InventoryReport.jsx";
 
 function App() {
   return (
@@ -37,8 +35,12 @@ function App() {
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/home" element={<Home />}></Route>
         <Route exact path="/about-us" element={<AboutUs />}></Route>
-        <Route exact path="/test-report" element={<TestReport/>}></Route>
-        <Route exact path="/new-test-booking" element={<NewTestBoooking />}></Route>
+        <Route exact path="/test-report" element={<TestReport />}></Route>
+        <Route
+          exact
+          path="/new-test-booking"
+          element={<NewTestBoooking />}
+        ></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
         <Route
@@ -46,10 +48,51 @@ function App() {
           path="/forgot-password"
           element={<ForgotPassword />}
         ></Route>
+
+        {/* // USER DASHBOASR // */}
         <Route exact path="/dashboard" element={<UserRoute />}>
           <Route path="user" element={<UserDashboard />}></Route>
-          <Route path="user/all-report" element={<UserDashboard />}></Route>
+          <Route
+            path="user/overall-inventory-details"
+            element={<OverallInventory />}
+          ></Route>
+          <Route
+            path="user/overall-inventory-details/total-booking"
+            element={<TotalBooking />}
+          ></Route>
+          <Route
+            path="user/overall-inventory-details/total-booking-completed"
+            element={<TotalCompleted />}
+          ></Route>
+          <Route
+            path="user/overall-inventory-details/total-booking-pending"
+            element={<TotalPending />}
+          ></Route>
+          <Route
+            path="user/location-wise-inventory-details"
+            element={<LocationwiseInventory />}
+          ></Route>
+          <Route
+            path="user/location-wise-inventory-details/total-booking/:city"
+            element={<LocationWiseTotalBooking />}
+          ></Route>
+          <Route
+            path="user/location-wise-inventory-details/total-booking-completed/:city"
+            element={<LocationWiseTotalCompleted />}
+          ></Route>
+          <Route
+            path="user/location-wise-inventory-details/total-booking-pending/:city"
+            element={<LocationWiseTotalPending />}
+          ></Route>
+          <Route path="user/forecasting" element={<Forecasting />}></Route>
+          <Route
+            path="user/inventory-report-and-analysis"
+            element={<InventoryReport />}
+          ></Route>
+          <Route path="user/chat" element={<Chat />}></Route>
         </Route>
+
+        {/* // ADMIN DASHBOARD // */}
         <Route exact path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />}></Route>
           <Route
@@ -72,7 +115,7 @@ function App() {
             path="admin/location-wise-inventory-details"
             element={<LocationwiseInventory />}
           ></Route>
-            <Route
+          <Route
             path="admin/location-wise-inventory-details/total-booking/:city"
             element={<LocationWiseTotalBooking />}
           ></Route>
@@ -85,33 +128,19 @@ function App() {
             element={<LocationWiseTotalPending />}
           ></Route>
           <Route
-            path="admin/new-test-booking"
-            element={<NewBoooking/>}
-          ></Route>
-           <Route
             path="admin/add-new-test-method"
-            element={<NewTestMethod/>}
+            element={<NewTestMethod />}
+          ></Route>
+          <Route path="admin/forecasting" element={<Forecasting />}></Route>
+          <Route
+            path="admin/inventory-report-and-analysis"
+            element={<InventoryReport />}
           ></Route>
           <Route
-            path="admin/forecasting"
-            element={<Forecasting/>}
+            path="admin/inventory-order-tracking"
+            element={<OrderReport />}
           ></Route>
-          <Route
-            path="admin/machine-report"
-            element={<MachineReport/>}
-          ></Route>
-          <Route
-            path="admin/reagent-report"
-            element={<Reagent/>}
-          ></Route>
-           <Route
-            path="admin/inventory-order-details"
-            element={<OrderReport/>}
-          ></Route>
-          <Route
-            path="admin/chat"
-            element={<Chat/>}
-          ></Route>
+          <Route path="admin/chat" element={<Chat />}></Route>
           <Route path="admin/users" element={<Users />}></Route>
         </Route>
         <Route path="*" element={<ErrorPage />}></Route>

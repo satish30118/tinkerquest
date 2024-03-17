@@ -3,10 +3,10 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/login.css";
 import "../assets/css/common.css";
-import {toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useAuth } from "../../contextAPI/authContext";
 import Layout from "../layout/Layout";
-import authimg from "../assets/image/auth-img.jpg"
+import authimg from "../assets/image/auth-img.jpg";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,24 +29,22 @@ export default function Login() {
         { email, password }
       );
 
-
       if (res.status === 201) {
         setTimeout(() => {
-          toast.success("Login Successfully!!"); 
+          toast.success("Login Successfully!!");
         }, 100);
-        
-        
-      //SET USER DATA IN GLOBAL OBJECT(AUTH CONTEXT)
-      setAuth({
-        ...auth,
-        user: res.data.userDetails,
-        token: res.data.token,
-      });
-      localStorage.setItem("userInfo", JSON.stringify(res.data));
 
-          navigate( `/login` || location.state)
+        //SET USER DATA IN GLOBAL OBJECT(AUTH CONTEXT)
+        setAuth({
+          ...auth,
+          user: res.data.userDetails,
+          token: res.data.token,
+        });
+        localStorage.setItem("userInfo", JSON.stringify(res.data));
+
+        navigate(`/dashboard/${!auth?.user?.isAdmin ? "admin" : "user"}`);
+
         return;
-
       } else {
         toast.error(res.data.message);
         return;
@@ -62,7 +60,7 @@ export default function Login() {
       <Layout>
         <div className="login-page">
           <div className="auth-img">
-            <img src={authimg}alt="" />
+            <img src={authimg} alt="" />
           </div>
           <form className="login-form">
             <h2 className="auth-heading">Log In</h2>
@@ -107,8 +105,7 @@ export default function Login() {
                   textDecoration: "none",
                   fontSize: "17px",
                   fontFamily: "Poppins",
-                  color:"yellow",
-                  
+                  color: "yellow",
                 }}
               >
                 Forgot password? -{" "}
@@ -117,9 +114,13 @@ export default function Login() {
             </div>
 
             <div>
-              <button className="btn" onClick={handdleLogin} style={{marginTop:"9px", width:"100%"}}>
+              <button
+                className="btn"
+                onClick={handdleLogin}
+                style={{ marginTop: "9px", width: "100%" }}
+              >
                 {" "}
-                <i class="fa fa-sign-in" style={{ marginRight: "7px"}}></i>
+                <i class="fa fa-sign-in" style={{ marginRight: "7px" }}></i>
                 Login
               </button>
             </div>
@@ -131,7 +132,7 @@ export default function Login() {
                   textDecoration: "none",
                   fontSize: "17px",
                   fontFamily: "Poppins",
-                  color:"yellow",
+                  color: "yellow",
                 }}
               >
                 Not have account? -{" "}
@@ -140,7 +141,6 @@ export default function Login() {
             </div>
           </form>
         </div>
-        
       </Layout>
     </>
   );
