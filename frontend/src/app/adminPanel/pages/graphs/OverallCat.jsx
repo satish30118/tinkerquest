@@ -1,32 +1,15 @@
 import React, { useEffect } from "react";
 import Chart from "react-apexcharts";
 
-const OverallCat = () => {
-
-  const months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
-  const currentMonth = new Date().getMonth() + 1;
-
-
-  const dates = [ "1", "2", "3", "4", "5", "6" ];
+const OverallCat = ({predict}) => {
 
   var state = {
     series: [
       {
-        name: "PRODUCT A",
-        data: [44, 55, 41, 67, 22, 43],
+        name: [ "1", "2", "3", "4", "5", "6" ],
+        data: predict,
       },
-      {
-        name: "PRODUCT B",
-        data: [13, 23, 20, 8, 13, 27],
-      },
-      {
-        name: "PRODUCT C",
-        data: [11, 17, 15, 15, 21, 14],
-      },
-      {
-        name: "PRODUCT D",
-        data: [21, 7, 25, 13, 22, 8],
-      },
+     
     ],
 
     options: {
@@ -46,10 +29,7 @@ const OverallCat = () => {
         },
         color: "white",
       },
-      xaxis: {
-        type: "datetime",
-        categories: dates,
-      },
+     
       responsive: [
         {
           breakpoint: 480,
