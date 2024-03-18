@@ -43,7 +43,7 @@
     /* background-color:rgb(189, 230, 228); */
     border: 2px solid grey;
     border-radius: 10px;
-    color: black;
+    /* color: black; */
 }
 
 .navbar .navbar-right a.active {

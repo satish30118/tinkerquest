@@ -249,7 +249,7 @@ const OverallInventory = () => {
         <div className="overall">
           <h2 style={{ background: "rgb(233, 26, 150)" }}>Revenue</h2>
           <p className="i-num" id="i-revenue">
-            <i class="fa-solid fa-rupee-sign"></i>34256
+          <i class="fa-solid fa-indian-rupee-sign"></i> 34256
           </p>
         </div>
       </div>
