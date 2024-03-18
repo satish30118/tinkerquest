@@ -112,7 +112,7 @@ const TotalCompleted = () => {
                         setSelectedId(patient._id);
                       }}
                     >
-                      Update
+                      <i class="fa-solid fa-user-pen"></i> Edit
                     </button>
                     {/* <button className="btn"
                      onClick={(e) => {

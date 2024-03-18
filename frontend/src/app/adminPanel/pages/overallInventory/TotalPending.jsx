@@ -69,7 +69,7 @@ const TotalPending = () => {
             </h1>
           </div>
           <div className="search">
-            <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Enter Patient Name" />
+            <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search Patient" />
             {/* <button onClick={searchPatient}>Search</button> */}
           </div>
           <div className="tb-user-details">
@@ -103,7 +103,7 @@ const TotalPending = () => {
                         setSelectedId(patient._id);
                       }}
                     >
-                      Update
+                     <i class="fa-solid fa-user-pen"></i> Edit
                     </button>
                     {/* <button
                       className="btn"
