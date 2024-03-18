@@ -1,16 +1,16 @@
 const { spawn } = require("child_process");
 const mlConnect = async (req, res) => {
   try {
-    const {test, number} = req.body;
+    const {city, day} = req.body;
     const y = new Date().getFullYear();
     const m = new Date().getMonth();
     const d = new Date().getDate();
 
     const childPython = spawn("python", [
       "./ml_file/main.py",
-     test,
+     city,
       `${y}-${m}-${d}`,
-     number
+     day
     ]);
 
     var sendData;

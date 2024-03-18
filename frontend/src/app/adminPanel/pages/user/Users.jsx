@@ -3,7 +3,6 @@ import AdminMenu from "../AdminMenu";
 import Layout from "../../../layout/Layout";
 import "./user.css";
 import axios from "axios";
-import SliderButton from "../../../Animations/SliderButton";
 import { useAuth } from "../../../../contextAPI/authContext";
 import { toast } from "react-toastify";
 

@@ -1,14 +1,16 @@
-.register-page{
+.register-page {
     width: 100%;
     z-index: -1000;
     box-sizing: border-box;
-    background-color: darkblue;
+    background-color: #0e3f6c;
+    ;
     /* padding: 30px; */
-    
+
     display: flex;
     /* background: linear-gradient(to right, blue,yellow, red, blue); */
 }
-.register-page .register-form{
+
+.register-page .register-form {
     /* height: 400px; */
     width: 500px;
     box-sizing: border-box;
@@ -19,8 +21,8 @@
     border-radius: 3px;
 
 }
-.auth-img
-{
+
+.auth-img {
     height: 750px;
     width: 900px;
 }

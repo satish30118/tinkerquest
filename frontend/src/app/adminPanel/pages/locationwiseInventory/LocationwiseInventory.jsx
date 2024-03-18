@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import Progress from "../graphs/Progress";
 import Overall from "../graphs/Overall";
 import CatBar from "../graphs/CatBar";
+import PieChartBooking from "../graphs/PieChartBooking";
 
 const LocationwiseInventory = () => {
   const [city, setCity] = useState("");
@@ -273,7 +274,7 @@ const LocationwiseInventory = () => {
             <div
               style={{
                 background: "white",
-                margin:"30px",
+                margin:"30px 0",
                 width:"560px",
                 padding:"30px"
               }}
@@ -288,7 +289,7 @@ const LocationwiseInventory = () => {
             <div
               style={{
                 background: "white",
-                margin:"30px",
+                margin:"30px 0",
                 width:"560px",
                 padding:"30px"
               }}
@@ -296,7 +297,7 @@ const LocationwiseInventory = () => {
               <h2 style={{ textAlign: "center" }}>
                 Overall Department Wise Booking
               </h2>
-              <CatBar
+              <PieChartBooking
                 d1={blood}
                 d2={vitamin}
                 d3={diabetes}
@@ -308,7 +309,7 @@ const LocationwiseInventory = () => {
             <div
               style={{
                 background: "white",
-                margin:"30px",
+                margin:"30px 0",
                 width:"560px",
                 padding:"30px"
               }}
@@ -316,7 +317,7 @@ const LocationwiseInventory = () => {
               <h2 style={{ textAlign: "center" }}>
                 This Month Department Wise Booking
               </h2>
-              <CatBar
+              <PieChartBooking
                 d1={bl}
                 d2={vi}
                 d3={di}

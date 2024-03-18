@@ -39,6 +39,9 @@
     border-radius: 9px;
     font-weight: 700;
 }
+.forecast-form  option{
+    text-align: center;
+}
 .forecast-form div label
 {
     display: block;
