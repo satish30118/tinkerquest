@@ -27,6 +27,12 @@ import Forecasting from "../app/adminPanel/pages/forecasting/Forecasting.jsx";
 import Chat from "../app/adminPanel/pages/chat/Chat.jsx";
 import OrderReport from "../app/adminPanel/pages/order/OrderReport.jsx";
 import InventoryReport from "../app/adminPanel/pages/inventoryReoprt/InventoryReport.jsx";
+import UserTestBooking from "../app/Components/dashboard/pages/bookingAnalysis/UserTestBooking.jsx";
+import UserTestCompleted from "../app/Components/dashboard/pages/bookingAnalysis/UserTestCompleted.jsx";
+import UserTestPending from "../app/Components/dashboard/pages/bookingAnalysis/UserTestlPending.jsx";
+import UserForecasting from "../app/Components/dashboard/pages/forecasting/UserForecasting.jsx";
+import UserInventoryReport from "../app/Components/dashboard/pages/inventoryReoprt/UserInventoryReport.jsx";
+import UserChat from "../app/Components/dashboard/pages/chat/UserChat.jsx";
 
 function App() {
   return (
@@ -50,46 +56,31 @@ function App() {
         ></Route>
 
         {/* // USER DASHBOASR // */}
-        <Route exact path="/dashboard" element={<UserRoute />}>
+        <Route exact path="/dashboard/" element={<UserRoute />}>
           <Route path="user" element={<UserDashboard />}></Route>
-          <Route
-            path="user/overall-inventory-details"
-            element={<OverallInventory />}
-          ></Route>
-          <Route
-            path="user/overall-inventory-details/total-booking"
-            element={<TotalBooking />}
-          ></Route>
-          <Route
-            path="user/overall-inventory-details/total-booking-completed"
-            element={<TotalCompleted />}
-          ></Route>
-          <Route
-            path="user/overall-inventory-details/total-booking-pending"
-            element={<TotalPending />}
-          ></Route>
+         
           <Route
             path="user/location-wise-inventory-details"
             element={<LocationwiseInventory />}
           ></Route>
           <Route
             path="user/location-wise-inventory-details/total-booking/:city"
-            element={<LocationWiseTotalBooking />}
+            element={<UserTestBooking />}
           ></Route>
           <Route
             path="user/location-wise-inventory-details/total-booking-completed/:city"
-            element={<LocationWiseTotalCompleted />}
+            element={<UserTestCompleted />}
           ></Route>
           <Route
             path="user/location-wise-inventory-details/total-booking-pending/:city"
-            element={<LocationWiseTotalPending />}
+            element={<UserTestPending />}
           ></Route>
-          <Route path="user/forecasting" element={<Forecasting />}></Route>
+          <Route path="user/forecasting" element={<UserForecasting />}></Route>
           <Route
             path="user/inventory-report-and-analysis"
-            element={<InventoryReport />}
+            element={<UserInventoryReport />}
           ></Route>
-          <Route path="user/chat" element={<Chat />}></Route>
+          <Route path="user/chat" element={<UserChat />}></Route>
         </Route>
 
         {/* // ADMIN DASHBOARD // */}

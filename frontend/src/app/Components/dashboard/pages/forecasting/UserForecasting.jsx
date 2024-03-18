@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-import "../../admin.css";
-import Layout from "../../../layout/Layout";
-import AdminMenu from "../AdminMenu";
 import "./forecasting.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-import LoaderSpin from "../../../Animations/LoaderSpin";
+import LoaderSpin from "../../../../Animations/LoaderSpin";
 import LineChart from "../graphs/LineChart";
+import UserMenu from "../../UserMenu";
+import Layout from "../../../../layout/Layout";
 
-const Forecasting = () => {
+const UserForecasting = () => {
   const [index, setIndex] = useState(0);
   const [data, setData] = useState({});
   const [animation, setAnimation] = useState(false);
   const [showgraph, setShowgraph] = useState(false);
-  
-  let predictedData;
+  const [dataPredicted, setDataPredicted] =useState(0)
   
   const test = [
     [
@@ -64,7 +62,7 @@ const Forecasting = () => {
 
   /* PREDICTING BOOKING */
   const predict = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const { city,  testName } = data;
     if (!city|| !testName) {
       toast.warn("Fill all Filed");
@@ -75,9 +73,8 @@ const Forecasting = () => {
       setAnimation(true);
       const { data } = await axios.post(`/api/v1/predict`, { city:"BC", day : 20 });
       if (data) {
-        predictedData = ( data?.prediction);
+        setDataPredicted( data?.prediction);
         console.log(data?.prediction)
-        console.log(predictedData)
         
       }
 
@@ -89,16 +86,11 @@ const Forecasting = () => {
     }
   };
 
-  const handlePredict = (e) =>{
-    e.preventDefault();
-    predict();
-  }
-
   return (
     <Layout>
       <div className="admin-dashboard">
         <div className="menu">
-          <AdminMenu />
+          <UserMenu />
         </div>
         <div className="content">
           <div className="dashboard-heading">
@@ -139,7 +131,7 @@ const Forecasting = () => {
                 <button
                   className="btn"
                   style={{ width: "auto",padding:"9px 40px ", textAlign: "center" }}
-                  onClick={handlePredict}
+                  onClick={predict}
                 >
                   {animation ? (
                     <div style={{ width: "100%" }}>
@@ -170,7 +162,7 @@ const Forecasting = () => {
                 <h2 style={{ textAlign: "center" }}>
                   Predicted Booking in {data?.day} days
                 </h2>
-                <LineChart d={predictedData? predictedData : [2,5,6,8,97,69,]} />
+                <LineChart d={dataPredicted} />
               </div>
             </div>
           </div>
@@ -180,4 +172,4 @@ const Forecasting = () => {
   );
 };
 
-export default Forecasting;
+export default UserForecasting;

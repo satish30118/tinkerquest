@@ -4,7 +4,7 @@ import { useAuth } from '../../../contextAPI/authContext';
 import { toast } from 'react-toastify';
 import { Drawer } from '@mui/material';
 
-const AdminMenu = () => {
+const UserMenu = () => {
   const [auth, setAuth] = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => {
@@ -77,7 +77,7 @@ const AdminMenu = () => {
             </p>
           </div>
 
-          <NavLink exact to={"/dashboard/user/overall-inventory-details"}>
+          <NavLink  to = {"/dashboard/user"}>
             Overall Booking Report
           </NavLink>
           <NavLink to={"/dashboard/user/inventory-report-and-analysis"}>
@@ -94,4 +94,4 @@ const AdminMenu = () => {
   );
 };
 
-export default AdminMenu;
+export default UserMenu;

@@ -1,0 +1,25 @@
+.bookig-update-form {
+    width: 600px;
+}
+
+.bookig-update-form div {
+    margin: 10px 0;
+}
+
+.bookig-update-form div input {
+    border: none;
+    outline: none;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 19px;
+    border-radius: 10px;
+}
+
+.bookig-update-form div select {
+    border: none;
+    outline: none;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 18px;
+    border-radius: 10px;
+}

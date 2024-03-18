@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../../layout/Layout";
 import { useAuth } from "../../../contextAPI/authContext";
 import UserMenu from "./UserMenu";
+import UserLocationAnalysis from "./pages/bookingAnalysis/UserLocationAnalysis";
 
 const UserDashboard = () => {
   const [auth] = useAuth();
@@ -16,9 +17,7 @@ const UserDashboard = () => {
             <h1 className="dashboard-heading">Welcome to Dashboard</h1>
           </div>
           <div>
-            <p>Name:- {auth?.user?.name}</p>
-            <p>Email:- {auth?.user.email}</p>
-            <p>Phone:- {auth?.user.phone}</p>
+            <UserLocationAnalysis/>
           </div>
         </div>
       </div>
