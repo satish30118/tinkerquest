@@ -22,7 +22,7 @@ const Loader = ({path="/login"}) => {
     <>
         <div className='loader-page'>
             <h1>Redirecting you in {count} seconds  </h1>
-            <div className="loader">
+            <div className="loader-text">
                 <p id='c1' className='c'></p>
                 <p id='c2' className='c'></p>
                 <p id='c3' className='c'></p>

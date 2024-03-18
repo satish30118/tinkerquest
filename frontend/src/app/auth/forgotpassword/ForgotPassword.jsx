@@ -24,9 +24,9 @@ export default function Login() {
         `${process.env.REACT_APP_API}/api/v1/auth/forgot-password`,
         { email, newPassword, answer }
       );
-      console.log(res)
+      console.log(res);
       const success = await res.data.success;
-      
+
       if (res.status === 200) {
         toast.success("Passwod Reset Successfully!!");
         return;
@@ -43,8 +43,8 @@ export default function Login() {
   return (
     <>
       <Layout>
-        <div className="login-page">
-          <form className="login-form">
+        <div className="login-page" >
+          <form className="login-form" style={{width:"40%"}}>
             <h2 className="auth-heading">Rest Your Password</h2>
 
             <div className="auth-row">
@@ -96,9 +96,13 @@ export default function Login() {
             </div>
 
             <div>
-              <button className="btn" onClick={handdleData} style={{marginTop:"8px" }}>
+              <button
+                className="btn"
+                onClick={handdleData}
+                style={{ marginTop: "8px" }}
+              >
                 {" "}
-                <i class="fa fa-power-off" style={{ marginRight: "7px",}}></i>
+                <i class="fa fa-power-off" style={{ marginRight: "7px" }}></i>
                 Reset Password
               </button>
             </div>
@@ -110,6 +114,7 @@ export default function Login() {
                   textDecoration: "none",
                   fontSize: "17px",
                   fontFamily: "georgia",
+                  color: "white",
                 }}
               >
                 Go to Login Page -{" "}
@@ -117,6 +122,12 @@ export default function Login() {
               </NavLink>
             </div>
           </form>
+          <div className="auth-img" style={{ width: "60%" }}>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/002/127/145/original/pharmacy-concept-illustration-research-lab-service-independent-medical-lab-service-medical-laboratory-health-test-character-cartoon-illustration-flat-style-free-vector.jpg"
+              alt=""
+            />
+          </div>
         </div>
       </Layout>
     </>

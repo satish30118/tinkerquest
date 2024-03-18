@@ -9,6 +9,10 @@ export default function Overall({ d1, d2,d3 }) {
           },
           xaxis: {
             categories: ["Last to Last Month", "Last Month", "This Month"]
+          },
+          title:{
+            display:true,
+            text:"Last 3 Months Test Analysis "
           }
         },
         series: [
@@ -33,6 +37,7 @@ export default function Overall({ d1, d2,d3 }) {
       series={state.series}
       type="bar"
       width="500"
+      height={300}
     />
   );
 }

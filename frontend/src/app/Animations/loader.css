@@ -8,12 +8,12 @@
     flex-direction: column;
 }
 
-.loader{
+.loader-text{
     display: flex;
     margin: 20px;
     justify-content: center;
 }
-.loader .c{
+.loader-text .c{
     height: 12px;
     width: 12px;
     background-color: black;
