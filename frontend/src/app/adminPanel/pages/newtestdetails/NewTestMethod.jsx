@@ -63,7 +63,7 @@ const NewTestMethod = () => {
             <form className="crt-test-mtd">
               <div className="footer-page1">
                 <div className="both-book1">
-                  <h2 style={{ textAlign: "center" }}>
+                  <h2 style={{ textAlign: "center", color: "white" }}>
                     Click To Add New Test
                     <span className="em">Method</span>
                   </h2>
@@ -74,24 +74,25 @@ const NewTestMethod = () => {
                         setShowDetails(true);
                       }}
 
-                      style={{transform:`${testCategory == "thyorid" ? "scale(1.2)" : "scale(1"}`}}
+                      style={{ transform: `${testCategory == "thyorid" ? "scale(1.2)" : "scale(1"}` }}
                     >
                       <img
-                        src="https://previews.123rf.com/images/alekseyvanin/alekseyvanin2002/alekseyvanin200200985/140976965-thyroid-gland-vector-icon-filled-flat-sign-for-mobile-concept-and-web-design-normal-thyroid-glyph.jpg"
+                        src="https://content.presspage.com/uploads/1483/1920_thyroid-393423.jpg?10000"
                         alt=""
                       />
                       Thyroid
+
                     </div>
                     <div
-                     onClick={() => {
-                      setTestCategory("liver");
-                      setShowDetails(true);
-                    }}
+                      onClick={() => {
+                        setTestCategory("liver");
+                        setShowDetails(true);
+                      }}
 
-                    style={{transform:`${testCategory == "liver" ? "scale(1.2)" : "scale(1"}`}}
+                      style={{ transform: `${testCategory == "liver" ? "scale(1.2)" : "scale(1"}` }}
                     >
                       <img
-                        src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160248711/53356021-human-liver.jpg"
+                        src="https://previews.123rf.com/images/vectorwin/vectorwin2108/vectorwin210800672/173348915-liver-function-test-hepatitis-color-icon-vector-liver-function-test-hepatitis-sign-isolated-symbol.jpg"
                         alt=""
                       />
                       Liver
@@ -102,38 +103,38 @@ const NewTestMethod = () => {
                         setShowDetails(true);
                       }}
 
-                      style={{transform:`${testCategory === "blood" ? "scale(1.2)" : "scale(1"}`}}
+                      style={{ transform: `${testCategory === "blood" ? "scale(1.2)" : "scale(1"}` }}
                     >
                       <img
-                        src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160219351/52929157-blood-drop.jpg"
+                        src="https://cdn-icons-png.flaticon.com/512/2522/2522453.png"
                         alt=""
                       />
                       Blood
                     </div>
                     <div
-                     onClick={() => {
-                      setTestCategory("diabetes");
-                      setShowDetails(true);
-                    }}
+                      onClick={() => {
+                        setTestCategory("diabetes");
+                        setShowDetails(true);
+                      }}
 
-                    style={{transform:`${testCategory === "diabetes"? "scale(1.2)" : "scale(1"}`}}
+                      style={{ transform: `${testCategory === "diabetes" ? "scale(1.2)" : "scale(1"}` }}
                     >
                       <img
-                        src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160272837/53282279-syringe.jpg"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-sNGAuq8sAouapGOH1k79ysP_twFWwBhBhg&usqp=CAU"
                         alt=""
                       />
                       Diabetes
                     </div>
                     <div
-                     onClick={() => {
-                      setTestCategory("kedney");
-                      setShowDetails(true);
-                    }}
+                      onClick={() => {
+                        setTestCategory("kedney");
+                        setShowDetails(true);
+                      }}
 
-                    style={{transform:`${testCategory === "kedney" ? "scale(1.2)" : "scale(1"}`}}
+                      style={{ transform: `${testCategory === "kedney" ? "scale(1.2)" : "scale(1"}` }}
                     >
                       <img
-                        src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160249174/53361232-human-kidneys.jpg"
+                        src="https://cdn-icons-png.flaticon.com/512/9851/9851788.png"
                         alt=""
                       />
                       Kindey
@@ -144,10 +145,10 @@ const NewTestMethod = () => {
                         setShowDetails(true);
                       }}
 
-                      style={{transform:`${testCategory === "vitamin" ? "scale(1.2)" : "scale(1"}`}}
+                      style={{ transform: `${testCategory === "vitamin" ? "scale(1.2)" : "scale(1"}` }}
                     >
                       <img
-                        src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160259044/52931861-medicine-bottle.jpg"
+                        src="https://cdn-icons-png.flaticon.com/512/3047/3047613.png"
                         alt=""
                       />
                       Vitamin

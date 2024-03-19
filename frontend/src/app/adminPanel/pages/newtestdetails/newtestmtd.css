@@ -1,6 +1,6 @@
 .mtd-details
 {
-    display: flex;
+    /* display: flex; */
     /* border: 3px solid red; */
     align-items: center;
     justify-content: space-evenly;
@@ -18,3 +18,4 @@
     padding: 10px;
     outline: none;
 }
+

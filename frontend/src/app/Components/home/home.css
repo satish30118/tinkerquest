@@ -131,7 +131,8 @@
     border: 2.5px solid rgb(225, 210, 210);
     border-radius: 6px;
     text-align: center;
-    padding: 3px 20px;
+    /* padding: 3px 20px; */
+    
     width: 180px;
     color:
         /* rgb(191, 33, 35)  */
