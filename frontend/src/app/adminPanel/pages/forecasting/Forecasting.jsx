@@ -170,7 +170,7 @@ const Forecasting = () => {
                 <h2 style={{ textAlign: "center" }}>
                   Predicted Booking in {data?.day} days
                 </h2>
-                <LineChart d={predictedData? predictedData : [2,5,6,8,97,69,]} />
+                <LineChart d={predictedData? predictedData : [13,12,17,9,21,23,13,5,23,16,23]} />
               </div>
             </div>
           </div>

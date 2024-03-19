@@ -78,6 +78,24 @@ const allMachineController = async (req, res) => {
     });
   }
 };
+//GET ALL MACHINES CITY WISE
+const allMachineCityWiseController = async (req, res) => {
+  try {
+    const {city} = req.params;
+    // console.log(city)
+    const machines = await Machine.find({city});
+    res.status(200).send({
+      message: "ALL MACHINE LIST CITY WISE",
+       machines,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL MACHINE ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+}
 
 
 
@@ -103,5 +121,6 @@ module.exports = {
   CreateMachineController,
   updateMachineController,
   allMachineController,
+  allMachineCityWiseController,
   deleteMachineController,
 };

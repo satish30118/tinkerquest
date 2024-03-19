@@ -116,7 +116,6 @@ const LocationWiseTotalBooking = () => {
                 <th>Booking Date</th>
                 <th>Patient Name</th>
                 <th>Test Name</th>
-                <th>Collection Date</th>
                 <th>Status</th>
                 <th>Manage</th>
               </tr>
@@ -126,7 +125,6 @@ const LocationWiseTotalBooking = () => {
                   <td>{patient?.createdAt}</td>
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
-                  <td>{patient?.collectionDate}</td>
                   <td
                     style={{
                       color: `${

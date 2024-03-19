@@ -92,9 +92,8 @@ const LocationWiseTotalCompleted = () => {
                 <th>Booking Date</th>
                 <th>Patient Name</th>
                 <th>Test Name</th>
-                <th>Collection Date</th>
                 <th>Status</th>
-                <th>Update</th>
+                <th>Manage</th>
               </tr>
               {testCompleted?.map((patient) => (
                 <tr>
@@ -102,7 +101,6 @@ const LocationWiseTotalCompleted = () => {
                   <td>{patient?.createdAt}</td>
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
-                  <td>{patient?.collectionDate}</td>
                   <td
                     style={{ color: "lightgreen", textTransform: "capitalize" }}
                   >

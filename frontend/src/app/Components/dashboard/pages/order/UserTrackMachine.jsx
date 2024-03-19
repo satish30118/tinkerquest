@@ -1,41 +1,47 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useAuth } from "../../../../../contextAPI/authContext";
 
-const TrackReagent = () => {
-  const [allReagent, setAllReagent] = useState([]);
-  const [singleReagent, setSingleReagent] = useState();
+const UserTrackMachine = () => {
+  const [allMachine, setAllMachine] = useState([]);
+  const [singleMachine, setSingleMachine] = useState();
   const [selectedId, setSelectedId] = useState("");
   const [orderStatus, setStatus] = useState("");
   const [popUp, setPopUp] = useState(false);
+  const [auth, setAuth] = useAuth();
+  const city = auth?.user?.city;
 
-  // GETTING ALL REAGENT
-  const getAllReagent = async () => {
-    try {
-      const { data } = await axios.get(`/api/v1/order/get-order-reagent`);
-
-      if (data) {
-        setAllReagent(data?.orders);
-      }
-      return;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getAllReagent();
-  }, []);
-
-  // GETTING SINGLE REAGENT
-  const getSingleReagent = async () => {
+  // GETTING ALL MACHINE
+  const getAllMachine = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/order/get-single-reagent/${selectedId}`
+        `/api/v1/order/get-order-machine-citywise/${city}`
       );
 
       if (data) {
-        setSingleReagent(data?.singleOrder);
+        setAllMachine(data?.orders);
+      }
+      return;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllMachine();
+  }, []);
+
+  // GETTING SINGLE MACHINE
+  const getSingleMachine = async () => {
+    try {
+      const { data } = await axios.get(
+        `/api/v1/order/get-single-machine/${selectedId}`
+      );
+
+      if (data) {
+        setSingleMachine(data?.singleOrder);
+        console.log(singleMachine);
       }
       return;
     } catch (error) {
@@ -43,15 +49,15 @@ const TrackReagent = () => {
     }
   };
   useEffect(() => {
-    if (selectedId) getSingleReagent();
+    if (selectedId) getSingleMachine();
   }, [selectedId]);
 
   // UPDATING STATUS
-  const updateReagent = async (e) => {
+  const updateStatus = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `/api/v1/order/update-order-reagent/${selectedId}`,
+        `/api/v1/order/update-order-machine/${selectedId}`,
         { orderStatus }
       );
 
@@ -59,27 +65,39 @@ const TrackReagent = () => {
         toast.success("Updated Successfully");
         setStatus("");
         setPopUp(false);
-        getAllReagent();
+        getAllMachine();
       }
-      // UPDATING REAGENT IN STOCK DETAILS //
-      if (orderStatus === "Delivered") {
-        const { city, reagentName, reagentUnit, reagentAmount, reagentCost } =
-          singleReagent;
 
-        const res = await axios.post(`/api/v1/reagent/create-reagent`, {
+      // UPDATING MACHINE IN STOCK DETAILS //
+      if (orderStatus === "Delivered") {
+        const {
           city,
-          reagentName,
-          reagentUnit,
-          reagentAmount,
-          reagentCost,
+          machineName,
+          machineUnitOrder,
+          machineCost,
+          testLimit,
+          testCategory,
+          testName,
+          reagent,
+        } = singleMachine;
+
+        const res = await axios.post(`/api/v1/machine/create-machine`, {
+          city,
+          machineName,
+          machineStock: machineUnitOrder,
+          machineCost,
+          testLimit,
+          testCategory,
+          testName,
+          reagent,
         });
         if (res?.status == 200) {
           const { data } = await axios.put(
-            `/api/v1/reagent/update-reagent/${res?.data?.reagentExist?._id}`,
+            `/api/v1/machine//update-machine/${res?.data?.machineExist?._id}`,
             {
-              reagentAmount:
-                reagentAmount + res?.data?.reagentExist?.reagentAmount,
-              reagentCost: reagentCost + res?.data?.reagentExist?.reagentCost,
+              machineStock:
+                machineUnitOrder + res?.data?.machineExist?.machineStock,
+              machineCost: machineCost + res?.data?.machineExist?.machineCost,
             }
           );
         }
@@ -89,38 +107,43 @@ const TrackReagent = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       <div className="tb-user-details">
         <h1 style={{ color: "white", textAlign: "center", paddingTop: "20px" }}>
-          Ordered reagent Tracking
+          Ordered Machine Tracking
         </h1>
         <table style={{ borderCollapse: "collapse" }}>
           <tr>
             <th>Lab Location</th>
-            <th>Reagent Name</th>
-            <th>Orderd Date</th>
+            <th>Machine Name</th>
+            <th>Ordered Date</th>
+            <th>For Test </th>
             <th>Ordered Quantity</th>
             <th>Ordered Cost</th>
             <th>Ordered Status</th>
             <th>Manage Status</th>
           </tr>
-          {allReagent?.map((item) => (
+          {allMachine?.map((item) => (
             <>
               <tr key={item?._id}>
                 <td>{item?.city}</td>
-                <td>{item?.reagentName}</td>
+                <td>{item?.machineName}</td>
                 <td>{item?.createdAt}</td>
-                <td>
-                  {item?.reagentAmount} {item?.reagentUnit}
-                </td>
-                <td>{item?.reagentCost}</td>
-
+                <td>{item?.testName}</td>
+                <td>{item?.machineUnitOrder}</td>
+                <td>{item?.machineCost}</td>
                 <td>{item?.orderStatus}</td>
                 <td>
                   <button
                     className="btn"
-                    style={{ fontSize: "16px", display:`${item?.orderStatus == "Delivered" ? "none" : "inline"}` }}
+                    style={{
+                      fontSize: "16px",
+                      display: `${
+                        item?.orderStatus == "Delivered" ? "none" : "inline"
+                      }`,
+                    }}
                     onClick={() => {
                       setSelectedId(item?._id);
                       setPopUp(true);
@@ -153,7 +176,7 @@ const TrackReagent = () => {
           <button
             className="btn"
             style={{ background: "blue" }}
-            onClick={updateReagent}
+            onClick={updateStatus}
           >
             Update Status
           </button>
@@ -166,4 +189,4 @@ const TrackReagent = () => {
   );
 };
 
-export default TrackReagent;
+export default UserTrackMachine;

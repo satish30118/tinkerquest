@@ -2,17 +2,21 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DeleteReagent from "./DeleteReagent";
 import UpdateReagent from "./UpdateReagent";
+import { useAuth } from "../../../../../../contextAPI/authContext";
 
 const AllReagent = () => {
+  const [auth, setAuth] =useAuth();
   const [allReagent, setAllReagent] = useState([]);
   const [selectedId, setSelectedId] = useState("");
   const [updatePopUp, setUpdatePopUp] = useState(false);
   const [deletePopUp, setdeletePopUp] = useState(false);
 
+  const city = auth?.user?.city;
+
   // GETTING ALL REAGENT
   const getAllReagent = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/reagent/get-all-reagent`);
+      const { data } = await axios.get(`/api/v1/reagent/get-all-reagent-citywise/${city}`);
 
       if (data) {
         setAllReagent(data?.reagents);

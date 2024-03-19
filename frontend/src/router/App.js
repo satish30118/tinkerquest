@@ -33,6 +33,7 @@ import UserTestPending from "../app/Components/dashboard/pages/bookingAnalysis/U
 import UserForecasting from "../app/Components/dashboard/pages/forecasting/UserForecasting.jsx";
 import UserInventoryReport from "../app/Components/dashboard/pages/inventoryReoprt/UserInventoryReport.jsx";
 import UserChat from "../app/Components/dashboard/pages/chat/UserChat.jsx";
+import UserOrderReport from "../app/Components/dashboard/pages/order/UserOrderReport.jsx";
 
 function App() {
   return (
@@ -79,6 +80,10 @@ function App() {
           <Route
             path="user/inventory-report-and-analysis"
             element={<UserInventoryReport />}
+          ></Route>
+          <Route
+           exact path="user/inventory-order-tracking"
+            element={<UserOrderReport />}
           ></Route>
           <Route path="user/chat" element={<UserChat />}></Route>
         </Route>

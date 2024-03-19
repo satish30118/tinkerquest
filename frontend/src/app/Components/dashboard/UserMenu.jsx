@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../contextAPI/authContext';
 import { toast } from 'react-toastify';
 import { Drawer } from '@mui/material';
@@ -77,12 +77,13 @@ const UserMenu = () => {
             </p>
           </div>
 
-          <NavLink  to = {"/dashboard/user"}>
+          <Link  to = {"/dashboard/user"}>
             Overall Booking Report
-          </NavLink>
+          </Link>
           <NavLink to={"/dashboard/user/inventory-report-and-analysis"}>
             Inventory Report and Analysis
           </NavLink>
+          <NavLink to={"/dashboard/user/inventory-order-tracking"}>Inventory Order Tracking</NavLink>
           <NavLink to={"/dashboard/user/forecasting"}>
             Forecasting
           </NavLink>
