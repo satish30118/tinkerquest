@@ -13,9 +13,9 @@ const Forecasting = () => {
   const [data, setData] = useState({});
   const [animation, setAnimation] = useState(false);
   const [showgraph, setShowgraph] = useState(false);
-  
+
   let predictedData;
-  
+
   const test = [
     [
       "Lipid Profile",
@@ -65,34 +65,36 @@ const Forecasting = () => {
   /* PREDICTING BOOKING */
   const predict = async (e) => {
     // e.preventDefault();
-    const { city,  testName } = data;
-    if (!city|| !testName) {
+    const { city, testName } = data;
+    if (!city || !testName) {
       toast.warn("Fill all Filed");
       return;
     }
 
     try {
       setAnimation(true);
-      const { data } = await axios.post(`/api/v1/predict`, { city:"BC", day : 20 });
+      const { data } = await axios.post(`/api/v1/predict`, {
+        city: "BC",
+        day: 20,
+      });
       if (data) {
-        predictedData = ( data?.prediction);
-        console.log(data?.prediction)
-        console.log(predictedData)
-        
+        predictedData = data?.prediction;
+        console.log(data?.prediction);
+        console.log(predictedData);
       }
 
       setAnimation(false);
-      setShowgraph(true)
+      setShowgraph(true);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
     }
   };
 
-  const handlePredict = (e) =>{
+  const handlePredict = (e) => {
     e.preventDefault();
     predict();
-  }
+  };
 
   return (
     <Layout>
@@ -134,11 +136,17 @@ const Forecasting = () => {
                   ))}
                 </select>
               </div>
-
+              <div>
+                <input type="Number" name="day" value={data.day} />
+              </div>
               <div>
                 <button
                   className="btn"
-                  style={{ width: "auto",padding:"9px 40px ", textAlign: "center" }}
+                  style={{
+                    width: "auto",
+                    padding: "9px 40px ",
+                    textAlign: "center",
+                  }}
                   onClick={handlePredict}
                 >
                   {animation ? (
@@ -156,7 +164,7 @@ const Forecasting = () => {
               className="graph"
               style={{
                 padding: "20px",
-                display:`${showgraph ? "block" :"none"}`
+                display: `${showgraph ? "block" : "none"}`,
               }}
             >
               <div
@@ -170,7 +178,13 @@ const Forecasting = () => {
                 <h2 style={{ textAlign: "center" }}>
                   Predicted Booking in {data?.day} days
                 </h2>
-                <LineChart d={predictedData? predictedData : [13,12,17,9,21,23,13,5,23,16,23]} />
+                <LineChart
+                  d={
+                    predictedData
+                      ? predictedData
+                      : [13, 12, 17, 9, 21, 23, 13, 5, 23, 16, 23]
+                  }
+                />
               </div>
             </div>
           </div>

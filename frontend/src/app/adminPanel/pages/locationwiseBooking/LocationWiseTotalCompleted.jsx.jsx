@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../../layout/Layout";
 import AdminMenu from "../AdminMenu";
 import axios from "axios";
-import "../overallInventory/overallInventory.css";
+import "../overallBooking/overallInventory.css";
 import DeleteAlert from "../popup-form/DeleteAlert";
 import BookingUpdate from "../popup-form/BookingUpdate";
 import { useParams } from "react-router-dom";
-const LocationWiseTotalPending = () => {
-  const [testPendding, setTestPendding] = useState([]);
+
+const LocationWiseTotalCompleted = () => {
+  const [testCompleted, setTestCompleted] = useState([]);
   const [deletePop, setDeletePop] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [editPop, setEditPop] = useState(false);
@@ -15,16 +16,16 @@ const LocationWiseTotalPending = () => {
 
   const params = useParams();
 
-  /*PENDDIN BOOKINGS*/
-  const bookingPendding = async () => {
+  /*BOOKING COMPLETED*/
+  const bookingCompleted = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/get-pendding-booking/location-wise/${params.city}`
+        `/api/v1/booking/get-completed-booking/location-wise/${params.city}`
       );
 
       if (data) {
-        setTestPendding(data?.bookingPendding);
-        console.log(data.bookingPendding);
+        setTestCompleted(data?.bookingCompleted);
+        console.log(data.bookingCompleted);
       }
     } catch (error) {
       console.log(error);
@@ -39,7 +40,7 @@ const LocationWiseTotalPending = () => {
       );
 
       if (data) {
-        setTestPendding(data?.searchedPatient);
+        setTestCompleted(data?.searchedPatient);
         // console.log(data.allBooking);
       }
     } catch (error) {
@@ -49,7 +50,7 @@ const LocationWiseTotalPending = () => {
 
   /*CALLING ALL*/
   useEffect(() => {
-    if (!search) bookingPendding();
+    if (!search) bookingCompleted();
   }, [search]);
 
   useEffect(() => {
@@ -64,13 +65,13 @@ const LocationWiseTotalPending = () => {
           <AdminMenu />
         </div>
         <div className="content">
-          <div
+          {/* <div
             className="overlay"
             style={{ display: `${deletePop || editPop ? "block" : "none"}` }}
-          ></div>
+          ></div> */}
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">
-              <u>User Details - Test Pending in {params.city}</u>
+              User Details - Test Completed in {params.city}
             </h1>
           </div>
           <div className="search">
@@ -94,32 +95,34 @@ const LocationWiseTotalPending = () => {
                 <th>Status</th>
                 <th>Manage</th>
               </tr>
-              {testPendding?.map((patient) => (
+              {testCompleted?.map((patient) => (
                 <tr>
                   <td>{patient?._id}</td>
                   <td>{patient?.createdAt}</td>
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
-                  <td style={{ color: "red", textTransform: "capitalize" }}>
+                  <td
+                    style={{ color: "lightgreen", textTransform: "capitalize" }}
+                  >
                     {patient?.status}
                   </td>
                   <td>
                     <button
                       className="btn"
-                      style={{ background: "blue", fontSize: "15px" }}
+                      style={{ background: "blue" }}
                       onClick={(e) => {
                         setEditPop(true);
                         setSelectedId(patient._id);
                       }}
                     >
-                     <i class="fa-solid fa-pen-to-square"></i> Update
+                      Update
                     </button>
                     {/* <button
                       className="btn"
                       onClick={(e) => {
                         e.preventDefault();
                         setDeletePop(true);
-                        setSelectedId(patient?._id);
+                        setSelectedId(patient._id);
                       }}
                     >
                       Delete
@@ -136,25 +139,26 @@ const LocationWiseTotalPending = () => {
             <DeleteAlert
               id={selectedId}
               setDeletePopUp={setDeletePop}
-              getTotalBooking={bookingPendding}
+              getTotalBooking={bookingCompleted}
               setId={setSelectedId}
             />
           </div>
-          <div
+          
+        </div>
+        <div
             style={{ display: `${editPop ? "block" : "none"}` }}
             className="deletePop"
           >
             <BookingUpdate
               id={selectedId}
               setEditPopUp={setEditPop}
-              getAllBooking={bookingPendding}
+              getAllBooking={bookingCompleted}
               setId={setSelectedId}
             />
           </div>
-        </div>
       </div>
     </Layout>
   );
 };
 
-export default LocationWiseTotalPending;
+export default LocationWiseTotalCompleted;

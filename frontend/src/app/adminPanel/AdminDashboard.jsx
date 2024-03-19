@@ -3,8 +3,8 @@ import Layout from "../layout/Layout";
 import AdminMenu from "./pages/AdminMenu";
 import "./admin.css";
 import { useAuth } from "../../contextAPI/authContext";
-import LocationwiseInventory from "./pages/locationwiseInventory/LocationwiseInventory";
-import OverallInventory from "./pages/overallInventory/OverallInventory";
+import LocationwiseInventory from "./pages/locationwiseBooking/LocationwiseInventory";
+import OverallInventory from "./pages/overallBooking/OverallInventory";
 
 const AdminDashboard = () => {
   const [overall, setOverall] =useState(true)

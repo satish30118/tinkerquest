@@ -12,7 +12,7 @@ const UserForecasting = () => {
   const [data, setData] = useState({});
   const [animation, setAnimation] = useState(false);
   const [showgraph, setShowgraph] = useState(false);
-  const [dataPredicted, setDataPredicted] =useState(0)
+  const [dataPredicted, setDataPredicted] =useState([12,23,56,35,56,])
   
   const test = [
     [
@@ -125,6 +125,9 @@ const UserForecasting = () => {
                     </option>
                   ))}
                 </select>
+              </div>
+              <div>
+                <input type="Number" name="day" value={data.day} />
               </div>
 
               <div>

@@ -23,14 +23,14 @@ const InventoryReport = () => {
             <div className="i-report-btn">
               <button
                 className="btn"
-                style={{ background:`${showMachineReport? "rgb(50, 68, 201)" : "rgb(163, 7, 38"}` }}
+                style={{ background:`${showMachineReport? "rgb(50, 68, 201)" : "rgb(163, 7, 38"}`, transform:`${showMachineReport ? "scale(1)" : "scale(1.2)" }`,fontWeight:"600" }}
                 onClick={() => setShowMachineReport(false)}
               >
                 Reagent Analysis and Report
               </button>
               <button
                 className="btn"
-                style={{ background:`${showMachineReport? "rgb(163, 7, 38" : "rgb(50, 68, 201)"}` }}
+                style={{ background:`${showMachineReport? "rgb(163, 7, 38" : "rgb(50, 68, 201)"}`, transform:`${showMachineReport ? "scale(1.2)" : "scale(1)"}`, fontWeight:"600" }}
                 onClick={() => setShowMachineReport(true)}
               >
                 Machine Analysis and Report

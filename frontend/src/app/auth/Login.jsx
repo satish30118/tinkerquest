@@ -63,7 +63,8 @@ export default function Login() {
             <img src={authimg} alt="" />
           </div>
           <form className="login-form">
-            <h2 className="auth-heading">Log In</h2>
+            <h2 className="auth-heading"><u> Sign In</u>
+           </h2>
 
             <div className="auth-row">
               <div className="auth-icon">
@@ -94,13 +95,14 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-            </div>
-            <div
+              <span
               onClick={() => setShowPassword(!showPassword)}
               className="show-pass"
             >
-              {showPassword ? "Hide Password" : "Show Password"}
+              {showPassword ? <i class="fa-solid fa-eye"></i> : <i class="fa-solid fa-eye-slash"></i>}
+            </span>
             </div>
+            
             <div>
               <NavLink
                 to={"/forgot-password"}
@@ -112,7 +114,7 @@ export default function Login() {
                 }}
               >
                 Forgot password? -{" "}
-                <span style={{ color: "white" }}>Reset here</span>
+                <span style={{ color: "white" }}><u>Reset here</u> </span>
               </NavLink>
             </div>
 
@@ -120,7 +122,7 @@ export default function Login() {
               <button
                 className="btn"
                 onClick={handdleLogin}
-                style={{ marginTop: "9px", width: "100%" }}
+                style={{ margin: "20px 0", width: "100%",  }}
               >
                 {" "}
                 <i class="fa fa-sign-in" style={{ marginRight: "7px" }}></i>
@@ -139,7 +141,7 @@ export default function Login() {
                 }}
               >
                 Not have account? -{" "}
-                <span style={{ color: "white" }}>Register</span>
+                <span style={{ color: "white" }}><u>Register</u></span>
               </NavLink>
             </div>
           </form>

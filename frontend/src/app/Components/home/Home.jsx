@@ -12,7 +12,11 @@ const Home = () => {
 
   const handleRedirect = () => {
     if (auth?.token) {
-      navigate("/dashboard/admin");
+      if (auth?.user?.isAdmin) {
+        navigate("/dashboard/admin");
+      }else{
+        navigate("/dashboard/user")
+      }
     } else {
       setTimeout(() => {
         toast.warn("You have not login, please login to see dashboard");
@@ -45,9 +49,11 @@ const Home = () => {
       </div>
       <div className="footer-page1">
         <div className="both-book1">
-          <h2 >
-            <u>Frequently</u>
-            <span className="em"><u>Booked</u></span>
+          <h2>
+            <u style={{ color: "white" }}>Frequently</u>
+            <span className="em">
+              <u>Booked</u>
+            </span>
           </h2>
           <div className="frequently-booked1">
             <div>
@@ -97,9 +103,11 @@ const Home = () => {
       </div>
       <div className="footer-page2">
         <div className="both-book2">
-          <h2 >
-            <u>Our</u>
-            <span className="em"><u>Features</u></span>
+          <h2>
+            <u style={{ color: "white" }}>Our</u>
+            <span className="em">
+              <u>Features</u>
+            </span>
           </h2>
           <div className="frequently-booked2">
             <div>

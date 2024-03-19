@@ -34,7 +34,7 @@ td {
 }
 
 .deletePop {
-    position: fixed;
+    position: sticky;
     top: 20%;
     left: 26%;
     z-index: 2000;
