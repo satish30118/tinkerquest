@@ -1,16 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useAuth } from "../../../../../../contextAPI/authContext";
 
 const AllMachine = () => {
+  const [auth, setAuth] = useAuth();
   const [allMachine, setAllMachine] = useState([]);
   const [selectedId, setSelectedId] = useState("");
   const [updatePopUp, setUpdatePopUp] = useState(false);
   const [deletePopUp, setdeletePopUp] = useState(false);
+  const city = auth?.user?.city;
 
   // GETTING ALL MACHINE
   const getAllMachine = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/machine/get-all-machine`);
+      const { data } = await axios.get(`/api/v1/machine/get-all-machine-citywise/${city}`);
 
       if (data) {
         setAllMachine(data?.machines);

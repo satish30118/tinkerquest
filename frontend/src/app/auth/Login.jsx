@@ -67,7 +67,10 @@ export default function Login() {
 
             <div className="auth-row">
               <div className="auth-icon">
-                <i class="fa-envelope fa-solid" style={{color:"lightblue"}}></i>
+                <i
+                  class="fa-envelope fa-solid"
+                  style={{ color: "lightblue" }}
+                ></i>
               </div>
               <input
                 type="email"
@@ -81,7 +84,7 @@ export default function Login() {
 
             <div className="auth-row">
               <div className="auth-icon">
-                <i class="fa-lock fa-solid" style={{color:"lightblue"}}></i>
+                <i class="fa-lock fa-solid" style={{ color: "lightblue" }}></i>
               </div>
               <input
                 type={showPassword ? "text" : "password"}

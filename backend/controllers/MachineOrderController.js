@@ -88,6 +88,23 @@ const allMachineOrderController = async (req, res) => {
   }
 };
 
+//GET ALL MACHINES CITY WISE
+const allMachineOrderCityWiseController = async (req, res) => {
+  try {
+    const {city} = req.params;
+    const orders = await machineOrder.find({city});
+    res.status(200).send({
+      message: "ALL MACHINE ORDERED LIST CITY WISE",
+      orders,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL MACHINE CITY WISE ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
 //GET SINGLE MACHINES
 const singleMachineOrderController = async (req, res) => {
   try {
@@ -128,6 +145,7 @@ module.exports = {
   createMachineOrderController,
   updateMachineOrderController,
   allMachineOrderController,
+  allMachineOrderCityWiseController,
   singleMachineOrderController,
   deleteMachineOrderController,
 };

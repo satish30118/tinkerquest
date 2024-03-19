@@ -1,18 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useAuth } from "../../../../../contextAPI/authContext";
 
-const TrackReagent = () => {
+const UserTrackReagent = () => {
   const [allReagent, setAllReagent] = useState([]);
   const [singleReagent, setSingleReagent] = useState();
   const [selectedId, setSelectedId] = useState("");
   const [orderStatus, setStatus] = useState("");
   const [popUp, setPopUp] = useState(false);
-
+  const [auth, setAuth] = useAuth();
+  const city = auth?.user?.city;
   // GETTING ALL REAGENT
   const getAllReagent = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/order/get-order-reagent`);
+      const { data } = await axios.get(
+        `/api/v1/order/get-order-reagent-citywise/${city}`
+      );
 
       if (data) {
         setAllReagent(data?.orders);
@@ -120,7 +124,12 @@ const TrackReagent = () => {
                 <td>
                   <button
                     className="btn"
-                    style={{ fontSize: "16px", display:`${item?.orderStatus == "Delivered" ? "none" : "inline"}` }}
+                    style={{
+                      fontSize: "16px",
+                      display: `${
+                        item?.orderStatus == "Delivered" ? "none" : "inline"
+                      }`,
+                    }}
                     onClick={() => {
                       setSelectedId(item?._id);
                       setPopUp(true);
@@ -166,4 +175,4 @@ const TrackReagent = () => {
   );
 };
 
-export default TrackReagent;
+export default UserTrackReagent;

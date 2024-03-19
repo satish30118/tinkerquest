@@ -82,6 +82,24 @@ const allReagentController = async (req, res) => {
   }
 };
 
+//GET ALL REAGENTS CITY WISE
+const allReagentCityController = async (req, res) => {
+  try {
+    const {city }= req.params;
+    const reagents = await Reagent.find({city});
+    res.status(200).send({
+      message: "ALL REAGENT LIST CITY WISE",
+      reagents,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALLREAGENTS CITY WISE ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 //DELETING REAGENTS
 const deleteReagentController = async (req, res) => {
   try {
@@ -123,6 +141,7 @@ module.exports = {
   CreateReagentController,
   updateReagentController,
   allReagentController,
+  allReagentCityController,
   deleteReagentController,
   singleReagentController,
 };

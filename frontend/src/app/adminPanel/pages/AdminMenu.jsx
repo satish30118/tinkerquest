@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contextAPI/authContext";
 import { toast } from "react-toastify";
 import Layout from "../../layout/Layout";
@@ -77,9 +77,9 @@ const AdminMenu = () => {
               {auth?.user?.email}
             </p>
           </div>
-          <NavLink  to={"/dashboard/admin"}>
+          <Link  to={"/dashboard/admin"}>
             Inventory Dashboard
-          </NavLink>
+          </Link>
           <NavLink  to={"/dashboard/admin/inventory-report-and-analysis"}>
             Inventory Report and Analysis
           </NavLink>

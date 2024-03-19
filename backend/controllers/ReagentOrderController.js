@@ -93,6 +93,24 @@ const allReagentOrderController = async (req, res) => {
   }
 };
 
+//GET ALL REAGENT CITY WISE
+const allReagentOrderCityWiseController = async (req, res) => {
+  try {
+    const {city} = req.params;
+    const orders = await reagentOrder.find({city});
+    res.status(200).send({
+      message: "ALL Reagent ORDERED LIST CITY WISE",
+      orders,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL MACHINE CITY WISE${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 //GET SINGLE REAGENT
 const singleReagentOrderController = async (req, res) => {
   try {
@@ -133,6 +151,7 @@ module.exports = {
   createReagentOrderController,
   updateReagentOrderController,
   allReagentOrderController,
+  allReagentOrderCityWiseController,
   singleReagentOrderController,
   deleteReagentOrderController,
 };

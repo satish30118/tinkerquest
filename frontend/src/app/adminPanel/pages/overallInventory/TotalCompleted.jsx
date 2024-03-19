@@ -87,7 +87,6 @@ const TotalCompleted = () => {
                 <th>Booking Date</th>
                 <th>Patient Name</th>
                 <th>Test Name</th>
-                <th>Collection Date</th>
                 <th>Status</th>
                 <th>Update</th>
               </tr>
@@ -97,7 +96,6 @@ const TotalCompleted = () => {
                   <td>{patient?.createdAt}</td>
                   <td>{patient?.name}</td>
                   <td>{patient?.testName}</td>
-                  <td>{patient?.collectionDate}</td>
                   <td
                     style={{ color: "lightgreen", textTransform: "capitalize" }}
                   >
