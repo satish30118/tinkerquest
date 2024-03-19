@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../../layout/Layout";
 import AdminMenu from "../AdminMenu";
 import axios from "axios";
-import "../overallInventory/overallInventory.css";
+import "../overallBooking/overallInventory.css";
 import DeleteAlert from "../popup-form/DeleteAlert";
 import BookingUpdate from "../popup-form/BookingUpdate";
 import { useParams } from "react-router-dom";
@@ -143,7 +143,9 @@ const LocationWiseTotalCompleted = () => {
               setId={setSelectedId}
             />
           </div>
-          <div
+          
+        </div>
+        <div
             style={{ display: `${editPop ? "block" : "none"}` }}
             className="deletePop"
           >
@@ -154,7 +156,6 @@ const LocationWiseTotalCompleted = () => {
               setId={setSelectedId}
             />
           </div>
-        </div>
       </div>
     </Layout>
   );
