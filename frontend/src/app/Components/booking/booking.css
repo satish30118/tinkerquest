@@ -4,8 +4,23 @@
     text-align: center;
     box-sizing: border-box;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
+    background-color: #0e3f6c;
+    /* background-image: url(https://thumbs.dreamstime.com/z/book-your-medical-lab-test-online-patient-booking-his-using-mobile-app-microscope-tubes-background-190595853.jpg); */
+    display: flex;
+    /* border: 3px solid red; */
+    background-image: url(https://optimists.in/health-hub/wp-content/uploads/2022/08/book-lab-test-at-home-now-blog-cover.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.booking-page img
+{
+    border: 3px solid red;
+    width: 1000px;
+    /* height: 600px; */
+    /* margin-left: 50%; */
+    margin-top: 20px;
+    
 
 }
-
