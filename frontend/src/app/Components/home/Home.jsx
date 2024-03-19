@@ -46,7 +46,7 @@ const Home = () => {
       <div className="footer-page1">
         <div className="both-book1">
           <h2 >
-            <u>Frequently</u>
+            <u style={{color:"white"}}>Frequently</u>
             <span className="em"><u>Booked</u></span>
           </h2>
           <div className="frequently-booked1">
@@ -98,7 +98,7 @@ const Home = () => {
       <div className="footer-page2">
         <div className="both-book2">
           <h2 >
-            <u>Our</u>
+            <u style={{color:"white"}}>Our</u>
             <span className="em"><u>Features</u></span>
           </h2>
           <div className="frequently-booked2">

@@ -101,7 +101,7 @@ const NewTestBoooking = () => {
           }}
           className="bookig-update-form"
         >
-          <h1 style={{color:"white"}}>Book Test</h1>
+          <h1 style={{color:"white"}}><u>Book Test</u></h1>
           <div>
             <input
               type="text"
@@ -122,7 +122,7 @@ const NewTestBoooking = () => {
               style={{ width: "10%",height:"20px"}}
               onChange={handleChange}
             />
-            <label htmlFor="male">Male</label>
+            <label htmlFor="male" style={{color:"white"}}>Male</label>
             <input
               type="radio"
               name="gender"

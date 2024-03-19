@@ -93,7 +93,7 @@ export default function Register() {
       <Layout>
         <div className="register-page">
           <form className="register-form">
-            <h2 className="auth-heading">Register</h2>
+            <h2 className="auth-heading"><u>Register</u></h2>
             <div className="auth-row">
               <div className="auth-icon">
                 <i class="fa-user fa-solid"></i>

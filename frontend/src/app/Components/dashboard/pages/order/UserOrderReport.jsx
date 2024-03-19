@@ -17,7 +17,7 @@ const UserOrderReport = () => {
           <div className="content">
             <div className="dashboard-heading">
               <h1 className="dashboard-heading">
-                <u>Welcome to Inventory Order Tracking</u>
+                <u> Inventory Order Tracking</u>
               </h1>
             </div>
 
