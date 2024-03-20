@@ -51,37 +51,35 @@
     left: 3.5px;
     text-align: center;
 }
-.forecast p
-{
- 
-}
-.forecast img
-{
+
+.forecast p {}
+
+.forecast img {
     width: 300px;
     /* margin-top: 40px;
     margin-left: 200px; */
     border-radius: 9px;
     cursor: pointer;
 }
-.management img
-{
+
+.management img {
     width: 280px;
     cursor: pointer;
     /* margin-top: 40px;
     margin-left: 200px; */
     border-radius: 9px;
 }
-.admin-manage
-{
+
+.admin-manage {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    
-    
+
+
 }
-.admin-manage p
-{
-   font-size: 25px;
+
+.admin-manage p {
+    font-size: 25px;
     color: #f5f5f5;
     font-weight: 550;
 }
@@ -177,13 +175,13 @@ a.active {
     font-weight: 600;
     background-color: lightgray;
 }
-#i-revenue
-{
+
+#i-revenue {
     display: inline-block;
     height: auto;
     width: auto;
     padding: 37px 20px;
-    
+
 }
 
 .i-btn {

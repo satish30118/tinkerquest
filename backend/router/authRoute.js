@@ -20,10 +20,15 @@ const router = express.Router();
 router.post("/register", registerController);
 router.post("/login", loginController);
 router.get("/test", userVerification, adminVerification, testController);
-router.get("/get-all-user", userVerification,  getAllUser);
-router.delete("/delete-user/:id", userVerification, adminVerification,  deleteUser);
-router.put("/update-user/:id", userVerification,adminVerification, updateUser );
-router.route("/forgot-password").post(forgotPasswordController)
+router.get("/get-all-user", userVerification, getAllUser);
+router.delete(
+  "/delete-user/:id",
+  userVerification,
+  adminVerification,
+  deleteUser
+);
+router.put("/update-user/:id", userVerification, adminVerification, updateUser);
+router.route("/forgot-password").post(forgotPasswordController);
 
 //PROTECTED ROUTE FOR USER
 router.route("/user-auth").get(userVerification, (req, res) => {
@@ -31,8 +36,10 @@ router.route("/user-auth").get(userVerification, (req, res) => {
 });
 
 //PROTECTED ROUTE FOR ADMIN
-router.route("/admin-auth").get(userVerification, adminVerification, (req, res) => {
-  res.status(200).send({ ok: true });
-});
+router
+  .route("/admin-auth")
+  .get(userVerification, adminVerification, (req, res) => {
+    res.status(200).send({ ok: true });
+  });
 
 module.exports = router;

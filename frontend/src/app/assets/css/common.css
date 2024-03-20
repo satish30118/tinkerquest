@@ -1,10 +1,11 @@
-.auth-row{
-    border:2.2px solid rgb(232, 227, 227);
+.auth-row {
+    border: 2.2px solid rgb(232, 227, 227);
     border-radius: 9px;
     margin: 15px 0px;
     box-sizing: border-box;
 }
-.auth-row .auth-icon{
+
+.auth-row .auth-icon {
     display: inline-block;
     width: 10%;
     height: 40px;
@@ -17,13 +18,14 @@
     color: rgb(255, 255, 255);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    
+
 }
 
-.auth-row ::placeholder{
+.auth-row ::placeholder {
     color: lightgray;
 }
-.auth-row input{
+
+.auth-row input {
     width: 83%;
     height: 50px;
     padding: 8px;
@@ -37,9 +39,10 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     color: white;
-    
+
 }
-.auth-row select{
+
+.auth-row select {
     width: 94%;
     height: 40px;
     padding: 8px;
@@ -51,7 +54,7 @@
     text-align: center;
 }
 
-.auth-heading{
+.auth-heading {
     text-align: center;
     color: rgb(255, 255, 255);
     font-size: 30px;
@@ -59,7 +62,8 @@
     padding-bottom: 10px;
     margin: 0;
 }
-.show-pass{
+
+.show-pass {
     color: rgb(255, 255, 255);
     cursor: pointer;
     font-size: 17px;
@@ -67,7 +71,8 @@
     margin: 0;
     padding: 0;
 }
-.btn{
+
+.btn {
     font-size: 18px;
     color: white;
     background: linear-gradient(to right, rgb(95, 139, 225), rgb(24, 194, 194));
@@ -81,7 +86,6 @@
     font-weight: 700;
 }
 
-.auth-row option
-{
+.auth-row option {
     color: black;
 }

@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useAuth } from "../../contextAPI/authContext";
 import Layout from "../layout/Layout";
-import Aos from "aos"
-import 'aos/dist/aos.css'
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -90,19 +90,20 @@ export default function Register() {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     Aos.init({
-      duration:1500,
-
-    })
-  },[])
+      duration: 1500,
+    });
+  }, []);
 
   return (
     <>
       <Layout>
-        <div className="register-page" >
+        <div className="register-page">
           <form className="register-form" data-aos="fade-left">
-            <h2 className="auth-heading"><u>Register</u></h2>
+            <h2 className="auth-heading">
+              <u>Register</u>
+            </h2>
             <div className="auth-row">
               <div className="auth-icon">
                 <i class="fa-user fa-solid"></i>
@@ -131,6 +132,7 @@ export default function Register() {
                 value={data.email}
               />
             </div>
+           
             <div className="auth-row">
               <select
                 name="city"
@@ -238,7 +240,11 @@ export default function Register() {
               </NavLink>
             </div>
           </form>
-          <div className="auth-img" style={{ width: "60%" }} data-aos="fade-right" >
+          <div
+            className="auth-img"
+            style={{ width: "60%" }}
+            data-aos="fade-right"
+          >
             <img
               src="https://static.vecteezy.com/system/resources/previews/002/127/145/original/pharmacy-concept-illustration-research-lab-service-independent-medical-lab-service-medical-laboratory-health-test-character-cartoon-illustration-flat-style-free-vector.jpg"
               alt=""
