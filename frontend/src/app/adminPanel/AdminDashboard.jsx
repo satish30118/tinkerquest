@@ -17,7 +17,7 @@ const AdminDashboard = () => {
         <div className="content">
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">
-              <u>Welcome to Admin Page</u>
+              <u>Dashboard</u>
             </h1>
           </div>
 
@@ -25,14 +25,14 @@ const AdminDashboard = () => {
             <button
               className="btn"
               onClick={() => setOverall(true)}
-              style={{ background: `${overall ? "red" : "blue"}` }}
+              style={{ background: `${overall ? "red" : "blue"}`,  textDecoration:`${overall ? "underline" : "none"}`,fontSize:`${overall ? "23px" : "18px"}`}}
             >
-              Overall Inventory Dashboard
+              Entire Inventory Dashboard
             </button>
             <button
               className="btn"
               onClick={() => setOverall(false)}
-              style={{ background: `${overall ? "blue" : "red"}` }}
+              style={{ background: `${overall ? "blue" : "red"}`, textDecoration:`${overall ? "none" : "underline"}`,fontSize:`${overall ? "18px" : "23px"}`}}
             >
               Locationwise Inventory Dashboard
             </button>

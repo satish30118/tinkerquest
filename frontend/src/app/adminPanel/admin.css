@@ -17,6 +17,7 @@
     height: 150px;
     width: 150px;
     border-radius: 50%;
+    /* border: 7px solid rgb(38, 57, 122); */
 }
 
 .admin-dashboard .content {
