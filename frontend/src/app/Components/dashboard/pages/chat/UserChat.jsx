@@ -196,7 +196,7 @@ const UserChat = () => {
                     fontFamily: "poppins",
                     fontSize: "18px",
                     fontWeight: "460",
-                    width: "50%",
+                    width: "90%",
                     // background:"red"
                   }}
                   placeholder="Message Here"

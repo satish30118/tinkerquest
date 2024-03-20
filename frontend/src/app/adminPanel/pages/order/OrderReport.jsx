@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../../layout/Layout";
 import AdminMenu from "../AdminMenu";
 import "./order.css";
@@ -11,6 +11,9 @@ const OrderReport = () => {
   const [showMachine, setShowMachine] = useState(true);
   const [orderMachine, setOrderMachine] = useState(false);
   const [orderReagent, setOrderReagent] = useState(false);
+useEffect(()=>{
+  <TrackReagent />
+})
   return (
     <>
       <Layout>
