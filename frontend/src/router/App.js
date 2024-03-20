@@ -1,11 +1,9 @@
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import Home from "../app/Components/home/Home";
-import Login from "../app/auth/Login";
-import Register from "../app/auth/Register";
-import ForgotPassword from "../app/auth/forgotpassword/ForgotPassword";
-import ErrorPage from "../app/layout/ErrorPage";
+
+
 import UserDashboard from "../app/Components/dashboard/UserDashboard";
 import UserRoute from "../app/auth/privateRoutes/UserRoute";
 import AdminDashboard from "../app/adminPanel/AdminDashboard";
@@ -34,105 +32,127 @@ import UserForecasting from "../app/Components/dashboard/pages/forecasting/UserF
 import UserInventoryReport from "../app/Components/dashboard/pages/inventoryReoprt/UserInventoryReport.jsx";
 import UserChat from "../app/Components/dashboard/pages/chat/UserChat.jsx";
 import UserOrderReport from "../app/Components/dashboard/pages/order/UserOrderReport.jsx";
-
+import Loader from "../app/Animations/Loader.jsx";
+import Fallback from "../app/Animations/Fallback.jsx";
+const Home = React.lazy(() => import("../app/Components/home/Home"));
+const Login  = React.lazy(() => import( "../app/auth/Login"));
+const Register  = React.lazy(() => import( "../app/auth/Register"));
+const ForgotPassword  = React.lazy(() => import("../app/auth/forgotpassword/ForgotPassword"));
+const ErrorPage = React.lazy(()=> import( "../app/layout/ErrorPage"));
 function App() {
   return (
     <>
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/home" element={<Home />}></Route>
-        <Route exact path="/about-us" element={<AboutUs />}></Route>
-        <Route exact path="/test-report" element={<TestReport />}></Route>
-        <Route
-          exact
-          path="/new-test-booking"
-          element={<NewTestBoooking />}
-        ></Route>
-        <Route exact path="/login" element={<Login />}></Route>
-        <Route exact path="/register" element={<Register />}></Route>
-        <Route
-          exact
-          path="/forgot-password"
-          element={<ForgotPassword />}
-        ></Route>
+      <Suspense fallback={<Fallback />}>
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/home" element={<Home />}></Route>
+          <Route exact path="/about-us" element={<AboutUs />}></Route>
+          <Route exact path="/test-report" element={<TestReport />}></Route>
+          <Route
+            exact
+            path="/new-test-booking"
+            element={<NewTestBoooking />}
+          ></Route>
+          <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/register" element={<Register />}></Route>
+          <Route
+            exact
+            path="/forgot-password"
+            element={<ForgotPassword />}
+          ></Route>
 
-        {/* // USER DASHBOASR // */}
-        <Route exact path="/dashboard/" element={<UserRoute />}>
-          <Route path="user" element={<UserDashboard />}></Route>
-         
-          <Route
-            path="user/location-wise-inventory-details"
-            element={<LocationwiseInventory />}
-          ></Route>
-          <Route
-            path="user/location-wise-inventory-details/total-booking/:city"
-            element={<UserTestBooking />}
-          ></Route>
-          <Route
-            path="user/location-wise-inventory-details/total-booking-completed/:city"
-            element={<UserTestCompleted />}
-          ></Route>
-          <Route
-            path="user/location-wise-inventory-details/total-booking-pending/:city"
-            element={<UserTestPending />}
-          ></Route>
-          <Route path="user/forecasting" element={<UserForecasting />}></Route>
-          <Route
-            path="user/inventory-report-and-analysis"
-            element={<UserInventoryReport />}
-          ></Route>
-          <Route
-           exact path="user/inventory-order-tracking"
-            element={<UserOrderReport />}
-          ></Route>
-          <Route path="user/chat" element={<UserChat />}></Route>
-        </Route>
+          {/* // USER DASHBOASR // */}
+          <Route exact path="/dashboard/" element={<UserRoute />}>
+            <Route path="user" element={<UserDashboard />}></Route>
 
-        {/* // ADMIN DASHBOARD // */}
-        <Route exact path="/dashboard" element={<AdminRoute />}>
-          <Route exact path="admin" element={<AdminDashboard />}></Route>
-          <Route
-           exact path="admin/overall-inventory-details/total-booking"
-            element={<TotalBooking />}
-          ></Route>
-          <Route
-           exact path="admin/overall-inventory-details/total-booking-completed"
-            element={<TotalCompleted />}
-          ></Route>
-          <Route
-           exact path="admin/overall-inventory-details/total-booking-pending"
-            element={<TotalPending />}
-          ></Route>
-          <Route
-            path="admin/location-wise-inventory-details/total-booking/:city"
-            element={<LocationWiseTotalBooking />}
-          ></Route>
-          <Route
-            path="admin/location-wise-inventory-details/total-booking-completed/:city"
-            element={<LocationWiseTotalCompleted />}
-          ></Route>
-          <Route
-            path="admin/location-wise-inventory-details/total-booking-pending/:city"
-            element={<LocationWiseTotalPending />}
-          ></Route>
-          <Route
-           exact path="admin/add-new-test-method"
-            element={<NewTestMethod />}
-          ></Route>
-          <Route exact path="admin/forecasting" element={<Forecasting />}></Route>
-          <Route
-           exact path="admin/inventory-report-and-analysis"
-            element={<InventoryReport />}
-          ></Route>
-          <Route
-           exact path="admin/inventory-order-tracking"
-            element={<OrderReport />}
-          ></Route>
-          <Route exact path="admin/chat" element={<Chat />}></Route>
-          <Route exact path="admin/users" element={<Users />}></Route>
-        </Route>
-        <Route path="*" element={<ErrorPage />}></Route>
-      </Routes>
+            <Route
+              path="user/location-wise-inventory-details"
+              element={<LocationwiseInventory />}
+            ></Route>
+            <Route
+              path="user/location-wise-inventory-details/total-booking/:city"
+              element={<UserTestBooking />}
+            ></Route>
+            <Route
+              path="user/location-wise-inventory-details/total-booking-completed/:city"
+              element={<UserTestCompleted />}
+            ></Route>
+            <Route
+              path="user/location-wise-inventory-details/total-booking-pending/:city"
+              element={<UserTestPending />}
+            ></Route>
+            <Route
+              path="user/forecasting"
+              element={<UserForecasting />}
+            ></Route>
+            <Route
+              path="user/inventory-report-and-analysis"
+              element={<UserInventoryReport />}
+            ></Route>
+            <Route
+              exact
+              path="user/inventory-order-tracking"
+              element={<UserOrderReport />}
+            ></Route>
+            <Route path="user/chat" element={<UserChat />}></Route>
+          </Route>
+
+          {/* // ADMIN DASHBOARD // */}
+          <Route exact path="/dashboard" element={<AdminRoute />}>
+            <Route exact path="admin" element={<AdminDashboard />}></Route>
+            <Route
+              exact
+              path="admin/overall-inventory-details/total-booking"
+              element={<TotalBooking />}
+            ></Route>
+            <Route
+              exact
+              path="admin/overall-inventory-details/total-booking-completed"
+              element={<TotalCompleted />}
+            ></Route>
+            <Route
+              exact
+              path="admin/overall-inventory-details/total-booking-pending"
+              element={<TotalPending />}
+            ></Route>
+            <Route
+              path="admin/location-wise-inventory-details/total-booking/:city"
+              element={<LocationWiseTotalBooking />}
+            ></Route>
+            <Route
+              path="admin/location-wise-inventory-details/total-booking-completed/:city"
+              element={<LocationWiseTotalCompleted />}
+            ></Route>
+            <Route
+              path="admin/location-wise-inventory-details/total-booking-pending/:city"
+              element={<LocationWiseTotalPending />}
+            ></Route>
+            <Route
+              exact
+              path="admin/add-new-test-method"
+              element={<NewTestMethod />}
+            ></Route>
+            <Route
+              exact
+              path="admin/forecasting"
+              element={<Forecasting />}
+            ></Route>
+            <Route
+              exact
+              path="admin/inventory-report-and-analysis"
+              element={<InventoryReport />}
+            ></Route>
+            <Route
+              exact
+              path="admin/inventory-order-tracking"
+              element={<OrderReport />}
+            ></Route>
+            <Route exact path="admin/chat" element={<Chat />}></Route>
+            <Route exact path="admin/users" element={<Users />}></Route>
+          </Route>
+          <Route path="*" element={<ErrorPage />}></Route>
+        </Routes>
+      </Suspense>
     </>
   );
 }

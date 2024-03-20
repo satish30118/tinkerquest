@@ -48,8 +48,14 @@ const OrderMachine = ({ popUp }) => {
   const handleData = async (e) => {
     e.preventDefault();
 
-    const { machineName, machineUnitOrder,machineCost, testLimit, testCategory, testName } =
-      data;
+    const {
+      machineName,
+      machineUnitOrder,
+      machineCost,
+      testLimit,
+      testCategory,
+      testName,
+    } = data;
     if (
       !machineName ||
       !machineUnitOrder ||
@@ -79,7 +85,7 @@ const OrderMachine = ({ popUp }) => {
         setData({
           machineName: "",
           machineUnitOrder: "",
-          machineCost:"",
+          machineCost: "",
           testLimit: "",
           testCategory: "",
           testName: "",
@@ -119,16 +125,7 @@ const OrderMachine = ({ popUp }) => {
               }}
               value={city}
             >
-              <option value="">--- Choose Lab Location ---</option>
-              <option value="Noida">Noida</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Dehradun">Dehradun</option>
-              <option value="Roorkee">Roorkee</option>
-              <option value="Kolkata">Kolkata </option>
-              <option value="Pune">Pune</option>
-              <option value="Nagpur">Nagpur</option>
-              <option value="Lucknow">Lucknow</option>
-              <option value="Patna">Patna</option>
+              <option value={auth?.user?.city}>{auth?.user?.city}</option>
             </select>
           </div>
 

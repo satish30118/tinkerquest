@@ -58,21 +58,8 @@ const OrderReagent = ({ popUp }) => {
         <h1 className="i-heading">Ordered Reagent Details</h1>
         <form action="">
           <div className="location">
-            <select
-              onChange={(e) => {
-                setCity(e.target.value);
-              }}
-            >
-              <option value="">--- Choose Lab Location ---</option>
-              <option value="Noida">Noida</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Dehradun">Dehradun</option>
-              <option value="Roorkee">Roorkee</option>
-              <option value="Kolkata">Kolkata </option>
-              <option value="Pune">Pune</option>
-              <option value="Nagpur">Nagpur</option>
-              <option value="Lucknow">Lucknow</option>
-              <option value="Patna">Patna</option>
+            <select value={city}>
+              <option value={auth?.user?.city}>{auth?.user?.city}</option>
             </select>
           </div>
 

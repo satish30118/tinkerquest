@@ -1,4 +1,4 @@
-.loader-page{
+.fall-back-animation{
     height: 100vh;
     width: 100%;
     display: flex;
@@ -7,11 +7,9 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
-   
+    animation: logo-ani 1s infinite;
 }
-.loader-page img{
-    animation: logo-ani 0.9s infinite;
-}
+
 @keyframes logo-ani {
     0%{
         transform: scale(1);
