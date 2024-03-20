@@ -64,13 +64,21 @@ The Medical Lab Inventory Management System provides a user-friendly interface f
 
 - MongoDB
 
+## Deployment
+deploy Link: [(https://healthware.vercel.app/)]
+### Credentials
+- admin `Email: admin@gmail.com`
+       `Password : Admin123`
+- User `Email : user@gmail.com`
+      `Password : User123`
+
 ## Documentation
 
 Documentation Link: [(https://drive.google.com/file/d/1KsBnCMPj38hj8HzWPSf1IE2BrGdbyduk/view?usp=drive_link)]
 
 ## Short Video Link
 
-Short Video Link: [(https://drive.google.com/file/d/1FYB3o4GH5mrKd3M7CBDAY3Qmyep0uZd0/view?usp=drive_link)]
+Short Video Link: [(https://drive.google.com/file/d/1dgfu_W6ZSLbOCHsxxaZ_yDNAAFp_hL7S/view?usp=sharing)]
 
 ---
 
