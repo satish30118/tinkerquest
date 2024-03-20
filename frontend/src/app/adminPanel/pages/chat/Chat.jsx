@@ -5,7 +5,6 @@ import { useAuth } from "../../../../contextAPI/authContext";
 import axios from "axios";
 import "./chat.css";
 
-
 const Chat = () => {
   const [auth] = useAuth();
   const [message, setMessage] = useState("");
@@ -18,12 +17,12 @@ const Chat = () => {
     city: auth?.user?.city,
   };
 
- const checkEnter = (e) =>{
-  // console.log(e.key)
-  if (e.key=== "Enter") {  
-    sendMessage(e);
-}
- }
+  const checkEnter = (e) => {
+    // console.log(e.key)
+    if (e.key === "Enter") {
+      sendMessage(e);
+    }
+  };
   // SENDING NEW MESSAGE //
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -60,7 +59,6 @@ const Chat = () => {
     }
   };
 
-
   /* TOTAL USER */
   const getTotalUsers = async () => {
     try {
@@ -96,15 +94,15 @@ const Chat = () => {
               className="chat-member"
               style={{ width: "30%", height: "70vh", overflow: "auto" }}
             >
-              {users?.map((u)=>(
+              {users?.map((u) => (
                 <div className="member-card">
-                <h3>{u?.name}</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> {u?.isAdmin ? "Admin" : "Lab Associate"}
-                </p>
-              </div>
+                  <h3>{u?.name}</h3>
+                  <p>
+                    <i class="fa-solid fa-user"></i>{" "}
+                    {u?.isAdmin ? "Admin" : "Lab Associate"}
+                  </p>
+                </div>
               ))}
-                            
             </div>
 
             <div
@@ -182,7 +180,7 @@ const Chat = () => {
                   position: "absolute",
                   bottom: "0",
                   left: "0",
-                  width: "100%",
+                  width: "90%",
                   background: "white",
                 }}
               >
@@ -201,7 +199,9 @@ const Chat = () => {
                   }}
                   placeholder="Message Here"
                   value={message}
-                  onChange={(e) => {setMessage(e.target.value)}}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                  }}
                   onKeyDown={checkEnter}
                 />
                 <i
@@ -212,11 +212,11 @@ const Chat = () => {
                     textAlign: "center",
                     color: "blue",
                     width: "10%",
-                    position:"relative",
-                    left:"-8%"
+                    position: "relative",
+                    left: "-8%",
                   }}
                   id="m-btn"
-                  onClick={sendMessage} 
+                  onClick={sendMessage}
                 ></i>
               </div>
             </div>

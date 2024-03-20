@@ -15,7 +15,6 @@ const mlConnect = require("./mlConnect");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-
 //CONFIGURE ENV
 dotenv.config(); // dotenv.config({path:""}) if file is not in root folder
 
@@ -26,11 +25,7 @@ connectDB();
 const app = express();
 
 //MIDDELWARES
-app.use(cors({
-  origin:"https://deploy-mern-1whq.vercel.app",
-  methods:["POST","GET","DELETE","PUT"],
-  credentials:true
-}));
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -49,8 +44,6 @@ app.post("/api/v1/predict", mlConnect);
 app.get("/", (req, res) => {
   res.send("Hello Ji main aa gya");
 });
-
-
 
 //PORT and LISTEN SECTION
 const PORT = process.env.PORT || 8080;
