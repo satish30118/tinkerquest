@@ -1,8 +1,10 @@
 import Layout from "../../layout/Layout";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./booking.css";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const NewTestBoooking = () => {
   const [data, setData] = useState({});
@@ -35,15 +37,7 @@ const NewTestBoooking = () => {
 
   const handleData = async (e) => {
     e.preventDefault();
-    const {
-      name,
-      gender,
-      age,
-      mobile,
-      testCategory,
-      testName,
-      city,
-    } = data;
+    const { name, gender, age, mobile, testCategory, testName, city } = data;
     if (
       !name ||
       !gender ||
@@ -51,7 +45,7 @@ const NewTestBoooking = () => {
       !mobile ||
       !testCategory ||
       !testName ||
-      !city 
+      !city
     ) {
       toast.warn("Enter all details");
       return;
@@ -89,6 +83,11 @@ const NewTestBoooking = () => {
       toast.error("Something went wrong");
     }
   };
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+    });
+  }, []);
   return (
     <Layout>
       <div className="booking-page">
@@ -97,11 +96,14 @@ const NewTestBoooking = () => {
             // boxShadow: "0 0 12px 3px",
             padding: "20px",
             // background: "lightgray",
-            margin:"50px 0"
+            margin: "50px 0",
           }}
           className="bookig-update-form"
+          data-aos="fade-right"
         >
-          <h1 style={{color:"white"}}><u>Book Test</u></h1>
+          <h1 style={{ color: "white" }}>
+            <u>Book Test</u>
+          </h1>
           <div>
             <input
               type="text"
@@ -119,16 +121,18 @@ const NewTestBoooking = () => {
               name="gender"
               id="male"
               value="male"
-              style={{ width: "10%",height:"20px"}}
+              style={{ width: "10%", height: "20px" }}
               onChange={handleChange}
             />
-            <label htmlFor="male" style={{color:"white"}}>Male</label>
+            <label htmlFor="male" style={{ color: "white" }}>
+              Male
+            </label>
             <input
               type="radio"
               name="gender"
               id="female"
               value="female"
-              style={{ width: "10%",height:"20px" }}
+              style={{ width: "10%", height: "20px" }}
               onChange={handleChange}
             />
             <label htmlFor="female">Female</label>
@@ -137,7 +141,7 @@ const NewTestBoooking = () => {
               name="gender"
               id="other"
               value="other"
-              style={{ width: "10%",height:"20px" }}
+              style={{ width: "10%", height: "20px" }}
               onChange={handleChange}
             />
             <label htmlFor="other">Other</label>
@@ -191,9 +195,11 @@ const NewTestBoooking = () => {
               onFocus={getTest}
               style={{ width: "70%" }}
             >
-              <option value="" >--- Choose Test Type ---</option>
+              <option value="">--- Choose Test Type ---</option>
               {allTest?.map((item) => (
-                <option key={item?._id} value={item.testName}>{item.testName}</option>
+                <option key={item?._id} value={item.testName}>
+                  {item.testName}
+                </option>
               ))}
             </select>
           </div>
@@ -226,7 +232,6 @@ const NewTestBoooking = () => {
             >
               Book Now
             </button>
-            
           </div>
         </form>
         <div></div>

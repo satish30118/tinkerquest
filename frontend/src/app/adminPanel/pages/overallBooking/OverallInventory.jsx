@@ -6,6 +6,7 @@ import Overall from "../graphs/Overall";
 import Progress from "../graphs/Progress";
 import CatBar from "../graphs/CatBar";
 import PieChartBooking from "../graphs/PieChartBooking";
+import Piepercent from "../graphs/Piepercent";
 
 const OverallInventory = () => {
   const [totalBooking, setTotalBooking] = useState([]);
@@ -278,15 +279,16 @@ const OverallInventory = () => {
         <div
           style={{
             background: "white",
-            margin: "30px 0",
-            width: "560px",
-            padding: "30px",
+            margin:"30px 0",
+            width:"600px",
+            paddingTop:"30px",
+            textAlign:"center"
           }}
         >
           <h2 style={{ textAlign: "center" }}>
             Overall Department Wise Booking
           </h2>
-          <PieChartBooking
+          <Piepercent
             d1={blood}
             d2={vitamin}
             d3={diabetes}
@@ -299,14 +301,14 @@ const OverallInventory = () => {
               style={{
                 background: "white",
                 margin:"30px 0",
-                width:"560px",
-                padding:"30px"
+                width:"600px",
+                paddingTop:"30px"
               }}
             >
               <h2 style={{ textAlign: "center" }}>
                 This Month Department Wise Booking
               </h2>
-              <PieChartBooking
+              <Piepercent
                 d1={bl}
                 d2={vi}
                 d3={di}

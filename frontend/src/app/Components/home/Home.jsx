@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layout/Layout";
 import "./home.css";
 import { useAuth } from "../../../contextAPI/authContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Aos from "aos"
+import 'aos/dist/aos.css'
 // import himg from '../../assets/image/bg.jpg'
+
+
 
 const Home = () => {
   const [auth] = useAuth();
   const navigate = useNavigate();
+  useEffect(()=>{
+    Aos.init({
+      duration:1000,
+  
+    })
+  },[])
 
   const handleRedirect = () => {
     if (auth?.token) {
@@ -35,12 +45,13 @@ const Home = () => {
           />
         </div>
 
-        <div className="h-text">
-          <h2 style={{ fontFamily: "Poppins" }}>
-            <p className="em">EMPOWERING</p>
-            PEOPLE TO IMPROVE THEIR LIVES
+        <div className="h-text" >
+          <h2 style={{ fontFamily: "Poppins" }} > 
+            <p className="em" data-aos="fade-left" data-aos-duration="2000">EMPOWERING</p>
+            <p data-aos="fade-right" data-aos-duration="2000"> PEOPLE TO IMPROVE THEIR LIVES</p>
+           
           </h2>
-          <div className="contact-details">
+          <div className="contact-details" data-aos="fade-left" data-aos-duration="2000">
             <h2 id="book-now" onClick={handleRedirect}>
               Go to Dashboard <i class="fa-solid fa-arrow-right"></i>
             </h2>
@@ -48,50 +59,50 @@ const Home = () => {
         </div>
       </div>
       <div className="footer-page1">
-        <div className="both-book1">
+        <div className="both-book1" >
           <h2>
             <u style={{ color: "white" }}>Frequently</u>
             <span className="em">
               <u>Booked</u>
             </span>
           </h2>
-          <div className="frequently-booked1">
-            <div>
+          <div className="frequently-booked1" >
+            <div data-aos="zoom-in">
               <img
                 src="https://previews.123rf.com/images/alekseyvanin/alekseyvanin2002/alekseyvanin200200985/140976965-thyroid-gland-vector-icon-filled-flat-sign-for-mobile-concept-and-web-design-normal-thyroid-glyph.jpg"
                 alt=""
               />
               Thyroid
             </div>
-            <div>
+            <div data-aos="zoom-in">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160248711/53356021-human-liver.jpg"
                 alt=""
               />
               Liver
             </div>
-            <div>
+            <div data-aos="zoom-in">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160219351/52929157-blood-drop.jpg"
                 alt=""
               />
               Blood
-            </div>
-            <div>
+            </div >
+            <div data-aos="zoom-in">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160272837/53282279-syringe.jpg"
                 alt=""
               />
               Diabetes
             </div>
-            <div>
+            <div data-aos="zoom-in">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160249174/53361232-human-kidneys.jpg"
                 alt=""
               />
               Kindey
             </div>
-            <div>
+            <div data-aos="zoom-in">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160259044/52931861-medicine-bottle.jpg"
                 alt=""
@@ -110,21 +121,21 @@ const Home = () => {
             </span>
           </h2>
           <div className="frequently-booked2">
-            <div>
+            <div data-aos="fade-right">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1601/captainvector160114572/51894216-graphic-design-of-bar-chart-on-projection-screen.jpg"
                 alt=""
               />
               Inverntory Demand Forecasting
             </div>
-            <div>
+            <div data-aos="zoom-in">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160260623/52973306-letter-m.jpg"
                 alt=""
               />
               Effective Inventory Management System
             </div>
-            <div>
+            <div data-aos="fade-left">
               <img
                 src="https://previews.123rf.com/images/luka007/luka0071505/luka007150500058/39573454-target-icon.jpg"
                 alt=""

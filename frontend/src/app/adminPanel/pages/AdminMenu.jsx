@@ -42,7 +42,7 @@ const AdminMenu = () => {
           minWidth: "280px",
         }}
       >
-        <div className="admin-menu-page">
+        <div className="admin-menu-page" style={{ overflow: "auto" }}>
           {/* <div>
             <button onClick={toggleDrawer}>
               <i className="fa-solid fa-close"></i>
@@ -77,10 +77,8 @@ const AdminMenu = () => {
               {auth?.user?.email}
             </p>
           </div>
-          <Link  to={"/dashboard/admin"}>
-            Inventory Dashboard
-          </Link>
-          <NavLink  to={"/dashboard/admin/inventory-report-and-analysis"}>
+          <Link to={"/dashboard/admin"}>Inventory Dashboard</Link>
+          <NavLink to={"/dashboard/admin/inventory-report-and-analysis"}>
             Inventory Report and Analysis
           </NavLink>
           <NavLink exact to={"/dashboard/admin/forecasting"}>
@@ -92,7 +90,9 @@ const AdminMenu = () => {
           <NavLink exact to={"/dashboard/admin/add-new-test-method"}>
             Add New Test Method
           </NavLink>
-          <NavLink exact to={"/dashboard/admin/chat"}>Chat</NavLink>
+          <NavLink exact to={"/dashboard/admin/chat"}>
+            Chat
+          </NavLink>
           <NavLink to={"/dashboard/admin/users"}>Manage User</NavLink>
         </div>
       </Drawer>

@@ -7,6 +7,7 @@ import Overall from "../graphs/Overall";
 import CatBar from "../graphs/CatBar";
 import PieChartBooking from "../graphs/PieChartBooking";
 import { useAuth } from "../../../../../contextAPI/authContext";
+import Piepercent from "../graphs/Piepercent";
 
 const UserLocationAnalysis = () => {
   const [auth, setAuth] = useAuth();
@@ -262,14 +263,14 @@ const UserLocationAnalysis = () => {
               style={{
                 background: "white",
                 margin: "30px 0",
-                width: "560px",
-                padding: "30px",
+                width: "600px",
+                paddingTop: "30px",
               }}
             >
               <h2 style={{ textAlign: "center" }}>
                 Overall Department Wise Booking
               </h2>
-              <PieChartBooking
+              <Piepercent
                 d1={blood}
                 d2={vitamin}
                 d3={diabetes}
@@ -282,14 +283,14 @@ const UserLocationAnalysis = () => {
               style={{
                 background: "white",
                 margin: "30px 0",
-                width: "560px",
-                padding: "30px",
+                width: "600px",
+                paddingTop: "30px",
               }}
             >
               <h2 style={{ textAlign: "center" }}>
                 This Month Department Wise Booking
               </h2>
-              <PieChartBooking
+              <Piepercent
                 d1={bl}
                 d2={vi}
                 d3={di}

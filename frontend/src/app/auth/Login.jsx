@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/login.css";
@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../contextAPI/authContext";
 import Layout from "../layout/Layout";
 import authimg from "../assets/image/auth-img.jpg";
+import Aos from "aos"
+import 'aos/dist/aos.css'
 
 export default function Login() {
   const navigate = useNavigate();
@@ -55,14 +57,20 @@ export default function Login() {
       return;
     }
   };
+  useEffect(()=>{
+    Aos.init({
+      duration:1000,
+
+    })
+  },[])
   return (
     <>
       <Layout>
         <div className="login-page">
-          <div className="auth-img">
+          <div className="auth-img" data-aos="fade-right">
             <img src={authimg} alt="" />
           </div>
-          <form className="login-form">
+          <form className="login-form" data-aos="fade-left">
             <h2 className="auth-heading"><u> Sign In</u>
            </h2>
 

@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../assets/css/login.css";
 import "../../assets/css/common.css";
 import { toast } from "react-toastify";
 import Layout from "../../layout/Layout";
 import { NavLink } from "react-router-dom";
+import Aos from "aos"
+import 'aos/dist/aos.css'
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [answer, setAnswer] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  useEffect(()=>{
+    Aos.init({
+      duration:1000,
+
+    })
+  },[])
 
   const handdleData = async (e) => {
     e.preventDefault();
@@ -44,7 +52,7 @@ export default function Login() {
     <>
       <Layout>
         <div className="login-page" >
-          <form className="login-form" style={{width:"40%"}}>
+          <form className="login-form" style={{width:"40%"}} data-aos="fade-left">
             <h2 className="auth-heading">Rest Your Password</h2>
 
             <div className="auth-row">
@@ -122,7 +130,7 @@ export default function Login() {
               </NavLink>
             </div>
           </form>
-          <div className="auth-img" style={{ width: "60%" }}>
+          <div className="auth-img" style={{ width: "60%" }} data-aos="fade-right">
             <img
               src="https://static.vecteezy.com/system/resources/previews/002/127/145/original/pharmacy-concept-illustration-research-lab-service-independent-medical-lab-service-medical-laboratory-health-test-character-cartoon-illustration-flat-style-free-vector.jpg"
               alt=""

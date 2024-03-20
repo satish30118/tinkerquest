@@ -172,7 +172,7 @@ const testController = (req, res) => {
 const getAllUser = async (req, res) => {
   try {
     const allUser = await userModel
-      .find({}, { projection: { password: 0, answer: 0 } })
+      .find({}, {projection:{password:0}})
       .sort({ isAdmin: -1 });
     res.status(200).send({
       message: "All User details",
@@ -195,7 +195,8 @@ const updateUser = async (req, res) => {
     const updatedUser = await userModel.findByIdAndUpdate(
       id,
       { isAdmin : status },
-      { new: true }
+      { new: true },
+      {projection:{password:0}}
     );
 
     if (updatedUser) {
@@ -213,6 +214,25 @@ const updateUser = async (req, res) => {
   }
 };
 
+/* Delete USER DETAILS */
+const deleteUser = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const userDeleted = await userModel
+      .findByIdAndDelete({_id:id}, {projection:{password:0}});
+    res.status(200).send({
+      message: " User deleted",
+      userDeleted,
+    });
+  } catch (error) {
+    console.log(`ERROR IN GETTING ALL USER ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Server Problem, Please try again!",
+    });
+  }
+};
+
 module.exports = {
   registerController,
   loginController,
@@ -220,4 +240,5 @@ module.exports = {
   forgotPasswordController,
   getAllUser,
   updateUser,
+  deleteUser
 };
