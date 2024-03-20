@@ -49,7 +49,9 @@ const AdminMenu = () => {
             </button>
           </div> */}
 
-          <h1>Admin Panel</h1>
+          {/* <h1>Admin Panel</h1> */}
+          <br />
+      
 
           <div className="admin-img">
             <img
