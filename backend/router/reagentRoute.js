@@ -11,7 +11,7 @@ router.route("/create-reagent").post(userVerification, CreateReagentController);
 
 router.route("/update-reagent/:id").put(userVerification,  updateReagentController)
 
-router.route("/get-all-reagent").get(userVerification, allReagentController)
+router.route("/get-all-reagent").get(userVerification, adminVerification, allReagentController)
 router.route("/get-all-reagent-citywise/:city").get(userVerification, allReagentCityController)
 
 router.route("/delete-reagent/:id").delete(userVerification, adminVerification, deleteReagentController)

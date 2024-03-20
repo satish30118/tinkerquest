@@ -6,6 +6,7 @@ import Progress from "../graphs/Progress";
 import Overall from "../graphs/Overall";
 import CatBar from "../graphs/CatBar";
 import PieChartBooking from "../graphs/PieChartBooking";
+import Piepercent from "../../../Components/dashboard/pages/graphs/Piepercent";
 
 const LocationwiseInventory = () => {
   const [city, setCity] = useState("");
@@ -290,14 +291,14 @@ const LocationwiseInventory = () => {
               style={{
                 background: "white",
                 margin:"30px 0",
-                width:"560px",
-                padding:"30px"
+                width:"600px",
+                paddingTop:"30px"
               }}
             >
               <h2 style={{ textAlign: "center" }}>
                 Overall Department Wise Booking
               </h2>
-              <PieChartBooking
+              <Piepercent
                 d1={blood}
                 d2={vitamin}
                 d3={diabetes}
@@ -310,14 +311,14 @@ const LocationwiseInventory = () => {
               style={{
                 background: "white",
                 margin:"30px 0",
-                width:"560px",
-                padding:"30px"
+                width:"600px",
+                paddingTop:"30px"
               }}
             >
               <h2 style={{ textAlign: "center" }}>
                 This Month Department Wise Booking
               </h2>
-              <PieChartBooking
+              <Piepercent
                 d1={bl}
                 d2={vi}
                 d3={di}

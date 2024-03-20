@@ -10,8 +10,8 @@ const router = express.Router();
 
 
 //ROUTING MACHINE ORDER
-router.route("/order-machine").post(userVerification, adminVerification,createMachineOrderController);
-router.route("/get-order-machine").get(userVerification, allMachineOrderController);
+router.route("/order-machine").post(userVerification, createMachineOrderController);
+router.route("/get-order-machine").get(userVerification,adminVerification, allMachineOrderController);
 router.route("/get-order-machine-citywise/:city").get(userVerification, allMachineOrderCityWiseController);
 router.route("/update-order-machine/:id").put(userVerification, updateMachineOrderController);
 router.route("/get-single-machine/:id").get(userVerification, singleMachineOrderController);
@@ -19,8 +19,8 @@ router.route("/delete-order-machine/:id").delete(userVerification, adminVerifica
 
 //
 //ROUTING REAGENT ORDER
-router.route("/order-reagent").post(userVerification, adminVerification,createReagentOrderController);
-router.route("/get-order-reagent").get(userVerification, allReagentOrderController);
+router.route("/order-reagent").post(userVerification, createReagentOrderController);
+router.route("/get-order-reagent").get(userVerification, adminVerification, allReagentOrderController);
 router.route("/get-order-reagent-citywise/:city").get(userVerification, allReagentOrderCityWiseController);
 router.route("/update-order-reagent/:id").put(userVerification, updateReagentOrderController);
 router.route("/get-single-reagent/:id").get(userVerification, singleReagentOrderController);

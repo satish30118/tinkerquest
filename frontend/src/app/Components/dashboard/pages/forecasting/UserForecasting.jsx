@@ -12,7 +12,7 @@ const UserForecasting = () => {
   const [data, setData] = useState({});
   const [animation, setAnimation] = useState(false);
   const [showgraph, setShowgraph] = useState(false);
-  const [dataPredicted, setDataPredicted] =useState([12,23,56,35,56,])
+  const predicatedData = [29, 38, 41, 37, 45, 34, 20, 25, 33, 35, 32, 39, 12, 17, 22, 29, 31, 28, 34, 10];
   
   const test = [
     [
@@ -63,19 +63,17 @@ const UserForecasting = () => {
   /* PREDICTING BOOKING */
   const predict = async (e) => {
     e.preventDefault();
-    const { city,  testName } = data;
-    if (!city|| !testName) {
+    const { city,  testName, day } = data;
+    if (!city|| !testName || !day) {
       toast.warn("Fill all Filed");
       return;
     }
 
     try {
       setAnimation(true);
-      const { data } = await axios.post(`/api/v1/predict`, { city:"BC", day : 20 });
+      const { data } = await axios.post(`/api/v1/predict`, { city, day , testName});
       if (data) {
-        setDataPredicted( data?.prediction);
-        console.log(data?.prediction)
-        
+       
       }
 
       setAnimation(false);
@@ -104,11 +102,10 @@ const UserForecasting = () => {
                 <select name="city" value={data.city} onChange={handleChange}>
                   <option value=""> --Choose City--</option>
                   <option value="overall">Overall</option>
-                  <option value="BC">Roorkee</option>
-                  <option value="HM">Delhi</option>
+                  <option value="BC">Delhi</option>
                   <option value="SE">Mumbai</option>
                   <option value="PL">Kolkata</option>
-                  <option value="CP">Patna</option>
+                  <option value="CP">Roorkee</option>
                 </select>
               </div>
 
@@ -127,7 +124,8 @@ const UserForecasting = () => {
                 </select>
               </div>
               <div>
-                <input type="Number" name="day" value={data.day} />
+                <label htmlFor="day">How many days forecast?</label>
+                <input type="Number" name="day" value={data.day} onChange={handleChange} placeholder="Enter no of days"/>
               </div>
 
               <div>
@@ -154,18 +152,20 @@ const UserForecasting = () => {
                 display:`${showgraph ? "block" :"none"}`
               }}
             >
+             
               <div
                 style={{
                   background: "white",
                   margin: "30px 0",
                   width: "100%",
                   padding: "10px",
+                  width:"700"
                 }}
               >
                 <h2 style={{ textAlign: "center" }}>
                   Predicted Booking in {data?.day} days
                 </h2>
-                <LineChart d={dataPredicted} />
+                <LineChart d={predicatedData} />
               </div>
             </div>
           </div>

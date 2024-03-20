@@ -13,7 +13,7 @@ const Users = () => {
   const [selectedId, setSelectedId] = useState("");
   const [admin, setAdmin] = useState(false);
 
-  /* TOTAL TEST OVERALL */
+  /* TOTAL User  */
   const getTotalUsers = async () => {
     try {
       const { data } = await axios.get("/api/v1/auth/get-all-user");
@@ -53,6 +53,24 @@ const Users = () => {
     }
   };
 
+  /* Delete User */
+  const deleteUser = async () => {
+    try {
+      const confirmation = prompt(`You are sure to delete ${selectedId}\n If Yes ? Enter Your Mobile No.`)
+      if(confirmation !== auth?.user?.phone){
+        return;
+      }
+      const { data } = await axios.delete(`/api/v1/auth/delete-user/${selectedId}`);
+
+      if (data) {
+        toast.success("User Deleted Successfully");
+        getTotalUsers();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Layout>
       <div className="admin-dashboard">
@@ -73,6 +91,7 @@ const Users = () => {
                   <th>User Id</th>
                   <th>User Name</th>
                   <th>Position</th>
+                  <th>Mobile No.</th>
                   <th>City</th>
                   <th>Manage</th>
                 </tr>
@@ -83,6 +102,7 @@ const Users = () => {
                     <td>{u?._id}</td>
                     <td>{u?.name}</td>
                     <td>{u?.isAdmin ? "Admin" : "Lab Associate"}</td>
+                    <td>{u?.phone}</td>
                     <td>{u?.city}</td>
                     <td>
                       <button
@@ -96,6 +116,7 @@ const Users = () => {
                       >
                         {u?.isAdmin ? "Remove Admin" : "Make Admin"}
                       </button>
+                      <button className="btn" onClick={deleteUser} onMouseMove={()=> setSelectedId(u?._id)}>Delete</button>
                     </td>
                   </tr>
                 ))}

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Chart from "react-apexcharts";
 
-export default function CatBar({ d1, d2,d3,d4,d5,d6 }) {
+export default function CatBar({ d}) {
     let state = {
         options: {
           chart: {
@@ -14,28 +14,9 @@ export default function CatBar({ d1, d2,d3,d4,d5,d6 }) {
         series: [
           {
             name: "Blood",
-            data: [d1]
+            data: [d]
           },
-          {
-            name: "Vitamin",
-            data: [d2]
-          },
-          {
-            name: "Diabetes",
-            data: [d3]
-          },
-          {
-            name: "Kidney",
-            data: [d4]
-          },
-          {
-            name: "Liver",
-            data:[d5]
-          },
-          {
-            name: "Thyroid",
-            data: [d6]
-          }
+         
         ]
       };
 

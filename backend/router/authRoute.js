@@ -6,6 +6,7 @@ const {
   forgotPasswordController,
   getAllUser,
   updateUser,
+  deleteUser,
 } = require("../controllers/authController");
 const {
   userVerification,
@@ -20,6 +21,7 @@ router.post("/register", registerController);
 router.post("/login", loginController);
 router.get("/test", userVerification, adminVerification, testController);
 router.get("/get-all-user", userVerification,  getAllUser);
+router.delete("/delete-user/:id", userVerification, adminVerification,  deleteUser);
 router.put("/update-user/:id", userVerification,adminVerification, updateUser );
 router.route("/forgot-password").post(forgotPasswordController)
 
