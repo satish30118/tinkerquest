@@ -75,9 +75,4 @@ Short Video Link: [(https://drive.google.com/file/d/1FYB3o4GH5mrKd3M7CBDAY3Qmyep
 ---
 
 
-**FRONTEND** --> Reactjs, css **defendences** -->**1)@mui/x-charts and @mui/x-charts** --> for chart making **2)axios** --> for api integration
-**BACKEND** --> Nodejs, Expressjs, mongoose  **defendences** --> **1)JWToken** --> for user verification **2)bcrypt** --> for password hashing **3)child_process(spwan)** --> to connect Ml and backend
-**DATABASE** --> MongoDB
 
-**Documentation Link** -->
-**Short Video Link**  -->
