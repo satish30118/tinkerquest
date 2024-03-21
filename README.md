@@ -60,6 +60,18 @@ The Medical Lab Inventory Management System provides a user-friendly interface f
   - Bcrypt: for password hashing
   - child_process (spawn): to connect ML and backend
 
+### ML
+- Pandas
+- Numpy
+- Matplotlib
+- Plotly
+- Seaborn
+- Prophet
+- Statsmodel
+- Sckit-Learn
+- Math
+- Pickle
+
 ### Database
 
 - MongoDB
