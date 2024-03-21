@@ -49,6 +49,9 @@ The Medical Lab Inventory Management System provides a user-friendly interface f
 - Dependencies:
   - @mui/x-charts and @mui/x-charts: for chart making
   - Axios: for API integration
+  - dotenv : for secure api integration
+  - Aos : for animation
+  - react-router-dom : for routing
 
 ### Backend
 
@@ -58,6 +61,7 @@ The Medical Lab Inventory Management System provides a user-friendly interface f
 - Dependencies:
   - JWToken: for user verification
   - Bcrypt: for password hashing
+  - dotenv : to secure Port, Secret_Key and data base connection
   - child_process (spawn): to connect ML and backend
 
 ### ML
