@@ -94,7 +94,7 @@ Documentation Link: [(https://drive.google.com/file/d/1KsBnCMPj38hj8HzWPSf1IE2Br
 
 ## Short Video Link
 
-Short Video Link: [(https://drive.google.com/file/d/1dgfu_W6ZSLbOCHsxxaZ_yDNAAFp_hL7S/view?usp=sharing)]
+Short Video Link: [(https://drive.google.com/file/d/1fUJwqOazr2qQNkfSh1MofH4mvdv67lXM/view?usp=sharing)]
 
 ---
 
