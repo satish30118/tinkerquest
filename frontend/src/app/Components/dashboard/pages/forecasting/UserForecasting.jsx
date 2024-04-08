@@ -12,7 +12,7 @@ const UserForecasting = () => {
   const [data, setData] = useState({});
   const [animation, setAnimation] = useState(false);
   const [showgraph, setShowgraph] = useState(false);
-  const predicatedData = [29, 38, 41, 37, 45, 34, 20, 25, 33, 35, 32, 39, 12, 17, 22, 29, 31, 28, 34, 10];
+  const [predicatedData, setPredicatedData] = useState();
   
   const test = [
     [
@@ -71,15 +71,16 @@ const UserForecasting = () => {
 
     try {
       setAnimation(true);
-      const { data } = await axios.post(`/api/v1/predict`, { city, day , testName});
+      const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/predict`, { city, day});
       if (data) {
-       
+       setPredicatedData(JSON.parse(data?.prediction))
       }
 
       setAnimation(false);
       setShowgraph(true)
     } catch (error) {
       console.log(error);
+      setAnimation(false)
       toast.error("Something went wrong");
     }
   };
@@ -96,8 +97,8 @@ const UserForecasting = () => {
               <u>Forecasting Details</u>
             </h1>
           </div>
-          <div className="forecast-form-page">
-            <form className="forecast-form">
+          <div className="us-forecast-page">
+            <form className="us-forecast-form">
               <div>
                 <select name="city" value={data.city} onChange={handleChange}>
                   <option value=""> --Choose City--</option>
@@ -146,7 +147,7 @@ const UserForecasting = () => {
             </form>
 
             <div
-              className="graph"
+              className="forecast-result"
               style={{
                 padding: "20px",
                 display:`${showgraph ? "block" :"none"}`
@@ -159,7 +160,6 @@ const UserForecasting = () => {
                   margin: "30px 0",
                   width: "100%",
                   padding: "10px",
-                  width:"700"
                 }}
               >
                 <h2 style={{ textAlign: "center" }}>
@@ -176,3 +176,4 @@ const UserForecasting = () => {
 };
 
 export default UserForecasting;
+
