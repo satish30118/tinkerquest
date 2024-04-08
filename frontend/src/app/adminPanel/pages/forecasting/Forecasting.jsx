@@ -14,8 +14,7 @@ const Forecasting = () => {
   const [data, setData] = useState({});
   const [animation, setAnimation] = useState(false);
   const [showgraph, setShowgraph] = useState(false);
-  const predicatedData = [29, 38, 41, 37, 45, 34, 20, 25, 33, 35, 32, 39, 12, 17, 22, 29, 31, 28, 34, 10];
-
+  const [predicatedData, setPredicatedData] = useState();
   const test = [
     [
       "Lipid Profile",
@@ -73,13 +72,20 @@ const Forecasting = () => {
 
     try {
       setAnimation(true);
-      const { data } = await axios.post(`/api/v1/predict`, {
-        city,
-        day,
-        testName,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/predict`,
+        {
+          city,
+          day,
+          testName,
+        }
+      );
       if (data) {
-        
+        setPredicatedData(JSON.parse(data?.prediction));
+        // console.log(data?.prediction);
+        // console.log(predicatedData)
+        // console.log(typeof predicatedData);
+        // console.log(typeof data?.prediction);
       }
 
       setAnimation(false);
@@ -87,6 +93,7 @@ const Forecasting = () => {
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
+      setAnimation(false);
     }
   };
 
@@ -107,8 +114,8 @@ const Forecasting = () => {
               <u>Forecasting Details</u>
             </h1>
           </div>
-          <div className="forecast-form-page">
-            <form className="forecast-form">
+          <div className="ad-forecast-page">
+            <form className="ad-forecast-form">
               <div>
                 <select name="city" value={data.city} onChange={handleChange}>
                   <option value=""> --Choose City--</option>
@@ -166,20 +173,18 @@ const Forecasting = () => {
             </form>
 
             <div
-              className="graph"
+              className="ad-forecast-result"
               style={{
                 padding: "20px",
                 display: `${showgraph ? "block" : "none"}`,
               }}
             >
-              
               <div
                 style={{
                   background: "white",
                   margin: "30px 0",
                   width: "100%",
-                  padding: "10px",
-                  width:"700px"
+                  padding: "10px 5px",
                 }}
               >
                 <h2 style={{ textAlign: "center" }}>
@@ -196,3 +201,4 @@ const Forecasting = () => {
 };
 
 export default Forecasting;
+
