@@ -20,7 +20,7 @@ export default function Footer() {
 
 
       </div>
-      <div>
+      <div class="f-copy">
         <p>CopyRight &copy; 2024 All Right Reserve</p>
       </div>
     </p>

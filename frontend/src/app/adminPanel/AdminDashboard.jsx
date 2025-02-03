@@ -17,7 +17,7 @@ const AdminDashboard = () => {
         <div className="content">
           <div className="dashboard-heading">
             <h1 className="dashboard-heading">
-              <u>Dashboard</u>
+              <u>Admin Dashboard</u>
             </h1>
           </div>
 

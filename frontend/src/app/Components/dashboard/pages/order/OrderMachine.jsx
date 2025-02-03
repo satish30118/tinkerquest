@@ -28,7 +28,7 @@ const OrderMachine = ({ popUp }) => {
     // e.preventDefault();
     try {
       const res = await axios.get(
-        `/api/v1/test/all-test/category-wise/${data.testCategory}`
+        `${process.env.REACT_APP_API}/api/v1/test/all-test/category-wise/${data.testCategory}`
       );
 
       if (res?.data) {
@@ -69,16 +69,19 @@ const OrderMachine = ({ popUp }) => {
       return;
     }
     try {
-      const { data } = await axios.post(`/api/v1/order/order-machine`, {
-        city,
-        machineName,
-        machineUnitOrder,
-        machineCost,
-        testLimit,
-        testCategory,
-        testName,
-        reagent,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/order/order-machine`,
+        {
+          city,
+          machineName,
+          machineUnitOrder,
+          machineCost,
+          testLimit,
+          testCategory,
+          testName,
+          reagent,
+        }
+      );
 
       if (data) {
         toast.success(data?.message);
@@ -269,7 +272,12 @@ const OrderMachine = ({ popUp }) => {
           <button
             className="btn"
             onClick={handleData}
-            style={{ width: "350px", marginRight: "30px", background: "blue" }}
+            style={{
+              width: "90%",
+              maxWidth: "300px",
+              marginRight: "30px",
+              background: "blue",
+            }}
           >
             Order Machine
           </button>

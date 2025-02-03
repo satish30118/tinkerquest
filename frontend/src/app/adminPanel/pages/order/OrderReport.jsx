@@ -24,21 +24,21 @@ useEffect(()=>{
           <div className="content">
             <div className="dashboard-heading">
               <h1 className="dashboard-heading">
-                <u>Welcome to Inventory Order Tracking</u>
+                <u> Inventory Order Tracking</u>
               </h1>
             </div>
 
             <div className="order-btn">
               <button
                 className="btn"
-                onClick={() => setOrderMachine(true)}
+                onClick={() => {setOrderMachine(true);  setOrderReagent(false)}}
                 style={{ background: `${orderMachine ? "red" : "blue"}` }}
               >
                 New Ordered Machine
               </button>
               <button
                 className="btn"
-                onClick={() => setOrderReagent(true)}
+                onClick={() =>{ setOrderReagent(true); setOrderMachine(false)}}
                 style={{ background: `${orderReagent ? "red" : "blue"}` }}
               >
                 New Ordered Reagent

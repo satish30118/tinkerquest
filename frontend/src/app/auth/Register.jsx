@@ -8,11 +8,14 @@ import { useAuth } from "../../contextAPI/authContext";
 import Layout from "../layout/Layout";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import LoaderSpin from "../Animations/LoaderSpin";
 
 export default function Register() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [submitBtn, setSubmitBtn] = useState({ text: "Submit", bg: "Green" });
   const [auth, setAuth] = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const [animation, setAnimation] = useState(false);
+  const [otpPopUp, setOtpPopUp] = useState(false);
+  const [otp, setOtp] = useState();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -30,6 +33,48 @@ export default function Register() {
     let value = e.target.value;
 
     setData({ ...data, [name]: value });
+  };
+
+  const sendOTP = async (e) => {
+    e.preventDefault();
+    try {
+      const { name, email, city, password, cpassword, phone, answer } = data;
+
+      if (
+        !name ||
+        !email ||
+        !city ||
+        !password ||
+        !cpassword ||
+        !phone ||
+        !answer
+      ) {
+        toast.warn("Fill all data!!");
+        return;
+      }
+
+      if (password !== cpassword) {
+        toast.warn("Password and Confirm password are not same");
+        return;
+      }
+      setAnimation(true);
+      const res = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/auth/send-otp`,
+        { email }
+      );
+      setAnimation(false);
+
+      if (res?.status == 200) {
+        setOtpPopUp(true);
+        toast.success("OTP successfully send, please check your email");
+      } else {
+        toast.success("OTP can't send, please check your email id");
+      }
+    } catch (error) {
+      console.log(error);
+      setAnimation(false);
+      toast.error("Something went wrong, please try again");
+    }
   };
 
   const sendData = async (e) => {
@@ -55,9 +100,18 @@ export default function Register() {
       return;
     }
 
-    setSubmitBtn({ text: "Submitting...", bg: "lightgreen" });
-
     try {
+
+      const emailRes = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/auth/verify-otp`,
+        { otp }
+      );
+
+      if (!emailRes?.data?.success) {
+        toast.error("Invalid OTP");
+        return;
+      }
+
       const res = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/auth/register`,
         { name, email, city, password, phone, answer }
@@ -71,14 +125,10 @@ export default function Register() {
       });
 
       localStorage.setItem("userInfo", JSON.stringify(res.data));
-
       if (res.status === 201) {
-        setSubmitBtn({ text: "Submitted", bg: "green" });
         toast.success(res.data.message);
-
         //Forward to dashboard
         navigate(`/dashboard/${auth?.user?.isAdmin ? "admin" : "user"}`);
-
         return;
       } else {
         toast.error(res.data.message);
@@ -114,6 +164,7 @@ export default function Register() {
                 autoComplete="off"
                 placeholder="Name"
                 name="name"
+                required
                 onChange={handleData}
                 value={data.name}
               />
@@ -128,16 +179,18 @@ export default function Register() {
                 autoComplete="off"
                 placeholder="Email"
                 name="email"
+                required
                 onChange={handleData}
                 value={data.email}
               />
             </div>
-           
+
             <div className="auth-row">
               <select
                 name="city"
                 onChange={handleData}
                 value={data.city}
+                required
                 style={{ color: "white" }}
               >
                 <option value="">--- Choose lab Location ---</option>
@@ -162,6 +215,7 @@ export default function Register() {
                 autoComplete="off"
                 placeholder="Password"
                 name="password"
+                required
                 onChange={handleData}
                 value={data.password}
               />
@@ -172,10 +226,11 @@ export default function Register() {
               </div>
               <input
                 type={showPassword ? "text" : "password"}
-                id="register-password"
+                id="register-cpassword"
                 autoComplete="off"
                 placeholder=" Confirm Password"
                 name="cpassword"
+                required
                 onChange={handleData}
                 value={data.cpassword}
               />
@@ -183,6 +238,7 @@ export default function Register() {
             <div
               onClick={() => setShowPassword(!showPassword)}
               className="show-pass"
+              style={{width:"300px", textAlign:"left"}}
             >
               {showPassword ? "Hide Password" : "Show Password"}
             </div>
@@ -196,6 +252,7 @@ export default function Register() {
                 autoComplete="off"
                 placeholder="Phone"
                 name="phone"
+                required
                 onChange={handleData}
                 value={data.phone}
               />
@@ -215,16 +272,51 @@ export default function Register() {
               />
             </div>
             <div>
-              <button
-                className="btn"
-                style={{ width: "100%" }}
-                onClick={sendData}
-              >
-                {" "}
-                <i class="fa fa-sign-in" style={{ marginRight: "7px" }}></i>
-                Register
-              </button>
+              {otpPopUp ? (
+                <div
+                  className="email-verification"
+                  style={{ background: "white" }}
+                >
+                  <div>
+                    <label htmlFor="email-otp">Enter OTP</label>
+                    <input
+                      type="number"
+                      id="email-otp"
+                      onChange={(e) => setOtp(e.target.value)}
+                      value={otp}
+                    />
+                  </div>
+                  <div>
+                    <button className="btn" onClick={sendData}>
+                      Verify
+                    </button>
+                    <button className="btn" onClick={sendOTP}>
+                    {animation ? <LoaderSpin /> : "Re-send"}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  className="btn"
+                  style={{ width: "100%" }}
+                  onClick={sendOTP}
+                >
+                  {animation ? (
+                    <LoaderSpin />
+                  ) : (
+                    <span>
+                      <i
+                        class="fa fa-sign-in"
+                        style={{ marginRight: "7px" }}
+                      ></i>
+                      Register
+                    </span>
+                  )}
+                </button>
+              )}
             </div>
+            {/* OTP FIELD */}
+
             <div>
               <NavLink
                 to={"/login"}

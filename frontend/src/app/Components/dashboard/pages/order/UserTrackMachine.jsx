@@ -16,7 +16,7 @@ const UserTrackMachine = () => {
   const getAllMachine = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/order/get-order-machine-citywise/${city}`
+        `${process.env.REACT_APP_API}/api/v1/order/get-order-machine-citywise/${city}`
       );
 
       if (data) {
@@ -36,7 +36,7 @@ const UserTrackMachine = () => {
   const getSingleMachine = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/order/get-single-machine/${selectedId}`
+        `${process.env.REACT_APP_API}/api/v1/order/get-single-machine/${selectedId}`
       );
 
       if (data) {
@@ -57,7 +57,7 @@ const UserTrackMachine = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `/api/v1/order/update-order-machine/${selectedId}`,
+        `${process.env.REACT_APP_API}/api/v1/order/update-order-machine/${selectedId}`,
         { orderStatus }
       );
 
@@ -81,7 +81,7 @@ const UserTrackMachine = () => {
           reagent,
         } = singleMachine;
 
-        const res = await axios.post(`/api/v1/machine/create-machine`, {
+        const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/machine/create-machine`, {
           city,
           machineName,
           machineStock: machineUnitOrder,
@@ -93,7 +93,7 @@ const UserTrackMachine = () => {
         });
         if (res?.status == 200) {
           const { data } = await axios.put(
-            `/api/v1/machine//update-machine/${res?.data?.machineExist?._id}`,
+            `${process.env.REACT_APP_API}/api/v1/machine//update-machine/${res?.data?.machineExist?._id}`,
             {
               machineStock:
                 machineUnitOrder + res?.data?.machineExist?.machineStock,

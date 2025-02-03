@@ -15,7 +15,7 @@ const UserTrackReagent = () => {
   const getAllReagent = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/order/get-order-reagent-citywise/${city}`
+        `${process.env.REACT_APP_API}/api/v1/order/get-order-reagent-citywise/${city}`
       );
 
       if (data) {
@@ -35,7 +35,7 @@ const UserTrackReagent = () => {
   const getSingleReagent = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/order/get-single-reagent/${selectedId}`
+        `${process.env.REACT_APP_API}/api/v1/order/get-single-reagent/${selectedId}`
       );
 
       if (data) {
@@ -55,7 +55,7 @@ const UserTrackReagent = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `/api/v1/order/update-order-reagent/${selectedId}`,
+        `${process.env.REACT_APP_API}/api/v1/order/update-order-reagent/${selectedId}`,
         { orderStatus }
       );
 
@@ -70,7 +70,7 @@ const UserTrackReagent = () => {
         const { city, reagentName, reagentUnit, reagentAmount, reagentCost } =
           singleReagent;
 
-        const res = await axios.post(`/api/v1/reagent/create-reagent`, {
+        const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/reagent/create-reagent`, {
           city,
           reagentName,
           reagentUnit,
@@ -79,7 +79,7 @@ const UserTrackReagent = () => {
         });
         if (res?.status == 200) {
           const { data } = await axios.put(
-            `/api/v1/reagent/update-reagent/${res?.data?.reagentExist?._id}`,
+            `${process.env.REACT_APP_API}/api/v1/reagent/update-reagent/${res?.data?.reagentExist?._id}`,
             {
               reagentAmount:
                 reagentAmount + res?.data?.reagentExist?.reagentAmount,

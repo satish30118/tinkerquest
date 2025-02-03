@@ -14,7 +14,7 @@ const UserDashboard = () => {
         </div>
         <div className="content">
           <div className="dashboard-heading">
-            <h1 className="dashboard-heading">Welcome to Dashboard</h1>
+            <h1 className="dashboard-heading">Lab Associate Dashboard</h1>
           </div>
           <div>
             <UserLocationAnalysis/>

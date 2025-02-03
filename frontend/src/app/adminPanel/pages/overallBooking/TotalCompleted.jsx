@@ -15,7 +15,7 @@ const TotalCompleted = () => {
   /*BOOKING COMPLETED*/
   const bookingCompleted = async () => {
     try {
-      const { data } = await axios.get("/api/v1/booking/get-completed-booking");
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking`);
 
       if (data) {
         setTestCompleted(data?.bookingCompleted);
@@ -30,7 +30,7 @@ const TotalCompleted = () => {
   const searchPatient = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/search-by-name/${search}`
+        `${process.env.REACT_APP_API}/api/v1/booking/search-by-name/${search}`
       );
 
       if (data) {
@@ -69,7 +69,7 @@ const TotalCompleted = () => {
               <u>User Details - Overall Test Completed</u>
             </h1>
           </div>
-          <div className="search">
+          <div id="search">
             <input
               type="search"
               onChange={(e) => setSearch(e.target.value)}

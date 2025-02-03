@@ -32,9 +32,9 @@
 .dashboard-heading {
     /* border: 2.5px solid goldenrod; */
     margin: 20px auto;
-    width: 65%;
+    width: 96%;
     padding: 0;
-    height: 60px;
+    /* height: 60px; */
     box-sizing: border-box;
 }
 
@@ -42,7 +42,7 @@
     /* border: 2.5px solid goldenrod; */
     width: 100.64%;
     padding: 1px;
-    height: 60px;
+    /* height: 60px; */
     color: rgb(252, 252, 252);
     box-sizing: border-box;
     margin: 0;
@@ -104,7 +104,7 @@
 }
 
 .admin-menu-page h1 {
-    padding: 20px 0px;
+    padding: 10px 0px;
     font-family: "Poppins";
 }
 
@@ -257,4 +257,10 @@ a.active {
     width: 100%;
     position: fixed;
     z-index: 1;
+}
+
+@media only screen and (max-width:800) {
+    .dashboard-heading{
+        font-size: 22px;
+    }
 }

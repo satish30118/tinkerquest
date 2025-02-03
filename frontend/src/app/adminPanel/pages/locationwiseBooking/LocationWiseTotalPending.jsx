@@ -19,7 +19,7 @@ const LocationWiseTotalPending = () => {
   const bookingPendding = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/get-pendding-booking/location-wise/${params.city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-pendding-booking/location-wise/${params.city}`
       );
 
       if (data) {
@@ -35,7 +35,7 @@ const LocationWiseTotalPending = () => {
   const searchPatient = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/search-by-name/${search}`
+        `${process.env.REACT_APP_API}/api/v1/booking/search-by-name/${search}`
       );
 
       if (data) {
@@ -73,7 +73,7 @@ const LocationWiseTotalPending = () => {
               <u>User Details - Test Pending in {params.city}</u>
             </h1>
           </div>
-          <div className="search">
+          <div id="search">
             <input
               type="search"
               onChange={(e) => setSearch(e.target.value)}

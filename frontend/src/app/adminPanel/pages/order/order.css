@@ -1,6 +1,12 @@
 .order-btn {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.order-btn button {
+    width: 44%;
+    max-width: 250px;
 }
 
 .order-inven {
@@ -41,7 +47,8 @@
 .new-order-details div input {
     font-size: 20px;
     border-radius: 9px;
-    width: 350px;
+    width: 80%;
+    /* max-width:300px; */
     text-align: center;
     padding: 8px;
     outline: none;
@@ -50,7 +57,8 @@
 
 .new-order-details select {
     font-size: 20px;
-    width: 350px;
+    width: 80%;
+    /* max-width: 300px; */
     border-radius: 9px;
     padding: 8px;
     text-align: center;
@@ -102,4 +110,46 @@
     margin-bottom: 20px;
     border-radius: 6px;
 
+}
+
+@media only screen and (max-width:1100px) {
+    .add-reagent-details input {
+        max-width: 70%;
+    }
+
+    .add-reagent-details select {
+        max-width: 70%;
+    }
+}
+
+@media only screen and (max-width:900px) {
+    .reagent-detail {
+        flex-direction: column;
+    }
+
+    .add-reagent-details {
+        min-width: 100%;
+        display: block;
+
+    }
+    .add-reagent-details input {
+        max-width: 90%;
+    }
+
+    .add-reagent-details select {
+        max-width: 90%;
+    }
+}
+
+@media only screen and (max-width:500px) {
+    .new-order-details form{
+        width: 98%;
+    }
+    .new-order-details div input {
+        max-width: 75%;
+    }
+
+    .new-order-details select {
+        max-width: 75%;
+    }
 }

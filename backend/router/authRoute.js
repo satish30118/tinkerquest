@@ -12,12 +12,15 @@ const {
   userVerification,
   adminVerification,
 } = require("../middleware/authMiddleware");
+const { emailVerification, sendOTP } = require("../nodemailer/userMail");
 
 //ROUTER OBJECT
 const router = express.Router();
 
 //ROUTING
 router.post("/register", registerController);
+router.post("/send-otp", sendOTP);
+router.post("/verify-otp", emailVerification);
 router.post("/login", loginController);
 router.get("/test", userVerification, adminVerification, testController);
 router.get("/get-all-user", userVerification, getAllUser);

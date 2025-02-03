@@ -10,7 +10,7 @@ const AllMachine = () => {
   // GETTING ALL MACHINE
   const getAllMachine = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/machine/get-all-machine`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/machine/get-all-machine`);
 
       if (data) {
         setAllMachine(data?.machines);
@@ -46,7 +46,7 @@ const AllMachine = () => {
             <th>Include test</th>
             <th>No of Stock </th>
             <th>Machine Cost</th>
-            <th>Test Limit</th>
+            {/* <th>Test Limit</th> */}
             <th>Stock Status</th>
 
             <th></th>
@@ -59,8 +59,8 @@ const AllMachine = () => {
                 <td>{item?.testName}</td>
                 <td>{item?.machineStock}</td>
                 <td>{item?.machineCost}</td>
-                <td>{item?.testLimit}</td>
-                <td style={{fontWeight:"600",color:`${item?.machineStock < 2 ? "red" :"lightgreen"}`}}>{item?.machineStock < 2 ? " Out of Stock" : "In-Stock"}</td>
+                {/* <td>{item?.testLimit}</td> */}
+                <td style={{fontWeight:"600",color:`${item?.machineStock < 1 ? "red" :"lightgreen"}`}}>{item?.machineStock < 1 ? " Out of Stock" : "In-Stock"}</td>
               </tr>
             </>
           ))}

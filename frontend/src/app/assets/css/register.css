@@ -3,7 +3,6 @@
     z-index: -1000;
     box-sizing: border-box;
     background-color: #0e3f6c;
-    ;
     /* padding: 30px; */
 
     display: flex;
@@ -13,7 +12,8 @@
 
 .register-page .register-form {
     /* height: 400px; */
-    width: 500px;
+    width: 50%;
+    max-width: 500px;
     box-sizing: border-box;
     padding: 20px;
     background-color: #0e3f6c;
@@ -24,6 +24,54 @@
 }
 
 .auth-img {
-    height: 750px;
-    width: 900px;
+    width: 50%;
+    height: 700px;
+}
+
+
+.email-verification {
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 5px;
+    margin: 20px 0;
+    input{
+        width: 70%;
+        padding: 8px;
+        outline: none;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+        margin: 5px;
+        max-width: 400px;
+    }
+    label{
+        font-weight: 600;
+    }
+}
+
+
+
+@media screen and (max-width:600px) {
+    .register-page {
+        flex-direction: column-reverse;
+    }
+
+    .register-page .register-form {
+        width: 80%;
+    }
+
+    .auth-img {
+        display: none;
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .register-page .register-form {
+        width: 90%;
+    }
+
+    .register-page .register-form input,
+    .register-form select {
+        font-size: 16px;
+    }
 }

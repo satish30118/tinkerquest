@@ -10,7 +10,7 @@ const Chat = () => {
   const [message, setMessage] = useState("");
   const [allChat, setAllChat] = useState([]);
   const [users, setUsers] = useState();
-
+  
   const sender = {
     senderId: auth?.user?._id,
     senderName: auth?.user?.name,
@@ -29,11 +29,14 @@ const Chat = () => {
     if (!message) {
       return;
     }
-    try {
-      const { data } = await axios.post(`/api/v1/chat/create-chat`, {
-        message,
-        sender,
-      });
+    try { 
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/chat/create-chat`,
+        {
+          message,
+          sender,
+        }
+      );
 
       if (data) {
         getAllChat();
@@ -48,7 +51,9 @@ const Chat = () => {
   // GETTING ALL CHAT
   const getAllChat = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/chat/get-all-chat`);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/chat/get-all-chat`
+      );
 
       if (data) {
         setAllChat(data?.chats);
@@ -62,7 +67,9 @@ const Chat = () => {
   /* TOTAL USER */
   const getTotalUsers = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/get-all-user");
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/auth/get-all-user`
+      );
 
       if (data) {
         setUsers(data?.allUser);
@@ -89,11 +96,8 @@ const Chat = () => {
               <u>Message</u>
             </h1>
           </div>
-          <div style={{ display: "flex", paddingBottom: "30px" }}>
-            <div
-              className="chat-member"
-              style={{ width: "30%", height: "70vh", overflow: "auto" }}
-            >
+          <div className="chat-page">
+            <div className="chat-member">
               {users?.map((u) => (
                 <div className="member-card">
                   <h3>{u?.name}</h3>
@@ -105,21 +109,7 @@ const Chat = () => {
               ))}
             </div>
 
-            <div
-              className="chat"
-              style={{
-                backgroundImage:
-                  "url(https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=826&t=st=1710503052~exp=1710503652~hmac=b18f19bc27a389b93f7bb81e03bc9d5ddc4ce7330ab5412b5349c1c10a6137b9)",
-                width: "70%",
-                borderRadius: "9px",
-                // backgroundRepeat:"no-repeat",
-                // backgroundSize:"cover",
-                margin: "3px auto",
-                height: "70vh",
-                position: "relative",
-                padding: "20px",
-              }}
-            >
+            <div className="chat">
               <div
                 className="show-messages"
                 style={{
@@ -142,7 +132,7 @@ const Chat = () => {
                       // backgroundColor:"rgba(255, 255, 255,0.2)",
                       borderRadius: "8px",
                       margin: "5px 0",
-                      width: "40%",
+                      width: "45%",
                       color: "white",
                       // fontWeight:"600",
                       padding: "10px 20px",
@@ -152,7 +142,7 @@ const Chat = () => {
                           : "left"
                       }`,
                       marginLeft: `${
-                        chat?.sender?.senderId == auth?.user?._id ? "60%" : "0%"
+                        chat?.sender?.senderId == auth?.user?._id ? "55%" : "0%"
                       }`,
                     }}
                   >
@@ -180,11 +170,12 @@ const Chat = () => {
                   position: "absolute",
                   bottom: "0",
                   left: "0",
-                  width: "90%",
+                  width: "100%",
                   background: "white",
                 }}
               >
-                <input
+                <textarea
+                  rows="1.2"
                   type="text"
                   style={{
                     padding: "8px 10px",
@@ -194,8 +185,9 @@ const Chat = () => {
                     fontFamily: "poppins",
                     fontSize: "18px",
                     fontWeight: "460",
-                    width: "100%",
+                    width: "99.8%",
                     // background:"red"
+                    height:"auto"
                   }}
                   placeholder="Message Here"
                   value={message}
@@ -204,7 +196,7 @@ const Chat = () => {
                   }}
                   onKeyDown={checkEnter}
                 />
-                <i
+                {/* <i
                   class="fa-solid fa-paper-plane"
                   style={{
                     fontSize: "22px",
@@ -213,11 +205,11 @@ const Chat = () => {
                     color: "blue",
                     width: "10%",
                     position: "relative",
-                    left: "-8%",
+                    left: "-10%",
                   }}
                   id="m-btn"
                   onClick={sendMessage}
-                ></i>
+                ></i> */}
               </div>
             </div>
           </div>

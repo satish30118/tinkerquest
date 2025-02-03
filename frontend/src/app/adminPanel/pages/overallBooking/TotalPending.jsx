@@ -15,7 +15,7 @@ const TotalPending = () => {
   /*PENDDIN BOOKINGS*/
   const bookingPendding = async () => {
     try {
-      const { data } = await axios.get("/api/v1/booking/get-pendding-booking");
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/booking/get-pendding-booking`);
 
       if (data) {
         setTestPendding(data?.bookingPendding);
@@ -29,7 +29,7 @@ const TotalPending = () => {
   /* SEARCH PATIENT BY NAME */
   const searchPatient = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/booking/search-by-name/${search}`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/booking/search-by-name/${search}`);
 
       if (data) {
         setTestPendding(data?.searchedPatient);
@@ -68,7 +68,7 @@ const TotalPending = () => {
              <u> User Details - Overall Test Pending</u>
             </h1>
           </div>
-          <div className="search">
+          <div id="search">
             <input type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search Patient" />
             {/* <button onClick={searchPatient}>Search</button> */}
           </div>

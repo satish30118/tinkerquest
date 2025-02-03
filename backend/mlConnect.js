@@ -1,21 +1,21 @@
 const { spawn } = require("child_process");
 const mlConnect = async (req, res) => {
   try {
-    const {city, day} = req.body;
+    const { city, day } = req.body;
     const y = new Date().getFullYear();
-    const m = new Date().getMonth();
+    const m = new Date().getMonth() + 1 ;
     const d = new Date().getDate();
 
     const childPython = spawn("python", [
       "./ml_file/main.py",
-     city,
+      city,
       `${y}-${m}-${d}`,
-     day
+      day,
     ]);
 
     var sendData;
     childPython.stdout.on("data", (data) => {
-      console.log(`stdout:  ${data}`);
+      // console.log(`stdout:  ${data}`);
       sendData = data.toString();
     });
 
@@ -25,12 +25,11 @@ const mlConnect = async (req, res) => {
 
     childPython.on("close", (code) => {
       console.log(`child process exited with code: ${code}`);
-      res.status(200).json({prediction: sendData})
+      res.status(200).json({ prediction: sendData });
     });
   } catch (error) {
     console.log(error);
   }
 };
-
 
 module.exports = mlConnect;

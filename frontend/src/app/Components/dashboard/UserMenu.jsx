@@ -13,15 +13,16 @@ const UserMenu = () => {
 
   return (
     <>
-      <button
+     <button
         onClick={toggleDrawer}
         style={{
           position: "fixed",
-          color: "white",
+          color: "black",
           fontSize: "25px",
-          padding: "5px 10px",
+          padding: "2px 10px",
+          borderRadius:"5px",
           margin: "10px",
-          background: "transparent",
+          background: "lightblue",
           border: "none",
           zIndex: "100",
         }}
@@ -48,7 +49,7 @@ const UserMenu = () => {
             </button>
           </div> */}
 
-          <h1>Admin Panel</h1>
+          <h1>User Panel</h1>
 
           <div className="admin-img">
             <img

@@ -24,9 +24,24 @@
     
 
 }
+.booking-page form input{
+    width: 70%;
+}
+.booking-page form  select{
+    width: 70%;
+}
 
 .booking-page label{
     color: white;
     font-weight: 600;
     font-size: 20px;
+}
+
+@media only screen and (max-width:500px) {
+    .booking-page form input{
+        width: 95%;
+    }
+    .booking-page form  select{
+        width: 95%;
+    }
 }

@@ -7,8 +7,9 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../contextAPI/authContext";
 import Layout from "../layout/Layout";
 import authimg from "../assets/image/auth-img.jpg";
-import Aos from "aos"
-import 'aos/dist/aos.css'
+import Aos from "aos";
+import "aos/dist/aos.css";
+import LoaderSpin from "../Animations/LoaderSpin";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
+  const [animation, setAnimation] = useState(false);
 
   const handdleLogin = async (e) => {
     e.preventDefault();
@@ -25,7 +27,7 @@ export default function Login() {
         toast.warn("Fill all data!");
         return;
       }
-
+      setAnimation(true);
       const res = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/auth/login`,
         { email, password }
@@ -43,26 +45,28 @@ export default function Login() {
           token: res.data.token,
         });
         localStorage.setItem("userInfo", JSON.stringify(res.data));
+        setAnimation(false);
 
         navigate(`/dashboard/${!auth?.user?.isAdmin ? "admin" : "user"}`);
 
         return;
       } else {
         toast.error(res.data.message);
+        setAnimation(false);
         return;
       }
     } catch (error) {
       toast.error("Server problem please try again!");
       console.log(error);
+      setAnimation(false);
       return;
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     Aos.init({
-      duration:1000,
-
-    })
-  },[])
+      duration: 1000,
+    });
+  }, []);
   return (
     <>
       <Layout>
@@ -71,8 +75,9 @@ export default function Login() {
             <img src={authimg} alt="" />
           </div>
           <form className="login-form" data-aos="fade-left">
-            <h2 className="auth-heading"><u> Sign In</u>
-           </h2>
+            <h2 className="auth-heading">
+              <u> Sign In</u>
+            </h2>
 
             <div className="auth-row">
               <div className="auth-icon">
@@ -103,14 +108,18 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <span
-              onClick={() => setShowPassword(!showPassword)}
-              className="show-pass"
-            >
-              {showPassword ? <i class="fa-solid fa-eye"></i> : <i class="fa-solid fa-eye-slash"></i>}
-            </span>
+              <p
+                onClick={() => setShowPassword(!showPassword)}
+                className="show-pass"
+              >
+                {showPassword ? (
+                  <i class="fa-solid fa-eye"></i>
+                ) : (
+                  <i class="fa-solid fa-eye-slash"></i>
+                )}
+              </p>
             </div>
-            
+
             <div>
               <NavLink
                 to={"/forgot-password"}
@@ -122,7 +131,9 @@ export default function Login() {
                 }}
               >
                 Forgot password? -{" "}
-                <span style={{ color: "white" }}><u>Reset here</u> </span>
+                <span style={{ color: "white" }}>
+                  <u>Reset here</u>{" "}
+                </span>
               </NavLink>
             </div>
 
@@ -130,11 +141,16 @@ export default function Login() {
               <button
                 className="btn"
                 onClick={handdleLogin}
-                style={{ margin: "20px 0", width: "100%",  }}
+                style={{ margin: "20px 0", width: "100%" }}
               >
-                {" "}
-                <i class="fa fa-sign-in" style={{ marginRight: "7px" }}></i>
-                Login
+                {animation ? (
+                  <LoaderSpin />
+                ) : (
+                  <span>
+                    Login{" "}
+                    <i class="fa fa-sign-in" style={{ marginRight: "7px" }}></i>
+                  </span>
+                )}
               </button>
             </div>
 
@@ -149,7 +165,9 @@ export default function Login() {
                 }}
               >
                 Not have account? -{" "}
-                <span style={{ color: "white" }}><u>Register</u></span>
+                <span style={{ color: "white" }}>
+                  <u>Register</u>
+                </span>
               </NavLink>
             </div>
           </form>

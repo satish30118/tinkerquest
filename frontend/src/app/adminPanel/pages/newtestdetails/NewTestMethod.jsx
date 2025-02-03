@@ -27,7 +27,7 @@ const NewTestMethod = () => {
       return;
     }
     try {
-      const { data } = await axios.post(`/api/v1/test/create-test`, {
+      const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/test/create-test`, {
         testName,
         testCategory,
         testPrice,

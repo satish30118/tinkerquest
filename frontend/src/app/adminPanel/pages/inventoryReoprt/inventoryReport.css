@@ -1,8 +1,13 @@
 .i-report-btn {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 
+.i-report-btn button{
+    margin: 13px ;
+}
 
 /* UPDATE PAGE STYLE */
 .update-inven form {
@@ -35,4 +40,10 @@
     border-radius: 6px;
     font-size: 18px;
     text-align: center;
+}
+
+@media only screen and (max-width:800) {
+    .i-report-btn{
+        flex-direction: column;
+    }
 }

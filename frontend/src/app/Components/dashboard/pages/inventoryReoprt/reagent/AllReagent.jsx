@@ -16,7 +16,7 @@ const AllReagent = () => {
   // GETTING ALL REAGENT
   const getAllReagent = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/reagent/get-all-reagent-citywise/${city}`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/reagent/get-all-reagent-citywise/${city}`);
 
       if (data) {
         setAllReagent(data?.reagents);

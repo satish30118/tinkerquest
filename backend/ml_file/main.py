@@ -1,4 +1,3 @@
-  
 import pickle
 import operation as op
 import pandas as pd
@@ -45,7 +44,7 @@ def choice(option,start_date,days):
         print('Invalid Input')
     
 
- # example usuage   
+ # exam # example usuage   
 print(choice(str(sys.argv[1]), str(sys.argv[2]), int(sys.argv[3])))
 
 

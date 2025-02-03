@@ -26,7 +26,7 @@ const UpdateReagent = ({ id, setPopUp, callBack }) => {
       return;
     }
     try {
-      const { data } = await axios.put(`/api/v1/reagent/update-reagent/${id}`, {
+      const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/reagent/update-reagent/${id}`, {
         reagentName,
         reagentUnit,
         reagentAmount,
@@ -56,7 +56,7 @@ const UpdateReagent = ({ id, setPopUp, callBack }) => {
   const getSelectedreagent = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/reagent/get-single-reagent/${id}`
+        `${process.env.REACT_APP_API}/api/v1/reagent/get-single-reagent/${id}`
       );
 
       if (data) {

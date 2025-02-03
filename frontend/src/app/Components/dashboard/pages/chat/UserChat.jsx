@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import UserMenu from "../../UserMenu"
 import axios from "axios";
 import "./chat.css";
-import Layout from "../../../../layout/Layout";
 import { useAuth } from "../../../../../contextAPI/authContext";
-
+import UserMenu from "../../UserMenu";
+import Layout from "../../../../layout/Layout";
 
 const UserChat = () => {
   const [auth] = useAuth();
@@ -18,12 +17,12 @@ const UserChat = () => {
     city: auth?.user?.city,
   };
 
- const checkEnter = (e) =>{
-  // console.log(e.key)
-  if (e.key=== "Enter") {  
-    sendMessage(e);
-}
- }
+  const checkEnter = (e) => {
+    // console.log(e.key)
+    if (e.key === "Enter") {
+      sendMessage(e);
+    }
+  };
   // SENDING NEW MESSAGE //
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -31,10 +30,13 @@ const UserChat = () => {
       return;
     }
     try {
-      const { data } = await axios.post(`/api/v1/chat/create-chat`, {
-        message,
-        sender,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/chat/create-chat`,
+        {
+          message,
+          sender,
+        }
+      );
 
       if (data) {
         getAllChat();
@@ -49,7 +51,9 @@ const UserChat = () => {
   // GETTING ALL CHAT
   const getAllChat = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/chat/get-all-chat`);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/chat/get-all-chat`
+      );
 
       if (data) {
         setAllChat(data?.chats);
@@ -60,11 +64,12 @@ const UserChat = () => {
     }
   };
 
-
   /* TOTAL USER */
   const getTotalUsers = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/get-all-user");
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/auth/get-all-user`
+      );
 
       if (data) {
         setUsers(data?.allUser);
@@ -91,37 +96,20 @@ const UserChat = () => {
               <u>Message</u>
             </h1>
           </div>
-          <div style={{ display: "flex", paddingBottom: "30px" }}>
-            <div
-              className="chat-member"
-              style={{ width: "30%", height: "70vh", overflow: "auto" }}
-            >
-              {users?.map((u)=>(
+          <div className="chat-page">
+            <div className="chat-member">
+              {users?.map((u) => (
                 <div className="member-card">
-                <h3>{u?.name}</h3>
-                <p>
-                  <i class="fa-solid fa-user"></i> {u?.isAdmin ? "Admin" : "Lab Associate"}
-                </p>
-              </div>
+                  <h3>{u?.name}</h3>
+                  <p>
+                    <i class="fa-solid fa-user"></i>{" "}
+                    {u?.isAdmin ? "Admin" : "Lab Associate"}
+                  </p>
+                </div>
               ))}
-                            
             </div>
 
-            <div
-              className="chat"
-              style={{
-                backgroundImage:
-                  "url(https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=826&t=st=1710503052~exp=1710503652~hmac=b18f19bc27a389b93f7bb81e03bc9d5ddc4ce7330ab5412b5349c1c10a6137b9)",
-                width: "70%",
-                borderRadius: "9px",
-                // backgroundRepeat:"no-repeat",
-                // backgroundSize:"cover",
-                margin: "3px auto",
-                height: "70vh",
-                position: "relative",
-                padding: "20px",
-              }}
-            >
+            <div className="chat">
               <div
                 className="show-messages"
                 style={{
@@ -144,7 +132,7 @@ const UserChat = () => {
                       // backgroundColor:"rgba(255, 255, 255,0.2)",
                       borderRadius: "8px",
                       margin: "5px 0",
-                      width: "40%",
+                      width: "45%",
                       color: "white",
                       // fontWeight:"600",
                       padding: "10px 20px",
@@ -154,7 +142,7 @@ const UserChat = () => {
                           : "left"
                       }`,
                       marginLeft: `${
-                        chat?.sender?.senderId == auth?.user?._id ? "60%" : "0%"
+                        chat?.sender?.senderId == auth?.user?._id ? "55%" : "0%"
                       }`,
                     }}
                   >
@@ -186,7 +174,8 @@ const UserChat = () => {
                   background: "white",
                 }}
               >
-                <input
+                <textarea
+                  rows="1.2"
                   type="text"
                   style={{
                     padding: "8px 10px",
@@ -196,15 +185,18 @@ const UserChat = () => {
                     fontFamily: "poppins",
                     fontSize: "18px",
                     fontWeight: "460",
-                    width: "90%",
+                    width: "99.8%",
                     // background:"red"
+                    height:"auto"
                   }}
                   placeholder="Message Here"
                   value={message}
-                  onChange={(e) => {setMessage(e.target.value)}}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                  }}
                   onKeyDown={checkEnter}
                 />
-                <i
+                {/* <i
                   class="fa-solid fa-paper-plane"
                   style={{
                     fontSize: "22px",
@@ -212,12 +204,12 @@ const UserChat = () => {
                     textAlign: "center",
                     color: "blue",
                     width: "10%",
-                    position:"relative",
-                    left:"-8%"
+                    position: "relative",
+                    left: "-10%",
                   }}
                   id="m-btn"
-                  onClick={sendMessage} 
-                ></i>
+                  onClick={sendMessage}
+                ></i> */}
               </div>
             </div>
           </div>

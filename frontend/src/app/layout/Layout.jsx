@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
         <main>{children}</main>
         <Footer />
       </div>
-      <ToastContainer transition={Flip}  position="top-center" theme="colored" closeOnClick autoClose={700}/>
+      <ToastContainer transition={Flip}  position="bottom-center" theme="colored" closeOnClick autoClose={700}/>
     </>
   );
 };

@@ -17,7 +17,7 @@ const TotalBooking = () => {
   /* ALL BOOKINGs */
   const getTotalBooking = async () => {
     try {
-      const { data } = await axios.get("/api/v1/booking/get-all-booking");
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/booking/get-all-booking`);
 
       if (data) {
         setTotalBooking(data?.allBooking);
@@ -38,7 +38,7 @@ const TotalBooking = () => {
   const searchPatient = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/search-by-name/${search}`
+        `${process.env.REACT_APP_API}/api/v1/booking/search-by-name/${search}`
       );
 
       if (data) {
@@ -53,7 +53,7 @@ const TotalBooking = () => {
    const searchComplete = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/search-autocomplete/${search}`
+        `${process.env.REACT_APP_API}/api/v1/booking/search-autocomplete/${search}`
       );
 
       if (data) {
@@ -79,7 +79,7 @@ const TotalBooking = () => {
 
     try {
       let res = await axios.put(
-        `/api/v1/booking/update-booking/${selectedId}`,
+        `${process.env.REACT_APP_API}/api/v1/booking/update-booking/${selectedId}`,
         { status: "completed" }
       );
 
@@ -113,7 +113,7 @@ const TotalBooking = () => {
             </h1>
           </div>
 
-          <div className="search">
+          <div id="search">
             <input
               type="search"
               onChange={(e) => setSearch(e.target.value)}
@@ -122,13 +122,13 @@ const TotalBooking = () => {
             />
             {/* <button onClick={searchPatient}>Search</button> */}
           </div>
-          <div>
+          {/* <div>
             <ul>
               {autoComplete.map((ac)=>(
                 <li>{ac.name}</li>
               ))}
             </ul>
-          </div>
+          </div> */}
           <div className="tb-user-details">
             <table
               // border={"4px solid gray"}
@@ -161,7 +161,7 @@ const TotalBooking = () => {
                     >
                       {patient?.status}
                     </td>
-                    <td>
+                    <td id="th-manage">
                       <button
                         className="btn"
                         style={{ background: "blue", fontSize: "12px" }}

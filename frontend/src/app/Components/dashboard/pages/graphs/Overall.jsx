@@ -36,8 +36,8 @@ export default function Overall({ d1, d2,d3 }) {
       options={state.options}
       series={state.series}
       type="bar"
-      width="500"
-      height={300}
+      width="98%"
+      height={400}
     />
   );
 }

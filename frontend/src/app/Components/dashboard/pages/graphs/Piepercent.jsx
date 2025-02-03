@@ -16,8 +16,8 @@ export default function Piepercent({ d1, d2,d3,d4,d5,d6 }) {
     
     const sizing = {
       margin: { right: 5 },
-      width: 600,
-      height: 400,
+      width: 570,
+      height: 500,
       legend: { hidden: false,},
     };
     const TOTAL = data.map((item) => item.value).reduce((a, b) => a + b, 0);
@@ -30,7 +30,7 @@ export default function Piepercent({ d1, d2,d3,d4,d5,d6 }) {
     <PieChart
       series={[
         {
-          outerRadius: 150,
+          outerRadius: 160,
           data,
           arcLabel: getArcLabel,
         },
@@ -38,7 +38,7 @@ export default function Piepercent({ d1, d2,d3,d4,d5,d6 }) {
       sx={{
         [`& .${pieArcLabelClasses.root}`]: {
           fill: 'white',
-          fontSize: 14,
+          fontSize: 10,
         },
       }}
       {...sizing}

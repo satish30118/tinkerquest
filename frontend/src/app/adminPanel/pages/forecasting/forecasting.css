@@ -1,15 +1,14 @@
-.forecast-form-page{
-    display: flex;
-    flex-direction: row;
+.ad-forecast-page {
+   display: flex;
 }
 
 
-.forecast-result{
+.ad-forecast-result {
     width: 55%;
 }
-.forecast-form
-{
-   width: 45%;
+
+.ad-forecast-form {
+    width: 45%;
     font-size: 17px;
     color: aliceblue;
     padding: 20px 0;
@@ -20,8 +19,8 @@
     margin-bottom: 40px;
     /* background-color: rgba(255, 255, 255,0.7); */
 }
-.forecast-form input
-{
+
+.ad-forecast-form input {
     width: 50%;
     font-size: 17px;
     padding: 7px 0;
@@ -29,28 +28,60 @@
     border-radius: 9px;
     font-weight: 600;
 }
-.forecast-form select
-{
+
+.ad-forecast-form select {
     font-size: 17px;
-    margin-top: 20px ;
+    margin-top: 20px;
     width: 70%;
     text-align: center;
     padding: 8px 0;
     border-radius: 9px;
     font-weight: 700;
 }
-.forecast-form  option{
+
+.ad-forecast-form option {
     text-align: center;
 }
-.forecast-form div label
-{
+
+.ad-forecast-form div label {
     display: block;
     margin-top: 20px;
 }
-.forecast-form button
-{
+
+.ad-forecast-form button {
     width: 30%;
     font-size: 25px;
     margin-top: 40px;
-    
+
+}
+
+@media only screen and (max-width:1000px) {
+    .ad-forecast-page {
+        flex-direction: column;
+
+    }
+
+    .ad-forecast-form{
+        width: 100%;
+        display: block;
+    }
+
+    .ad-forecast-result {
+        width: 93%;
+        display: block;
+    }
+}
+@media only screen and (max-width:500px) {
+  
+    .ad-forecast-form input{
+        width:85%;
+    }
+    .ad-forecast-form select{
+        width: 85%;
+    }
+
+    .ad-forecast-result {
+        width: 100%;
+        display: block;
+    }
 }

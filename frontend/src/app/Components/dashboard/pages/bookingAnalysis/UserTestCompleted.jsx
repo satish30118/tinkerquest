@@ -20,7 +20,7 @@ const UserTestCompleted = () => {
   const bookingCompleted = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/get-completed-booking/location-wise/${params.city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/location-wise/${params.city}`
       );
 
       if (data) {
@@ -36,7 +36,7 @@ const UserTestCompleted = () => {
   const searchPatient = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/search-by-name/${search}`
+        `${process.env.REACT_APP_API}/api/v1/booking/search-by-name/${search}`
       );
 
       if (data) {
@@ -74,7 +74,7 @@ const UserTestCompleted = () => {
               User Details - Test Completed in {params.city}
             </h1>
           </div>
-          <div className="search">
+          <div id="search">
             <input
               type="search"
               onChange={(e) => setSearch(e.target.value)}

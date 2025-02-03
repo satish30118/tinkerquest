@@ -12,7 +12,7 @@ const TrackMachine = () => {
   // GETTING ALL MACHINE
   const getAllMachine = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/order/get-order-machine`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/order/get-order-machine`);
 
       if (data) {
         setAllMachine(data?.orders);
@@ -31,7 +31,7 @@ const TrackMachine = () => {
   const getSingleMachine = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/order/get-single-machine/${selectedId}`
+        `${process.env.REACT_APP_API}/api/v1/order/get-single-machine/${selectedId}`
       );
 
       if (data) {
@@ -52,7 +52,7 @@ const TrackMachine = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `/api/v1/order/update-order-machine/${selectedId}`,
+        `${process.env.REACT_APP_API}/api/v1/order/update-order-machine/${selectedId}`,
         { orderStatus }
       );
 
@@ -76,7 +76,7 @@ const TrackMachine = () => {
           reagent,
         } = singleMachine;
 
-        const res = await axios.post(`/api/v1/machine/create-machine`, {
+        const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/machine/create-machine`, {
           city,
           machineName,
           machineStock: machineUnitOrder,
@@ -88,7 +88,7 @@ const TrackMachine = () => {
         });
         if (res?.status == 200) {
           const { data } = await axios.put(
-            `/api/v1/machine//update-machine/${res?.data?.machineExist?._id}`,
+            `${process.env.REACT_APP_API}/api/v1/machine//update-machine/${res?.data?.machineExist?._id}`,
             {
               machineStock:
                 machineUnitOrder + res?.data?.machineExist?.machineStock,
@@ -130,7 +130,7 @@ const TrackMachine = () => {
                 <td>{item?.machineUnitOrder}</td>
                 <td>{item?.machineCost}</td>
                 <td>{item?.orderStatus}</td>
-                <td>
+                <td id="th-manage">
                   <button
                     className="btn"
                     style={{ fontSize: "16px", display:`${item?.orderStatus == "Delivered" ? "none" :"inline"}` }}

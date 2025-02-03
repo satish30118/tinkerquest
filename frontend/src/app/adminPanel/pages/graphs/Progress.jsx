@@ -60,7 +60,7 @@ const Progress = () => {
       options={options}
     //   series={state.series}
       type="bar"
-      width="500"
+      width="95%"
     />
     </>
   )

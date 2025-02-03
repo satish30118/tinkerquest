@@ -28,7 +28,7 @@ const OrderMachine = ({ popUp }) => {
     // e.preventDefault();
     try {
       const res = await axios.get(
-        `/api/v1/test/all-test/category-wise/${data.testCategory}`
+        `${process.env.REACT_APP_API}/api/v1/test/all-test/category-wise/${data.testCategory}`
       );
 
       if (res?.data) {
@@ -48,8 +48,14 @@ const OrderMachine = ({ popUp }) => {
   const handleData = async (e) => {
     e.preventDefault();
 
-    const { machineName, machineUnitOrder,machineCost, testLimit, testCategory, testName } =
-      data;
+    const {
+      machineName,
+      machineUnitOrder,
+      machineCost,
+      testLimit,
+      testCategory,
+      testName,
+    } = data;
     if (
       !machineName ||
       !machineUnitOrder ||
@@ -63,23 +69,26 @@ const OrderMachine = ({ popUp }) => {
       return;
     }
     try {
-      const { data } = await axios.post(`/api/v1/order/order-machine`, {
-        city,
-        machineName,
-        machineUnitOrder,
-        machineCost,
-        testLimit,
-        testCategory,
-        testName,
-        reagent,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/order/order-machine`,
+        {
+          city,
+          machineName,
+          machineUnitOrder,
+          machineCost,
+          testLimit,
+          testCategory,
+          testName,
+          reagent,
+        }
+      );
 
       if (data) {
         toast.success(data?.message);
         setData({
           machineName: "",
           machineUnitOrder: "",
-          machineCost:"",
+          machineCost: "",
           testLimit: "",
           testCategory: "",
           testName: "",
@@ -264,6 +273,16 @@ const OrderMachine = ({ popUp }) => {
                 >
                   Add
                 </button>
+                <button
+                  className="btn"
+                  // style={{ background: "blue", margin: "0px " }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowReagentDetails(false);
+                  }}
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           </div>
@@ -272,7 +291,13 @@ const OrderMachine = ({ popUp }) => {
           <button
             className="btn"
             onClick={handleData}
-            style={{ width: "350px", marginRight: "30px", background: "blue" }}
+            style={{
+              width: "90%",
+              maxWidth: "300px",
+              margin: "10px 2px",
+              marginRight: "30px",
+              background: "blue",
+            }}
           >
             Order Machine
           </button>

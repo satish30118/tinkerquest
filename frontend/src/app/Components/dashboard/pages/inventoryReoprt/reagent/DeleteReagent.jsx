@@ -8,7 +8,7 @@ const DeleteReagent = ({ setDeletePopUp, id, getTotalBooking, setId }) => {
     e.preventDefault();
     try {
       const { data } = await axios.delete(
-        `/api/v1/reagent/delete-reagent/${id}`
+        `${process.env.REACT_APP_API}/api/v1/reagent/delete-reagent/${id}`
       );
 
       if (data) {

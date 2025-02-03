@@ -22,7 +22,7 @@ const NewTestBoooking = () => {
     e.preventDefault();
     try {
       const res = await axios.get(
-        `/api/v1/test/all-test/category-wise/${data.testCategory}`
+        `${process.env.REACT_APP_API}/api/v1/test/all-test/category-wise/${data.testCategory}`
       );
 
       if (res?.data) {
@@ -51,7 +51,7 @@ const NewTestBoooking = () => {
       return;
     }
     try {
-      const { data } = await axios.post(`/api/v1/booking/new-booking`, {
+      const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/booking/new-booking`, {
         name,
         gender,
         age,
@@ -110,7 +110,6 @@ const NewTestBoooking = () => {
               name="name"
               id="new-category"
               value={data.name}
-              style={{ width: "70%" }}
               onChange={handleChange}
               placeholder="Patient Name"
             />
@@ -153,7 +152,6 @@ const NewTestBoooking = () => {
               name="age"
               id="new-category"
               value={data.age}
-              style={{ width: "70%" }}
               onChange={handleChange}
               placeholder="Patient Age"
             />
@@ -164,7 +162,6 @@ const NewTestBoooking = () => {
               name="mobile"
               id="new-category"
               value={data.mobile}
-              style={{ width: "70%" }}
               onChange={handleChange}
               placeholder="Mobile Number"
             />
@@ -174,7 +171,6 @@ const NewTestBoooking = () => {
             <select
               name="testCategory"
               value={data.testCategory}
-              style={{ width: "70%" }}
               onChange={handleChange}
             >
               <option value="">-- Select Test Category --</option>
@@ -193,7 +189,6 @@ const NewTestBoooking = () => {
               value={data.testName}
               onChange={handleChange}
               onFocus={getTest}
-              style={{ width: "70%" }}
             >
               <option value="">--- Choose Test Type ---</option>
               {allTest?.map((item) => (
@@ -207,7 +202,6 @@ const NewTestBoooking = () => {
             <select
               name="city"
               value={data.city}
-              style={{ width: "70%" }}
               onChange={handleChange}
             >
               <option value="">--- Choose City ---</option>

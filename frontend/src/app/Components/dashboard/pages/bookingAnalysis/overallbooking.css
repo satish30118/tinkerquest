@@ -1,7 +1,14 @@
 /* STYLE FOR TOTAL BOOKING*/
 .tb-user-details {
     width: 100%;
-
+    overflow: auto;
+}
+.tb-user-details table{
+    width: 97vw;
+    overflow: auto;
+}
+.tb-user-details ::-webkit-scrollbar{
+    display: inline;
 }
 
 .tb-user-details table {
@@ -34,45 +41,56 @@ td {
 }
 
 .deletePop {
-    position: fixed;
+    position: sticky;
     top: 20%;
     left: 26%;
     z-index: 2000;
     text-align: center;
 }
-.search
+#search
 {
     text-align: center;
     /* background-color: rebeccapurple; */
     color: blue;
 }
-.search input
+#search input
 {
-    font-size: 23px;
+    font-size: 19px;
     color: blue;
+    padding: 8px;
     /* background-color: rgb(31, 31, 193); */
     border-radius: 9px;
     text-align: center;
-    width: 400px;
+    width: 88%;
+    max-width: 600px;
     outline: none;
     
 }
-.search ::placeholder
+#search ::placeholder
 {
     font-family: "Poppins";
     color: rgba(15, 15, 91,0.5);
 }
 
-#u-btn{
-    font-size: 18px;
-    color: white;
-    background: linear-gradient(to right, rgb(95, 139, 225), rgb(24, 194, 194));
-    padding: 8px 12px;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    font-family: "Poppins";
-    text-align: center;
-    margin: 6px;
-    font-weight: 700;
+
+/* GRAPH */
+
+.graph{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 20px;
 }
+.mob-graph{
+    display: none;
+}
+
+@media only screen and (max-width: 700px){
+ .mob-graph{
+    display: flex;
+ }
+ .web-graph{
+    display: none;
+ }
+}
+

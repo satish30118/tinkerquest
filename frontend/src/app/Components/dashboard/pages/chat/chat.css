@@ -1,7 +1,32 @@
-.member-card{
+.chat-page {
+    display: flex;
+    padding-bottom: 30px;
+}
+
+.chat-member {
+    width: 30%;
+    height: 70vh;
+    overflow: auto;
+}
+
+.chat {
+
+    background-image: url("https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=826&t=st=1710503052~exp=1710503652~hmac=b18f19bc27a389b93f7bb81e03bc9d5ddc4ce7330ab5412b5349c1c10a6137b9");
+    width: 70%;
+    border-radius: 9px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 3px auto;
+    height: 70vh;
+    position: relative;
+    padding: 20px;
+
+}
+
+.member-card {
     /* display: flex; */
     width: 90%;
-    border:2px solid greenyellow;
+    border: 2px solid greenyellow;
     margin-bottom: 10px;
     /* padding-top: 10px; */
     border-radius: 9px;
@@ -10,8 +35,8 @@
     background-color: rgb(32, 188, 81);
     font-size: 16px;
 }
-.member-card h3
-{
+
+.member-card h3 {
     /* padding-right: 10px; */
     /* padding: 10px; */
     /* margin-top: 10px; */
@@ -22,4 +47,28 @@
 
 ::-webkit-scrollbar {
     display: none;
-  }
+}
+
+@media only screen and (max-width:1100px){
+    .chat-page{
+        flex-direction: column-reverse;
+    }
+    .chat{
+        width: 90%;
+    }
+    .chat-member{
+        width: 70%;
+        height: 50vh;
+        margin:50px auto;
+    }
+}
+@media only screen and (max-width:600px){
+
+    .chat{
+        width: 90%;
+    }
+    .chat-member{
+        width: 85%;
+        margin:50px auto;
+    }
+}

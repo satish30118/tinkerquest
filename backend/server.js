@@ -1,4 +1,6 @@
 const express = require("express");
+const http = require("http");
+const socketIo = require("socket.io");
 const color = require("colors");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
@@ -23,6 +25,14 @@ connectDB();
 
 //REST OBJECT
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT","DELETE"],
+    credentials: true
+  }
+});
 
 //MIDDELWARES
 app.use(cors());
@@ -31,6 +41,19 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 
 //ROUTES
+io.on("connection", (socket) => {
+  console.log("A user connected");
+
+  socket.on("disconnect", () => {
+    console.log("User disconnected");
+  });
+
+  socket.on("chat message", async (message, sender) => {
+   
+    io.emit("chat message", {message, sender});
+  });
+});
+
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/booking", bookingRoutes);
 app.use("/api/v1/test", testRoutes);
@@ -47,6 +70,6 @@ app.get("/", (req, res) => {
 
 //PORT and LISTEN SECTION
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`port is running at ${PORT}`.bgBlue);
 });

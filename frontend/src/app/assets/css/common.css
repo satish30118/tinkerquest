@@ -89,3 +89,17 @@
 .auth-row option {
     color: black;
 }
+
+@media only screen and (max-width:600px) {
+    .auth-heading {
+        font-size: 23px;
+    }
+    .auth-row input {
+        font-size: 15px;
+        padding: 5px ;
+        margin-left: 5px;
+    }
+    .auth-row select{
+        font-size: 17px;
+    }
+}

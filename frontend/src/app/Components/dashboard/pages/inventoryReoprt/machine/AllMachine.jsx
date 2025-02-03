@@ -13,7 +13,7 @@ const AllMachine = () => {
   // GETTING ALL MACHINE
   const getAllMachine = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/machine/get-all-machine-citywise/${city}`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/machine/get-all-machine-citywise/${city}`);
 
       if (data) {
         setAllMachine(data?.machines);

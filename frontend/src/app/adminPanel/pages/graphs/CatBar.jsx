@@ -25,7 +25,7 @@ export default function CatBar({ d}) {
       options={state.options}
       series={state.series}
       type="bar"
-      width="500"
+      width="95%"
     />
   );
 }

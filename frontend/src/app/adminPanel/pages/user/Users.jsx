@@ -16,7 +16,7 @@ const Users = () => {
   /* TOTAL User  */
   const getTotalUsers = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/get-all-user");
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/get-all-user`);
 
       if (data) {
         setUsers(data?.allUser);
@@ -39,11 +39,11 @@ const Users = () => {
         return;
       }
       if (admin) {
-        const { data } = await axios.put(`/api/v1/auth/update-user/${selectedId}`, {
+        const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/auth/update-user/${selectedId}`, {
           status: false,
         });
       } else {
-        const { data } = await axios.put(`/api/v1/auth/update-user/${selectedId}`, {
+        const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/auth/update-user/${selectedId}`, {
           status: true,
         });
       }
@@ -60,7 +60,7 @@ const Users = () => {
       if(confirmation !== auth?.user?.phone){
         return;
       }
-      const { data } = await axios.delete(`/api/v1/auth/delete-user/${selectedId}`);
+      const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/auth/delete-user/${selectedId}`);
 
       if (data) {
         toast.success("User Deleted Successfully");
@@ -104,7 +104,7 @@ const Users = () => {
                     <td>{u?.isAdmin ? "Admin" : "Lab Associate"}</td>
                     <td>{u?.phone}</td>
                     <td>{u?.city}</td>
-                    <td>
+                    <td id="th-manage">
                       <button
                         className="btn"
                         style={{ fontSize: "15px", background:`${u?.isAdmin ? "red" :"blue" }` }}

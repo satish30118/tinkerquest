@@ -16,7 +16,7 @@ export default function PieChartBooking({ d1, d2,d3,d4,d5,d6 }) {
           ],
         },
       ]}
-      width={500}
+      width={"95%"}
       height={280}
     />
   );

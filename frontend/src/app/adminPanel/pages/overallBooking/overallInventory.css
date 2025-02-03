@@ -1,7 +1,14 @@
 /* STYLE FOR TOTAL BOOKING*/
 .tb-user-details {
     width: 100%;
-
+    overflow: auto;
+}
+.tb-user-details table{
+    width: 97vw;
+    overflow: auto;
+}
+.tb-user-details ::-webkit-scrollbar{
+    display: inline;
 }
 
 .tb-user-details table {
@@ -27,6 +34,9 @@ td {
     /* color: rgb(167, 26, 26); */
 }
 
+#th-manage{
+    min-width: 250px;
+}
 .tb-user-details table td {
     padding: 3px;
     max-width: 300px;
@@ -40,25 +50,50 @@ td {
     z-index: 2000;
     text-align: center;
 }
-.search
+#search
 {
     text-align: center;
     /* background-color: rebeccapurple; */
     color: blue;
 }
-.search input
+#search input
 {
-    font-size: 23px;
+    font-size: 19px;
+    padding: 7px ;
     color: blue;
     /* background-color: rgb(31, 31, 193); */
     border-radius: 9px;
     text-align: center;
-    width: 400px;
+    width: 88%;
+    max-width: 600px;
     outline: none;
     
 }
-.search ::placeholder
+#search ::placeholder
 {
     font-family: "Poppins";
     color: rgba(15, 15, 91,0.5);
 }
+
+
+/* GRAPH */
+
+.graph{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.mob-graph{
+    display: none;
+}
+
+@media only screen and (max-width: 700px){
+ .mob-graph{
+    display: flex;
+ }
+ .web-graph{
+    display: none;
+ }
+}
+

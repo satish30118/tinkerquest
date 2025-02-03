@@ -121,21 +121,21 @@ const Home = () => {
             </span>
           </h2>
           <div className="frequently-booked2">
-            <div data-aos="fade-right">
+            <div data-aos="fade-up">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1601/captainvector160114572/51894216-graphic-design-of-bar-chart-on-projection-screen.jpg"
                 alt=""
               />
               Inverntory Demand Forecasting
             </div>
-            <div data-aos="zoom-in">
+            <div data-aos="fade-up">
               <img
                 src="https://previews.123rf.com/images/captainvector/captainvector1602/captainvector160260623/52973306-letter-m.jpg"
                 alt=""
               />
               Effective Inventory Management System
             </div>
-            <div data-aos="fade-left">
+            <div data-aos="fade-up">
               <img
                 src="https://previews.123rf.com/images/luka007/luka0071505/luka007150500058/39573454-target-icon.jpg"
                 alt=""

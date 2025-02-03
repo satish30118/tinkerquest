@@ -26,7 +26,7 @@ const OrderReagent = ({ popUp }) => {
       return;
     }
     try {
-      const { data } = await axios.post(`/api/v1/order/order-reagent`, {
+      const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/order/order-reagent`, {
         city,
         reagentName,
         reagentUnit,
@@ -111,7 +111,8 @@ const OrderReagent = ({ popUp }) => {
           <button
             className="btn"
             style={{
-              width: "350px",
+              width: "90%",
+              maxWidth: "300px",
               marginRight: "30px",
               background: "blue",
             }}

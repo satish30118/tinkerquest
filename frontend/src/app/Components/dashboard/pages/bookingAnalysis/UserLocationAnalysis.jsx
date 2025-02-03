@@ -8,6 +8,8 @@ import CatBar from "../graphs/CatBar";
 import PieChartBooking from "../graphs/PieChartBooking";
 import { useAuth } from "../../../../../contextAPI/authContext";
 import Piepercent from "../graphs/Piepercent";
+import PiepercentMob from "../graphs/PiepercentMob";
+
 
 const UserLocationAnalysis = () => {
   const [auth, setAuth] = useAuth();
@@ -36,19 +38,19 @@ const UserLocationAnalysis = () => {
   /* ALL BOOKINGs  MONTH WISE*/
   const getMonthData = async () => {
     try {
-      const m1 = await axios.get(`/api/v1/booking/month/${city}/1`);
+      const m1 = await axios.get(`${process.env.REACT_APP_API}/api/v1/booking/month/${city}/1`);
 
       if (m1) {
         setCurrMonthData(m1?.data?.MonthsCount);
         console.log(currMonthData);
         console.log(currMonthData[0]);
       }
-      const m2 = await axios.get(`/api/v1/booking/month/${city}/0`);
+      const m2 = await axios.get(`${process.env.REACT_APP_API}/api/v1/booking/month/${city}/0`);
 
       if (m2) {
         setPreMonthData(m2?.data?.MonthsCount);
       }
-      const m3 = await axios.get(`/api/v1/booking/month/${city}/-1`);
+      const m3 = await axios.get(`${process.env.REACT_APP_API}/api/v1/booking/month/${city}/-1`);
 
       if (m3) {
         setPreToMonthData(m3?.data?.MonthsCount);
@@ -62,7 +64,7 @@ const UserLocationAnalysis = () => {
   const getAllBooking = async (e) => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/get-all-booking/location-wise/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-all-booking/location-wise/${city}`
       );
 
       if (data) {
@@ -78,7 +80,7 @@ const UserLocationAnalysis = () => {
   const bookingCompleted = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/booking/get-completed-booking/location-wise/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/location-wise/${city}`
       );
 
       if (data) {
@@ -94,31 +96,31 @@ const UserLocationAnalysis = () => {
   const bookingCatWise = async () => {
     try {
       const res1 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/blood/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/blood/${city}`
       );
       setBlood(res1?.data?.categoryCount);
 
       const res2 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/vitamin/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/vitamin/${city}`
       );
       setVitamin(res2?.data?.categoryCount);
 
       const res3 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/thyroid/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/thyroid/${city}`
       );
       setThyroid(res3?.data?.categoryCount);
       const res4 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/liver/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/liver/${city}`
       );
       setLiver(res4?.data?.categoryCount);
 
       const res5 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/diabetes/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/diabetes/${city}`
       );
       setDiabetes(res5?.data?.categoryCount);
 
       const res6 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/kedney/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/kedney/${city}`
       );
       setKidney(res6?.data?.categoryCount);
     } catch (error) {
@@ -130,31 +132,31 @@ const UserLocationAnalysis = () => {
   const bookingCatWiseCurrMonth = async () => {
     try {
       const res1 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/this-month/blood/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/this-month/blood/${city}`
       );
       setBl(res1?.data?.categoryCount);
 
       const res2 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/this-month/vitamin/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/this-month/vitamin/${city}`
       );
       setVi(res2?.data?.categoryCount);
 
       const res3 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/this-month/thyroid/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/this-month/thyroid/${city}`
       );
       setTh(res3?.data?.categoryCount);
       const res4 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/this-month/liver/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/this-month/liver/${city}`
       );
       setLi(res4?.data?.categoryCount);
 
       const res5 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/this-month/diabetes/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/this-month/diabetes/${city}`
       );
       setDi(res5?.data?.categoryCount);
 
       const res6 = await axios.get(
-        `/api/v1/booking/get-completed-booking/category-wise/this-month/kedney/${city}`
+        `${process.env.REACT_APP_API}/api/v1/booking/get-completed-booking/category-wise/this-month/kedney/${city}`
       );
       setKi(res6?.data?.categoryCount);
     } catch (error) {
@@ -235,71 +237,108 @@ const UserLocationAnalysis = () => {
               </button>
             </div>
           </div>
+         
+        <div className="graph web-graph">
+        <div
+          style={{
+            background: "white",
+            margin: "30px 10px",
+            width: "96%",
+            maxWidth: "600px",
+            padding: "30px 10px",
+          }}
+        >
+          <h2 style={{ textAlign: "center" }}>Overall Booking Analysis</h2>
+          <Overall d1={currMonthData} d2={preMonthData} d3={preToMonthData} />
+        </div>
           <div
-            className="graph"
             style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              flexWrap: "wrap",
-              padding: "20px",
+              background: "white",
+              margin: "30px 10px",
+              width: "95%",
+              maxWidth: "600px",
+              paddingTop: "30px",
+              textAlign: "center",
             }}
           >
-            <div
-              style={{
-                background: "white",
-                margin: "30px 0",
-                width: "560px",
-                padding: "30px",
-              }}
-            >
-              <h2 style={{ textAlign: "center" }}>Overall Booking Analysis</h2>
-              <Overall
-                d1={currMonthData}
-                d2={preMonthData}
-                d3={preToMonthData}
-              />
-            </div>
-            <div
-              style={{
-                background: "white",
-                margin: "30px 0",
-                width: "600px",
-                paddingTop: "30px",
-              }}
-            >
-              <h2 style={{ textAlign: "center" }}>
-                Overall Department Wise Booking
-              </h2>
-              <Piepercent
-                d1={blood}
-                d2={vitamin}
-                d3={diabetes}
-                d4={kidney}
-                d5={liver}
-                d6={thyroid}
-              />
-            </div>
-            <div
-              style={{
-                background: "white",
-                margin: "30px 0",
-                width: "600px",
-                paddingTop: "30px",
-              }}
-            >
-              <h2 style={{ textAlign: "center" }}>
-                This Month Department Wise Booking
-              </h2>
-              <Piepercent
-                d1={bl}
-                d2={vi}
-                d3={di}
-                d4={ki}
-                d5={li}
-                d6={th}
-              />
-            </div>
+            <h2 style={{ textAlign: "center" }}>
+              Overall Department Wise Booking
+            </h2>
+            <Piepercent
+              d1={blood}
+              d2={vitamin}
+              d3={diabetes}
+              d4={kidney}
+              d5={liver}
+              d6={thyroid}
+            />
           </div>
+          <div
+            style={{
+              background: "white",
+              margin: "30px 10px",
+              width: "95%",
+              maxWidth: "600px",
+              paddingTop: "30px",
+            }}
+          >
+            <h2 style={{ textAlign: "center" }}>
+              This Month Department Wise Booking
+            </h2>
+            <Piepercent d1={bl} d2={vi} d3={di} d4={ki} d5={li} d6={th} />
+          </div>
+        </div>
+
+        <div className="graph mob-graph">
+        <div
+          style={{
+            background: "white",
+            margin: "30px 5px",
+            width: "96%",
+            maxWidth: "600px",
+            padding: "30px 10px",
+          }}
+        >
+          <h2 style={{ textAlign: "center" }}>Overall Booking Analysis</h2>
+          <Overall d1={currMonthData} d2={preMonthData} d3={preToMonthData} />
+        </div>
+          <div
+            style={{
+              background: "white",
+              margin: "30px 5px",
+              width: "110%",
+              maxWidth: "300px",
+              padding: "30px 10px",
+              textAlign: "center",
+            }}
+          >
+            <h2 style={{ textAlign: "center" }}>
+              Overall Department Wise Booking
+            </h2>
+            <PiepercentMob
+              d1={blood}
+              d2={vitamin}
+              d3={diabetes}
+              d4={kidney}
+              d5={liver}
+              d6={thyroid}
+            />
+          </div>
+          <div
+            style={{
+              background: "white",
+              margin: "30px 10px",
+              width: "110%",
+              maxWidth: "300px",
+              padding: "30px 10px",
+            }}
+          >
+            <h2 style={{textAlign: "center" }}>
+              This Month Department Wise Booking
+            </h2>
+            <PiepercentMob d1={bl} d2={vi} d3={di} d4={ki} d5={li} d6={th} />
+          </div>
+        </div>
         </div>
       </div>
     </>

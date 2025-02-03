@@ -4,6 +4,7 @@ import "../assets/css/header.css";
 import { useAuth } from "../../contextAPI/authContext";
 import { toast } from "react-toastify";
 import logo from "../assets/image/logo.webp";
+import SideDrawer from "./SideDrawer";
 
 export default function Header() {
   const [auth, setAuth] = useAuth();
@@ -59,6 +60,9 @@ export default function Header() {
               </NavLink>
             </>
           )}
+        </div>
+        <div className="side-drawer">
+          <SideDrawer />
         </div>
       </nav>
     </>

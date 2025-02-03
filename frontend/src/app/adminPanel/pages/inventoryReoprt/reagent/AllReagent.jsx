@@ -12,7 +12,7 @@ const AllReagent = () => {
   // GETTING ALL REAGENT
   const getAllReagent = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/reagent/get-all-reagent`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/reagent/get-all-reagent`);
 
       if (data) {
         setAllReagent(data?.reagents);
@@ -61,7 +61,7 @@ const AllReagent = () => {
                 </td>
                 <td>{item?.reagentCost}</td>
                 <td style={{fontWeight:"600",color:`${item?.reagentAmount<10 ? "red" : item?.reagentAmount<50 ? "gold" : "lightgreen"}`}}>{item?.reagentAmount<10 ? "Out of Stock" : item?.reagentAmount<50 ? "Reaching Out of Stock" : "In-Stock"}</td>
-                <td>
+                <td th-manage>
                   <div>
                     <button
                       className="btn"

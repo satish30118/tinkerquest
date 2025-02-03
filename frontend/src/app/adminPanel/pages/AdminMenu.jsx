@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contextAPI/authContext";
 import { toast } from "react-toastify";
@@ -14,21 +14,24 @@ const AdminMenu = () => {
 
   return (
     <>
+    <div>
       <button
         onClick={toggleDrawer}
         style={{
           position: "fixed",
-          color: "white",
+          color: "black",
           fontSize: "25px",
-          padding: "5px 10px",
+          padding: "2px 10px",
+          borderRadius:"5px",
           margin: "10px",
-          background: "transparent",
+          background: "lightblue",
           border: "none",
           zIndex: "100",
         }}
       >
         <i className="fa-solid fa-bars"></i>
       </button>
+      </div>
       <Drawer
         open={isOpen}
         onClose={toggleDrawer}
@@ -49,7 +52,6 @@ const AdminMenu = () => {
             </button>
           </div> */}
 
-          {/* <h1>Admin Panel</h1> */}
           <br />
       
 
@@ -79,7 +81,7 @@ const AdminMenu = () => {
               {auth?.user?.email}
             </p>
           </div>
-          <Link to={"/dashboard/admin"}>Inventory Dashboard</Link>
+          <Link to={"/dashboard/admin"}>Booking Dashboard</Link>
           <NavLink to={"/dashboard/admin/inventory-report-and-analysis"}>
             Inventory Report and Analysis
           </NavLink>
