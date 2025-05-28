@@ -75,6 +75,7 @@ The Medical Lab Inventory Management System provides a user-friendly interface f
 - Sckit-Learn
 - Math
 - Pickle
+- LSTM
 
 ### Database
 
